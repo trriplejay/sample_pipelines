@@ -13,3 +13,11 @@ resources:
     source:
       name : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
+  
+  - name: myEcsParams
+    type: params
+    source:
+      params:
+        foo: bar
+        api_url: https://api.shippable.com
+      
