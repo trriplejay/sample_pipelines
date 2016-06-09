@@ -1,4 +1,4 @@
-jobs:
+jobs: #resync the jobs
   - name: generate-manifest
     type: manifest
     integration: "trriplejay docker hub"
