@@ -10,5 +10,5 @@ jobs: #resync the jobs
     type: ecsDeploy
     integration: "trriplejay docker hub"
     steps:
-      - GET generate-manifest
+      - GET generate-manifest-1
       - GET myEcsCluster
