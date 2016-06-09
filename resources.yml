@@ -14,7 +14,7 @@ resources:
       name : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
   
-  - name: myEcsParams 
+  - name: myEcsParams #try rsync again
     type: params
     integration: "trriplejay docker hub"
     source:
