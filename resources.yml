@@ -14,8 +14,9 @@ resources:
       name : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
   
-  - name: myEcsParams #test once more 
+  - name: myEcsParams 
     type: params
+    integration: "trriplejay docker hub"
     source:
       params:
         foo: bar
