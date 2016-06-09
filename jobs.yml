@@ -1,12 +1,14 @@
 jobs:
   - name: generate-manifest
     type: manifest
+    integration: "trriplejay docker hub"
     steps:
       - GET nginx-image
       - GET myEcsParams
 
   - name: deploy-service
     type: ecsDeploy
+    integration: "trriplejay docker hub"
     steps:
       - GET generate-manifest
       - GET myEcsCluster
