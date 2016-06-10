@@ -6,6 +6,14 @@ resources:
       name: "library/nginx"
       isPull: false
       tag: latest
+      
+  - name: simple-image
+    type: image
+    integration: "trriplejay docker hub"
+    source:
+      name: "trriplejay/simpleserver"
+      isPull: false
+      tag: latest
 
   - name: myEcsCluster
     type: ecsCluster
@@ -21,5 +29,4 @@ resources:
       params:
         foo: bar
         api_url: https://api.shippable.com
-        test: test
       
