@@ -11,6 +11,7 @@ jobs: #resync the jobs
     steps:
       - GET simple-image
       - GET generate-manifest-1
+      - GET nginx-image
       - GET myEcsParams
 
   - name: deploy-service-1
