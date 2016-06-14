@@ -2,18 +2,18 @@ jobs: #resync the jobs
   - name: generate-manifest-1
     type: manifest
     steps:
-      - GET nginx-image
-      - GET simple-image
+      - GET: nginx-image
+      - GET: simple-image
       
   - name: generate-multi-mani
     type: manifest
     steps:
-      - GET simple-image
-      - GET generate-manifest-1
-      - GET myEcsParams
+      - GET: simple-image
+      - GET: generate-manifest-1
+      - GET: myEcsParams
 
   - name: deploy-service-1
     type: dclDeploy
     steps:
-      - GET generate-multi-mani
-      - GET myDclCluster
+      - GET: generate-multi-mani
+      - GET: myDclCluster
