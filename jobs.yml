@@ -13,7 +13,7 @@ jobs: #resync the jobs
       - GET: myEcsParams
 
   - name: deploy-service
-    type: dclDeploy
+    type: ecsDeploy
     steps:
       - GET: generate-multi-mani-1
-      - GET: myDclCluster
+      - GET: myEcsCluster
