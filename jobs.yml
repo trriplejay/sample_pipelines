@@ -1,22 +1,19 @@
 jobs: #resync the jobs
   - name: generate-manifest-1
     type: manifest
-    integration: "trriplejay docker hub"
     steps:
       - GET nginx-image
       - GET simple-image
       
   - name: generate-multi-mani
     type: manifest
-    integration: "trriplejay docker hub"
     steps:
       - GET simple-image
       - GET generate-manifest-1
       - GET myEcsParams
 
-  - name: deploy-service-1 #test
+  - name: deploy-service-1
     type: dclDeploy
-    integration: "trriplejay docker hub"
     steps:
       - GET generate-multi-mani
       - GET myDclCluster
