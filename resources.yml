@@ -35,3 +35,4 @@ resources:
       params:
         foo: bar
         api_url: https://api.shippable.com
+        hello: world
