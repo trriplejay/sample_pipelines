@@ -14,7 +14,7 @@ jobs: #resync the jobs
       - GET generate-manifest-1
       - GET myEcsParams
 
-  - name: deploy-service-1
+  - name: deploy-service-1 #test
     type: dclDeploy
     integration: "trriplejay docker hub"
     steps:
