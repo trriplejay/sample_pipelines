@@ -21,6 +21,12 @@ resources:
     source:
       name : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
+      
+  - name: myDclCluster
+    type: dclCluster
+    integration: "test dcl"
+    source:
+      name : "my-node" #name of dcl node or node cluster
   
   - name: myEcsParams #try rsync again
     type: params
