@@ -26,7 +26,7 @@ resources:
     type: dclCluster
     integration: "test dcl"
     source:
-      name : "my-node" #name of dcl node or node cluster
+      name : "my-node"
   
   - name: myEcsParams #try rsync again
     type: params
