@@ -51,3 +51,8 @@ resources:
     type: kickstart
     source:
       counter: 1
+      
+  - name: ecsDockerOpts
+    type: dockerOptions
+    source:
+      memory: 300
