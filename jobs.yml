@@ -24,4 +24,5 @@ jobs: #resync the jobs
       - GET: generate-multi-mani-1
       - GET: ecsReplicas
       - GET: myEcsCluster
+      - GET: myOverrideParams
 
