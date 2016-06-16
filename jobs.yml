@@ -25,4 +25,5 @@ jobs: #resync the jobs
       - GET: ecsReplicas
       - GET: myEcsCluster
       - GET: myOverrideParams
+      - GET: myOverrideOpts
 
