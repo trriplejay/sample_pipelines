@@ -10,6 +10,7 @@ jobs: #resync the jobs
       - GET: simple-image
       - GET: generate-manifest
       - GET: myEcsParams
+      - GET: ecsDockerOpts
 
   - name: deploy-service-dcl
     type: dclDeploy
