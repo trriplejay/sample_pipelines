@@ -3,13 +3,13 @@ jobs: #resync the jobs
     type: manifest
     steps:
       - GET: nginx-image
+      - GET: myEcsParams
       
   - name: generate-multi-mani-1
     type: manifest
     steps:
       - GET: simple-image
       - GET: generate-manifest
-      - GET: myEcsParams
 
   - name: deploy-service-dcl
     type: dclDeploy
