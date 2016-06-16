@@ -22,5 +22,6 @@ jobs: #resync the jobs
     type: ecsDeploy
     steps:
       - GET: generate-multi-mani-1
+      - GET: ecsReplicas
       - GET: myEcsCluster
 
