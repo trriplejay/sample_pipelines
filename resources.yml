@@ -60,4 +60,4 @@ resources:
   - name: myOverrideOpts
     type: dockerOptions
     source:
-      memory: 666
+      memory: 667
