@@ -28,13 +28,19 @@ resources:
     source:
       name : "my-node"
   
-  - name: myEcsParams #try rsync again
+  - name: myEcsParams
     type: params
-    integration: "trriplejay docker hub"
     source:
       params:
         foo: bar
         api_url: https://api.shippable.com
+        
+  - name: myOverrideParams
+    type: params
+    integration: "trriplejay docker hub"
+    source:
+      params:
+        foo: override
   
   - name: ecsReplicas
     type: replicas
