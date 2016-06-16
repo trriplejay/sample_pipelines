@@ -55,4 +55,4 @@ resources:
   - name: ecsDockerOpts
     type: dockerOptions
     source:
-      memory: 250
+      memory: 200
