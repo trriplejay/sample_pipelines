@@ -39,7 +39,7 @@ resources:
   - name: ecsReplicas
     type: replicas
     source:
-      count: 2
+      count: 3
 
   - name: kickstartEcs
     type: kickstart
