@@ -55,7 +55,7 @@ resources:
   - name: ecsDockerOpts
     type: dockerOptions
     source:
-      memory: 234
+      memory: 333
       
   - name: myOverrideOpts
     type: dockerOptions
