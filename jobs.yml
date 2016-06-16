@@ -3,7 +3,6 @@ jobs: #resync the jobs
     type: manifest
     steps:
       - GET: nginx-image
-      - GET: simple-image
       
   - name: generate-multi-mani-1
     type: manifest
