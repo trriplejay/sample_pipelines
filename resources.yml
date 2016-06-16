@@ -41,3 +41,7 @@ resources:
     source:
       count: 2
 
+  - name: kickstartEcs
+    type: kickstart
+    source:
+      counter: 1
