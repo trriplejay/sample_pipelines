@@ -13,12 +13,6 @@ jobs: #resync the jobs
       - GET: simple-params
       - GET: simple-opts
 
-  - name: deploy-service-dcl
-    type: dclDeploy
-    steps:
-      - GET: generate-multi-mani-1
-      - GET: myDclCluster
-
   - name: ecs-beta
     type: ecsDeploy
     steps:
