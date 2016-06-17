@@ -79,7 +79,7 @@ resources:
   - name: kickstartBeta
     type: kickstart
     source:
-      counter: 1
+      counter: 2
       
   - name: kickstartProd
     type: kickstart
