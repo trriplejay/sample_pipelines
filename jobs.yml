@@ -34,7 +34,7 @@ jobs: #resync the jobs
     steps:
       - GET: ecs-beta
       - GET: prodReplicas
-      - GET: myEcsCluster
+      - GET: myDclCluster
       - GET: prodParams
       - GET: prodOpts
 
