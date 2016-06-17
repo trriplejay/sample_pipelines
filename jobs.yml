@@ -1,16 +1,17 @@
 jobs: #resync the jobs
-  - name: generate-manifest
+  - name: nginx-mani
     type: manifest
     steps:
       - GET: nginx-image
+      - GET: nginx-params
+      - GET: nginx-opts
       
-  - name: generate-multi-mani-1
+  - name: simple-mani
     type: manifest
     steps:
       - GET: simple-image
-      - GET: generate-manifest
-      - GET: myEcsParams
-      - GET: ecsDockerOpts
+      - GET: simple-params
+      - GET: simple-opts
 
   - name: deploy-service-dcl
     type: dclDeploy
@@ -18,12 +19,22 @@ jobs: #resync the jobs
       - GET: generate-multi-mani-1
       - GET: myDclCluster
 
-  - name: deploy-service-ecs
+  - name: ecs-beta
     type: ecsDeploy
     steps:
-      - GET: generate-multi-mani-1
-      - GET: ecsReplicas
+      - GET: nginx-mani
+      - GET: simple-mani
+      - GET: betaReplicas
       - GET: myEcsCluster
-      - GET: myOverrideParams
-      - GET: myOverrideOpts
+      - GET: betaParams
+      - GET: betaOpts
+      
+  - name: dcl-prod
+    type: dclDeploy
+    steps:
+      - GET: ecs-beta
+      - GET: prodReplicas
+      - GET: myEcsCluster
+      - GET: prodParams
+      - GET: prodOpts
 
