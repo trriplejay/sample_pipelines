@@ -97,3 +97,9 @@ resources:
     source:
       memory: 800
       
+  - name: simpleCI
+    type: gitRepo
+    integration: "trriplejay github"
+    source:
+      name: trriplejay/simpleserver
+      branch: master
