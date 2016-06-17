@@ -33,6 +33,7 @@ resources:
       params:
         mode: dev
         api_url: localhost:50000
+        foo: bar
         
   - name: simple-opts
     type: dockerOptions
