@@ -7,6 +7,18 @@ resources:
       isPull: false
       tag: latest
       
+  - name: nginx-params
+    type: params
+    source:
+      params:
+        mode: dev
+        api_url: localhost:50000
+        
+  - name: nginx-opts
+    type: dockerOptions
+    source:
+      memory: 250
+      
   - name: simple-image
     type: image
     integration: "trriplejay docker hub"
@@ -14,6 +26,18 @@ resources:
       name: "trriplejay/simpleserver"
       isPull: false
       tag: latest
+      
+  - name: simple-params
+    type: params
+    source:
+      params:
+        mode: dev
+        api_url: localhost:50000
+        
+  - name: simple-opts
+    type: dockerOptions
+    source:
+      memory: 120
 
   - name: myEcsCluster
     type: ecsCluster
@@ -28,36 +52,47 @@ resources:
     source:
       name : "my-node"
   
-  - name: myEcsParams
-    type: params
+  - name: betaReplicas
+    type: replicas
     source:
-      params:
-        foo: bar
-        api_url: https://api.shippable.com
-        
-  - name: myOverrideParams
-    type: params
-    integration: "trriplejay docker hub"
-    source:
-      params:
-        foo: override
-  
-  - name: ecsReplicas
+      count: 2
+      
+  - name: prodReplicas
     type: replicas
     source:
       count: 5
+      
+  - name: betaParams
+    type: params
+    source:
+      params:
+        mode: beta
+        api_url: http://api.beta.shippable.com
+        
+  - name: prodParams
+    type: params
+    source:
+      params:
+        mode: prod
+        api_url: http://api.shippable.com
 
-  - name: kickstartEcs
+  - name: kickstartBeta
     type: kickstart
     source:
       counter: 1
       
-  - name: ecsDockerOpts
+  - name: kickstartProd
+    type: kickstart
+    source:
+      counter: 1
+  
+  - name: betaOpts
     type: dockerOptions
     source:
-      memory: 333
+      memory: 400
       
-  - name: myOverrideOpts
+  - name: prodOpts
     type: dockerOptions
     source:
-      memory: 667
+      memory: 800
+      
