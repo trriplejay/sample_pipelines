@@ -25,7 +25,7 @@ resources:
     source:
       name: "trriplejay/simpleserver"
       isPull: false
-      tag: latest
+      tag: test
       
   - name: simple-params
     type: params
