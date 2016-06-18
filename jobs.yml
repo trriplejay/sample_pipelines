@@ -36,3 +36,8 @@ jobs: #resync the jobs
       - GET: prodOpts
       - GET: kickstartProd
 
+  - name: runSimpleCI
+    type: runCI
+    steps:
+      - GET: simpleCI
+      - PUT: simple-image
