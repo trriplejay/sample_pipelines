@@ -1,4 +1,4 @@
-jobs: #resync the jobs
+jobs:
   - name: nginx-mani
     type: manifest
     steps:
@@ -12,7 +12,6 @@ jobs: #resync the jobs
       - GET: simple-image
       - GET: simple-params
       - GET: simple-opts
-      - PUT: nginx-image
 
   - name: ecs-beta
     type: ecsDeploy
