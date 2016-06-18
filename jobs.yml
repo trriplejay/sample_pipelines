@@ -36,7 +36,7 @@ jobs: #resync the jobs
       - GET: prodOpts
       - GET: kickstartProd
 
-  - name: runSimpleCI #trigger a build
+  - name: runSimpleServerBuild
     type: runCI
     steps:
       - GET: simpleCI
