@@ -13,16 +13,16 @@ jobs:
       - GET: simple-params
       - GET: simple-opts
 
-#  - name: ecs-beta
-#    type: ecsDeploy
-#    steps:
-#      - GET: nginx-mani
-#      - GET: simple-mani
-#      - GET: betaReplicas
-#      - GET: myEcsCluster
-#      - GET: betaParams
-#      - GET: betaOpts
-#      - GET: kickstartBeta
+  - name: ecs-beta
+    type: ecsDeploy
+    steps:
+      - GET: nginx-mani
+      - GET: simple-mani
+      - GET: betaReplicas
+      - GET: myEcsCluster
+      - GET: betaParams
+      - GET: betaOpts
+      - GET: kickstartBeta
       
 #  - name: dcl-prod
 #    type: dclDeploy
