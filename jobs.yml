@@ -39,4 +39,4 @@ jobs:
     type: runCI
     steps:
       - GET: simpleCI
-#      - PUT: simple-image
+      - PUT: simple-image
