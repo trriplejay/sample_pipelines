@@ -24,16 +24,16 @@ jobs:
       - GET: betaOpts
       - GET: kickstartBeta
       
-  - name: dcl-prod
-    type: dclDeploy
-    steps:
-      - GET: ecs-beta
-        trigger: false
-      - GET: prodReplicas
-      - GET: myDclCluster
-      - GET: prodParams
-      - GET: prodOpts
-      - GET: kickstartProd
+#  - name: dcl-prod
+#    type: dclDeploy
+#    steps:
+#      - GET: ecs-beta
+#        trigger: false
+#      - GET: prodReplicas
+#      - GET: myDclCluster
+#      - GET: prodParams
+#      - GET: prodOpts
+#      - GET: kickstartProd
 
   - name: runSimpleServerCI
     type: runCI
