@@ -46,12 +46,6 @@ resources:
     source:
       name : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
-      
-  - name: myDclCluster
-    type: dclCluster
-    integration: "test dcl"
-    source:
-      name : "my-node"
   
   - name: betaReplicas
     type: replicas
