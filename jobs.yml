@@ -30,6 +30,7 @@ jobs:
       action: minor
     steps:
       - GET: testVer
+      - GET: simple-mani
       
 #  - name: dcl-prod
 #    type: dclDeploy
