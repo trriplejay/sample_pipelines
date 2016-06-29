@@ -25,7 +25,7 @@ resources:
     source:
       name: "trriplejay/simpleserver"
       isPull: false
-      tag: master.58
+      tag: latest
       
   - name: simple-params
     type: params
