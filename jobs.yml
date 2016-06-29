@@ -24,6 +24,13 @@ jobs:
       - GET: betaOpts
       - GET: kickstartBeta
       
+  - name: testRelease
+    type: release
+    options:
+      action: minor
+    steps:
+      - GET: testVer
+      
 #  - name: dcl-prod
 #    type: dclDeploy
 #    steps:
