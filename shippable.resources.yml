@@ -40,12 +40,12 @@ resources:
     source:
       memory: 120
 
-  - name: myEcsCluster
-    type: ecsCluster
-    integration: "shippable demo ecs"
-    source:
-      name : "trriplejay-test" #name of the cluster we are deploying
-      region: "us-west-2"
+#  - name: myEcsCluster
+#    type: ecsCluster
+#    integration: "shippable demo ecs"
+#    source:
+#      name : "trriplejay-test" #name of the cluster we are deploying
+#      region: "us-west-2"
   
   - name: betaReplicas
     type: replicas
