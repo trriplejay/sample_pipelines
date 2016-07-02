@@ -95,6 +95,11 @@ resources:
     type: version
     source:
       base: "1.0.0"
+  - name: testVer2
+    type: version
+    source:
+      base: "1.0.0"
+
       
 #  - name: simpleCI
 #    type: gitRepo
