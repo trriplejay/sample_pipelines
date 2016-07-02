@@ -12,12 +12,4 @@ triggers:
     type: trigger
     source:
       counter: 1
-  - name: triggertest4
-    type: trigger
-    source:
-      counter: 1
-
-  - name: triggertest5
-    type: trigger
-    source:
-      counter: 5
+      
