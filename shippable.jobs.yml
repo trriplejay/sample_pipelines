@@ -32,6 +32,14 @@ jobs:
       - GET: testVer
       - GET: simple-mani
       
+  - name: testRelease2
+    type: release
+    options:
+      action: minor
+    steps:
+      - GET: testVer2
+      - GET: simple-mani
+      
 #  - name: dcl-prod
 #    type: dclDeploy
 #    steps:
