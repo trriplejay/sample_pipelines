@@ -15,6 +15,8 @@ jobs:
 
   - name: ecs-beta
     type: ecsDeploy
+    options:
+      deployMethod: blueGreen
     steps:
       - GET: nginx-mani
       - GET: simple-mani
