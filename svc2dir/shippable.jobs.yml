@@ -1,0 +1,14 @@
+resources:
+
+  - name: myConfigRepo
+    type: gitRepo
+    source:
+      name: trriplejay/sample_python
+    
+    
+jobs:
+
+  - name: syncRepo-e1d8941
+    type: runCI
+    steps:
+      - GET: myConfigRepo
