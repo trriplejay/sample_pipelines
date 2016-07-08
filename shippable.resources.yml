@@ -102,9 +102,9 @@ resources:
     source:
       base: "1.0.0"
       
-  - name: simpleCIsyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    source:
-      name: trriplejay/simpleserver
-      branch: master
+#  - name: simpleCIsyncRepo
+#    type: syncRepo
+#    integration: "trriplejay github"
+#    source:
+#      name: trriplejay/simpleserver
+#      branch: master
