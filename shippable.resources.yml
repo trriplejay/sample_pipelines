@@ -101,9 +101,9 @@ resources:
     type: version
     source:
       base: "1.0.0"
-#  - name: simpleCI
-#    type: gitRepo
-#    integration: "trriplejay github"
-#    source:
-#      name: trriplejay/simpleserver
-#      branch: master
+  - name: simpleCI
+    type: gitRepo
+    integration: "trriplejay github"
+    source:
+      name: trriplejay/simpleserver
+      branch: master
