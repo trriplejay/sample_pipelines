@@ -101,8 +101,9 @@ resources:
     type: version
     source:
       base: "1.0.0"
-  - name: simpleCI
-    type: gitRepo
+      
+  - name: simpleCIsyncRepo
+    type: syncRepo
     integration: "trriplejay github"
     source:
       name: trriplejay/simpleserver
