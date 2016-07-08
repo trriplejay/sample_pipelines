@@ -56,5 +56,5 @@ jobs:
   - name: runSimpleServerCI
     type: runCI
     steps:
-      - GET: simpleCI
+      - GET: simpleCIsyncRepo
       - PUT: simple-image
