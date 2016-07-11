@@ -24,7 +24,7 @@ jobs:
       - GET: myEcsCluster
       - GET: betaParams
       - GET: betaOpts
-      - GET: kickstartBeta
+      - GET: betaTrigger
       
   - name: testRelease
     type: release
@@ -51,7 +51,7 @@ jobs:
 #      - GET: myDclCluster
 #      - GET: prodParams
 #      - GET: prodOpts
-#      - GET: kickstartProd
+#      - GET: prodTrigger
 
   - name: runSimpleServerCI
     type: runCI
