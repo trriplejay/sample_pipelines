@@ -39,6 +39,7 @@ resources:
     type: dockerOptions
     source:
       memory: 120
+      cpuShares: 18
 
   - name: myEcsCluster
     type: ecsCluster
@@ -81,6 +82,7 @@ resources:
     type: dockerOptions
     source:
       memory: 400
+      cpuShares: 10
       
   - name: prodOpts
     type: dockerOptions
