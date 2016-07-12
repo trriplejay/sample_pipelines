@@ -20,7 +20,6 @@ jobs:
       deployMethod: blueGreen
     steps:
       - GET: nginx-mani
-      - GET: simple-mani
       - GET: betaReplicas
       - GET: myEcsCluster
       - GET: betaParams
