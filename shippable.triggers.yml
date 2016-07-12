@@ -2,7 +2,7 @@ triggers:
   - name: betaTrigger
     type: trigger
     source:
-      message: 'test ddc manifest 4'
+      message: 'test ddc manifest 5'
       
   - name: prodTrigger
     type: trigger
