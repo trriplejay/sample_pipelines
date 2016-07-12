@@ -98,3 +98,10 @@ resources:
     source:
       name: trriplejay/simpleserver
       branch: master
+
+  - name: myProdSyncRepo
+    type: syncRepo
+    integration: "trriplejay github"
+    source:
+      name: trriplejay/sample_pipelines
+      branch: original
