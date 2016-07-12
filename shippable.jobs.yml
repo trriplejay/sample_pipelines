@@ -58,3 +58,8 @@ jobs:
     steps:
       - GET: simpleCIsyncRepo
       - PUT: simple-image
+      
+  - name: prodYmlSync
+    type: rSync
+    steps:
+      - GET: myProdSyncRepo
