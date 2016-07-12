@@ -46,6 +46,12 @@ resources:
     source:
       name : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
+      
+  - name: myDdcCluster
+    type: ddcCluster
+    integration: "trriplejay ddc"
+    source:
+      name : "trriplejay-test" #name of the cluster we are deploying
   
   - name: betaReplicas
     type: replicas
