@@ -2,7 +2,7 @@ triggers:
   - name: betaTrigger
     type: trigger
     source:
-      message: 'force beta deploy'
+      message: 'test ddc manifest 1'
       
   - name: prodTrigger
     type: trigger
