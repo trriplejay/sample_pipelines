@@ -12,6 +12,7 @@ jobs:
       - GET: simple-image
       - GET: simple-params
       - GET: simple-opts
+      - GET: betaTrigger
 
   - name: ecs-beta
     type: ecsDeploy
@@ -24,7 +25,17 @@ jobs:
       - GET: myEcsCluster
       - GET: betaParams
       - GET: betaOpts
-      - GET: betaTrigger
+
+  - name: ddc-test
+    type: ddcDeploy
+    options:
+      deployMethod: blueGreen
+    steps:
+      - GET: simple-mani
+      - GET: betaReplicas
+      - GET: myDdcCluster
+      - GET: betaParams
+      - GET: betaOpts
       
   - name: testRelease
     type: release
