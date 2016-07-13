@@ -5,6 +5,7 @@ jobs:
       - GET: nginx-image
       - GET: nginx-params
       - GET: nginx-opts
+      - GET: triggertest1
       
   - name: simple-mani
     type: manifest
