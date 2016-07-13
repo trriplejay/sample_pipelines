@@ -13,12 +13,6 @@ resources:
       params:
         mode: dev
         api_url: localhost:50000
-  - name: nginx-params
-    type: dockerOptions
-    source:
-      params:
-        mode: dev
-        api_url: localhost:50000
         
   - name: nginx-opts
     type: dockerOptions
