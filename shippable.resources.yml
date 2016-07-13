@@ -90,7 +90,7 @@ resources:
       memory: 800
   
   - name: testVer
-    type: params
+    type: version
     source:
       base: "1.0.0"
 
