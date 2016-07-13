@@ -19,11 +19,12 @@ jobs:
     options:
       deployMethod: blueGreen
     steps:
+      - GET: betaParams
+      - GET: betaOpts
       - GET: nginx-mani
       - GET: betaReplicas
       - GET: myEcsCluster
-      - GET: betaParams
-      - GET: betaOpts
+      
 
   - name: ddc-test
     type: ddcDeploy
