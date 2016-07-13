@@ -15,7 +15,7 @@ jobs:
       - GET: simple-opts
       - GET: betaTrigger
 
-  - name: ecs-beta
+  - name: nginx-mani
     type: ecsDeploy
     options:
       deployMethod: blueGreen
