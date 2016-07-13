@@ -7,13 +7,13 @@ jobs:
       - GET: nginx-opts
       - GET: triggertest1
       
-  - name: simple-mani
-    type: manifest
-    steps:
-      - GET: simple-image
-      - GET: simple-params
-      - GET: simple-opts
-      - GET: betaTrigger
+#  - name: simple-mani
+#    type: manifest
+#    steps:
+#      - GET: simple-image
+#      - GET: simple-params
+#      - GET: simple-opts
+#      - GET: betaTrigger
 
   - name: ecs-beta
     type: ecsDeploy
