@@ -45,7 +45,7 @@ jobs:
       - GET: testVer
       - GET: simple-mani
       
-  - name: testRelease2
+  - name: testRelease
     type: release
     options:
       action: minor
