@@ -89,10 +89,10 @@ resources:
     source:
       memory: 800
   
-  - name: testVer
-    type: version
-    source:
-      base: "1.0.0"
+#  - name: testVer
+#    type: version
+#    source:
+#      base: "1.0.0"
 
       
   - name: testVer2
