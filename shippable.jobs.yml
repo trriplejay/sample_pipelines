@@ -7,7 +7,7 @@ jobs:
       - GET: nginx-opts
       - GET: triggertest1
       
-  - name: nginx-mani
+  - name: simple-mani
     type: manifest
     steps:
       - GET: simple-image
