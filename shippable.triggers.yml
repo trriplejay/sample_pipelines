@@ -7,7 +7,7 @@ triggers:
   - name: prodTrigger
     type: trigger
     source:
-      message: 'force prod deploy'
+      message: 'test'
       
   - name: triggertest1
     type: trigger
