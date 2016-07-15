@@ -76,3 +76,4 @@ jobs:
     type: rSync
     steps:
       - GET: myProdSyncRepo
+      - GET: prodTrigger
