@@ -2,29 +2,29 @@ jobs:
   - name: nginx-mani
     type: manifest
     steps:
-      - GET: nginx-image
-      - GET: nginx-params
-      - GET: nginx-opts
-      - GET: triggertest1
+      - IN: nginx-image
+      - IN: nginx-params
+      - IN: nginx-opts
+      - IN: triggertest1
       
   - name: simple-mani
     type: manifest
     steps:
-      - GET: simple-image
-      - GET: simple-params
-      - GET: simple-opts
-      - GET: betaTrigger
+      - IN: simple-image
+      - IN: simple-params
+      - IN: simple-opts
+      - IN: betaTrigger
 
   - name: ecs-beta
     type: ecsDeploy
     options:
       deployMethod: blueGreen
     steps:
-      - GET: betaParams
-      - GET: betaOpts
-      - GET: nginx-mani
-      - GET: betaReplicas
-      - GET: myEcsCluster
+      - IN: betaParams
+      - IN: betaOpts
+      - IN: nginx-mani
+      - IN: betaReplicas
+      - IN: myEcsCluster
       
 
   - name: ddc-test
@@ -32,48 +32,48 @@ jobs:
     options:
       deployMethod: blueGreen
     steps:
-      - GET: simple-mani
-      - GET: betaReplicas
-      - GET: myDdcCluster
-      - GET: betaParams
-      - GET: betaOpts
+      - IN: simple-mani
+      - IN: betaReplicas
+      - IN: myDdcCluster
+      - IN: betaParams
+      - IN: betaOpts
       
   - name: testRelease
     type: release
     options:
       action: minor
     steps:
-      - GET: testVer
-      - GET: simple-mani
+      - IN: testVer
+      - IN: simple-mani
       
   - name: testRelease2
     type: release
     options:
       action: minor
     steps:
-      - GET: testVer2
-      - GET: simple-mani
+      - IN: testVer2
+      - IN: simple-mani
       
 #  - name: dcl-prod
 #    type: dclDeploy
 #    steps:
-#      - GET: ecs-beta
+#      - IN: ecs-beta
 #        trigger: false
-#      - GET: prodReplicas
-#      - GET: myDclCluster
-#      - GET: prodParams
-#      - GET: prodOpts
-#      - GET: prodTrigger
+#      - IN: prodReplicas
+#      - IN: myDclCluster
+#      - IN: prodParams
+#      - IN: prodOpts
+#      - IN: prodTrigger
 
   - name: runSimpleServerCI
     type: runCI
     steps:
-      - GET: simpleCIsyncRepo
-      - PUT: simple-image
+      - IN: simpleCIsyncRepo
+      - OUT: simple-image
       
 
   - name: prodYmlSync
     type: rSync
     steps:
-      - GET: myProdSyncRepo
-      - GET: prodTrigger
+      - IN: myProdSyncRepo
+      - IN: prodTrigger
