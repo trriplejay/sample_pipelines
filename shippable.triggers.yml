@@ -1,21 +1,21 @@
 triggers:
   - name: betaTrigger
     type: trigger
-    source:
+    version:
       message: 'beta verify ddc'
       
   - name: prodTrigger
     type: trigger
-    source:
+    version:
       message: 'test'
       
   - name: triggertest1
     type: trigger
-    source:
+    version:
       message: 'here we go'
       
   - name: triggertest2
     type: trigger
-    source:
+    version:
       counter: 1
       
