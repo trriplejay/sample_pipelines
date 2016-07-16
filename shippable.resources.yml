@@ -23,7 +23,7 @@ resources:
     type: image
     integration: "trriplejay docker hub"
     pointer:
-      name: "trriplejay/simpleserver"
+      sourceName: "trriplejay/simpleserver"
     seed:
       versionName: master.58
       
