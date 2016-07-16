@@ -3,8 +3,8 @@ resources:
   - name: myConfigRepo
     type: gitRepo
     integration: "trriplejay github"
-    source:
-      name: trriplejay/sample_python
+    pointer:
+      sourceName: trriplejay/sample_python
       branch: master
     
     
@@ -14,3 +14,4 @@ jobs:
     type: runCI
     steps:
       - IN: myConfigRepo
+      - TASK: managed
