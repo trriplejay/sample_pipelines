@@ -6,6 +6,7 @@ jobs:
       - IN: nginx-params
       - IN: nginx-opts
       - IN: triggertest1
+      - TASK: managed
       
   - name: simple-mani
     type: manifest
@@ -14,6 +15,7 @@ jobs:
       - IN: simple-params
       - IN: simple-opts
       - IN: betaTrigger
+      - TASK: managed
 
   - name: ecs-beta
     type: ecsDeploy
@@ -25,6 +27,7 @@ jobs:
       - IN: nginx-mani
       - IN: betaReplicas
       - IN: myEcsCluster
+      - TASK: managed
       
 
   - name: ddc-test
@@ -37,6 +40,7 @@ jobs:
       - IN: myDdcCluster
       - IN: betaParams
       - IN: betaOpts
+      - TASK: managed
       
   - name: testRelease
     type: release
@@ -45,6 +49,7 @@ jobs:
     steps:
       - IN: testVer
       - IN: simple-mani
+      - TASK: managed
       
   - name: testRelease2
     type: release
@@ -53,6 +58,7 @@ jobs:
     steps:
       - IN: testVer2
       - IN: simple-mani
+      - TASK: managed
       
 #  - name: dcl-prod
 #    type: dclDeploy
@@ -64,11 +70,13 @@ jobs:
 #      - IN: prodParams
 #      - IN: prodOpts
 #      - IN: prodTrigger
+#      - TASK: managed
 
   - name: runSimpleServerCI
     type: runCI
     steps:
       - IN: simpleCIsyncRepo
+      - TASK: managed
       - OUT: simple-image
       
 
@@ -77,3 +85,4 @@ jobs:
     steps:
       - IN: myProdSyncRepo
       - IN: prodTrigger
+      - TASK: managed
