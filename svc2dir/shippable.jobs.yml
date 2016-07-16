@@ -13,4 +13,4 @@ jobs:
   - name: syncRepo-e1d8941
     type: runCI
     steps:
-      - GET: myConfigRepo
+      - IN: myConfigRepo
