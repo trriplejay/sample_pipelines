@@ -12,8 +12,8 @@ jobs:
     type: manifest
     steps:
       - IN: simple-image
-      - IN: simple-params
       - IN: simple-opts
+      - IN: simple-params
       - IN: betaTrigger
       - TASK: managed
 
@@ -24,8 +24,8 @@ jobs:
     steps:
       - IN: betaParams
       - IN: betaOpts
-      - IN: nginx-mani
       - IN: betaReplicas
+      - IN: nginx-mani
       - IN: myEcsCluster
       - TASK: managed
       
@@ -36,8 +36,8 @@ jobs:
       deployMethod: blueGreen
     steps:
       - IN: simple-mani
-      - IN: betaReplicas
       - IN: myDdcCluster
+      - IN: betaReplicas
       - IN: betaParams
       - IN: betaOpts
       - TASK: managed
