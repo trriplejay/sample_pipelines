@@ -2,7 +2,7 @@ triggers:
   - name: betaTrigger
     type: trigger
     version:
-      message: 'beta verify ddc'
+      message: 'try this again'
       
   - name: prodTrigger
     type: trigger
