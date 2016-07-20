@@ -41,14 +41,14 @@ resources:
       memory: 120
       cpuShares: 18
 
-  - name: myEcsCluster2
+  - name: myEcsCluster
     type: cluster
     integration: "shippable demo ecs"
     pointer:
       sourceName : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
       
-  - name: myDdcCluster2
+  - name: myDdcCluster
     type: cluster
     integration: "trriplejay ddc"
     pointer:
