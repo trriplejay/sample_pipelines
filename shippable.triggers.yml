@@ -2,7 +2,7 @@ triggers:
   - name: betaTrigger
     type: trigger
     version:
-      message: 'try this again 3'
+      message: 'try this again 4'
       
   - name: prodTrigger
     type: trigger
