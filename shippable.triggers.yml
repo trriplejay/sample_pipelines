@@ -2,7 +2,7 @@ triggers:
   - name: betaTrigger
     type: trigger
     version:
-      message: 'try this again 4'
+      message: 'try this again 5'
       
   - name: prodTrigger
     type: trigger
@@ -12,7 +12,7 @@ triggers:
   - name: triggertest1
     type: trigger
     version:
-      message: 'ecs deploy'
+      message: 'ecs deploy again'
       
   - name: triggertest2
     type: trigger
