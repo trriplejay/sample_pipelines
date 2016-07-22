@@ -1,5 +1,5 @@
 resources:
-  - name: nginx-image
+   - name: nginx-image
     type: image
     integration: "trriplejay docker hub"
     pointer:
