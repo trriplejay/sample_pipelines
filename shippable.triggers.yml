@@ -4,7 +4,7 @@ triggers:
     version:
       message: 'try this again 5'
       
-  - name: noFirstTimeTrigger
+  - name: noFirstTimeTrigger2
     type: trigger
     version:
       message: 'lets do this'
