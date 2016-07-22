@@ -7,7 +7,7 @@ triggers:
   - name: noFirstTimeTrigger3
     type: trigger
     version:
-      message: 'lets do this part 2'
+      message: 'lets do this part 3'
       
   - name: prodTrigger
     type: trigger
