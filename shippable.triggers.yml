@@ -4,6 +4,11 @@ triggers:
     version:
       message: 'try this again 5'
       
+  - name: noFirstTimeTrigger
+    type: trigger
+    version:
+      message: 'lets do this'
+      
   - name: prodTrigger
     type: trigger
     version:
