@@ -6,6 +6,7 @@ jobs:
       - IN: nginx-params
       - IN: nginx-opts
       - IN: triggertest1
+      - IN: noFirstTimeTrigger
       - TASK: managed
       
   - name: simple-mani
