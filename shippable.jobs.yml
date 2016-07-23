@@ -11,7 +11,7 @@ jobs:
       - IN: nginx-image
 #      - IN: nginx-params
 #      - IN: nginx-opts
-#      - IN: triggertest1
+      - IN: triggertest1
 #      - IN: noFirstTimeTrigger3
 #      - TASK: managed
       
