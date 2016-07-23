@@ -5,7 +5,10 @@ jobs:
       - IN: simple-image
       - IN: simple-params
       - IN: simple-opts
-      - IN: betaTrigger
+    on_success:
+      - NOTIFY: stagingSlack
+    on_failure:
+      - NOTIFY: stagingSlack
 
   - name: staging
     type: ecsDeploy
