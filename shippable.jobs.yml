@@ -28,6 +28,7 @@ jobs:
   - name: stagingRelease
     type: release
     steps:
+      - IN: releaseTrigger
       - IN: stagingVer
         trigger: false
       - IN: staging
