@@ -1,6 +1,12 @@
 jobs:
   - name: nginx-mani
     type: manifest
+    on_start:
+      - NOTIFY: shippable via trriplejay
+    on_success:
+      - NOTIFY: shippable via trriplejay
+    on_failure:
+      - NOTIFY: shippable via trriplejay
     steps:
       - IN: nginx-image
       - IN: nginx-params
