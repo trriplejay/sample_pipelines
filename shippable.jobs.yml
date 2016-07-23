@@ -2,11 +2,11 @@ jobs:
   - name: nginx-mani
     type: manifest
     on_start:
-      - NOTIFY: shippable via trriplejay
+      - NOTIFY: mySlack
     on_success:
-      - NOTIFY: shippable via trriplejay
+      - NOTIFY: mySlack
     on_failure:
-      - NOTIFY: shippable via trriplejay
+      - NOTIFY: mySlack
     steps:
       - IN: nginx-image
       - IN: nginx-params
