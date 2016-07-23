@@ -3,10 +3,10 @@ jobs:
     type: manifest
     on_start:
       - NOTIFY: mySlack
-    on_success:
-      - NOTIFY: mySlack
-    on_failure:
-      - NOTIFY: mySlack
+#    on_success:
+#      - NOTIFY: mySlack
+#    on_failure:
+#      - NOTIFY: mySlack
     steps:
       - IN: nginx-image
 #      - IN: nginx-params
