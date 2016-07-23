@@ -25,18 +25,18 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack
 
-#  - name: stagingRelease
-#    type: release
-#    steps:
-#      - IN: releaseTrigger
-#      - IN: stagingVer
-#        trigger: false
-#      - IN: staging
-#        trigger: false
-#    on_success:
-#      - NOTIFY: stagingSlack
-#    on_failure:
-#      - NOTIFY: stagingSlack
+  - name: stagingRelease
+    type: release
+    steps:
+      - IN: releaseTrigger
+      - IN: stagingVer
+        trigger: false
+      - IN: staging
+        trigger: false
+    on_success:
+      - NOTIFY: stagingSlack
+    on_failure:
+      - NOTIFY: stagingSlack
 
   - name: prodBlueDeploy
     type: ecsDeploy
