@@ -66,18 +66,18 @@ resources:
         MODE: "beta"
         SELF_URL: "http://staging.simpleserver.com"
 
+  - name: stagingOpts
+    type: dockerOptions
+    version:
+      memory: 400
+      cpuShares: 10
+
   - name: prodParams
     type: params
     version:
       params:
         MODE: "prod"
         SELF_URL: "http://www.simpleserver.com"
-
-  - name: stagingOpts
-    type: dockerOptions
-    version:
-      memory: 400
-      cpuShares: 10
 
   - name: prodOpts
     type: dockerOptions
