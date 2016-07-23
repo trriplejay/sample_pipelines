@@ -4,7 +4,6 @@ jobs:
     on_start:
       - NOTIFY: mySlack
       - NOTIFY: myEmail
-      - NOTIFY: mySlack
 #    on_success:
 #      - NOTIFY: mySlack
 #    on_failure:
