@@ -2,19 +2,19 @@ jobs:
   - name: simple-mani
     type: manifest
     steps:
-      - GET: simple-image
-      - GET: simple-params
-      - GET: simple-opts
-      - GET: betaTrigger
+      - IN: simple-image
+      - IN: simple-params
+      - IN: simple-opts
+      - IN: betaTrigger
 
   - name: staging
     type: ecsDeploy
     steps:
-      - GET: stagingParams
-      - GET: stagingOpts
-      - GET: simple-mani
-      - GET: stagingReplicas
-      - GET: ecsStaging
+      - IN: stagingParams
+      - IN: stagingOpts
+      - IN: simple-mani
+      - IN: stagingReplicas
+      - IN: ecsStaging
       - TASK: managed
         deployMethod: upgrade
     on_success:
@@ -25,9 +25,9 @@ jobs:
   - name: stagingRelease
     type: release
     steps:
-      - GET: stagingVer
+      - IN: stagingVer
         trigger: false
-      - GET: staging
+      - IN: staging
         trigger: false
     on_success:
       - NOTIFY: stagingSlack
@@ -37,18 +37,18 @@ jobs:
   - name: prodBlueDeploy
     type: ecsDeploy
     steps:
-      - GET: blueTrigger
-      - GET: prodParams
+      - IN: blueTrigger
+      - IN: prodParams
         trigger: false
-      - GET: prodOpts
+      - IN: prodOpts
         trigger: false
-      - GET: stagingRelease
+      - IN: stagingRelease
         trigger: false
-      - GET: prodSimpleReplicas
+      - IN: prodSimpleReplicas
         trigger: false
         applyTo:
           - simple-image
-      - GET: ecsProduction
+      - IN: ecsProduction
         trigger: false
       - TASK: managed
         deployMethod: upgrade
@@ -60,18 +60,18 @@ jobs:
   - name: prodGreenDeploy
     type: ecsDeploy
     steps:
-      - GET: greenTrigger
-      - GET: prodParams
+      - IN: greenTrigger
+      - IN: prodParams
         trigger: false
-      - GET: prodOpts
+      - IN: prodOpts
         trigger: false
-      - GET: stagingRelease
+      - IN: stagingRelease
         trigger: false
-      - GET: prodSimpleReplicas
+      - IN: prodSimpleReplicas
         trigger: false
         applyTo:
           - simple-image
-      - GET: ecsProduction
+      - IN: ecsProduction
         trigger: false
       - TASK: managed
         deployMethod: upgrade
@@ -83,9 +83,9 @@ jobs:
   - name: runSimpleServerCI
     type: runCI
     steps:
-      - GET: simple-repo
+      - IN: simple-repo
       - TASK: managed
-      - PUT: simple-image
+      - OUT: simple-image
     on_success:
       - NOTIFY: stagingSlack
     on_failure:
