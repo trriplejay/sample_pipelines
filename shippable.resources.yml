@@ -121,3 +121,10 @@ resources:
       recipients:
         - "#test_interns"
         - "@john"
+
+  - name: myEmail
+    type: notification
+    integration: "trriplejay email"
+    pointer:
+      recipients:
+        - "john@shippable.com"
