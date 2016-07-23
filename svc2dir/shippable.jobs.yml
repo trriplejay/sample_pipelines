@@ -1,16 +1,4 @@
 resources:
 
-  - name: myConfigRepo
-    type: gitRepo
-    integration: "trriplejay github"
-    source:
-      name: trriplejay/sample_python
-      branch: master
-    
-    
-jobs:
 
-  - name: syncRepo-e1d8941
-    type: runCI
-    steps:
-      - GET: myConfigRepo
+jobs:

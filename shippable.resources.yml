@@ -1,115 +1,114 @@
 resources:
-  - name: nginx-image
-    type: image
-    integration: "trriplejay docker hub"
-    source:
-      name: "library/nginx"
-      isPull: false
-      tag: stable
-      
-  - name: nginx-params
-    type: params
-    source:
-      params:
-        mode: dev
-        api_url: localhost:50000
-        
-  - name: nginx-opts
-    type: dockerOptions
-    source:
-      memory: 500
-      
+  - name: simple-repo
+    type: gitRepo
+    integration: "trriplejay github"
+    pointer:
+      sourceName: "trriplejay/simpleserver"
+
   - name: simple-image
     type: image
     integration: "trriplejay docker hub"
-    source:
-      name: "trriplejay/simpleserver"
-      isPull: false
-      tag: master.58
-      
+    pointer:
+      sourceName: "trriplejay/simpleserver"
+    seed:
+      versionName: master.58
+
   - name: simple-params
     type: params
-    source:
+    version:
       params:
-        mode: dev
-        api_url: localhost:50000
-        foo: bar
-        
+        FOO: "test foo"
+        BAR: "test bar"
+        MODE: "dev"
+        SELF_URL: "http://localhost:8888"
+
   - name: simple-opts
     type: dockerOptions
-    source:
+    version:
       memory: 120
       cpuShares: 18
+      portMappings:
+        - "80:8888"
 
-  - name: myEcsCluster
-    type: ecsCluster
+  - name: ecsStaging
+    type: cluster
     integration: "shippable demo ecs"
-    source:
-      name : "trriplejay-test" #name of the cluster we are deploying
+    pointer:
+      sourceName : "staging" #name of the cluster we are deploying
       region: "us-west-2"
-      
-  - name: myDdcCluster
-    type: ddcCluster
-    integration: "trriplejay ddc"
-    source:
-      name : "trriplejay-test" #name of the cluster we are deploying
-  
-  - name: betaReplicas
+
+  - name: ecsProduction
+    type: cluster
+    integration: "shippable demo ecs"
+    pointer:
+      sourceName: "production" #name of the cluster we are deploying
+      region: "us-west-2"
+
+  - name: simpleReplicas
     type: replicas
-    source:
+    version:
       count: 2
-      
-  - name: prodReplicas
+
+  - name: prodSimpleReplicas
     type: replicas
-    source:
+    version:
       count: 5
-      
-  - name: betaParams
+
+  - name: prodStopReplicas
+    type: replicas
+    version:
+      count: 0
+
+  - name: stagingParams
     type: params
-    source:
+    version:
       params:
-        mode: beta
-        api_url: http://api.beta.shippable.com
-        
+        MODE: "beta"
+        SELF_URL: "http://staging.simpleserver.com"
+
   - name: prodParams
     type: params
-    source:
+    version:
       params:
-        mode: prod
-        api_url: http://api.shippable.com
-  
-  - name: betaOpts
+        MODE: "prod"
+        SELF_URL: "http://www.simpleserver.com"
+
+  - name: stagingOpts
     type: dockerOptions
-    source:
+    version:
       memory: 400
       cpuShares: 10
-      
+
   - name: prodOpts
     type: dockerOptions
-    source:
+    version:
       memory: 800
-  
-  - name: testVer
+
+  - name: stagingVer
     type: version
-    source:
+    version:
       base: "1.0.0"
 
-      
-  - name: testVer2
-    type: version
-    source:
-      base: "1.0.0"
-      
-  - name: simpleCIsyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    source:
-      name: trriplejay/simpleserver
-      branch: master
+  - name: stagingSlack
+    type: notification
+    integration: "shippable slack"
+    pointer:
+      recipients:
+        - "#test_interns"
+        - "@john"
 
-  - name: myProdSyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    source:
-      name: trriplejay/sample_pipelines
-      branch: original
+  - name: prodSlack
+    type: notification
+    integration: "shippable slack"
+    pointer:
+      recipients:
+        - "#test_interns"
+        - "@john"
+
+  - name: stagingSlack
+    type: notification
+    integration: "shippable slack"
+    pointer:
+      recipients:
+        - "#test_interns"
+        - "@john"

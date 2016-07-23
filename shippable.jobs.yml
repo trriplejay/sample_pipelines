@@ -1,11 +1,4 @@
 jobs:
-  - name: nginx-mani
-    type: manifest
-    steps:
-      - GET: nginx-image
-      - GET: nginx-params
-      - GET: nginx-opts
-      
   - name: simple-mani
     type: manifest
     steps:
@@ -14,63 +7,87 @@ jobs:
       - GET: simple-opts
       - GET: betaTrigger
 
-  - name: ecs-beta
+  - name: staging
     type: ecsDeploy
-    options:
-      deployMethod: blueGreen
     steps:
-      - GET: betaParams
-      - GET: betaOpts
-      - GET: nginx-mani
-      - GET: betaReplicas
-      - GET: myEcsCluster
-      
+      - GET: stagingParams
+      - GET: stagingOpts
+      - GET: simple-mani
+      - GET: stagingReplicas
+      - GET: ecsStaging
+      - TASK: managed
+        deployMethod: upgrade
+    on_success:
+      - NOTIFY: stagingSlack
+    on_failure:
+      - NOTIFY: stagingSlack
 
-  - name: ddc-test
-    type: ddcDeploy
-    options:
-      deployMethod: blueGreen
-    steps:
-      - GET: simple-mani
-      - GET: betaReplicas
-      - GET: myDdcCluster
-      - GET: betaParams
-      - GET: betaOpts
-      
-  - name: testRelease
+  - name: stagingRelease
     type: release
-    options:
-      action: minor
     steps:
-      - GET: testVer
-      - GET: simple-mani
-      
-  - name: testRelease
-    type: release
-    options:
-      action: minor
+      - GET: stagingVer
+        trigger: false
+      - GET: staging
+        trigger: false
+      - GET: staging
+    on_success:
+      - NOTIFY: stagingSlack
+    on_failure:
+      - NOTIFY: stagingSlack
+
+  - name: prodBlueDeploy
+    type: ecsDeploy
     steps:
-      - GET: testVer2
-      - GET: simple-mani
-      
-#  - name: dcl-prod
-#    type: dclDeploy
-#    steps:
-#      - GET: ecs-beta
-#        trigger: false
-#      - GET: prodReplicas
-#      - GET: myDclCluster
-#      - GET: prodParams
-#      - GET: prodOpts
-#      - GET: prodTrigger
+      - GET: blueTrigger
+      - GET: prodParams
+        trigger: false
+      - GET: prodOpts
+        trigger: false
+      - GET: stagingRelease
+        trigger: false
+      - GET: prodSimpleReplicas
+        trigger: false
+        applyTo:
+          - simple-image
+      - GET: ecsProduction
+        trigger: false
+      - TASK: managed
+        deployMethod: upgrade
+    on_success:
+      - NOTIFY: prodSlack
+    on_failure:
+      - NOTIFY: prodSlack
+
+  - name: prodGreenDeploy
+    type: ecsDeploy
+    steps:
+      - GET: greenTrigger
+      - GET: prodParams
+        trigger: false
+      - GET: prodOpts
+        trigger: false
+      - GET: stagingRelease
+        trigger: false
+      - GET: prodSimpleReplicas
+        trigger: false
+        applyTo:
+          - simple-image
+      - GET: ecsProduction
+        trigger: false
+      - TASK: managed
+        deployMethod: upgrade
+    on_success:
+      - NOTIFY: prodSlack
+    on_failure:
+      - NOTIFY: prodSlack
 
   - name: runSimpleServerCI
     type: runCI
     steps:
-      - GET: simpleCIsyncRepo
+      - GET: simple-repo
+      - TASK: managed
       - PUT: simple-image
-      
-  - name: prodYmlSync
-    type: rSync
-    steps:
-      - GET: myProdSyncRepo
+    on_success:
+      - NOTIFY: stagingSlack
+    on_failure:
+      - NOTIFY: stagingSlack

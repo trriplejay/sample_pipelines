@@ -1,21 +1,15 @@
 triggers:
-  - name: betaTrigger
+  - name: blueTrigger
     type: trigger
     source:
-      message: 'beta verify ddc'
-      
-  - name: prodTrigger
+      message: 'blue deployment'
+
+  - name: greenTrigger
     type: trigger
     source:
-      message: 'force prod deploy'
-      
-  - name: triggertest1
+      message: 'green deployment'
+
+  - name: stagingRelease
     type: trigger
     source:
-      message: 'testing trigger in yml'
-      
-  - name: triggertest2
-    type: trigger
-    source:
-      counter: 1
-      
+      message: 'create release from staging cluster'
