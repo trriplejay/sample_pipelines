@@ -114,9 +114,9 @@ resources:
       sourceName: trriplejay/sample_pipelines
       branch: original
       
-  - name: shippable via trriplejay
+  - name: mySlack
     type: notification
-    integration: shippable via trriplejay
+    integration: "shippable via trriplejay"
     pointer:
       recipients:
         - "#test_interns"
