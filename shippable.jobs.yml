@@ -9,11 +9,11 @@ jobs:
       - NOTIFY: mySlack
     steps:
       - IN: nginx-image
-      - IN: nginx-params
-      - IN: nginx-opts
-      - IN: triggertest1
-      - IN: noFirstTimeTrigger3
-      - TASK: managed
+#      - IN: nginx-params
+#      - IN: nginx-opts
+#      - IN: triggertest1
+#      - IN: noFirstTimeTrigger3
+#      - TASK: managed
       
   - name: simple-mani
     type: manifest
