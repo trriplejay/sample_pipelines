@@ -37,17 +37,17 @@ jobs:
       - TASK: managed
       
 
-  - name: ddc-test
-    type: ddcDeploy
-    options:
-      deployMethod: blueGreen
-    steps:
-      - IN: simple-mani
-      - IN: myDdcCluster
-      - IN: betaReplicas
-      - IN: betaParams
-      - IN: betaOpts
-      - TASK: managed
+#  - name: ddc-test
+#    type: ddcDeploy
+#    options:
+#      deployMethod: blueGreen
+#    steps:
+#      - IN: simple-mani
+#      - IN: myDdcCluster
+#      - IN: betaReplicas
+#      - IN: betaParams
+#      - IN: betaOpts
+#      - TASK: managed
       
   - name: testRelease
     type: release
