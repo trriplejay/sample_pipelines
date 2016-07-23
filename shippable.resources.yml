@@ -113,3 +113,11 @@ resources:
     pointer:
       sourceName: trriplejay/sample_pipelines
       branch: original
+      
+  - name: shippable via trriplejay
+    type: notification
+    integration: shippable via trriplejay
+    pointer:
+      recipients:
+        - "#test_interns"
+        - "@john"
