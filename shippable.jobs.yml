@@ -29,7 +29,6 @@ jobs:
         trigger: false
       - GET: staging
         trigger: false
-      - GET: staging
     on_success:
       - NOTIFY: stagingSlack
     on_failure:
