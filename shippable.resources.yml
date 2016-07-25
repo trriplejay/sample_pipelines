@@ -4,6 +4,7 @@ resources:
     integration: "trriplejay github"
     pointer:
       sourceName: "trriplejay/simpleserver"
+      branch: master
 
   - name: simple-image
     type: image
