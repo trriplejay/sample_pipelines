@@ -1,20 +1,20 @@
 triggers:
   - name: blueTrigger
     type: trigger
-    source:
+    version:
       message: 'blue deployment'
 
   - name: greenTrigger
     type: trigger
-    source:
+    version:
       message: 'green deployment'
 
   - name: releaseTrigger
     type: trigger
-    source:
+    version:
       message: 'create release from staging cluster'
 
   - name: stagingTrigger
     type: trigger
-    source:
-      message: 'force a staging deploy NOW'
+    version:
+      message: 'force a staging deploy. try again'
