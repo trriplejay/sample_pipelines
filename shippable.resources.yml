@@ -70,8 +70,9 @@ resources:
   - name: stagingOpts
     type: dockerOptions
     version:
-      memory: ABCD
+      memory: 512
       cpuShares: 10
+      portMappings: "this is bad"
 
   - name: prodParams
     type: params
