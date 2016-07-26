@@ -42,7 +42,7 @@ resources:
     type: cluster
     integration: "shippable demo ecs"
     pointer:
-      sourceName: "production" #name of the cluster we are deploying
+      sourceName: "production"
       region: "us-west-2"
 
   - name: simpleReplicas

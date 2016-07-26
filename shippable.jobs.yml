@@ -5,8 +5,6 @@ jobs:
       - IN: simple-image
       - IN: simple-params
       - IN: simple-opts
-    on_success:
-      - NOTIFY: stagingSlack
     on_failure:
       - NOTIFY: stagingSlack
 
@@ -33,8 +31,6 @@ jobs:
         trigger: false
       - IN: staging
         trigger: false
-    on_success:
-      - NOTIFY: stagingSlack
     on_failure:
       - NOTIFY: stagingSlack
 
@@ -56,6 +52,8 @@ jobs:
         trigger: false
       - TASK: managed
         deployMethod: upgrade
+    on_start:
+      - NOTIFY: prodSlack
     on_success:
       - NOTIFY: prodSlack
     on_failure:
@@ -79,6 +77,8 @@ jobs:
         trigger: false
       - TASK: managed
         deployMethod: upgrade
+    on_start:
+      - NOTIFY: prodSlack
     on_success:
       - NOTIFY: prodSlack
     on_failure:
@@ -90,7 +90,7 @@ jobs:
       - IN: simple-repo
       - TASK: managed
       - OUT: simple-image
-    on_success:
+    on_start:
       - NOTIFY: stagingSlack
     on_failure:
       - NOTIFY: stagingSlack
