@@ -13,3 +13,8 @@ triggers:
     type: trigger
     source:
       message: 'create release from staging cluster'
+
+  - name: stagingTrigger
+    type: trigger
+    source:
+      message: 'force a staging deploy'

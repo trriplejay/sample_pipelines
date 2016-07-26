@@ -2,6 +2,7 @@ jobs:
   - name: simple-mani
     type: manifest
     steps:
+      - IN: stagingTrigger
       - IN: simple-image
       - IN: simple-params
       - IN: simple-opts
