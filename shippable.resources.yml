@@ -72,7 +72,8 @@ resources:
     version:
       memory: 512
       cpuShares: 10
-      portMappings: "this is bad"
+      portMappings:
+        - "80000:80000"
 
   - name: prodParams
     type: params
