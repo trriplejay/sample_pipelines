@@ -4,10 +4,10 @@ triggers:
     version:
       message: 'blue deployment'
 
-  - name: greenTrigger
-    type: trigger
-    version:
-      message: 'green deployment'
+#  - name: greenTrigger
+#    type: trigger
+#    version:
+#      message: 'green deployment'
 
   - name: releaseTrigger
     type: trigger
