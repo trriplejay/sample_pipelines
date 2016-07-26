@@ -64,8 +64,8 @@ resources:
     type: params
     version:
       params:
-        MODE: "beta"
-        SELF_URL: "http://staging.simpleserver.com"
+        - MODE: "beta"
+        - SELF_URL: "http://staging.simpleserver.com"
 
   - name: stagingOpts
     type: dockerOptions
