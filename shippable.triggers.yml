@@ -17,4 +17,4 @@ triggers:
   - name: stagingTrigger
     type: trigger
     source:
-      message: 'force a staging deploy'
+      message: 'force a staging deploy NOW'
