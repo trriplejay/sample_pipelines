@@ -9,8 +9,8 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack
 
-  - name: staging
-    type: ecsDeploy
+  - name: staging-dep
+    type: deploy
     steps:
       - IN: stagingParams
       - IN: stagingOpts
@@ -30,13 +30,13 @@ jobs:
       - IN: releaseTrigger
       - IN: stagingVer
         trigger: false
-      - IN: staging
+      - IN: staging-dep
         trigger: false
     on_failure:
       - NOTIFY: stagingSlack
 
-  - name: prodBlueDeploy
-    type: ecsDeploy
+  - name: prodBlue
+    type: deploy
     steps:
       - IN: blueTrigger
       - IN: stagingRelease
@@ -60,30 +60,30 @@ jobs:
     on_failure:
       - NOTIFY: prodSlack
 
-#  - name: prodGreenDeploy
-#    type: ecsDeploy
-#    steps:
-#      - IN: greenTrigger
-#      - IN: stagingRelease
-#        trigger: false
-#      - IN: prodParams
-#        trigger: false
-#      - IN: prodOpts
-#        trigger: false
-#      - IN: prodSimpleReplicas
-#        trigger: false
-#        applyTo:
-#          - simple-image
-#      - IN: ecsProduction
-#        trigger: false
-#      - TASK: managed
-#        deployMethod: upgrade
-#    on_start:
-#      - NOTIFY: prodSlack
-#    on_success:
-#      - NOTIFY: prodSlack
-#    on_failure:
-#      - NOTIFY: prodSlack
+ - name: prodGreen
+   type: deploy
+   steps:
+     - IN: greenTrigger
+     - IN: stagingRelease
+       trigger: false
+     - IN: prodParams
+       trigger: false
+     - IN: prodOpts
+       trigger: false
+     - IN: prodSimpleReplicas
+       trigger: false
+       applyTo:
+         - simple-image
+     - IN: ecsProduction
+       trigger: false
+     - TASK: managed
+       deployMethod: upgrade
+   on_start:
+     - NOTIFY: prodSlack
+   on_success:
+     - NOTIFY: prodSlack
+   on_failure:
+     - NOTIFY: prodSlack
 
   - name: runSimpleServerCI
     type: runCI
