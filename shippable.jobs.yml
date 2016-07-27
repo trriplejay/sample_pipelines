@@ -28,7 +28,7 @@ jobs:
     type: release
     steps:
       - IN: releaseTrigger
-      - IN: stagingVer
+      - IN: stagingVerBase
         trigger: false
       - IN: staging-dep
         trigger: false

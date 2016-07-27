@@ -85,7 +85,7 @@ resources:
     version:
       memory: 800
 
-  - name: stagingVer
+  - name: stagingVerBase
     type: version
     version:
       base: "1.0.0"

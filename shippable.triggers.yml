@@ -12,7 +12,7 @@ triggers:
   - name: releaseTrigger
     type: trigger
     version:
-      message: 'create release from staging cluster'
+      message: 'create release from staging cluster. triggered:1'
 
   - name: stagingTrigger
     type: trigger
