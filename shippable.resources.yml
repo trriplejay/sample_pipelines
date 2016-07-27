@@ -88,7 +88,7 @@ resources:
   - name: stagingVerBase
     type: version
     seed:
-      base: "1.0.0"
+      versionName: "1.0.0"
 
   - name: stagingSlack
     type: notification
