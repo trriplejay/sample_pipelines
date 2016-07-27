@@ -14,8 +14,7 @@ jobs:
       - IN: nginx-opts
       - IN: triggertest1
       - IN: noFirstTimeTrigger3
-      - TASK: managed
-      
+
   - name: simple-mani
     type: manifest
     steps:
@@ -23,7 +22,6 @@ jobs:
       - IN: simple-opts
       - IN: simple-params
       - IN: betaTrigger
-      - TASK: managed
 
   - name: ecs-beta-dep
     type: deploy
@@ -49,8 +47,6 @@ jobs:
       
   - name: testRelease
     type: release
-    options:
-      action: minor
     steps:
       - IN: testVer
       - IN: simple-mani
@@ -58,12 +54,9 @@ jobs:
       
   - name: testRelease2
     type: release
-    options:
-      action: minor
     steps:
       - IN: testVer2
       - IN: simple-mani
-      - TASK: managed
       
 #  - name: dcl-prod
 #    type: dclDeploy
@@ -90,4 +83,3 @@ jobs:
     steps:
       - IN: myProdSyncRepo
       - IN: prodTrigger
-      - TASK: managed
