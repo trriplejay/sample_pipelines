@@ -17,4 +17,4 @@ triggers:
   - name: stagingTrigger
     type: trigger
     version:
-      message: 'force a staging deploy. triggered:3'
+      message: 'force a staging deploy. triggered:4'
