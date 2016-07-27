@@ -60,30 +60,30 @@ jobs:
     on_failure:
       - NOTIFY: prodSlack
 
- - name: prodGreen
-   type: deploy
-   steps:
-     - IN: greenTrigger
-     - IN: stagingRelease
-       trigger: false
-     - IN: prodParams
-       trigger: false
-     - IN: prodOpts
-       trigger: false
-     - IN: prodSimpleReplicas
-       trigger: false
-       applyTo:
-         - simple-image
-     - IN: ecsProduction
-       trigger: false
-     - TASK: managed
-       deployMethod: upgrade
-   on_start:
-     - NOTIFY: prodSlack
-   on_success:
-     - NOTIFY: prodSlack
-   on_failure:
-     - NOTIFY: prodSlack
+  - name: prodGreen
+    type: deploy
+    steps:
+      - IN: greenTrigger
+      - IN: stagingRelease
+        trigger: false
+      - IN: prodParams
+        trigger: false
+      - IN: prodOpts
+        trigger: false
+      - IN: prodSimpleReplicas
+        trigger: false
+        applyTo:
+          - simple-image
+      - IN: ecsProduction
+        trigger: false
+      - TASK: managed
+        deployMethod: upgrade
+    on_start:
+      - NOTIFY: prodSlack
+    on_success:
+      - NOTIFY: prodSlack
+    on_failure:
+      - NOTIFY: prodSlack
 
   - name: runSimpleServerCI
     type: runCI
