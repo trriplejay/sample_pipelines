@@ -5,9 +5,9 @@ triggers:
       message: 'blue deployment'
 
   - name: greenTrigger
-   type: trigger
-   version:
-     message: 'green deployment'
+    type: trigger
+    version:
+      message: 'green deployment'
 
   - name: releaseTrigger
     type: trigger
