@@ -38,6 +38,7 @@ jobs:
     type: deploy
     steps:
       - IN: simple-mani-serialCheck
+      - IN: ecsStaging-serialCheck
       - TASK: managed
         deployMethod: upgrade
     on_success:
