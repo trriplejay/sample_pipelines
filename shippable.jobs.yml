@@ -1,5 +1,5 @@
 jobs:
-  - name: simple-mani
+  - name: simple-mani-serialCheck
     type: manifest
     steps:
       - IN: stagingTrigger-serialCheck
@@ -9,7 +9,7 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack-serialCheck
 
-  - name: nginx-mani
+  - name: nginx-mani-serialCheck
     type: manifest
     steps:
       - IN: stagingTrigger-serialCheck
@@ -19,7 +19,7 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack-serialCheck
 
-  - name: staging-dep
+  - name: staging-dep-serialCheck
     type: deploy
     steps:
       - IN: simple-mani-serialCheck
@@ -36,7 +36,7 @@ jobs:
       - NOTIFY: stagingSlack-serialCheck
 
 
-  - name: parallel-dep
+  - name: parallel-dep-serialCheck
     type: deploy
     steps:
       - IN: simple-mani-serialCheck
