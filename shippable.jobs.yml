@@ -3,8 +3,8 @@ jobs:
     type: manifest
     steps:
       - IN: stagingTrigger
-      - IN: simple-image
       - IN: simple-params
+      - IN: simple-image
       - IN: simple-opts
     on_failure:
       - NOTIFY: stagingSlack
@@ -12,9 +12,9 @@ jobs:
   - name: staging-dep
     type: deploy
     steps:
+      - IN: simple-mani
       - IN: stagingParams
       - IN: stagingOpts
-      - IN: simple-mani
       - IN: simpleReplicas
       - IN: ecsStaging
       - TASK: managed
@@ -41,9 +41,9 @@ jobs:
       - IN: blueTrigger
       - IN: stagingRelease
         trigger: false
-      - IN: prodParams
-        trigger: false
       - IN: prodOpts
+        trigger: false
+      - IN: prodParams
         trigger: false
       - IN: prodSimpleReplicas
         trigger: false
@@ -66,9 +66,9 @@ jobs:
       - IN: greenTrigger
       - IN: stagingRelease
         trigger: false
-      - IN: prodParams
-        trigger: false
       - IN: prodOpts
+        trigger: false
+      - IN: prodParams
         trigger: false
       - IN: prodSimpleReplicas
         trigger: false
