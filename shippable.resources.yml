@@ -6,50 +6,6 @@ resources:
       sourceName: "trriplejay/simpleserver"
       branch: master #make sure to include a branch!
 
-  - name: simple-image
-    type: image
-    integration: "trriplejay docker hub"
-    pointer:
-      sourceName: "trriplejay/simpleserver"
-    seed:
-      versionName: master.58
-
-  - name: simple-params
-    type: params
-    version:
-      params:
-        FOO: "test foo"
-        BAR: "test bar"
-        MODE: "dev"
-        SELF_URL: "http://localhost:8888"
-
-  - name: simple-opts
-    type: dockerOptions
-    version:
-      memory: 120
-      cpuShares: 18
-      portMappings:
-        - "80:8888"
-
-  - name: ecsStaging
-    type: cluster
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName : "staging" #name of the cluster we are deploying
-      region: "us-west-2"
-
-  - name: ecsProduction
-    type: cluster
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName: "production"
-      region: "us-west-2"
-
-  - name: simpleReplicas
-    type: replicas
-    version:
-      count: 2
-
   - name: prodSimpleReplicas
     type: replicas
     version:
