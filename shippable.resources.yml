@@ -6,125 +6,15 @@ resources:
       sourceName: "library/nginx"
     seed:
       versionName: stable
-      
+
   - name: nginx-params
     type: params
     version:
       params:
         mode: dev
         api_url: localhost:50000
-        
+
   - name: nginx-opts
     type: dockerOptions
     version:
       memory: 500
-      
-  - name: simple-image
-    type: image
-    integration: "trriplejay docker hub"
-    pointer:
-      sourceName: "trriplejay/simpleserver"
-    seed:
-      versionName: master.58
-      
-  - name: simple-params
-    type: params
-    version:
-      params:
-        mode: dev
-        api_url: localhost:50000
-        foo: bar
-        
-  - name: simple-opts
-    type: dockerOptions
-    version:
-      memory: 120
-      cpuShares: 18
-
-  - name: myEcsCluster
-    type: cluster
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName : "trriplejay-test" #name of the cluster we are deploying
-      region: "us-west-2"
-      
-  - name: myDdcCluster
-    type: cluster
-    integration: "trriplejay ddc"
-    pointer:
-      sourceName : "trriplejay-test" #name of the cluster we are deploying
-  
-  - name: betaReplicas
-    type: replicas
-    version:
-      count: 2
-      
-  - name: prodReplicas
-    type: replicas
-    version:
-      count: 5
-      
-  - name: betaParams
-    type: params
-    version:
-      params:
-        mode: beta
-        api_url: http://api.beta.shippable.com
-        
-  - name: prodParams
-    type: params
-    version:
-      params:
-        mode: prod
-        api_url: http://api.shippable.com
-  
-  - name: betaOpts
-    type: dockerOptions
-    version:
-      memory: 400
-      cpuShares: 10
-      
-  - name: prodOpts
-    type: dockerOptions
-    version:
-      memory: 800
-  
-  - name: testVer
-    type: version
-    seed:
-      versionName: "1.0.0"
-
-      
-  - name: testVer2
-    type: version
-    seed:
-      versionName: "1.0.0"
-      
-  - name: simpleCIsyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    pointer:
-      sourceName: trriplejay/simpleserver
-      branch: master
-
-  - name: myProdSyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    pointer:
-      sourceName: trriplejay/sample_pipelines
-      branch: original
-      
-  - name: mySlack
-    type: notification
-    integration: "shippable via trriplejay"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
-
-  - name: myEmail
-    type: notification
-    integration: "trriplejay email"
-    pointer:
-      recipients:
-        - "john@shippable.com"

@@ -1,26 +1,5 @@
 triggers:
-  - name: betaTrigger
+  - name: stagingTrigger
     type: trigger
     version:
-      message: 'try this again 5'
-      
-  - name: noFirstTimeTrigger3
-    type: trigger
-    version:
-      message: 'lets do this part 3'
-      
-  - name: prodTrigger
-    type: trigger
-    version:
-      message: 'test'
-      
-  - name: triggertest1
-    type: trigger
-    version:
-      message: 'ecs deploy again'
-      
-  - name: triggertest2
-    type: trigger
-    version:
-      counter: 1
-      
+      message: 'trigger 2 manifests at once'
