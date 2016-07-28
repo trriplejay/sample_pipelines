@@ -1,5 +1,5 @@
 resources:
-  - name: nginx-image-serialCheck
+  - name: nginx-image-release
     type: image
     integration: "trriplejay docker hub"
     pointer:
@@ -7,26 +7,26 @@ resources:
     seed:
       versionName: stable
 
-  - name: nginx-params-serialCheck
+  - name: nginx-params-release
     type: params
     version:
       params:
         mode: dev
         api_url: localhost:50000
 
-  - name: nginx-opts-serialCheck
+  - name: nginx-opts-release
     type: dockerOptions
     version:
       memory: 500
 
-  - name: ecsStaging-serialCheck
+  - name: ecsStaging-release
     type: cluster
     integration: "shippable demo ecs"
     pointer:
       sourceName : "staging" #name of the cluster we are deploying
       region: "us-west-2"
 
-  - name: stagingSlack-serialCheck
+  - name: stagingSlack-release
     type: notification
     integration: "shippable slack"
     pointer:
@@ -34,14 +34,14 @@ resources:
         - "#test_interns"
         - "@john"
 
-  - name: ecsProduction-serialCheck
+  - name: ecsProduction-release
     type: cluster
     integration: "shippable demo ecs"
     pointer:
       sourceName: "production"
       region: "us-west-2"
 
-  - name: prodSlack-serialCheck
+  - name: prodSlack-release
     type: notification
     integration: "shippable slack"
     pointer:
@@ -49,7 +49,7 @@ resources:
         - "#test_interns"
         - "@john"
 
-  - name: simple-image-serialCheck
+  - name: simple-image-release
     type: image
     integration: "trriplejay docker hub"
     pointer:
@@ -57,7 +57,7 @@ resources:
     seed:
       versionName: master.58
 
-  - name: simple-params-serialCheck
+  - name: simple-params-release
     type: params
     version:
       params:
@@ -66,7 +66,7 @@ resources:
         MODE: "dev"
         SELF_URL: "http://localhost:8888"
 
-  - name: simple-opts-serialCheck
+  - name: simple-opts-release
     type: dockerOptions
     version:
       memory: 120
@@ -74,7 +74,7 @@ resources:
       portMappings:
         - "80:8888"
 
-  - name: simpleReplicas-serialCheck
+  - name: simpleReplicas-release
     type: replicas
     version:
       count: 2

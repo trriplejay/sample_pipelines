@@ -1,43 +1,80 @@
 jobs:
-  - name: simple-mani-serialCheck
+  - name: simple-mani-release
     type: manifest
     steps:
-      - IN: stagingTrigger-serialCheck
-      - IN: simple-params-serialCheck
-      - IN: simple-image-serialCheck
-      - IN: simple-opts-serialCheck
+      - IN: stagingTrigger-release
+      - IN: simple-params-release
+      - IN: simple-image-release
+      - IN: simple-opts-release
     on_failure:
-      - NOTIFY: stagingSlack-serialCheck
+      - NOTIFY: stagingSlack-release
 
-  - name: nginx-mani-serialCheck
+  - name: nginx-mani-release
     type: manifest
     steps:
-      - IN: stagingTrigger-serialCheck
-      - IN: nginx-image-serialCheck
-      - IN: nginx-params-serialCheck
-      - IN: nginx-opts-serialCheck
+      - IN: stagingTrigger-release
+      - IN: nginx-image-release
+      - IN: nginx-params-release
+      - IN: nginx-opts-release
     on_failure:
-      - NOTIFY: stagingSlack-serialCheck
+      - NOTIFY: stagingSlack-release
 
-  - name: staging-dep-serialCheck
+  - name: release-A
+    type: release
+    steps:
+      - IN: simple-mani-release
+      - IN: nginx-mani-release
+
+  - name: release-B1
+    type: release
+    steps:
+      - IN: simple-mani-release
+
+  - name: release-B2
+    type: release
+    steps:
+      - IN: nginx-mani-release
+
+  - name: staging-dep-A
     type: deploy
     steps:
-      - IN: simple-mani-serialCheck
-      - IN: nginx-mani-serialCheck
-      - IN: simpleReplicas-serialCheck
-      - IN: ecsStaging-serialCheck
+      - IN: release-A
+      - IN: simpleReplicas-release
+      - IN: ecsStaging-release
       - TASK: managed
         deployMethod: upgrade
     on_failure:
-      - NOTIFY: stagingSlack-serialCheck
+      - NOTIFY: stagingSlack-release
 
-
-  - name: parallel-dep-serialCheck
+  - name: staging-dep-B
     type: deploy
     steps:
-      - IN: simple-mani-serialCheck
-      - IN: ecsStaging-serialCheck
+      - IN: release-B1
+      - IN: release-B2
+      - IN: simpleReplicas-release
+      - IN: ecsStaging-release
       - TASK: managed
         deployMethod: upgrade
     on_failure:
-      - NOTIFY: stagingSlack-serialCheck
+      - NOTIFY: stagingSlack-release
+
+
+  - name: prod-dep-A
+    type: deploy
+    steps:
+      - IN: prod-deb-A
+      - IN: ecsStaging-release
+      - TASK: managed
+        deployMethod: upgrade
+    on_failure:
+      - NOTIFY: stagingSlack-release
+
+  - name: prod-dep-B
+    type: deploy
+    steps:
+      - IN: prod-deb-B
+      - IN: ecsStaging-release
+      - TASK: managed
+        deployMethod: upgrade
+    on_failure:
+      - NOTIFY: stagingSlack-release
