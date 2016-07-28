@@ -28,8 +28,6 @@ jobs:
       - IN: ecsStaging-serialCheck
       - TASK: managed
         deployMethod: upgrade
-    on_success:
-      - NOTIFY: stagingSlack-serialCheck
     on_failure:
       - NOTIFY: stagingSlack-serialCheck
 
@@ -41,7 +39,5 @@ jobs:
       - IN: ecsStaging-serialCheck
       - TASK: managed
         deployMethod: upgrade
-    on_success:
-      - NOTIFY: stagingSlack-serialCheck
     on_failure:
       - NOTIFY: stagingSlack-serialCheck
