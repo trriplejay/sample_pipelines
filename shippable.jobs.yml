@@ -2,46 +2,47 @@ jobs:
   - name: simple-mani
     type: manifest
     steps:
-      - IN: stagingTrigger
-      - IN: simple-params
-      - IN: simple-image
-      - IN: simple-opts
+      - IN: stagingTrigger-serialCheck
+      - IN: simple-params-serialCheck
+      - IN: simple-image-serialCheck
+      - IN: simple-opts-serialCheck
     on_failure:
-      - NOTIFY: stagingSlack
+      - NOTIFY: stagingSlack-serialCheck
 
   - name: nginx-mani
     type: manifest
     steps:
-      - IN: stagingTrigger
-      - IN: nginx-image
-      - IN: nginx-params
-      - IN: nginx-opts
+      - IN: stagingTrigger-serialCheck
+      - IN: nginx-image-serialCheck
+      - IN: nginx-params-serialCheck
+      - IN: nginx-opts-serialCheck
     on_failure:
-      - NOTIFY: stagingSlack
+      - NOTIFY: stagingSlack-serialCheck
 
   - name: staging-dep
     type: deploy
     steps:
-      - IN: simple-mani
-      - IN: nginx-mani
-      - IN: stagingParams
-      - IN: stagingOpts
-      - IN: simpleReplicas
-      - IN: ecsStaging
+      - IN: simple-mani-serialCheck
+      - IN: nginx-mani-serialCheck
+      - IN: stagingParams-serialCheck
+      - IN: stagingOpts-serialCheck
+      - IN: simpleReplicas-serialCheck
+      - IN: ecsStaging-serialCheck
       - TASK: managed
         deployMethod: upgrade
     on_success:
-      - NOTIFY: stagingSlack
+      - NOTIFY: stagingSlack-serialCheck
     on_failure:
-      - NOTIFY: stagingSlack
+      - NOTIFY: stagingSlack-serialCheck
 
 
   - name: parallel-dep
     type: deploy
     steps:
-      - IN: simple-mani
+      - IN: simple-mani-serialCheck
       - TASK: managed
         deployMethod: upgrade
     on_success:
-      - NOTIFY: stagingSlack
-    on_failure: stagingSlack
+      - NOTIFY: stagingSlack-serialCheck
+    on_failure:
+      - NOTIFY: stagingSlack-serialCheck

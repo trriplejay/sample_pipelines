@@ -1,5 +1,5 @@
 triggers:
-  - name: stagingTrigger
+  - name: stagingTrigger-serialCheck
     type: trigger
     version:
       message: 'trigger 2 manifests at once'

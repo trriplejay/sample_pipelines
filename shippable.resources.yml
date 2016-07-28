@@ -1,5 +1,5 @@
 resources:
-  - name: nginx-image
+  - name: nginx-image-serialCheck
     type: image
     integration: "trriplejay docker hub"
     pointer:
@@ -7,14 +7,74 @@ resources:
     seed:
       versionName: stable
 
-  - name: nginx-params
+  - name: nginx-params-serialCheck
     type: params
     version:
       params:
         mode: dev
         api_url: localhost:50000
 
-  - name: nginx-opts
+  - name: nginx-opts-serialCheck
     type: dockerOptions
     version:
       memory: 500
+
+  - name: ecsStaging-serialCheck
+    type: cluster
+    integration: "shippable demo ecs"
+    pointer:
+      sourceName : "staging" #name of the cluster we are deploying
+      region: "us-west-2"
+
+  - name: stagingSlack-serialCheck
+    type: notification
+    integration: "shippable slack"
+    pointer:
+      recipients:
+        - "#test_interns"
+        - "@john"
+
+  - name: ecsProduction-serialCheck
+    type: cluster
+    integration: "shippable demo ecs"
+    pointer:
+      sourceName: "production"
+      region: "us-west-2"
+
+  - name: prodSlack-serialCheck
+    type: notification
+    integration: "shippable slack"
+    pointer:
+      recipients:
+        - "#test_interns"
+        - "@john"
+
+  - name: simple-image-serialCheck
+    type: image
+    integration: "trriplejay docker hub"
+    pointer:
+      sourceName: "trriplejay/simpleserver"
+    seed:
+      versionName: master.58
+
+  - name: simple-params-serialCheck
+    type: params
+    version:
+      params:
+        FOO: "test foo"
+        BAR: "test bar"
+        MODE: "dev"
+        SELF_URL: "http://localhost:8888"
+
+  - name: simple-opts-serialCheck
+    type: dockerOptions
+    version:
+      memory: 120
+      cpuShares: 18
+      portMappings:
+        - "80:8888"
+
+  - name: simpleReplicas-serialCheck
+    type: replicas
+    version:
+      count: 2
