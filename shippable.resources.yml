@@ -45,19 +45,3 @@ resources:
     type: version
     seed:
       versionName: "1.0.0"
-
-  - name: stagingSlack
-    type: notification
-    integration: "shippable slack"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
-
-  - name: prodSlack
-    type: notification
-    integration: "shippable slack"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
