@@ -49,7 +49,7 @@ jobs:
   - name: staging-dep-A
     type: deploy
     steps:
-      - IN: release-A
+      - IN: staging-release-A
       - IN: simpleReplicas-release
       - IN: ecsStaging-release
       - TASK: managed
@@ -60,8 +60,8 @@ jobs:
   - name: staging-dep-B
     type: deploy
     steps:
-      - IN: release-B1
-      - IN: release-B2
+      - IN: staging-release-B1
+      - IN: staging-release-B2
       - IN: simpleReplicas-release
       - IN: ecsStaging-release
       - TASK: managed
