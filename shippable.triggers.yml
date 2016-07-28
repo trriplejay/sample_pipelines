@@ -2,4 +2,4 @@ triggers:
   - name: stagingTrigger-release
     type: trigger
     version:
-      message: 'trigger 2 manifests at once. Triggered: 4'
+      message: 'trigger release workflow. Triggered: 1'
