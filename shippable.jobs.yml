@@ -60,8 +60,8 @@ jobs:
   - name: staging-dep-B
     type: deploy
     steps:
-      - IN: staging-release-B1
       - IN: staging-release-B2
+      - IN: staging-release-B1
       - IN: simpleReplicas-release
       - IN: ecsStaging-release
       - TASK: managed
