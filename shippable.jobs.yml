@@ -19,21 +19,32 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack-release
 
-  - name: release-A
+  - name: staging-release-A
     type: release
     steps:
       - IN: simple-mani-release
       - IN: nginx-mani-release
 
-  - name: release-B1
+  - name: staging-release-B1
     type: release
     steps:
       - IN: simple-mani-release
 
-  - name: release-B2
+  - name: staging-release-B2
     type: release
     steps:
       - IN: nginx-mani-release
+
+  - name: prod-release-A
+    type: release
+    steps:
+      - IN: staging-dep-A
+
+  - name: prod-release-B
+    type: release
+    steps:
+      - IN: staging-dep-B
+
 
   - name: staging-dep-A
     type: deploy
@@ -62,8 +73,8 @@ jobs:
   - name: prod-dep-A
     type: deploy
     steps:
-      - IN: prod-deb-A
-      - IN: ecsStaging-release
+      - IN: prod-release-A
+      - IN: ecsProduction-release
       - TASK: managed
         deployMethod: upgrade
     on_failure:
@@ -72,8 +83,8 @@ jobs:
   - name: prod-dep-B
     type: deploy
     steps:
-      - IN: prod-deb-B
-      - IN: ecsStaging-release
+      - IN: prod-release-B
+      - IN: ecsProduction-release
       - TASK: managed
         deployMethod: upgrade
     on_failure:
