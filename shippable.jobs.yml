@@ -24,8 +24,6 @@ jobs:
     steps:
       - IN: simple-mani-serialCheck
       - IN: nginx-mani-serialCheck
-      - IN: stagingParams-serialCheck
-      - IN: stagingOpts-serialCheck
       - IN: simpleReplicas-serialCheck
       - IN: ecsStaging-serialCheck
       - TASK: managed
