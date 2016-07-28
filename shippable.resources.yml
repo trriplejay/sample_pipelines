@@ -1,4 +1,11 @@
 resources:
+  - name: ecsStaging
+    type: cluster
+    integration: "shippable demo ecs"
+    pointer:
+      sourceName : "staging" #name of the cluster we are deploying
+      region: "us-west-2"
+
   - name: ecsProduction
     type: cluster
     integration: "shippable demo ecs"
@@ -40,3 +47,9 @@ resources:
       cpuShares: 18
       portMappings:
         - "80:8888"
+
+
+  - name: simpleReplicas
+    type: replicas
+    version:
+      count: 2
