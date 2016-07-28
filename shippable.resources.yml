@@ -1,10 +1,20 @@
 resources:
-  - name: simple-repo
-    type: gitRepo
-    integration: "trriplejay github"
+  - name: ecsProduction
+    type: cluster
+    integration: "shippable demo ecs"
     pointer:
-      sourceName: "trriplejay/simpleserver"
-      branch: master #make sure to include a branch!
+      sourceName: "production"
+      region: "us-west-2"
+
+
+  - name: prodSlack
+    type: notification
+    integration: "shippable slack"
+    pointer:
+      recipients:
+        - "#test_interns"
+        - "@john"
+
 
   - name: simple-image
     type: image
@@ -30,78 +40,3 @@ resources:
       cpuShares: 18
       portMappings:
         - "80:8888"
-
-  - name: ecsStaging
-    type: cluster
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName : "staging" #name of the cluster we are deploying
-      region: "us-west-2"
-
-  - name: ecsProduction
-    type: cluster
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName: "production"
-      region: "us-west-2"
-
-  - name: simpleReplicas
-    type: replicas
-    version:
-      count: 2
-
-  - name: prodSimpleReplicas
-    type: replicas
-    version:
-      count: 5
-
-  - name: prodStopReplicas
-    type: replicas
-    version:
-      count: 0
-
-  - name: stagingParams
-    type: params
-    version:
-      params:
-        MODE: "beta"
-        SELF_URL: "http://staging.simpleserver.com"
-
-  - name: stagingOpts
-    type: dockerOptions
-    version:
-      memory: 512
-      cpuShares: 10
-
-  - name: prodParams
-    type: params
-    version:
-      params:
-        MODE: "prod"
-        SELF_URL: "http://www.simpleserver.com"
-
-  - name: prodOpts
-    type: dockerOptions
-    version:
-      memory: 800
-
-  - name: stagingVerBase
-    type: version
-    seed:
-      versionName: "1.0.0"
-
-  - name: stagingSlack
-    type: notification
-    integration: "shippable slack"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
-
-  - name: prodSlack
-    type: notification
-    integration: "shippable slack"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
