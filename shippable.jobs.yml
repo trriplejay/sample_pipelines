@@ -9,15 +9,15 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack-release
 
-  - name: nginx-mani-release
-    type: manifest
-    steps:
-      - IN: stagingTrigger-release
-      - IN: nginx-image-release
-      - IN: nginx-params-release
-      - IN: nginx-opts-release
-    on_failure:
-      - NOTIFY: stagingSlack-release
+  # - name: nginx-mani-release
+  #   type: manifest
+  #   steps:
+  #     - IN: stagingTrigger-release
+  #     - IN: nginx-image-release
+  #     - IN: nginx-params-release
+  #     - IN: nginx-opts-release
+  #   on_failure:
+  #     - NOTIFY: stagingSlack-release
 
   - name: staging-release-A
     type: release
