@@ -23,7 +23,7 @@ resources:
     type: cluster
     integration: "shippable demo ecs"
     pointer:
-      region: "us-west-2"
+      region: "us-west-1"
       sourceName : "staging" #name of the cluster we are deploying
 
   - name: stagingSlack-release
