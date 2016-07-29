@@ -29,9 +29,9 @@ jobs:
     steps:
       - IN: releaseTrigger
       - IN: stagingVerBase
-        trigger: false
+        switch: off
       - IN: staging-dep
-        trigger: false
+        switch: off
     on_failure:
       - NOTIFY: stagingSlack
 
@@ -40,17 +40,17 @@ jobs:
     steps:
       - IN: blueTrigger
       - IN: stagingRelease
-        trigger: false
+        switch: off
       - IN: prodOpts
-        trigger: false
+        switch: off
       - IN: prodParams
-        trigger: false
+        switch: off
       - IN: prodSimpleReplicas
-        trigger: false
+        switch: off
         applyTo:
           - simple-image
       - IN: ecsProduction
-        trigger: false
+        switch: off
       - TASK: managed
         deployMethod: upgrade
     on_start:
@@ -65,17 +65,17 @@ jobs:
     steps:
       - IN: greenTrigger
       - IN: stagingRelease
-        trigger: false
+        switch: off
       - IN: prodOpts
-        trigger: false
+        switch: off
       - IN: prodParams
-        trigger: false
+        switch: off
       - IN: prodSimpleReplicas
-        trigger: false
+        switch: off
         applyTo:
           - simple-image
       - IN: ecsProduction
-        trigger: false
+        switch: off
       - TASK: managed
         deployMethod: upgrade
     on_start:
