@@ -78,3 +78,13 @@ resources:
     type: replicas
     version:
       count: 2
+
+  - name: stagingVersion-release
+    type: version
+    seed:
+      versionName: "1.0.0"
+
+  - name: prodVersion-release
+    type: version
+    seed:
+      versionName: "1.0.0-rc"
