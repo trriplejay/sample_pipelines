@@ -99,13 +99,6 @@ resources:
     type: version
     seed:
       versionName: "1.0.0"
-      
-  - name: simpleCIsyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    pointer:
-      sourceName: trriplejay/simpleserver
-      branch: master
 
   - name: myProdSyncRepo
     type: syncRepo
