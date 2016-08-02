@@ -11,3 +11,6 @@ jobs:
 
     on_failure:
       - NOTIFY: stagingSlack-runShSample
+      - echo "something failed"
+    on_success:
+      - echo "yay it worked"
