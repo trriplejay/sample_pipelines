@@ -2,6 +2,7 @@ jobs:
   - name: runShCheck
     type: runSh
     steps:
+      - IN: stagingTrigger-runShSample
       - TASK:
         - echo "hello world"
         - ls -latr
