@@ -4,11 +4,8 @@ jobs:
     steps:
       - IN: stagingTrigger-runShSample
       - TASK:
-        - SCRIPT: echo "hello world"
         - SCRIPT: ls -latr
-        - SCRIPT: echo "script test 1"
         - SCRIPT: ./script.sh
-        - SCRIPT: echo "script test 2"
         - SCRIPT: source script.sh
 
     on_failure:
