@@ -2,12 +2,13 @@ jobs:
   - name: runShCheck
     type: runSh
     steps:
-      - echo "hello world"
-      - ls -latr
-      - echo "script test 1"
-      - ./script.sh
-      - echo "script test 2"
-      - source script.sh
+      - TASK:
+        - echo "hello world"
+        - ls -latr
+        - echo "script test 1"
+        - ./script.sh
+        - echo "script test 2"
+        - source script.sh
 
     on_failure:
       - NOTIFY: stagingSlack-runShSample
