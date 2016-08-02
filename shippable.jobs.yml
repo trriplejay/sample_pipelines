@@ -1,43 +1,13 @@
 jobs:
-  - name: simple-mani-serialCheck
-    type: manifest
+  - name: runShCheck
+    type: runSh
     steps:
-      - IN: stagingTrigger-serialCheck
-      - IN: simple-params-serialCheck
-      - IN: simple-image-serialCheck
-      - IN: simple-opts-serialCheck
-    on_failure:
-      - NOTIFY: stagingSlack-serialCheck
+      - echo "hello world"
+      - ls -latr
+      - echo "script test 1"
+      - ./script.sh
+      - echo "script test 2"
+      - source script.sh
 
-  - name: nginx-mani-serialCheck
-    type: manifest
-    steps:
-      - IN: stagingTrigger-serialCheck
-      - IN: nginx-image-serialCheck
-      - IN: nginx-params-serialCheck
-      - IN: nginx-opts-serialCheck
     on_failure:
-      - NOTIFY: stagingSlack-serialCheck
-
-  - name: staging-dep-serialCheck
-    type: deploy
-    steps:
-      - IN: simple-mani-serialCheck
-      - IN: nginx-mani-serialCheck
-      - IN: simpleReplicas-serialCheck
-      - IN: ecsStaging-serialCheck
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-serialCheck
-
-
-  - name: parallel-dep-serialCheck
-    type: deploy
-    steps:
-      - IN: simple-mani-serialCheck
-      - IN: ecsStaging-serialCheck
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-serialCheck
+      - NOTIFY: stagingSlack-runShSample

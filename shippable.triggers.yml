@@ -1,5 +1,5 @@
 triggers:
-  - name: stagingTrigger-serialCheck
+  - name: stagingTrigger-runShSample
     type: trigger
     version:
-      message: 'trigger 2 manifests at once. Triggered: 1'
+      message: 'trigger runShSteps: 1'
