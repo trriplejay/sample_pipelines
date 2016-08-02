@@ -42,4 +42,3 @@ resources:
     type: replicas
     version:
       count: 2
-
