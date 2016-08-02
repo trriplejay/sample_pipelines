@@ -4,9 +4,9 @@ jobs:
     steps:
       - IN: stagingTrigger-runShSample
       - TASK:
-        - SCRIPT: ls -latr
-        - SCRIPT: ./script.sh
-        - SCRIPT: source script.sh
+        - script: ls -latr
+        - script: ./script.sh
+        - script: source script.sh
 
     on_failure:
       - NOTIFY: stagingSlack-runShSample
