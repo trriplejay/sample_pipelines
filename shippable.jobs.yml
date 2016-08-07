@@ -9,25 +9,25 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack
 
-  # - name: staging-dep
-  #   type: deploy
-  #   steps:
-  #     - IN: simple-mani
-  #     - IN: stagingParams
-  #     - IN: stagingOpts
-  #     - IN: simpleReplicas
-  #     - IN: ecsStaging
-  #     - IN: stagingLoadBalancer
-  #       applyTo:
-  #         - manifest: simple-mani
-  #           image: simple-image
-  #           port: 8888
-  #     - TASK: managed
-  #       deployMethod: upgrade
-  #   on_success:
-  #     - NOTIFY: stagingSlack
-  #   on_failure:
-  #     - NOTIFY: stagingSlack
+  - name: staging-dep
+    type: deploy
+    steps:
+      - IN: simple-mani
+      - IN: stagingParams
+      - IN: stagingOpts
+      - IN: simpleReplicas
+      - IN: ecsStaging
+      - IN: stagingLoadBalancer
+        applyTo:
+          - manifest: simple-mani
+            image: simple-image
+            port: 8888
+      - TASK: managed
+        deployMethod: upgrade
+    on_success:
+      - NOTIFY: stagingSlack
+    on_failure:
+      - NOTIFY: stagingSlack
 
   - name: stagingRelease
     type: release
