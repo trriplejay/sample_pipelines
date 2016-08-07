@@ -50,8 +50,13 @@ resources:
     type: cluster
     integration: "shippable demo ecs"
     pointer:
-      sourceName : "staging" #name of the cluster we are deploying
-      region: "us-west-2"
+      sourceName : "default" #name of the cluster we are deploying to
+      region: "us-west-1"
+
+  - name: stagingLoadBalancer
+    type: loadBalancer
+    pointer:
+      sourceName: EC2Contai-EcsElast-P4YH20IC0O8F
 
   - name: stagingSlack
     type: notification
@@ -59,7 +64,6 @@ resources:
     pointer:
       recipients:
         - "#test_interns"
-        - "@john"
 
   - name: ecsProduction
     type: cluster
@@ -74,7 +78,6 @@ resources:
     pointer:
       recipients:
         - "#test_interns"
-        - "@john"
 
   - name: simple-image
     type: image
