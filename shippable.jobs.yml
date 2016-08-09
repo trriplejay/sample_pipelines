@@ -7,7 +7,9 @@ jobs:
       - TASK:
         - script: ls -latr
         - script: find . -not -path '*/\.*'
-        - script: cd IN/myParams/params && cat version.json
+        - script: cd ./IN/myParams/ && cat version.json || true
+        - script: cd ./IN/myParams/params/ && cat version.json || true
+
         #- script: ./script.sh
         #- script: source script.sh
 
