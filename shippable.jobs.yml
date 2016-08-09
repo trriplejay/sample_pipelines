@@ -3,11 +3,13 @@ jobs:
     type: runSh
     steps:
       - IN: stagingTrigger-runShSample
+      - IN: myParams
       - TASK:
         - script: ls -latr
         - script: find . -not -path '*/\.*'
-        - script: ./script.sh
-        - script: source script.sh
+        - script: cd IN/myParams/params && cat version.json
+        #- script: ./script.sh
+        #- script: source script.sh
 
     on_failure:
       - NOTIFY: stagingSlack-runShSample
