@@ -12,4 +12,13 @@ resources:
     type: params
     version:
       params:
-        foo: bar
+        hello: world
+        secure: aNrWJ15nxNKj645r+y+/pdKbF9S1vh+cFqGc2aCXT8mnv17lQVXsH7ohlXyF/+XItxxLrIi0n/bU7zHLk98TIWTW7E98KZXkUHGbGNrYfLMIETZRBsrOY4jUEmv6VJp4ua9CMbMJAx+KtziTcojPbKjr51C4nsGfI7J4SYnniM8tpH7JUkKUu1+X+KXJnMneu5wNTrt3YiG58lWq95xWZvzMiYtAuGR1Rex/FxrjB+fd4BbLAHTl8uWs0modp4Nw8ZDihfUQXytky+euXC9lPrKlgKyH23BzGpLc/8pySn4plsllFp2fWG86k3to39Z9GUQ2cewlz6v6Jg5t4namOQ==
+
+  - name: simple-image
+    type: image
+    integration: "trriplejay docker hub"
+    pointer:
+      sourceName: "trriplejay/simpleserver"
+    seed:
+      versionName: "master.58"

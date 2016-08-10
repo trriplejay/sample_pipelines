@@ -4,11 +4,12 @@ jobs:
     steps:
       - IN: stagingTrigger-runShSample
       - IN: myParams
+      - IN: simple-mani-runShCheck
       - TASK:
         - script: ls -latr
         - script: find . -not -path '*/\.*'
         - script: cd ./IN/myParams/ && cat version.json || true
-        - script: cd ./IN/myParams/params/ && cat version.json || true
+        - script: cd ./IN/simple-mani-runShCheck/manifest && ls -latr
 
         #- script: ./script.sh
         #- script: source script.sh
@@ -19,3 +20,10 @@ jobs:
     on_success:
       - script: echo "yay it worked"
       - NOTIFY: stagingSlack-runShSample
+
+
+  - name: simple-mani-runShCheck
+    type: manifest
+    steps:
+      - IN: myParams
+      - IN: simple-image
