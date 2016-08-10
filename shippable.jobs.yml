@@ -4,7 +4,7 @@ jobs:
     steps:
       - IN: stagingTrigger-runShSample
       - IN: myParams
-      - IN: simple-mani-runShCheck
+      - IN: simple-mani-runShSample
       - TASK:
         - script: tree -F
         - script: find . -not -path '*/\.*'
@@ -22,8 +22,8 @@ jobs:
       - NOTIFY: stagingSlack-runShSample
 
 
-  - name: simple-mani-runShCheck
+  - name: simple-mani-runShSample
     type: manifest
     steps:
       - IN: myParams
-      - IN: simple-image
+      - IN: simple-image-runShSample
