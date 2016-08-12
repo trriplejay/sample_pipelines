@@ -13,7 +13,7 @@ resources:
     version:
       params:
         hello: world
-        secure: aNrWJ15nxNKj645r+y+/pdKbF9S1vh+cFqGc2aCXT8mnv17lQVXsH7ohlXyF/+XItxxLrIi0n/bU7zHLk98TIWTW7E98KZXkUHGbGNrYfLMIETZRBsrOY4jUEmv6VJp4ua9CMbMJAx+KtziTcojPbKjr51C4nsGfI7J4SYnniM8tpH7JUkKUu1+X+KXJnMneu5wNTrt3YiG58lWq95xWZvzMiYtAuGR1Rex/FxrjB+fd4BbLAHTl8uWs0modp4Nw8ZDihfUQXytky+euXC9lPrKlgKyH23BzGpLc/8pySn4plsllFp2fWG86k3to39Z9GUQ2cewlz6v6Jg5t4namOQ==
+        secure: NewGWMDSZPCgsggkgxS8Nn4YqSivmggiiSo7pN6FVt33D94Mt0ND7FVnucu2BPAZNG6SoRNYWg+WsuGH6hZHRCH+42Ix0oJbAGcSD486JlP/ANSE8509NqGaAjOrlec1rbPUjuF/pmR8bA+HTvggBA/3QD3acDGSdgQz6jFJM4tPFJjMZcu/ud+X7FBLeWIn1n7tBDkOG6McvX4zuv2ORGXSoedKL/U9I8cVKSv/XdRAhVnpifcxEZlTZ69gg6IWCrhYlS2SXIU28AqqR2YuOG1DCkVqCBas5VvBFLerwgUjfIhqD/Fr6VpPmPhZ3m73TFV3YMHqowcdPf0dUjzGgg==
 
   - name: simple-image-runShSample
     type: image
