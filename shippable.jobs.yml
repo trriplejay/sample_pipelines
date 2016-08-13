@@ -10,7 +10,7 @@ jobs:
         - script: tree -F
         - script: find . -not -path '*/\.*'
         - script: cd ./IN/myParams/ && cat version.json || true
-        - script: cd ./IN/simple-mani-runShCheck/manifest && ls -latr
+        - script: cd ./IN/simple-mani-runShSample/manifest && ls -latr
 
         #- script: ./script.sh
         #- script: source script.sh
