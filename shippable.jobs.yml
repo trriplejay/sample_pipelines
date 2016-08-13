@@ -6,6 +6,7 @@ jobs:
       - IN: myParams
       - IN: simple-mani-runShSample
       - TASK:
+        - script: sudo apt-get install -y tree
         - script: tree -F
         - script: find . -not -path '*/\.*'
         - script: cd ./IN/myParams/ && cat version.json || true
