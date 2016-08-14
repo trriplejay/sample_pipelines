@@ -13,6 +13,7 @@ resources:
     version:
       params:
         hello: world
+        test: 123
         secure: NewGWMDSZPCgsggkgxS8Nn4YqSivmggiiSo7pN6FVt33D94Mt0ND7FVnucu2BPAZNG6SoRNYWg+WsuGH6hZHRCH+42Ix0oJbAGcSD486JlP/ANSE8509NqGaAjOrlec1rbPUjuF/pmR8bA+HTvggBA/3QD3acDGSdgQz6jFJM4tPFJjMZcu/ud+X7FBLeWIn1n7tBDkOG6McvX4zuv2ORGXSoedKL/U9I8cVKSv/XdRAhVnpifcxEZlTZ69gg6IWCrhYlS2SXIU28AqqR2YuOG1DCkVqCBas5VvBFLerwgUjfIhqD/Fr6VpPmPhZ3m73TFV3YMHqowcdPf0dUjzGgg==
 
   - name: simple-image-runShSample
