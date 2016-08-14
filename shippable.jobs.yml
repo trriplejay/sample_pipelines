@@ -26,4 +26,4 @@ jobs:
     type: manifest
     steps:
       - IN: myParams
-      - OUT: simple-image-runShSample
+      - IN: simple-image-runShSample
