@@ -5,7 +5,7 @@ jobs:
       - IN: stagingTrigger
       - IN: simple-params
       - IN: simple-image
-        versionNumber: 1
+        versionName: master.58
       - IN: simple-opts
     on_failure:
       - NOTIFY: stagingSlack
@@ -35,9 +35,9 @@ jobs:
     steps:
       - IN: releaseTrigger
       - IN: stagingVerBase
-        switch: off
+        #switch: off
       - IN: staging-dep
-        switch: off
+        #switch: off
     on_failure:
       - NOTIFY: stagingSlack
 
@@ -46,17 +46,17 @@ jobs:
     steps:
       - IN: blueTrigger
       - IN: stagingRelease
-        switch: off
+        #switch: off
       - IN: prodOpts
-        switch: off
+        #switch: off
       - IN: prodParams
-        switch: off
+        #switch: off
       - IN: prodSimpleReplicas
-        switch: off
+        #switch: off
         applyTo:
           - simple-image
       - IN: ecsProduction
-        switch: off
+        #switch: off
       - TASK: managed
         deployMethod: upgrade
     on_start:
@@ -71,17 +71,17 @@ jobs:
     steps:
       - IN: greenTrigger
       - IN: stagingRelease
-        switch: off
+        #switch: off
       - IN: prodOpts
-        switch: off
+        #switch: off
       - IN: prodParams
-        switch: off
+        #switch: off
       - IN: prodSimpleReplicas
-        switch: off
+        #switch: off
         applyTo:
           - simple-image
       - IN: ecsProduction
-        switch: off
+        #switch: off
       - TASK: managed
         deployMethod: upgrade
     on_start:
