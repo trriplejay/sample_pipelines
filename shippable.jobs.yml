@@ -5,6 +5,7 @@ jobs:
       - IN: stagingTrigger
       - IN: simple-params
       - IN: simple-image
+        versionName: master.58
       - IN: simple-opts
     on_failure:
       - NOTIFY: stagingSlack
