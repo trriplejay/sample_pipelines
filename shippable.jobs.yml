@@ -13,11 +13,11 @@ jobs:
   - name: staging-dep
     type: deploy
     steps:
-      - IN: simple-mani
-      - IN: stagingParams
-      - IN: stagingOpts
-      - IN: simpleReplicas
-      - IN: ecsStaging
+      # - IN: simple-mani
+      # - IN: stagingParams
+      # - IN: stagingOpts
+      # - IN: simpleReplicas
+      # - IN: ecsStaging
       # - IN: stagingLoadBalancer
       #   applyTo:
       #     - manifest: simple-mani
