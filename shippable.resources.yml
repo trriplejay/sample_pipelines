@@ -50,7 +50,7 @@ resources:
     type: cluster
     integration: "shippable demo ecs"
     pointer:
-      sourceName : "default" #name of the cluster we are deploying to
+      sourceName : "trriplejay-staging" #name of the cluster we are deploying to
       region: "us-west-1"
 
   - name: stagingLoadBalancer

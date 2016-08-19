@@ -14,8 +14,8 @@ jobs:
     type: deploy
     steps:
       - IN: simple-mani
-      - IN: stagingParams
       - IN: stagingOpts
+      - IN: stagingParams
       - IN: simpleReplicas
       - IN: ecsStaging
        - IN: stagingLoadBalancer
