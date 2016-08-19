@@ -90,14 +90,3 @@ jobs:
       - NOTIFY: prodSlack
     on_failure:
       - NOTIFY: prodSlack
-
-  - name: runSimpleServerCI
-    type: runCI
-    steps:
-      - IN: simple-repo
-      - TASK: managed
-      - OUT: simple-image
-    on_start:
-      - NOTIFY: stagingSlack
-    on_failure:
-      - NOTIFY: stagingSlack
