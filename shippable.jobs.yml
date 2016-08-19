@@ -18,13 +18,14 @@ jobs:
       - IN: stagingOpts
       - IN: simpleReplicas
       - IN: ecsStaging
-      # - IN: stagingLoadBalancer
-      #   applyTo:
-      #     - manifest: simple-mani
-      #       image: simple-image
-      #       port: 8888
+       - IN: stagingLoadBalancer
+         applyTo:
+           - manifest: simple-mani
+             image: simple-image
+             port: 8888
+             targetGroupArn: "arn:aws:elasticloadbalancing:us-west-1:412520076220:targetgroup/MyECSTargetGroup/a9c2339c233ccea8"
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen
     on_success:
       - NOTIFY: stagingSlack
     on_failure:
@@ -35,9 +36,9 @@ jobs:
     steps:
       - IN: releaseTrigger
       - IN: stagingVerBase
-        #switch: off
+        switch: off
       - IN: staging-dep
-        #switch: off
+        switch: off
     on_failure:
       - NOTIFY: stagingSlack
 
@@ -46,17 +47,17 @@ jobs:
     steps:
       - IN: blueTrigger
       - IN: stagingRelease
-        #switch: off
+        switch: off
       - IN: prodOpts
-        #switch: off
+        switch: off
       - IN: prodParams
-        #switch: off
+        switch: off
       - IN: prodSimpleReplicas
-        #switch: off
+        switch: off
         applyTo:
           - simple-image
       - IN: ecsProduction
-        #switch: off
+        switch: off
       - TASK: managed
         deployMethod: upgrade
     on_start:
@@ -71,17 +72,17 @@ jobs:
     steps:
       - IN: greenTrigger
       - IN: stagingRelease
-        #switch: off
+        switch: off
       - IN: prodOpts
-        #switch: off
+        switch: off
       - IN: prodParams
-        #switch: off
+        switch: off
       - IN: prodSimpleReplicas
-        #switch: off
+        switch: off
         applyTo:
           - simple-image
       - IN: ecsProduction
-        #switch: off
+        switch: off
       - TASK: managed
         deployMethod: upgrade
     on_start:
