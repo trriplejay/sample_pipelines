@@ -23,7 +23,6 @@ jobs:
          - manifest: simple-mani
            image: simple-image
            port: 8888
-           targetGroupArn: "arn:aws:elasticloadbalancing:us-west-1:412520076220:targetgroup/MyECSTargetGroup/a9c2339c233ccea8"
       - TASK: managed
         deployMethod: blueGreen
     on_success:
