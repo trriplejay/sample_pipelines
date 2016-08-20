@@ -1,10 +1,4 @@
 resources:
-  - name: simple-repo
-    type: gitRepo
-    integration: "trriplejay github"
-    pointer:
-      sourceName: "trriplejay/simpleserver"
-      branch: master #make sure to include a branch!
 
   - name: prodSimpleReplicas
     type: replicas
@@ -26,7 +20,7 @@ resources:
   - name: stagingOpts
     type: dockerOptions
     version:
-      memory: 512
+      memory: 125
       cpuShares: 10
 
   - name: prodParams
@@ -108,4 +102,4 @@ resources:
   - name: simpleReplicas
     type: replicas
     version:
-      count: 2
+      count: 4
