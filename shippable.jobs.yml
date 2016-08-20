@@ -24,7 +24,7 @@ jobs:
            image: simple-image
            port: 8888
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen
     on_success:
       - NOTIFY: stagingSlack
     on_failure:
