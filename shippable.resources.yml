@@ -50,8 +50,7 @@ resources:
   - name: stagingLoadBalancer
     type: loadBalancer
     pointer:
-      #sourceName: "arn:aws:elasticloadbalancing:us-west-1:412520076220:targetgroup/MyECSTargetGroup/a9c2339c233ccea8"
-      sourceName: MyECSTargetGroup
+      sourceName: "arn:aws:elasticloadbalancing:us-west-1:412520076220:targetgroup/MyECSTargetGroup/a9c2339c233ccea8"
       method: application # application vs classic
 
   - name: stagingSlack
