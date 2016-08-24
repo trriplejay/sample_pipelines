@@ -17,12 +17,12 @@ jobs:
       - IN: stagingOpts
       - IN: stagingParams
       - IN: simpleReplicas
-      - IN: ecsStaging
-      - IN: stagingLoadBalancer
-        applyTo:
-         - manifest: simple-mani
-           image: simple-image
-           port: 8888
+      - IN: gkeStaging
+      # - IN: stagingLoadBalancer
+      #   applyTo:
+      #    - manifest: simple-mani
+      #      image: simple-image
+      #      port: 8888
       - TASK: managed
         deployMethod: blueGreen
     on_success:

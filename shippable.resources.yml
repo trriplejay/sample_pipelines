@@ -47,6 +47,13 @@ resources:
       sourceName : "trriplejay-staging" #name of the cluster we are deploying to
       region: "us-west-1"
 
+  - name: gkeStaging
+    type: cluster
+    integration: "trriplejay gke"
+    pointer:
+      sourceName : "cluster-1" #name of the cluster we are deploying to
+      region: "us-central1-f"
+
   - name: stagingLoadBalancer
     type: loadBalancer
     pointer:
