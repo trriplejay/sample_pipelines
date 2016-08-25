@@ -105,6 +105,8 @@ resources:
       cpuShares: 18
       portMappings:
         - "0:8888"
+        - "0:80"
+        - "0:443"
 
   - name: simpleReplicas
     type: replicas
