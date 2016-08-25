@@ -83,7 +83,7 @@ resources:
 
   - name: simple-image
     type: image
-    integration: "trriplejay docker hub"
+    # integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
@@ -109,4 +109,4 @@ resources:
   - name: simpleReplicas
     type: replicas
     version:
-      count: 4
+      count: 2
