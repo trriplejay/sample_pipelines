@@ -33,10 +33,3 @@ jobs:
     on_success:
       - script: echo "yay it worked"
       - NOTIFY: stagingSlack-runShSample
-
-
-  - name: simple-mani-runShSample
-    type: manifest
-    steps:
-      - IN: myParams
-      - IN: simple-image-runShSample
