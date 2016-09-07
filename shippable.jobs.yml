@@ -28,8 +28,6 @@ jobs:
         #- script: source script.sh
 
     on_failure:
-      - NOTIFY: stagingSlack-runShSample
       - script: echo "something failed"
     on_success:
       - script: echo "yay it worked"
-      - NOTIFY: stagingSlack-runShSample
