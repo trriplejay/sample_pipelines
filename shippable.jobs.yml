@@ -21,8 +21,10 @@ jobs:
       - TASK:
         - script: sudo apt-get install -y tree
         - script: tree -F
-        - script: cat IN/simple-release-runShSample/release/manifests.json
-        - script: cat IN/simple-release-runShSample/release/release.json
+        - script: MANIFESTS=$(cat IN/simple-release-runShSample/release/manifests.json | jq -r)
+        - script: echo $MANIFESTS
+        - script: RELEASE=$(cat IN/simple-release-runShSample/release/release.json)
+        - script: echo $RELEASE
 
         #- script: ./script.sh
         #- script: source script.sh
