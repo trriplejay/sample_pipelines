@@ -8,6 +8,11 @@ resources:
         - "#test_interns"
         - "@john"
 
+  - name: simple-version-runShSample
+    type: version
+    seed:
+      versionName: 1.0.0
+
   - name: myParams
     type: params
     version:

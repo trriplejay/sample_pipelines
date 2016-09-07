@@ -1,15 +1,28 @@
 jobs:
-  - name: runShCheck
+  - name: simple-mani-runShSample
+    type: manifest
+    steps:
+      - IN: simple-image-runShSample
+      - IN: myParams-runShSample
+
+  - name: simple-release-runShSample
+    type: release
+    steps:
+      - IN: simple-mani-runShSample
+      - IN: simple-version-runShSample
+      - TASK: managed
+        bump: patch
+
+  - name: runShCheck-runShSample
     type: runSh
     steps:
       - IN: stagingTrigger-runShSample
-      - IN: myParams
-      - IN: simple-mani-runShSample
+      - IN: simple-release-runShSample
       - TASK:
         - script: sudo apt-get install -y tree
         - script: tree -F
-        - script: cd ./IN/myParams/ && cat version.json || true
-        - script: cd ./IN/simple-mani-runShSample/manifest && ls -latr
+        - script: cat IN/simple-release-runShSample/release/manifests.json
+        - script: cat IN/simple-release-runShSample/release/release.json
 
         #- script: ./script.sh
         #- script: source script.sh
