@@ -13,7 +13,7 @@ resources:
     seed:
       versionName: 1.0.0
 
-  - name: myParams
+  - name: myParams-runShSample
     type: params
     version:
       params:
