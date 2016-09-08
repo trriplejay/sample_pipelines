@@ -21,7 +21,7 @@ jobs:
       - TASK:
         - script: sudo apt-get install -y tree jq
         - script: echo 'about to install awscli'
-        - script: sudo pip install awscli
+        - script: pip install awscli
         - script: which aws
         - script: aws --version
         - script: tree -F
