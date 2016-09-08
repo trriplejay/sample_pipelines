@@ -19,7 +19,8 @@ jobs:
       - IN: stagingTrigger-runShSample
       - IN: simple-release-runShSample
       - TASK:
-        - script: sudo apt-get install -y tree jq python3-botocore python3-requests awscli
+        - script: sudo apt-get install -y tree jq
+        - script: sudo pip install awscli
         - script: tree -F
         - script: MANIFESTS=$(cat IN/simple-release-runShSample/release/manifests.json | jq -r)
         - script: echo $MANIFESTS
