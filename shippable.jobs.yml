@@ -22,8 +22,8 @@ jobs:
         - script: apt-get install -y tree jq
         - script: echo 'which aws?' && which aws || true
         - script: echo 'about to install awscli'
-        - script: apt-get install awscli
-        - script: which aws
+        - script: apt-get install -y -f python3-botocore awscli
+        - script: echo 'which aws?' && which aws || true
         - script: aws --version
         - script: tree -F
         - script: MANIFESTS=$(cat IN/simple-release-runShSample/release/manifests.json | jq -r)
