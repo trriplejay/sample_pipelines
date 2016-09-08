@@ -20,7 +20,7 @@ jobs:
       - IN: simple-release-runShSample
       - TASK:
         - script: apt-get install -y tree jq
-        - script: echo 'which aws?' && which aws
+        - script: echo 'which aws?' && which aws || true
         - script: echo 'about to install awscli'
         - script: apt-get install awscli
         - script: which aws
