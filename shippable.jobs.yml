@@ -19,7 +19,7 @@ jobs:
       - IN: stagingTrigger-runShSample
       - IN: simple-release-runShSample
       - TASK:
-        - script: apt-get install -y tree jq
+        - script: apt-get install -y tree jq unzip
         - script: echo 'which aws?' && which aws || true
         - script: echo 'about to install awscli'
         - script: curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
