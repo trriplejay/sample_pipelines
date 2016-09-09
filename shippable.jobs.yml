@@ -22,7 +22,9 @@ jobs:
         - script: apt-get install -y tree jq
         - script: echo 'which aws?' && which aws || true
         - script: echo 'about to install awscli'
-        - script: sudo pip install awscli
+        - script: curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+        - script: unzip awscli-bundle.zip
+        - script: sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
         - script: echo 'which aws?' && which aws || true
         - script: aws --version
         - script: tree -F
