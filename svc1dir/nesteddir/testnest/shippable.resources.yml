@@ -1,0 +1,7 @@
+resources:
+  - name: dummyNestedResource
+    type: image
+    pointer:
+      sourceName: trriplejay/test
+    seed:
+      versionName: "master.10"
