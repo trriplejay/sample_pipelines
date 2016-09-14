@@ -31,7 +31,7 @@ jobs:
       - IN: betaReplicas
       - IN: nginx-mani
       - IN: myEcsCluster
-      
+
 
 #  - name: ddc-test
 #    type: ddcDeploy
@@ -44,20 +44,20 @@ jobs:
 #      - IN: betaParams
 #      - IN: betaOpts
 #      - TASK: managed
-      
+
   - name: testRelease
     type: release
     steps:
       - IN: testVer
       - IN: simple-mani
       - TASK: managed
-      
+
   - name: testRelease2
     type: release
     steps:
       - IN: testVer2
       - IN: simple-mani
-      
+
 #  - name: dcl-prod
 #    type: dclDeploy
 #    steps:
@@ -69,14 +69,6 @@ jobs:
 #      - IN: prodOpts
 #      - IN: prodTrigger
 #      - TASK: managed
-
-  - name: runSimpleServerCI
-    type: runCI
-    steps:
-      - IN: simpleCIsyncRepo
-      - TASK: managed
-      - OUT: simple-image
-      
 
   - name: prodYmlSync
     type: rSync
