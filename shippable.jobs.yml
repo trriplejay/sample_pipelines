@@ -36,6 +36,7 @@ jobs:
       - IN: prodParams-piiq
       - IN: prodReplicas-piiq
       - IN: simple-prod-mani-piiq
+        switch: off
       - IN: myEcsCluster-piiq
 
 
