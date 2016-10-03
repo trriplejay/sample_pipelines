@@ -1,6 +1,8 @@
 jobs:
   - name: simple-prod-mani-piiq
     type: manifest
+    flags:
+      - piiq
     steps:
       - IN: simple-image-int-piiq
       - IN: simple-opts-prod-piiq
@@ -9,6 +11,8 @@ jobs:
 
   - name: simple-int-mani-piiq
     type: manifest
+    flags:
+      - piiq
     steps:
       - IN: simple-image-int-piiq
       - IN: simple-opts-int-piiq
@@ -16,6 +20,8 @@ jobs:
 
   - name: ecs-int-dep-piiq
     type: deploy
+    flags:
+      - piiq
     steps:
       - IN: intParams-piiq
       - IN: intReplicas-piiq
@@ -24,6 +30,8 @@ jobs:
 
   - name: ecs-prod-dep-piiq
     type: deploy
+    flags:
+      - piiq
     steps:
       - IN: prodParams-piiq
       - IN: prodReplicas-piiq

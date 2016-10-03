@@ -2,6 +2,8 @@ resources:
 
   - name: simple-image-int-piiq
     type: image
+    flags:
+      - piiq
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
@@ -11,6 +13,8 @@ resources:
 
   - name: simple-image-prod-piiq
     type: image
+    flags:
+      - piiq
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
@@ -20,6 +24,8 @@ resources:
 
   - name: simple-params-piiq
     type: params
+    flags:
+      - piiq
     version:
       params:
         mode: dev
@@ -28,12 +34,16 @@ resources:
 
   - name: simple-opts-int-piiq
     type: dockerOptions
+    flags:
+      - piiq
     version:
       memory: 128
       cpuShares: 18
 
   - name: simple-opts-prod-piiq
     type: dockerOptions
+    flags:
+      - piiq
     version:
       memory: 256
       cpuShares: 36
@@ -41,22 +51,30 @@ resources:
   - name: myEcsCluster-piiq
     type: cluster
     integration: "shippable demo ecs"
+    flags:
+      - piiq
     pointer:
       sourceName : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
 
   - name: intReplicas-piiq
     type: replicas
+    flags:
+      - piiq
     version:
       count: 2
 
   - name: prodReplicas-piiq
     type: replicas
+    flags:
+      - piiq
     version:
       count: 5
 
   - name: intParams-piiq
     type: params
+    flags:
+      - piiq
     version:
       params:
         mode: integration
@@ -64,6 +82,8 @@ resources:
 
   - name: prodParams-piiq
     type: params
+    flags:
+      - piiq
     version:
       params:
         mode: production
