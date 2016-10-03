@@ -1,33 +1,24 @@
 resources:
-  - name: nginx-image
-    type: image
-    integration: "trriplejay docker hub"
-    pointer:
-      sourceName: "library/nginx"
-    seed:
-      versionName: stable
 
-  - name: nginx-params
-    type: params
-    version:
-      params:
-        mode: dev
-        api_url: localhost:50000
-
-  - name: nginx-opts
-    type: dockerOptions
-    version:
-      memory: 500
-
-  - name: simple-image
+  - name: simple-image-int-piiq
     type: image
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
-      versionName: master.58
+      versionName: integration.*
 
-  - name: simple-params
+
+  - name: simple-image-prod-piiq
+    type: image
+    integration: "trriplejay docker hub"
+    pointer:
+      sourceName: "trriplejay/simpleserver"
+    seed:
+      versionName: production.*
+
+
+  - name: simple-params-piiq
     type: params
     version:
       params:
@@ -35,89 +26,45 @@ resources:
         api_url: localhost:50000
         foo: bar
 
-  - name: simple-opts
+  - name: simple-opts-int-piiq
     type: dockerOptions
     version:
-      memory: 120
+      memory: 128
       cpuShares: 18
 
-  - name: myEcsCluster
+  - name: simple-opts-prod-piiq
+    type: dockerOptions
+    version:
+      memory: 256
+      cpuShares: 36
+
+  - name: myEcsCluster-piiq
     type: cluster
     integration: "shippable demo ecs"
     pointer:
       sourceName : "trriplejay-test" #name of the cluster we are deploying
       region: "us-west-2"
 
-  - name: myDdcCluster
-    type: cluster
-    integration: "trriplejay ddc"
-    pointer:
-      sourceName : "trriplejay-test" #name of the cluster we are deploying
-
-  - name: betaReplicas
+  - name: intReplicas-piiq
     type: replicas
     version:
       count: 2
 
-  - name: prodReplicas
+  - name: prodReplicas-piiq
     type: replicas
     version:
       count: 5
 
-  - name: betaParams
+  - name: intParams-piiq
     type: params
     version:
       params:
-        mode: beta
+        mode: integration
         api_url: http://api.beta.shippable.com
 
-  - name: prodParams
+  - name: prodParams-piiq
     type: params
     version:
       params:
-        mode: prod
-        api_url: http://api.shippable.com
-
-  - name: betaOpts
-    type: dockerOptions
-    version:
-      memory: 400
-      cpuShares: 10
-
-  - name: prodOpts
-    type: dockerOptions
-    version:
-      memory: 800
-
-  - name: testVer
-    type: version
-    seed:
-      versionName: "1.0.0"
-
-
-  - name: testVer2
-    type: version
-    seed:
-      versionName: "1.0.0"
-
-  - name: myProdSyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    pointer:
-      sourceName: trriplejay/sample_pipelines
-      branch: original
-
-  - name: mySlack
-    type: notification
-    integration: "shippable via trriplejay"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
-
-  - name: myEmail
-    type: notification
-    pointer:
-      method: email
-      recipients:
-        - "john@shippable.com"
+        mode: production
+        api_url: http://apitest.shippable.com

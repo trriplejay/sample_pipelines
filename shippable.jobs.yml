@@ -1,36 +1,36 @@
 jobs:
-  - name: nginx-mani
-    type: manifest
-    on_start:
-      - NOTIFY: mySlack
-      - NOTIFY: myEmail
-    on_success:
-      - NOTIFY: mySlack
-    on_failure:
-      - NOTIFY: mySlack
-    steps:
-      - IN: nginx-image
-      - IN: nginx-params
-      - IN: nginx-opts
-      - IN: triggertest1
-      - IN: noFirstTimeTrigger3
-
-  - name: simple-mani
+  - name: simple-prod-mani-piiq
     type: manifest
     steps:
-      - IN: simple-image
-      - IN: simple-opts
-      - IN: simple-params
-      - IN: betaTrigger
+      - IN: simple-image-int-piiq
+      - IN: simple-opts-piiq
+      - IN: simple-params-piiq
+      - IN: prodTrigger-piiq
 
-  - name: ecs-beta-dep
+  - name: simple-int-mani-piiq
+    type: manifest
+    steps:
+      - IN: simple-image-int-piiq
+      - IN: simple-opts-piiq
+      - IN: simple-params-piiq
+
+  - name: ecs-int-dep-piiq
     type: deploy
     steps:
-      - IN: betaParams
-      - IN: betaOpts
-      - IN: betaReplicas
-      - IN: nginx-mani
-      - IN: myEcsCluster
+      - IN: intParams-piiq
+      - IN: intOpts-piiq
+      - IN: intReplicas-piiq
+      - IN: simple-int-mani-piiq
+      - IN: myEcsCluster-piiq
+
+  - name: ecs-prod-dep-piiq
+    type: deploy
+    steps:
+      - IN: prodParams-piiq
+      - IN: prodOpts-piiq
+      - IN: prodReplicas-piiq
+      - IN: simple-prod-mani-piiq
+      - IN: myEcsCluster-piiq
 
 
 #  - name: ddc-test
@@ -45,18 +45,18 @@ jobs:
 #      - IN: betaOpts
 #      - TASK: managed
 
-  - name: testRelease
-    type: release
-    steps:
-      - IN: testVer
-      - IN: simple-mani
-      - TASK: managed
-
-  - name: testRelease2
-    type: release
-    steps:
-      - IN: testVer2
-      - IN: simple-mani
+  # - name: testRelease
+  #   type: release
+  #   steps:
+  #     - IN: testVer
+  #     - IN: simple-mani
+  #     - TASK: managed
+  #
+  # - name: testRelease2
+  #   type: release
+  #   steps:
+  #     - IN: testVer2
+  #     - IN: simple-mani
 
 #  - name: dcl-prod
 #    type: dclDeploy
@@ -70,8 +70,8 @@ jobs:
 #      - IN: prodTrigger
 #      - TASK: managed
 
-  - name: prodYmlSync
-    type: rSync
-    steps:
-      - IN: myProdSyncRepo
-      - IN: prodTrigger
+  # - name: prodYmlSync
+  #   type: rSync
+  #   steps:
+  #     - IN: myProdSyncRepo
+  #     - IN: prodTrigger
