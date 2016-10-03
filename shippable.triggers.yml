@@ -4,4 +4,4 @@ triggers:
   - name: prodTrigger-piiq
     type: trigger
     version:
-      message: 'test'
+      message: 'deploying version 101'

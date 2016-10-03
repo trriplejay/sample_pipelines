@@ -6,6 +6,7 @@ jobs:
     steps:
       - IN: simple-image-prod-piiq
         switch: off
+        versionName: production.101
       - IN: simple-opts-prod-piiq
       - IN: simple-params-piiq
       - IN: prodTrigger-piiq
