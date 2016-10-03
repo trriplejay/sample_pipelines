@@ -3,7 +3,7 @@ jobs:
     type: manifest
     steps:
       - IN: simple-image-int-piiq
-      - IN: simple-opts-piiq
+      - IN: simple-opts-prod-piiq
       - IN: simple-params-piiq
       - IN: prodTrigger-piiq
 
@@ -11,14 +11,13 @@ jobs:
     type: manifest
     steps:
       - IN: simple-image-int-piiq
-      - IN: simple-opts-piiq
+      - IN: simple-opts-int-piiq
       - IN: simple-params-piiq
 
   - name: ecs-int-dep-piiq
     type: deploy
     steps:
       - IN: intParams-piiq
-      - IN: simple-opts-int-piiq
       - IN: intReplicas-piiq
       - IN: simple-int-mani-piiq
       - IN: myEcsCluster-piiq
@@ -27,7 +26,6 @@ jobs:
     type: deploy
     steps:
       - IN: prodParams-piiq
-      - IN: simple-opts-prod-piiq
       - IN: prodReplicas-piiq
       - IN: simple-prod-mani-piiq
       - IN: myEcsCluster-piiq
