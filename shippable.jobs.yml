@@ -5,8 +5,10 @@ jobs:
       - piiq
     steps:
       - IN: simple-image-prod-piiq
+        switch: off
       - IN: simple-opts-prod-piiq
       - IN: simple-params-piiq
+      - IN: prodTrigger-piiq
 
   - name: simple-int-mani-piiq
     type: manifest
@@ -35,9 +37,7 @@ jobs:
       - IN: prodParams-piiq
       - IN: prodReplicas-piiq
       - IN: simple-prod-mani-piiq
-        switch: off
       - IN: myEcsCluster-piiq
-      - IN: prodTrigger-piiq
 
 
 #  - name: ddc-test
