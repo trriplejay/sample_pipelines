@@ -18,7 +18,7 @@ jobs:
     type: deploy
     steps:
       - IN: intParams-piiq
-      - IN: intOpts-piiq
+      - IN: simple-opts-int-piiq
       - IN: intReplicas-piiq
       - IN: simple-int-mani-piiq
       - IN: myEcsCluster-piiq
@@ -27,7 +27,7 @@ jobs:
     type: deploy
     steps:
       - IN: prodParams-piiq
-      - IN: prodOpts-piiq
+      - IN: simple-opts-prod-piiq
       - IN: prodReplicas-piiq
       - IN: simple-prod-mani-piiq
       - IN: myEcsCluster-piiq
