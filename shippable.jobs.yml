@@ -10,6 +10,8 @@ jobs:
       - IN: simple-opts-prod-piiq
       - IN: simple-params-piiq
       - IN: prodTrigger-piiq
+      - TASK: managed
+        deployMethod: upgrade
 
   - name: simple-int-mani-piiq
     type: manifest
