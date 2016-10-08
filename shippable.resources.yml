@@ -10,16 +10,16 @@ resources:
     seed:
       versionName: integration.*
 
-  #
-  # - name: simple-image-prod-piiq
-  #   type: image
-  #   flags:
-  #     - piiq
-  #   integration: "trriplejay docker hub"
-  #   pointer:
-  #     sourceName: "trriplejay/simpleserver"
-  #   seed:
-  #     versionName: production.*
+  
+  - name: simple-image-prod-piiq
+    type: image
+    flags:
+      - piiq
+    integration: "trriplejay docker hub"
+    pointer:
+      sourceName: "trriplejay/simpleserver"
+    seed:
+      versionName: production.*
 
 
   - name: simple-params-piiq
