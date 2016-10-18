@@ -8,8 +8,6 @@ jobs:
       - IN: simple-params-release
       - IN: simple-image-release
       - IN: simple-opts-release
-    on_failure:
-      - NOTIFY: stagingSlack-release
 
   - name: nginx-mani-release
     type: manifest
@@ -20,8 +18,6 @@ jobs:
       - IN: nginx-image-release
       - IN: nginx-params-release
       - IN: nginx-opts-release
-    on_failure:
-      - NOTIFY: stagingSlack-release
 
   - name: staging-release-A-release
     type: release
