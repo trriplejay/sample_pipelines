@@ -54,6 +54,8 @@ jobs:
       - IN: prodVersion-release
       - IN: staging-release-A-release
         switch: off
+      - TASK: managed
+        bump: patch
 
   - name: prod-release-B-release
     type: release
