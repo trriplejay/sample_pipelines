@@ -53,6 +53,7 @@ jobs:
     steps:
       - IN: prodVersion-release
       - IN: staging-release-A-release
+        switch: off
 
   - name: prod-release-B-release
     type: release
@@ -61,4 +62,6 @@ jobs:
     steps:
       - IN: prodVersion-release
       - IN: staging-release-B1-release
+        switch: off
       - IN: staging-release-B2-release
+        switch: off
