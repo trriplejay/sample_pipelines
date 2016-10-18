@@ -1,6 +1,8 @@
 resources:
   - name: nginx-image-release
     type: image
+    flags:
+      - release
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "library/nginx"
@@ -9,6 +11,8 @@ resources:
 
   - name: nginx-params-release
     type: params
+    flags:
+      - release
     version:
       params:
         mode: dev
@@ -16,41 +20,34 @@ resources:
 
   - name: nginx-opts-release
     type: dockerOptions
+    flags:
+      - release
     version:
       memory: 500
 
   - name: ecsStaging-release
     type: cluster
+    flags:
+      - release
     integration: "shippable demo ecs"
     pointer:
       sourceName : "staging" #name of the cluster we are deploying
       region: "us-west-2"
 
-  - name: stagingSlack-release
-    type: notification
-    integration: "shippable slack"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
-
   - name: ecsProduction-release
     type: cluster
+    flags:
+      - release
     integration: "shippable demo ecs"
     pointer:
       sourceName: "production"
       region: "us-west-2"
 
-  - name: prodSlack-release
-    type: notification
-    integration: "shippable slack"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
 
   - name: simple-image-release
     type: image
+    flags:
+      - release
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
@@ -59,6 +56,8 @@ resources:
 
   - name: simple-params-release
     type: params
+    flags:
+      - release
     version:
       params:
         FOO: "test foo"
@@ -68,6 +67,8 @@ resources:
 
   - name: simple-opts-release
     type: dockerOptions
+    flags:
+      - release
     version:
       memory: 120
       cpuShares: 18
@@ -76,15 +77,21 @@ resources:
 
   - name: simpleReplicas-release
     type: replicas
+    flags:
+      - release
     version:
       count: 2
 
   - name: stagingVersion-release
     type: version
+    flags:
+      - release
     seed:
       versionName: "1.0.0"
 
   - name: prodVersion-release
     type: version
+    flags:
+      - release
     seed:
-      versionName: "1.0.0-rc"
+      versionName: "1.0.0"

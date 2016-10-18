@@ -1,6 +1,8 @@
 jobs:
   - name: simple-mani-release
     type: manifest
+    flags:
+      - release
     steps:
       - IN: stagingTrigger-release
       - IN: simple-params-release
@@ -11,6 +13,8 @@ jobs:
 
   - name: nginx-mani-release
     type: manifest
+    flags:
+      - release
     steps:
       - IN: stagingTrigger-release
       - IN: nginx-image-release
@@ -19,78 +23,46 @@ jobs:
     on_failure:
       - NOTIFY: stagingSlack-release
 
-  - name: staging-release-A
+  - name: staging-release-A-release
     type: release
+    flags:
+      - release
     steps:
       - IN: stagingVersion-release
       - IN: simple-mani-release
       - IN: nginx-mani-release
+      - TASK: managed
+        bump: rc
 
-  - name: staging-release-B1
+  - name: staging-release-B1-release
     type: release
+    flags:
+      - release
     steps:
       - IN: stagingVersion-release
       - IN: simple-mani-release
 
-  - name: staging-release-B2
+  - name: staging-release-B2-release
     type: release
+    flags:
+      - release
     steps:
       - IN: stagingVersion-release
       - IN: nginx-mani-release
 
-  - name: prod-release-A
+  - name: prod-release-A-release
     type: release
+    flags:
+      - release
     steps:
       - IN: prodVersion-release
-      - IN: staging-dep-A
+      - IN: staging-release-A-release
 
-  - name: prod-release-B
+  - name: prod-release-B-release
     type: release
+    flags:
+      - release
     steps:
       - IN: prodVersion-release
-      - IN: staging-dep-B
-
-
-  - name: staging-dep-A
-    type: deploy
-    steps:
-      - IN: staging-release-A
-      - IN: simpleReplicas-release
-      - IN: ecsStaging-release
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-release
-
-  - name: staging-dep-B
-    type: deploy
-    steps:
-      - IN: staging-release-B2
-      - IN: staging-release-B1
-      - IN: simpleReplicas-release
-      - IN: ecsStaging-release
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-release
-
-
-  - name: prod-dep-A
-    type: deploy
-    steps:
-      - IN: prod-release-A
-      - IN: ecsProduction-release
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-release
-
-  - name: prod-dep-B
-    type: deploy
-    steps:
-      - IN: prod-release-B
-      - IN: ecsProduction-release
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-release
+      - IN: staging-release-B1-release
+      - IN: staging-release-B2-release
