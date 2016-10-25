@@ -5,3 +5,8 @@ triggers:
     type: trigger
     version:
       message: 'deploying version 101'
+
+  - name: testTrigger-piiq
+    type: trigger
+    version:
+      message: 'blah'
