@@ -10,3 +10,9 @@ triggers:
     type: trigger
     version:
       message: 'blah'
+
+
+  - name: testTriggerAGAIN-piiq
+    type: trigger
+    version:
+      message: 'blah'
