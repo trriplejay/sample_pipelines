@@ -37,6 +37,8 @@ resources:
       - piiq
     version:
       memory: 128
+      portMappings:
+        - 0:8888
       cpuShares: 18
 
   - name: simple-opts-prod-piiq
