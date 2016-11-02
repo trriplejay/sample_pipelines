@@ -36,6 +36,8 @@ jobs:
           - manifest: simple-int-mani-piiq
             image: simple-image-int-piiq
             port: 8888
+      - TASK: managed
+        deployMethod: replace
 
   - name: ecs-prod-dep-piiq
     type: deploy
