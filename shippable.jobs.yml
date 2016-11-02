@@ -31,6 +31,11 @@ jobs:
       - IN: intReplicas-piiq
       - IN: simple-int-mani-piiq
       - IN: myEcsCluster-piiq
+      - IN: myLB-piiq
+        applyTo:
+          - manifest: simple-int-mani-piiq
+            image: simple-image-int-piiq
+            port: 8888
 
   - name: ecs-prod-dep-piiq
     type: deploy

@@ -87,3 +87,11 @@ resources:
       params:
         mode: production
         api_url: http://apitest.shippable.com
+
+  - name: myLB-piiq
+    type: loadBalancer
+    flags:
+      - piiq
+    pointer:
+      sourceName: "arn:aws:elasticloadbalancing:us-east-1:558099446733:targetgroup/myNewTgtGrp/c5f0996a82eb4686"
+      method: application
