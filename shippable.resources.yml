@@ -53,8 +53,8 @@ resources:
     flags:
       - piiq
     pointer:
-      sourceName : "trriplejay-test" #name of the cluster we are deploying
-      region: "us-west-2"
+      sourceName : "default" #name of the cluster we are deploying
+      region: "us-east-1"
 
   - name: intReplicas-piiq
     type: replicas
