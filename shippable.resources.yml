@@ -4,7 +4,6 @@ resources:
     type: image
     flags:
       - piiq
-    integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
