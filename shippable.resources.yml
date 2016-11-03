@@ -9,7 +9,7 @@ resources:
     seed:
       versionName: integration.143
 
-  # 
+  #
   # - name: simple-image-prod-piiq
   #   type: image
   #   flags:
@@ -95,5 +95,5 @@ resources:
     flags:
       - piiq
     pointer:
-      sourceName: "arn:aws:elasticloadbalancing:us-east-1:558099446733:targetgroup/myNewTgtGrp/c5f0996a82eb4686"
+      sourceName: "arn:aws:elasticloadbalancing:us-east-1:558099446733:targetgroup/MyTgtGrp/9f8a07d40fbd40df"
       method: application
