@@ -63,7 +63,7 @@ resources:
     flags:
       - piiq
     version:
-      count: 1 
+      count: 2
 
   - name: prodReplicas-piiq
     type: replicas
