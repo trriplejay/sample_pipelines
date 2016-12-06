@@ -26,7 +26,7 @@ jobs:
     steps:
       - IN: stagingVersion-deploy
       - IN: simple-mani-deploy
-      # - IN: nginx-mani-deploy
+      - IN: nginx-mani-deploy
       - IN: myDdcCluster
 
   - name: staging-deploy-B1-deploy
@@ -36,7 +36,7 @@ jobs:
     steps:
       - IN: stagingVersion-deploy
       - IN: simple-mani-deploy
-      - IN: nginx-mani-deploy
+      # - IN: nginx-mani-deploy
       - IN: myDdcCluster
 
   # - name: staging-deploy-B2-deploy
