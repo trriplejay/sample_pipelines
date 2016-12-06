@@ -39,33 +39,33 @@ jobs:
       #- IN: nginx-mani-deploy
       - IN: myDdcCluster
 
-  # - name: staging-deploy-B2-deploy
-  #   type: deploy
-  #   flags:
-  #     - deploy
-  #   steps:
-  #     - IN: stagingVersion-deploy
-  #     - IN: nginx-mani-deploy
-  #     - IN: myDdcCluster
+  - name: staging-deploy-B2-deploy
+    type: deploy
+    flags:
+      - deploy
+    steps:
+      - IN: stagingVersion-deploy
+      - IN: nginx-mani-deploy
+      - IN: myDdcCluster
 
-  # - name: prod-deploy-A-deploy
-  #   type: deploy
-  #   flags:
-  #     - deploy
-  #   steps:
-  #     - IN: prodVersion-deploy
-  #     - IN: staging-deploy-A-deploy
-  #       switch: off
-  #     - IN: myDdcCluster
-  #
-  # - name: prod-deploy-B-deploy
-  #   type: deploy
-  #   flags:
-  #     - deploy
-  #   steps:
-  #     - IN: prodVersion-deploy
-  #     - IN: staging-deploy-B1-deploy
-  #       switch: off
-  #     - IN: staging-deploy-B2-deploy
-  #       switch: off
-  #     - IN: myDdcCluster
+  - name: prod-deploy-A-deploy
+    type: deploy
+    flags:
+      - deploy
+    steps:
+      - IN: prodVersion-deploy
+      - IN: staging-deploy-A-deploy
+        switch: off
+      - IN: myDdcCluster
+
+  - name: prod-deploy-B-deploy
+    type: deploy
+    flags:
+      - deploy
+    steps:
+      - IN: prodVersion-deploy
+      - IN: staging-deploy-B1-deploy
+        switch: off
+      - IN: staging-deploy-B2-deploy
+        switch: off
+      - IN: myDdcCluster
