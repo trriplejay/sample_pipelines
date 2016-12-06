@@ -1,69 +1,70 @@
 jobs:
-  - name: simple-mani-release
+  - name: simple-mani-deploy
     type: manifest
     flags:
-      - release
+      - deploy
     steps:
-      - IN: stagingTrigger-release
-      - IN: simple-params-release
-      - IN: simple-image-release
-      - IN: simple-opts-release
+      - IN: stagingTrigger-deploy
+      - IN: simple-params-deploy
+      - IN: simple-image-deploy
+      - IN: simple-opts-deploy
 
-  - name: nginx-mani-release
+  - name: nginx-mani-deploy
     type: manifest
     flags:
-      - release
+      - deploy
     steps:
-      - IN: stagingTrigger-release
-      - IN: nginx-image-release
-      - IN: nginx-params-release
-      - IN: nginx-opts-release
+      - IN: stagingTrigger-deploy
+      - IN: nginx-image-deploy
+      - IN: nginx-params-deploy
+      - IN: nginx-opts-deploy
 
-  - name: staging-release-A-release
-    type: release
+  - name: staging-deploy-A-deploy
+    type: deploy
     flags:
-      - release
+      - deploy
     steps:
-      - IN: stagingVersion-release
-      - IN: simple-mani-release
-      - IN: nginx-mani-release
-      - TASK: managed
-        bump: rc
+      - IN: stagingVersion-deploy
+      - IN: simple-mani-deploy
+      - IN: nginx-mani-deploy
+      - IN: myDdcCluster
 
-  - name: staging-release-B1-release
-    type: release
+  - name: staging-deploy-B1-deploy
+    type: deploy
     flags:
-      - release
+      - deploy
     steps:
-      - IN: stagingVersion-release
-      - IN: simple-mani-release
+      - IN: stagingVersion-deploy
+      - IN: simple-mani-deploy
+      - IN: myDdcCluster
 
-  - name: staging-release-B2-release
-    type: release
+  - name: staging-deploy-B2-deploy
+    type: deploy
     flags:
-      - release
+      - deploy
     steps:
-      - IN: stagingVersion-release
-      - IN: nginx-mani-release
+      - IN: stagingVersion-deploy
+      - IN: nginx-mani-deploy
+      - IN: myDdcCluster
 
-  - name: prod-release-A-release
-    type: release
+  - name: prod-deploy-A-deploy
+    type: deploy
     flags:
-      - release
+      - deploy
     steps:
-      - IN: prodVersion-release
-      - IN: staging-release-A-release
+      - IN: prodVersion-deploy
+      - IN: staging-deploy-A-deploy
         switch: off
-      - TASK: managed
-        bump: patch
+      - IN: myDdcCluster
 
-  - name: prod-release-B-release
-    type: release
+  - name: prod-deploy-B-deploy
+    type: deploy
     flags:
-      - release
+      - deploy
     steps:
-      - IN: prodVersion-release
-      - IN: staging-release-B1-release
+      - IN: prodVersion-deploy
+      - IN: staging-deploy-B1-deploy
         switch: off
-      - IN: staging-release-B2-release
+      - IN: staging-deploy-B2-deploy
         switch: off
+      - IN: myDdcCluster

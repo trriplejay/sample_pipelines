@@ -1,5 +1,5 @@
 resources:
-  - name: nginx-image-release
+  - name: nginx-image-deploy
     type: image
     flags:
       - release
@@ -9,7 +9,7 @@ resources:
     seed:
       versionName: stable
 
-  - name: nginx-params-release
+  - name: nginx-params-deploy
     type: params
     flags:
       - release
@@ -18,14 +18,14 @@ resources:
         mode: dev
         api_url: localhost:50000
 
-  - name: nginx-opts-release
+  - name: nginx-opts-deploy
     type: dockerOptions
     flags:
       - release
     version:
       memory: 500
 
-  - name: ecsStaging-release
+  - name: ecsStaging-deploy
     type: cluster
     flags:
       - release
@@ -34,7 +34,7 @@ resources:
       sourceName : "staging" #name of the cluster we are deploying
       region: "us-west-2"
 
-  - name: ecsProduction-release
+  - name: ecsProduction-deploy
     type: cluster
     flags:
       - release
@@ -44,7 +44,7 @@ resources:
       region: "us-west-2"
 
 
-  - name: simple-image-release
+  - name: simple-image-deploy
     type: image
     flags:
       - release
@@ -54,7 +54,7 @@ resources:
     seed:
       versionName: master.58
 
-  - name: simple-params-release
+  - name: simple-params-deploy
     type: params
     flags:
       - release
@@ -65,7 +65,7 @@ resources:
         MODE: "dev"
         SELF_URL: "http://localhost:8888"
 
-  - name: simple-opts-release
+  - name: simple-opts-deploy
     type: dockerOptions
     flags:
       - release
@@ -75,23 +75,29 @@ resources:
       portMappings:
         - "80:8888"
 
-  - name: simpleReplicas-release
+  - name: simpleReplicas-deploy
     type: replicas
     flags:
       - release
     version:
       count: 2
 
-  - name: stagingVersion-release
+  - name: stagingVersion-deploy
     type: version
     flags:
       - release
     seed:
       versionName: "1.0.0"
 
-  - name: prodVersion-release
+  - name: prodVersion-deploy
     type: version
     flags:
       - release
     seed:
       versionName: "1.0.0"
+
+  - name: myDdcCluster
+    type: cluster
+    integration: "shippable test ddc"
+    pointer:
+      sourceName: "blah"
