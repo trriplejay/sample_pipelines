@@ -70,8 +70,7 @@ resources:
     flags:
       - deploy
     version:
-      memory: 120
-      cpuShares: 18
+      memory: 64
       portMappings:
         - "80:8888"
 
