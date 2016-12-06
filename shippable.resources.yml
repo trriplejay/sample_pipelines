@@ -81,20 +81,6 @@ resources:
     version:
       count: 2
 
-  - name: stagingVersion-deploy
-    type: version
-    flags:
-      - deploy
-    seed:
-      versionName: "1.0.0"
-
-  - name: prodVersion-deploy
-    type: version
-    flags:
-      - deploy
-    seed:
-      versionName: "1.0.0"
-
   - name: myDdcCluster
     type: cluster
     integration: "shippable test ddc"
