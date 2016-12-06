@@ -2,7 +2,7 @@ resources:
   - name: nginx-image-deploy
     type: image
     flags:
-      - release
+      - deploy
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "library/nginx"
@@ -12,7 +12,7 @@ resources:
   - name: nginx-params-deploy
     type: params
     flags:
-      - release
+      - deploy
     version:
       params:
         mode: dev
@@ -21,14 +21,14 @@ resources:
   - name: nginx-opts-deploy
     type: dockerOptions
     flags:
-      - release
+      - deploy
     version:
       memory: 500
 
   - name: ecsStaging-deploy
     type: cluster
     flags:
-      - release
+      - deploy
     integration: "shippable demo ecs"
     pointer:
       sourceName : "staging" #name of the cluster we are deploying
@@ -37,7 +37,7 @@ resources:
   - name: ecsProduction-deploy
     type: cluster
     flags:
-      - release
+      - deploy
     integration: "shippable demo ecs"
     pointer:
       sourceName: "production"
@@ -47,7 +47,7 @@ resources:
   - name: simple-image-deploy
     type: image
     flags:
-      - release
+      - deploy
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
@@ -57,7 +57,7 @@ resources:
   - name: simple-params-deploy
     type: params
     flags:
-      - release
+      - deploy
     version:
       params:
         FOO: "test foo"
@@ -68,7 +68,7 @@ resources:
   - name: simple-opts-deploy
     type: dockerOptions
     flags:
-      - release
+      - deploy
     version:
       memory: 120
       cpuShares: 18
@@ -78,21 +78,21 @@ resources:
   - name: simpleReplicas-deploy
     type: replicas
     flags:
-      - release
+      - deploy
     version:
       count: 2
 
   - name: stagingVersion-deploy
     type: version
     flags:
-      - release
+      - deploy
     seed:
       versionName: "1.0.0"
 
   - name: prodVersion-deploy
     type: version
     flags:
-      - release
+      - deploy
     seed:
       versionName: "1.0.0"
 
