@@ -19,26 +19,26 @@ jobs:
       - IN: nginx-params-deploy
       - IN: nginx-opts-deploy
 
-  - name: staging-deploy-A-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: stagingVersion-deploy
-      - IN: simple-mani-deploy
-      - IN: nginx-mani-deploy
-      - IN: myDdcCluster
-
-  - name: staging-deploy-B1-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: stagingVersion-deploy
-      - IN: simple-mani-deploy
-      # - IN: nginx-mani-deploy
-      - IN: myDdcCluster
-
+  # - name: staging-deploy-A-deploy
+  #   type: deploy
+  #   flags:
+  #     - deploy
+  #   steps:
+  #     - IN: stagingVersion-deploy
+  #     - IN: simple-mani-deploy
+  #     - IN: nginx-mani-deploy
+  #     - IN: myDdcCluster
+  #
+  # - name: staging-deploy-B1-deploy
+  #   type: deploy
+  #   flags:
+  #     - deploy
+  #   steps:
+  #     - IN: stagingVersion-deploy
+  #     - IN: simple-mani-deploy
+  #     # - IN: nginx-mani-deploy
+  #     - IN: myDdcCluster
+  #
   # - name: staging-deploy-B2-deploy
   #   type: deploy
   #   flags:
@@ -47,7 +47,7 @@ jobs:
   #     - IN: stagingVersion-deploy
   #     - IN: nginx-mani-deploy
   #     - IN: myDdcCluster
-
+  #
   # - name: prod-deploy-A-deploy
   #   type: deploy
   #   flags:
