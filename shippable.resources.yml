@@ -25,23 +25,23 @@ resources:
     version:
       memory: 500
 
-  - name: ecsStaging-deploy
-    type: cluster
-    flags:
-      - deploy
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName : "staging" #name of the cluster we are deploying
-      region: "us-west-2"
+  # - name: ecsStaging-deploy
+  #   type: cluster
+  #   flags:
+  #     - deploy
+  #   integration: "shippable demo ecs"
+  #   pointer:
+  #     sourceName : "staging" #name of the cluster we are deploying
+  #     region: "us-west-2"
 
-  - name: ecsProduction-deploy
-    type: cluster
-    flags:
-      - deploy
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName: "production"
-      region: "us-west-2"
+  # - name: ecsProduction-deploy
+  #   type: cluster
+  #   flags:
+  #     - deploy
+  #   integration: "shippable demo ecs"
+  #   pointer:
+  #     sourceName: "production"
+  #     region: "us-west-2"
 
 
   - name: simple-image-deploy
