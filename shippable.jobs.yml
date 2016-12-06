@@ -39,14 +39,14 @@ jobs:
       # - IN: nginx-mani-deploy
       - IN: myDdcCluster
 
-  - name: staging-deploy-B2-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: stagingVersion-deploy
-      - IN: nginx-mani-deploy
-      - IN: myDdcCluster
+  # - name: staging-deploy-B2-deploy
+  #   type: deploy
+  #   flags:
+  #     - deploy
+  #   steps:
+  #     - IN: stagingVersion-deploy
+  #     - IN: nginx-mani-deploy
+  #     - IN: myDdcCluster
 
   # - name: prod-deploy-A-deploy
   #   type: deploy
