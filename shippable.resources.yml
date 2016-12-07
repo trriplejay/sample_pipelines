@@ -86,3 +86,10 @@ resources:
     integration: "shippable test ddc"
     pointer:
       sourceName: "blah"
+
+  - name: myGkeCluster
+    type: cluster
+    integration: "trriplejay gke"
+    pointer:
+      sourceName: "cluster-1"
+      region: "us-central1-f"
