@@ -36,6 +36,8 @@ jobs:
       - IN: simple-mani-deploy
       # - IN: nginx-mani-deploy
       - IN: myGkeCluster
+      - TASK: managed
+        deployMethod: upgrade
 
   - name: staging-deploy-B2-deploy
     type: deploy
