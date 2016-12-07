@@ -28,16 +28,16 @@ jobs:
       - IN: nginx-mani-deploy
       - IN: myGkeCluster
 
-  # - name: staging-deploy-B1-deploy
-  #   type: deploy
-  #   flags:
-  #     - deploy
-  #   steps:
-  #     - IN: simple-mani-deploy
-  #     # - IN: nginx-mani-deploy
-  #     - IN: myGkeCluster
-  #     - TASK: managed
-  #       deployMethod: replace
+  - name: staging-deploy-B1-deploy
+    type: deploy
+    flags:
+      - deploy
+    steps:
+      - IN: simple-mani-deploy
+      # - IN: nginx-mani-deploy
+      - IN: myGkeCluster
+      - TASK: managed
+        deployMethod: replace
 
   - name: staging-deploy-B2-deploy
     type: deploy
