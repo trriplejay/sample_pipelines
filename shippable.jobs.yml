@@ -25,7 +25,7 @@ jobs:
       - deploy
     steps:
       - IN: simple-mani-deploy
-      # - IN: nginx-mani-deploy
+      - IN: nginx-mani-deploy
       - IN: myGkeCluster
 
   - name: staging-deploy-B1-deploy
@@ -34,7 +34,7 @@ jobs:
       - deploy
     steps:
       - IN: simple-mani-deploy
-      - IN: nginx-mani-deploy
+      # - IN: nginx-mani-deploy
       - IN: myGkeCluster
       - TASK: managed
         deployMethod: blueGreen
