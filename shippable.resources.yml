@@ -23,7 +23,7 @@ resources:
     flags:
       - deploy
     version:
-      memory: 500
+      memory: 64
 
   # - name: ecsStaging-deploy
   #   type: cluster
