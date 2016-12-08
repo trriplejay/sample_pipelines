@@ -37,7 +37,7 @@ jobs:
       # - IN: nginx-mani-deploy
       - IN: myGkeCluster
       - TASK: managed
-        deployMethod: replace
+        deployMethod: blueGreen
 
   - name: staging-deploy-B2-deploy
     type: deploy
