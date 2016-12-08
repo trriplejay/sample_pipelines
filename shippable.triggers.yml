@@ -2,4 +2,4 @@ triggers:
   - name: stagingTrigger-deploy
     type: trigger
     version:
-      message: 'trigger release workflow. Triggered: 18'
+      message: 'trigger release workflow. Triggered: 19'
