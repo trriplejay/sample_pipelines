@@ -67,3 +67,15 @@ jobs:
         switch: off
       - IN: staging-release-B2-release
         switch: off
+
+
+- name: prod-final-A-release
+  type: release
+  flags:
+    - release
+  steps:
+    # - IN: prodVersion-release
+    - IN: prod-release-A-release
+      switch: off
+    - TASK: managed
+      bump: final
