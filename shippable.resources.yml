@@ -87,11 +87,11 @@ resources:
     flags:
       - release
     seed:
-      versionName: "1.8.5"
+      versionName: "4.12.2"
 
-  - name: prodVersion-release
-    type: version
-    flags:
-      - release
-    seed:
-      versionName: "1.0.0"
+  # - name: prodVersion-release
+  #   type: version
+  #   flags:
+  #     - release
+  #   seed:
+  #     versionName: "1.0.0"

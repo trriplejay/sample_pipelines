@@ -28,7 +28,7 @@ jobs:
       - IN: simple-mani-release
       - IN: nginx-mani-release
       - TASK: managed
-        bump: rc
+        bump: alpha
 
   - name: staging-release-B1-release
     type: release
@@ -55,7 +55,7 @@ jobs:
       - IN: staging-release-A-release
         switch: off
       - TASK: managed
-        bump: patch
+        bump: rc
 
   - name: prod-release-B-release
     type: release
