@@ -51,7 +51,7 @@ jobs:
     flags:
       - release
     steps:
-      - IN: prodVersion-release
+      # - IN: prodVersion-release
       - IN: staging-release-A-release
         switch: off
       - TASK: managed
