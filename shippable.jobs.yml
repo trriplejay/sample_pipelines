@@ -9,4 +9,4 @@ jobs:
         switch: off
       - IN: simple-image-eb
       - TASK:
-        - script: ./IN/simple-repo-eb/gitRepo/depoyToEb.sh
+        - script: ./IN/simple-repo-eb/gitRepo/deployToEb.sh
