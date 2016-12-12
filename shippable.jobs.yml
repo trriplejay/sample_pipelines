@@ -6,7 +6,6 @@ jobs:
     steps:
       - IN: myAwsCredentials
       - IN: simple-repo-eb
-        switch: off
       - IN: simple-image-eb
       - TASK:
         - script: sudo apt-get install -y jq unzip tree
@@ -16,4 +15,4 @@ jobs:
         - script: tree -f IN/simple-image-eb/
         - script: cat IN/simple-image-eb/version.json | jq '.'
         - script: tree -f IN/simple-repo-eb/
-        # - script: mv IN/simple-repo-eb/Dockerrun.aws.json /tmp/Dockerrun.tmp
+        - script: mv IN/simple-repo-eb/gitRepo/Dockerrun.aws.json /tmp/Dockerrun.tmp
