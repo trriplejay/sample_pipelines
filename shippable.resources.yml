@@ -20,3 +20,4 @@ resources:
       - eb
     pointer:
       sourceName: trriplejay/simpleserver
+      branch: master
