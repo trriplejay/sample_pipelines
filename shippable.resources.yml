@@ -1,97 +1,21 @@
 resources:
-  - name: nginx-image-release
+
+  - name: simple-image-eb
     type: image
     flags:
-      - release
-    integration: "trriplejay docker hub"
-    pointer:
-      sourceName: "library/nginx"
-    seed:
-      versionName: stable
-
-  - name: nginx-params-release
-    type: params
-    flags:
-      - release
-    version:
-      params:
-        mode: dev
-        api_url: localhost:50000
-
-  - name: nginx-opts-release
-    type: dockerOptions
-    flags:
-      - release
-    version:
-      memory: 500
-
-  - name: ecsStaging-release
-    type: cluster
-    flags:
-      - release
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName : "staging" #name of the cluster we are deploying
-      region: "us-west-2"
-
-  - name: ecsProduction-release
-    type: cluster
-    flags:
-      - release
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName: "production"
-      region: "us-west-2"
-
-
-  - name: simple-image-release
-    type: image
-    flags:
-      - release
-    integration: "trriplejay docker hub"
+      - eb
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
       versionName: master.58
 
-  - name: simple-params-release
-    type: params
-    flags:
-      - release
-    version:
-      params:
-        FOO: "test foo"
-        BAR: "test bar"
-        MODE: "dev"
-        SELF_URL: "http://localhost:8888"
+  - name: myAwsCredentials
+    type: integration
+    integration: "trriplejay-aws"
 
-  - name: simple-opts-release
-    type: dockerOptions
+  - name: simple-repo-eb
+    type: gitRepo
     flags:
-      - release
-    version:
-      memory: 120
-      cpuShares: 18
-      portMappings:
-        - "80:8888"
-
-  - name: simpleReplicas-release
-    type: replicas
-    flags:
-      - release
-    version:
-      count: 2
-
-  - name: stagingVersion-release
-    type: version
-    flags:
-      - release
-    seed:
-      versionName: "4.12.3"
-
-  - name: prodVersion-release
-    type: version
-    flags:
-      - release
-    seed:
-      versionName: "1.0.0"
+      - eb
+    pointer:
+      sourceName: trriplejay/simpleserver

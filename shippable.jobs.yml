@@ -1,81 +1,19 @@
 jobs:
-  - name: simple-mani-release
-    type: manifest
+  - name: deploy-simpleEbApp-eb
+    type: runSh
     flags:
-      - release
+      - eb
     steps:
-      - IN: stagingTrigger-release
-      - IN: simple-params-release
-      - IN: simple-image-release
-      - IN: simple-opts-release
-
-  - name: nginx-mani-release
-    type: manifest
-    flags:
-      - release
-    steps:
-      - IN: stagingTrigger-release
-      - IN: nginx-image-release
-      - IN: nginx-params-release
-      - IN: nginx-opts-release
-
-  - name: staging-release-A-release
-    type: release
-    flags:
-      - release
-    steps:
-      - IN: stagingVersion-release
-      - IN: simple-mani-release
-      - IN: nginx-mani-release
-      - TASK: managed
-        bump: alpha
-
-  - name: staging-release-B1-release
-    type: release
-    flags:
-      - release
-    steps:
-      - IN: stagingVersion-release
-      - IN: simple-mani-release
-
-  - name: staging-release-B2-release
-    type: release
-    flags:
-      - release
-    steps:
-      - IN: stagingVersion-release
-      - IN: nginx-mani-release
-
-  - name: prod-release-A-release
-    type: release
-    flags:
-      - release
-    steps:
-      # - IN: prodVersion-release
-      - IN: staging-release-A-release
+      - IN: myAwsCredentials
+      - IN: simple-repo-eb
         switch: off
-      - TASK: managed
-        bump: rc
-
-  - name: prod-release-B-release
-    type: release
-    flags:
-      - release
-    steps:
-      - IN: prodVersion-release
-      - IN: staging-release-B1-release
-        switch: off
-      - IN: staging-release-B2-release
-        switch: off
-
-
-  - name: prod-final-A-release
-    type: release
-    flags:
-      - release
-    steps:
-      # - IN: prodVersion-release
-      - IN: prod-release-A-release
-        switch: off
-      - TASK: managed
-        bump: final
+      - IN: simple-image-eb
+      - TASK:
+        - script: sudo apt-get install -y jq unzip tree
+        - script: pip install --upgrade --user awsebcli
+        - script: tree -f IN/myAwsCredentials/
+        - script: source IN/myAwsCredentials/integration.env # add the credentials to the environment
+        - script: tree -f IN/simple-image-eb/
+        - script: mv IN/simple-repo-eb/Dockerrun.aws.json /tmp/Dockerrun.tmp
+        - script: tree -f IN/simple-repo-eb/
+        - script: mv IN/simple-repo-eb/Dockerrun.aws.json /tmp/Dockerrun.tmp

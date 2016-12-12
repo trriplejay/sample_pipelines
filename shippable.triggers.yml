@@ -1,5 +1,5 @@
 triggers:
-  - name: stagingTrigger-release
+  - name: stagingTrigger-eb
     type: trigger
     version:
       message: 'trigger release workflow. Triggered: 4'
