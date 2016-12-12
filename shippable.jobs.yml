@@ -5,8 +5,8 @@ jobs:
       - eb
     steps:
       - IN: myAwsCredentials
-      - IN: simple-repo-eb
-        switch: off
+      # - IN: simple-repo-eb
+      #   switch: off
       - IN: simple-image-eb
       - TASK:
         - script: sudo apt-get install -y jq unzip tree
