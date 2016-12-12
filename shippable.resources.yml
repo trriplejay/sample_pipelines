@@ -13,10 +13,10 @@ resources:
     type: integration
     integration: "trriplejay-aws"
 
-  # - name: simple-repo-eb
-  #   type: gitRepo
-  #   integration: "trriplejay github"
-  #   flags:
-  #     - eb
-  #   pointer:
-  #     sourceName: trriplejay/simpleserver
+  - name: simple-repo-eb
+    type: gitRepo
+    integration: "trriplejay github"
+    flags:
+      - eb
+    pointer:
+      sourceName: trriplejay/simpleserver
