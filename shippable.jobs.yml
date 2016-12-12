@@ -9,7 +9,7 @@ jobs:
         switch: off
       - IN: simple-image-eb
       - TASK:
-        - script: sudo apt-get install -y jq unzip tree
+        - script: sudo apt-get install -y jq tree
         - script: pip install --upgrade --user awsebcli
         # - script: tree -f IN/myAwsCredentials/
         - script: source IN/myAwsCredentials/integration.env # add the credentials to the environment
@@ -21,5 +21,5 @@ jobs:
         # - script: tree -f IN/simple-repo-eb/
         - script: DOCKERRUN_PATH=IN/simple-repo-eb/gitRepo/
         - script: mv $DOCKERRUN_PATH/Dockerrun.aws.json /tmp/Dockerrun.tmp
-        - script: cat /tmp/Dockerrun.tmp | sed 's/<IMAGE_NAME>/$IMAGE_NAME/' | sed 's/<TAG>/$IMAGE_TAG/' > $DOCKERRUN_PATH/Dockerrun.aws.json
+        - script: cat /tmp/Dockerrun.tmp | sed 's/<IMAGE_NAME>/"$IMAGE_NAME"/' | sed 's/<TAG>/"$IMAGE_TAG"/' > $DOCKERRUN_PATH/Dockerrun.aws.json
         - script: cat $DOCKERRUN_PATH/Dockerrun.aws.json
