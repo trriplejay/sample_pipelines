@@ -15,6 +15,7 @@ resources:
 
   - name: simple-repo-eb
     type: gitRepo
+    integration: "trriplejay github"
     flags:
       - eb
     pointer:
