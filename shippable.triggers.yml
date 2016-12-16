@@ -2,3 +2,4 @@ triggers:
   - name: functionTestTrigger-ft
     type: trigger
     version:
+      message: "for api use only"
