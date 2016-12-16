@@ -9,7 +9,7 @@ resources:
     seed:
       versionName: master.58
 
-  - name: myAwsCredentials
+  - name: myAwsCredentials-eb
     type: integration
     integration: "trriplejay-aws"
 
