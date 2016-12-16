@@ -11,6 +11,8 @@ resources:
 
   - name: myAwsCredentials-eb
     type: integration
+    flags:
+      - eb
     integration: "trriplejay-aws"
 
   - name: simple-repo-eb
