@@ -1,9 +1,9 @@
 resources:
 
-  - name: simple-image-eb
+  - name: simple-image-ft
     type: image
     flags:
-      - eb
+      - ft
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
@@ -13,11 +13,18 @@ resources:
     type: integration
     integration: "trriplejay-aws"
 
-  - name: simple-repo-eb
+  - name: EcsFTCluster
+    type: cluster
+    integration: trriplejay-aws
+    pointer:
+      sourceName: default
+      region: us-west-1
+
+  - name: simple-repo-ft
     type: gitRepo
     integration: "trriplejay github"
     flags:
-      - eb
+      - ft
     pointer:
       sourceName: trriplejay/simpleserver
       branch: master

@@ -1,5 +1,5 @@
 triggers:
-  - name: stagingTrigger-eb
+  - name: functionTestTrigger-ft
     type: trigger
     version:
-      message: 'trigger release workflow. Triggered: 4'
+      message: 'trigger functional test: 1'

@@ -1,12 +1,30 @@
 jobs:
-  - name: deploy-simpleEbApp-eb
+  - name: simple-manifest-ft
+    type: manifest
+    flags:
+      - ft
+    steps:
+      - IN: simple-image-ft
+
+  - name: deploy-test-env-ft
+    type: deploy
+    flags:
+      - ft
+    steps:
+      - IN: simple-manifest-ft
+      - IN: EcsFTCluster
+      - TASK: managed
+        deployMethod: replace #'upgrade' is recommended instead
+
+  - name: simple-function-test-ft
     type: runSh
     flags:
-      - eb
+      - ft
     steps:
-      - IN: myAwsCredentials
-      - IN: simple-repo-eb
-        switch: off
-      - IN: simple-image-eb
+      - IN: deploy-test-env-ft
+      - IN: simple-repo-ft
+        switch: off #changing repo shouldnt trigger test, only deploy should
+      - IN: functionTestTrigger-ft #for manually triggering test
       - TASK:
-        - script: ./IN/simple-repo-eb/gitRepo/deployToEb.sh
+        - script: sudo apt-get install -y tree jq
+        - script: ./IN/simple-repo-ft/gitRepo/runFT.sh
