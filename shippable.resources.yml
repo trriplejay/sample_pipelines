@@ -9,10 +9,6 @@ resources:
     seed:
       versionName: master.58
 
-  - name: myAwsCredentials
-    type: integration
-    integration: "trriplejay-aws"
-
   - name: EcsFTCluster
     type: cluster
     integration: trriplejay-aws
