@@ -2,4 +2,3 @@ triggers:
   - name: functionTestTrigger-ft
     type: trigger
     version:
-      message: 'trigger functional test: 1'
