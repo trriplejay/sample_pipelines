@@ -4,7 +4,7 @@ jobs:
     flags:
       - eb
     steps:
-      - IN: myAwsCredentials
+      - IN: myAwsCredentials-eb
       - IN: simple-repo-eb
         switch: off
       - IN: simple-image-eb
