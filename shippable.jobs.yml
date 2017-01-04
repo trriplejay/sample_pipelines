@@ -1,12 +1,16 @@
 jobs:
   - name: simple-mani-runShSample
     type: manifest
+    flags:
+      - runShSample
     steps:
       - IN: simple-image-runShSample
       - IN: myParams-runShSample
 
   - name: simple-release-runShSample
     type: release
+    flags:
+      - runShSample
     steps:
       - IN: simple-mani-runShSample
       - IN: simple-version-runShSample
@@ -15,12 +19,15 @@ jobs:
 
   - name: runShCheck-runShSample
     type: runSh
+    flags:
+      - runShSample
     steps:
       - IN: stagingTrigger-runShSample
       - IN: simple-release-runShSample
       - TASK:
         - script: apt-get install -y tree jq unzip
         - script: echo 'which aws?' && which aws || true
+        - script: cat /build/message.json | jq '.'
         - script: echo 'about to install awscli'
         - script: curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
         - script: unzip awscli-bundle.zip
