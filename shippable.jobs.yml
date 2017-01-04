@@ -25,6 +25,7 @@ jobs:
       - IN: stagingTrigger-runShSample
       - IN: simple-release-runShSample
       - TASK:
+        - script: echo "resource ID is: $RESOURCE_ID"
         - script: apt-get install -y tree jq unzip
         - script: echo 'which aws?' && which aws || true
         - script: cat /build/message.json | jq '.'
