@@ -25,7 +25,7 @@ resources:
       params:
         hello: world
         test: 123
-        #secure: NewGWMDSZPCgsggkgxS8Nn4YqSivmggiiSo7pN6FVt33D94Mt0ND7FVnucu2BPAZNG6SoRNYWg+WsuGH6hZHRCH+42Ix0oJbAGcSD486JlP/ANSE8509NqGaAjOrlec1rbPUjuF/pmR8bA+HTvggBA/3QD3acDGSdgQz6jFJM4tPFJjMZcu/ud+X7FBLeWIn1n7tBDkOG6McvX4zuv2ORGXSoedKL/U9I8cVKSv/XdRAhVnpifcxEZlTZ69gg6IWCrhYlS2SXIU28AqqR2YuOG1DCkVqCBas5VvBFLerwgUjfIhqD/Fr6VpPmPhZ3m73TFV3YMHqowcdPf0dUjzGgg==
+        secure: A3OCCNyoIqC05NyP9Gy4Edq7bi8TC2KIav7/wlkNEJov0WHs90miT72rXwaiq5ExCQ28hgQ6uHxCOqihCVznwZylq5khHgN2zEPZuTvzF2KrzVzTu69XaDSlKgGuvMdNnAcnH4BOivqzwBWO2yJnmf4Wi5UpS1OLKziYH5akvHqswqEO/+A8cdUYnKaYvTLMALYGI4WeKZrng8Ry9LXjRN2WEDkkRmHZgpxFBrmVbAxGScrpnsOs7lpPoBibQ9fHOq5DgOtiqVFqXc55rZRI0q0ZKJwzSmxdTkp7pJuT+WJ7BfJQpcHObjnL0C0QuKyKKg2eLZ/QDwce3pctZUHBSA==
 
   - name: simple-image-runShSample
     type: image
