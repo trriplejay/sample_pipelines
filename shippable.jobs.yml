@@ -37,6 +37,8 @@ jobs:
     steps:
       - IN: stagingVersion-release
       - IN: simple-mani-release
+      - OUT: fake-image-release
+      - OUT: fake-params-release
 
   - name: staging-release-B2-release
     type: release

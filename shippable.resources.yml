@@ -95,3 +95,21 @@ resources:
       - release
     seed:
       versionName: "1.0.0"
+
+  - name: fake-image-release
+    type: image
+    flags:
+      - release
+    pointer:
+      sourceName: "trriplejay/fakeimage"
+    seed:
+      versionName: master.58
+
+  - name: fake-params-release
+    type: params
+    flags:
+      - release
+    integration: "trriplejay docker hub"
+    version:
+      params:
+        yay: blah
