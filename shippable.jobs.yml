@@ -27,7 +27,7 @@ jobs:
       - OUT: testOutImage
       - TASK:
         - script: echo "resource ID is $RESOURCE_ID"
-        - script: echo "versionName=blah" > /build/state/runShCheck-runShSample.env
+        - script: echo "versionName=blah" > /build/state/testOutImage.env
         - script: ls -latr /build/state
 #        - script: apt-get install -y tree jq unzip
 #        - script: echo 'which aws?' && which aws || true
