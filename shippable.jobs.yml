@@ -29,6 +29,7 @@ jobs:
         - script: echo "resource ID is $RESOURCE_ID"
         - script: echo "versionName=blah" > /build/state/testOutImage.env
         - script: ls -latr /build/state
+        - script: cat /build/state/testOutImage.env
 #        - script: apt-get install -y tree jq unzip
 #        - script: echo 'which aws?' && which aws || true
 #        - script: cat /build/message.json | jq '.'
