@@ -1,4 +1,13 @@
 resources:
+  - name: testOutImage
+    type: image
+    flags:
+      - runShSample
+    integration: "trriplejay docker hub"
+    pointer:
+      sourceName: "trriplejay/msgbase"
+    seed:
+      versionName: "latest"
 
   - name: stagingSlack-runShSample
     type: notification
