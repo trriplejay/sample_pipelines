@@ -40,7 +40,8 @@ jobs:
         - script: echo "versionName=blah" > /build/state/runShCheck-runShSample.env
         - script: ls -latr /build/state
         - script: cat /build/state/testOutImage-runShSample.env
-        - scxript: cat /build/state/runShCheck-runShSample.env
+        - script: cat /build/state/runShCheck-runShSample.env
+        - script: ls -latr /build/IN/simple-release-runShSample
 #        - script: apt-get install -y tree jq unzip
 #        - script: echo 'which aws?' && which aws || true
 #        - script: cat /build/message.json | jq '.'
