@@ -7,6 +7,13 @@ jobs:
       - IN: simple-image-runShSample
       - IN: myParams-runShSample
 
+  - name: out-mani-runShSample
+    type: manifest
+    flags:
+      - runShSample
+    steps:
+      - IN: simple-image-runShSample
+
   - name: simple-release-runShSample
     type: release
     flags:
@@ -26,6 +33,7 @@ jobs:
       - IN: simple-release-runShSample
       - IN: myRepo-runShSample
       - OUT: testOutImage-runShSample
+      - OUT: out-mani-runShSample
       - TASK:
         - script: echo "resource ID is $RESOURCE_ID"
         - script: echo "versionName=blah" > /build/state/testOutImage-runShSample.env
