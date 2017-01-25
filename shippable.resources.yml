@@ -1,5 +1,5 @@
 resources:
-  - name: testOutImage
+  - name: testOutImage-runShSample
     type: image
     flags:
       - runShSample
@@ -35,3 +35,15 @@ resources:
       sourceName: "trriplejay/simpleserver"
     seed:
       versionName: "master.58"
+
+  - name: myRepo-runShSample
+    type: gitRepo
+    flags:
+      - runShSample
+    integration: "trriplejay github"
+    pointer:
+      sourceName: trriplejay/simpleserver
+      branches:
+        only:
+          - master  
+        
