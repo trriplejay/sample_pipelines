@@ -43,7 +43,7 @@ jobs:
         - script: cat /build/state/testOutImage-runShSample.env
         - script: cat /build/state/runShCheck-runShSample.env
         - script: ls -latr /build/IN/simple-release-runShSample/release
-        - script: cat "$RESOURCE_NAME"_PATH/message.json | jq '.'
+        - script: cat "$JOB_NAME"_PATH/message.json | jq '.'
 
 #        - script: apt-get install -y tree jq unzip
 #        - script: echo 'which aws?' && which aws || true
