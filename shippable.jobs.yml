@@ -44,7 +44,7 @@ jobs:
         - script: cat /build/state/runShCheck-runShSample.env
         - script: ls -latr /build/IN/simple-release-runShSample/release
         - script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
-        - script: cat _PATH/message.json
+#        - script: cat _PATH/message.json
 
 #        - script: apt-get install -y tree jq unzip
 #        - script: echo 'which aws?' && which aws || true
