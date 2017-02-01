@@ -36,33 +36,15 @@ jobs:
       - OUT: out-mani-runShSample
       - TASK:
         - script: echo "resource ID is $RESOURCE_ID"
-        - script: echo "versionName=blah" > /build/state/testOutImage-runShSample.env
+        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
+        #- script: echo "extraProperty=$JOB_NAME" > /build/state/runShCheck-runShSample.env
         - script: sudo apt-get install -y jq
         - script: ls -latr /build/state
         - script: cat /build/state/testOutImage-runShSample.env
         - script: cat /build/state/runShCheck-runShSample.env
         - script: ls -latr /build/IN/simple-release-runShSample/release
         - script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
-#        - script: cat _PATH/message.json
-
-#        - script: apt-get install -y tree jq unzip
-#        - script: echo 'which aws?' && which aws || true
-#        - script: cat /build/message.json | jq '.'
-#        - script: echo 'about to install awscli'
-#        - script: curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-#        - script: unzip awscli-bundle.zip
-#        - script: sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-#        - script: echo 'which aws?' && which aws || true
-#        - script: aws --version
-#        - script: tree -F
-#        - script: MANIFESTS=$(cat IN/simple-release-runShSample/release/manifests.json | jq -r)
-#        - script: echo $MANIFESTS
-#        - script: RELEASE=$(cat IN/simple-release-runShSample/release/release.json)
-#        - script: echo $RELEASE
-
-        #- script: ./script.sh
-        #- script: source script.sh
 
     on_failure:
       - script: echo "something failed"
