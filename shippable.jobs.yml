@@ -14,6 +14,14 @@ jobs:
     steps:
       - IN: simple-image-runShSample
 
+  - name: test-mani-runShSample
+    type: manifest
+    flags:
+      - runShSample
+    steps:
+      - IN: testOutImage-runShSample
+
+
   - name: simple-release-runShSample
     type: release
     flags:
