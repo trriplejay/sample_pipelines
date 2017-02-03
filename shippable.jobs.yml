@@ -11,8 +11,9 @@ jobs:
     type: deploy
     flags:
       - runShSample
-    - IN: kube-cluster-runShSample
-    - IN: simple-mani-runShSample
+    steps:
+      - IN: kube-cluster-runShSample
+      - IN: simple-mani-runShSample
 
   - name: out-mani-runShSample
     type: manifest
