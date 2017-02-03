@@ -7,13 +7,13 @@ jobs:
       - IN: simple-image-runShSample
       - IN: myParams-runShSample
 
-  - name: kube-deploy-runshsample
-    type: deploy
-    flags:
-      - runShSample
-    steps:
-      - IN: kube-cluster-runShSample
-      - IN: simple-mani-runShSample
+  # - name: kube-deploy-runshsample
+  #   type: deploy
+  #   flags:
+  #     - runShSample
+  #   steps:
+  #     - IN: kube-cluster-runShSample
+  #     - IN: simple-mani-runShSample
 
   - name: out-mani-runShSample
     type: manifest
