@@ -45,7 +45,7 @@ jobs:
     flags:
       - runShSample
     steps:
-      - IN: myKubeConfig
+      - IN: kube-cli-config-runShSample
       - TASK:
         - script: kubectl get pods --all-namespaces
 
