@@ -52,7 +52,7 @@ jobs:
         - script: cat /build/state/testOutImage-runCLISample.env
         - script: cat /build/state/runShCheck-runCLISample.env
         - script: ls -latr /build/IN/simple-release-runCLISample/release
-        - script: cat $RUNSHCHECKrunCLISample_PATH/message.json | jq '.'
+        - script: cat $RUNSHCHECKRUNCLISAMPLE_PATH/message.json | jq '.'
         - script: aws ec2 describe-vpcs
 
     on_failure:
