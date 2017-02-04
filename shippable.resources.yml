@@ -1,57 +1,51 @@
 resources:
-  - name: testOutImage-runShSample
+  - name: testOutImage-runclisample
     type: image
     flags:
-      - runShSample
+      - runclisample
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/msgbase"
     seed:
       versionName: "latest"
 
-  - name: simple-version-runShSample
+  - name: simple-version-runclisample
     type: version
     flags:
-      - runShSample
+      - runclisample
     seed:
       versionName: 1.0.0
 
-  - name: kube-cli-config-runShSample
+  - name: kube-cli-config-runclisample
     type: cliConfig
     flags:
-      - runShSample
+      - runclisample
     integration: kube
 
-  - name: kube-cluster-runShSample
-    type: cluster
-    flags:
-      - runShSample
-    integration: kube
-
-  - name: myParams-runShSample
+  - name: myParams-runclisample
     type: params
     flags:
-      - runShSample
+      - runclisample
     version:
       params:
         hello: world
         test: 123
 #        secure: A3OCCNyoIqC05NyP9Gy4Edq7bi8TC2KIav7/wlkNEJov0WHs90miT72rXwaiq5ExCQ28hgQ6uHxCOqihCVznwZylq5khHgN2zEPZuTvzF2KrzVzTu69XaDSlKgGuvMdNnAcnH4BOivqzwBWO2yJnmf4Wi5UpS1OLKziYH5akvHqswqEO/+A8cdUYnKaYvTLMALYGI4WeKZrng8Ry9LXjRN2WEDkkRmHZgpxFBrmVbAxGScrpnsOs7lpPoBibQ9fHOq5DgOtiqVFqXc55rZRI0q0ZKJwzSmxdTkp7pJuT+WJ7BfJQpcHObjnL0C0QuKyKKg2eLZ/QDwce3pctZUHBSA==
 
-  - name: simple-image-runShSample
+  - name: simple-image-runclisample
     type: image
     flags:
-      - runShSample
+      - runclisample
     integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
       versionName: "master.58"
 
-  - name: myRepo-runShSample
+  - name: myRepo-runclisample
     type: gitRepo
     flags:
-      - runShSample
+      - runclisample
     integration: "trriplejay github"
     pointer:
       sourceName: trriplejay/simpleserver

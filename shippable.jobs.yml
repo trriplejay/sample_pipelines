@@ -1,75 +1,59 @@
 jobs:
-  - name: simple-mani-runShSample
+  - name: simple-mani-runclisample
     type: manifest
     flags:
-      - runShSample
+      - runclisample
     steps:
-      - IN: simple-image-runShSample
-      - IN: myParams-runShSample
+      - IN: simple-image-runclisample
+      - IN: myParams-runclisample
 
-  - name: kube-deploy-test-runshsample
-    type: deploy
-    flags:
-      - runShSample
-    steps:
-      - IN: kube-cluster-runShSample
-      - IN: simple-mani-runShSample
-
-  - name: out-mani-runShSample
+  - name: out-mani-runclisample
     type: manifest
     flags:
-      - runShSample
+      - runclisample
     steps:
-      - IN: simple-image-runShSample
+      - IN: simple-image-runclisample
 
-  - name: test-mani-runShSample
+  - name: test-mani-runclisample
     type: manifest
     flags:
-      - runShSample
+      - runclisample
     steps:
-      - IN: testOutImage-runShSample
+      - IN: testOutImage-runclisample
 
 
-  - name: simple-release-runShSample
+  - name: simple-release-runclisample
     type: release
     flags:
-      - runShSample
+      - runclisample
     steps:
-      - IN: simple-mani-runShSample
-      - IN: simple-version-runShSample
+      - IN: simple-mani-runclisample
+      - IN: simple-version-runclisample
       - TASK: managed
         bump: patch
 
-  - name: runCLItest-runShSample
+  - name: runShCheck-runclisample
     type: runCLI
     flags:
-      - runShSample
+      - runclisample
     steps:
-      - IN: kube-cli-config-runShSample
-      - TASK:
-        - script: kubectl get pods --all-namespaces
-
-  - name: runShCheck-runShSample
-    type: runSh
-    flags:
-      - runShSample
-    steps:
-      - IN: stagingTrigger-runShSample
-      - IN: simple-release-runShSample
-      - IN: myRepo-runShSample
-      - OUT: testOutImage-runShSample
-      - OUT: out-mani-runShSample
+      - IN: stagingTrigger-runclisample
+      - IN: simple-release-runclisample
+      - IN: kube-cli-config-runclisample
+      - OUT: testOutImage-runclisample
+      - OUT: out-mani-runclisample
       - TASK:
         - script: echo "resource ID is $RESOURCE_ID"
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
-        - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
+        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runclisample.env
+        - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runclisample.env
+        - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runclisample.env
         - script: sudo apt-get install -y jq
         - script: ls -latr /build/state
-        - script: cat /build/state/testOutImage-runShSample.env
-        - script: cat /build/state/runShCheck-runShSample.env
-        - script: ls -latr /build/IN/simple-release-runShSample/release
-        - script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
+        - script: cat /build/state/testOutImage-runclisample.env
+        - script: cat /build/state/runShCheck-runclisample.env
+        - script: ls -latr /build/IN/simple-release-runclisample/release
+        - script: cat $RUNSHCHECKrunclisample_PATH/message.json | jq '.'
+        - script: kubectl get pods --all-namespaces
 
     on_failure:
       - script: echo "something failed"
