@@ -7,7 +7,7 @@ jobs:
       - IN: simple-image-runShSample
       - IN: myParams-runShSample
 
-  - name: kube-deploy-runshsample
+  - name: kube-deploy-test-runshsample
     type: deploy
     flags:
       - runShSample
