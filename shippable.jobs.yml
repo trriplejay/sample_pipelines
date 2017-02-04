@@ -1,59 +1,59 @@
 jobs:
-  - name: simple-mani-runclisample
+  - name: simple-mani-runCLISample
     type: manifest
     flags:
-      - runclisample
+      - runCLISample
     steps:
-      - IN: simple-image-runclisample
-      - IN: myParams-runclisample
+      - IN: simple-image-runCLISample
+      - IN: myParams-runCLISample
 
-  - name: out-mani-runclisample
+  - name: out-mani-runCLISample
     type: manifest
     flags:
-      - runclisample
+      - runCLISample
     steps:
-      - IN: simple-image-runclisample
+      - IN: simple-image-runCLISample
 
-  - name: test-mani-runclisample
+  - name: test-mani-runCLISample
     type: manifest
     flags:
-      - runclisample
+      - runCLISample
     steps:
-      - IN: testOutImage-runclisample
+      - IN: testOutImage-runCLISample
 
 
-  - name: simple-release-runclisample
+  - name: simple-release-runCLISample
     type: release
     flags:
-      - runclisample
+      - runCLISample
     steps:
-      - IN: simple-mani-runclisample
-      - IN: simple-version-runclisample
+      - IN: simple-mani-runCLISample
+      - IN: simple-version-runCLISample
       - TASK: managed
         bump: patch
 
-  - name: runShCheck-runclisample
+  - name: runShCheck-runCLISample
     type: runCLI
     flags:
-      - runclisample
+      - runCLISample
     steps:
-      - IN: stagingTrigger-runclisample
-      - IN: simple-release-runclisample
-      - IN: kube-cli-config-runclisample
-      - OUT: testOutImage-runclisample
-      - OUT: out-mani-runclisample
+      - IN: stagingTrigger-runCLISample
+      - IN: simple-release-runCLISample
+      - IN: myConfig-runCLIsample
+      - OUT: testOutImage-runCLISample
+      - OUT: out-mani-runCLISample
       - TASK:
         - script: echo "resource ID is $RESOURCE_ID"
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runclisample.env
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runclisample.env
-        - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runclisample.env
+        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runCLISample.env
+        - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runCLISample.env
+        - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runCLISample.env
         - script: sudo apt-get install -y jq
         - script: ls -latr /build/state
-        - script: cat /build/state/testOutImage-runclisample.env
-        - script: cat /build/state/runShCheck-runclisample.env
-        - script: ls -latr /build/IN/simple-release-runclisample/release
-        - script: cat $RUNSHCHECKrunclisample_PATH/message.json | jq '.'
-        - script: kubectl get pods --all-namespaces
+        - script: cat /build/state/testOutImage-runCLISample.env
+        - script: cat /build/state/runShCheck-runCLISample.env
+        - script: ls -latr /build/IN/simple-release-runCLISample/release
+        - script: cat $RUNSHCHECKrunCLISample_PATH/message.json | jq '.'
+        - script: aws ec2 describe-vpcs
 
     on_failure:
       - script: echo "something failed"
