@@ -58,6 +58,7 @@ jobs:
       - IN: simple-release-runShSample
       #- IN: myRepo-runShSample
       - IN: myParams-runShSample
+      - IN: test-docker-op
       - OUT: testOutImage-runShSample
       #- OUT: out-mani-runShSample
       - TASK:

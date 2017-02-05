@@ -28,6 +28,13 @@ resources:
       - runShSample
     integration: kube
 
+  - name: test-docker-op
+    type: dockerOptions
+    flags:
+      - runShSample
+    version:
+      cpuShares: 5
+
   - name: myParams-runShSample
     type: params
     flags:
