@@ -57,6 +57,7 @@ jobs:
       - IN: stagingTrigger-runShSample
       - IN: simple-release-runShSample
       - IN: myRepo-runShSample
+      - IN: myParams-runShSample
       - OUT: testOutImage-runShSample
       - OUT: out-mani-runShSample
       - TASK:
@@ -69,7 +70,8 @@ jobs:
         - script: cat /build/state/testOutImage-runShSample.env
         - script: cat /build/state/runShCheck-runShSample.env
         - script: ls -latr /build/IN/simple-release-runShSample/release
-        - script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
+        #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
+        - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params | jq '.'
 
     on_failure:
       - script: echo "something failed"
