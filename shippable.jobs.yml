@@ -72,7 +72,7 @@ jobs:
         - script: ls -latr /build/IN/simple-release-runShSample/release
         #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
         - script: ls -latr IN/myParams-runShSample
-        - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params | jq '.'
+        - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
 
     on_failure:
       - script: echo "something failed"
