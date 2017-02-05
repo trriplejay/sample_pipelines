@@ -34,6 +34,7 @@ resources:
       - runShSample
     version:
       cpuShares: 5
+      memory: 300
 
   - name: myParams-runShSample
     type: params

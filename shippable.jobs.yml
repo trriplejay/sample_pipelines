@@ -74,6 +74,7 @@ jobs:
         #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
         - script: ls -latr IN/myParams-runShSample
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
+        - script: cat IN/test-docker-op/version.json | jq '.'
 
     on_failure:
       - script: echo "something failed"
