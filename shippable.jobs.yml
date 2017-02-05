@@ -71,6 +71,7 @@ jobs:
         - script: cat /build/state/runShCheck-runShSample.env
         - script: ls -latr /build/IN/simple-release-runShSample/release
         #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
+        - script: ls -latr /IN/myParams-runShSample
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params | jq '.'
 
     on_failure:
