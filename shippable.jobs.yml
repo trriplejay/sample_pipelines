@@ -56,10 +56,10 @@ jobs:
     steps:
       - IN: stagingTrigger-runShSample
       - IN: simple-release-runShSample
-      - IN: myRepo-runShSample
+      #- IN: myRepo-runShSample
       - IN: myParams-runShSample
       - OUT: testOutImage-runShSample
-      - OUT: out-mani-runShSample
+      #- OUT: out-mani-runShSample
       - TASK:
         - script: echo "resource ID is $RESOURCE_ID"
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
