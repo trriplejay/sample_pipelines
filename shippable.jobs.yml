@@ -13,6 +13,7 @@ jobs:
       - runShSample
     steps:
       - OUT: simple-image-runShSample
+      - OUT: myParams-runShSample
 
   - name: kube-deploy-test-runshsample
     type: deploy
