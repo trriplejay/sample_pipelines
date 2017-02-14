@@ -15,14 +15,6 @@ jobs:
       - OUT: simple-image-runShSample
       - OUT: myParams-runShSample
 
-  - name: kube-deploy-test-runshsample
-    type: deploy
-    flags:
-      - runShSample
-    steps:
-      - IN: kube-cluster-runShSample
-      - IN: simple-mani-runShSample
-
   - name: out-mani-runShSample
     type: manifest
     flags:
@@ -47,15 +39,6 @@ jobs:
       - IN: simple-version-runShSample
       - TASK: managed
         bump: patch
-
-  - name: runCLItest-runShSample
-    type: runCLI
-    flags:
-      - runShSample
-    steps:
-      - IN: kube-cli-config-runShSample
-      - TASK:
-        - script: kubectl get pods --all-namespaces
 
   - name: runShCheck-runShSample
     type: runSh

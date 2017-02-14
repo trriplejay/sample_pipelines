@@ -16,18 +16,6 @@ resources:
     seed:
       versionName: 1.0.0
 
-  - name: kube-cli-config-runShSample
-    type: cliConfig
-    flags:
-      - runShSample
-    integration: kube
-
-  - name: kube-cluster-runShSample
-    type: cluster
-    flags:
-      - runShSample
-    integration: kube
-
   - name: test-docker-op
     type: dockerOptions
     flags:
