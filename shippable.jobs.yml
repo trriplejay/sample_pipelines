@@ -6,7 +6,13 @@ jobs:
     steps:
       - IN: simple-image-runShSample
       - IN: myParams-runShSample
-      - IN: sample_python_runCI
+
+  - name: sample_python_runCI
+    type: runCI
+    flags:
+      - runShSample
+    steps:
+      - OUT: simple-image-runShSample
 
   - name: kube-deploy-test-runshsample
     type: deploy
