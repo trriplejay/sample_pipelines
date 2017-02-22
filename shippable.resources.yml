@@ -1,68 +1,20 @@
 resources:
-  - name: testOutImage-runShSample
-    type: image
-    flags:
-      - runShSample
-    integration: "trriplejay docker hub"
-    pointer:
-      sourceName: "trriplejay/msgbase"
-    seed:
-      versionName: "latest"
-
-  - name: simple-version-runShSample
+  - name: rel-ver
     type: version
-    flags:
-      - runShSample
     seed:
-      versionName: 1.0.0
+      versionName: v1.0.0
 
-  - name: test-docker-op
-    type: dockerOptions
-    flags:
-      - runShSample
-    version:
-      cpuShares: 5
-      memory: 300
-
-  - name: myParams-runShSample
-    type: params
-    flags:
-      - runShSample
-    version:
-      params:
-        hello: world
-        test: 123
-#        secure: A3OCCNyoIqC05NyP9Gy4Edq7bi8TC2KIav7/wlkNEJov0WHs90miT72rXwaiq5ExCQ28hgQ6uHxCOqihCVznwZylq5khHgN2zEPZuTvzF2KrzVzTu69XaDSlKgGuvMdNnAcnH4BOivqzwBWO2yJnmf4Wi5UpS1OLKziYH5akvHqswqEO/+A8cdUYnKaYvTLMALYGI4WeKZrng8Ry9LXjRN2WEDkkRmHZgpxFBrmVbAxGScrpnsOs7lpPoBibQ9fHOq5DgOtiqVFqXc55rZRI0q0ZKJwzSmxdTkp7pJuT+WJ7BfJQpcHObjnL0C0QuKyKKg2eLZ/QDwce3pctZUHBSA==
-
-  - name: simple-image-runShSample
-    type: image
-    flags:
-      - runShSample
-    integration: "trriplejay docker hub"
-    pointer:
-      sourceName: "trriplejay/simpleserver"
+  - name: trigger-2
+    type: time
     seed:
-      versionName: "master.58"
+      interval: "*/2 * * * *"
 
-  - name: myRepo-runShSample
-    type: gitRepo
-    flags:
-      - runShSample
-    integration: "trriplejay github"
-    pointer:
-      sourceName: trriplejay/simpleserver
-      branches:
-        only:
-          - master
+  - name: trigger-3
+    type: time
+    seed:
+      interval: "*/3 * * * *"
 
-  - name: my_ssh
-    type: integration
-    flags:
-      - runShSample
-    integration: "test-ssh"
-
-  - name: my_pem
-    type: integration
-    flags:
-      - runShSample
-    integration: "test-pem"
+  - name: trigger-5
+    type: time
+    seed:
+      interval: "*/5 * * * *"

@@ -1,81 +1,8 @@
 jobs:
-  - name: simple-mani-runShSample
-    type: manifest
-    flags:
-      - runShSample
-    steps:
-      # - IN: simple-image-runShSample
-      # - IN: myParams-runShSample
-      - IN: sample_python_runCI
-
-  - name: sample_python_runCI
-    type: runCI
-    flags:
-      - runShSample
-    steps:
-      - OUT: simple-image-runShSample
-      - OUT: myParams-runShSample
-
-  - name: out-mani-runShSample
-    type: manifest
-    flags:
-      - runShSample
-    steps:
-      - IN: simple-image-runShSample
-
-  - name: test-mani-runShSample
-    type: manifest
-    flags:
-      - runShSample
-    steps:
-      - IN: testOutImage-runShSample
-
-
-  - name: simple-release-runShSample
+  - name: my-frequent-release
     type: release
-    flags:
-      - runShSample
     steps:
-      - IN: simple-mani-runShSample
-      - IN: simple-version-runShSample
-      - TASK: managed
-        bump: patch
-
-  - name: runShCheck-runShSample
-    type: runSh
-    flags:
-      - runShSample
-    steps:
-      - IN: stagingTrigger-runShSample
-      - IN: simple-release-runShSample
-      #- IN: myRepo-runShSample
-      - IN: myParams-runShSample
-      - IN: my_ssh
-      - IN: my_pem
-      - IN: test-docker-op
-      - OUT: testOutImage-runShSample
-      #- OUT: out-mani-runShSample
-      - TASK:
-        - script: echo "resource ID is $RESOURCE_ID"
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
-        - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
-        - script: sudo apt-get install -y jq
-        - script: ls -latr /build/state
-        - script: cat /build/state/testOutImage-runShSample.env
-        - script: cat /build/state/runShCheck-runShSample.env
-        - script: ls -latr /build/IN/simple-release-runShSample/release
-        #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
-        - script: ls -latr IN/myParams-runShSample
-        - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
-        - script: cat IN/test-docker-op/version.json | jq '.'
-        - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
-        - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
-        - script: ssh-add $MY_SSH_KEYPATH
-        - script: ls -a $MY_SSH_PATH
-        - script: ls -a $MY_PEM_PATH
-        
-    on_failure:
-      - script: echo "something failed"
-    on_success:
-      - script: echo "yay it worked"
+      - IN: rel-ver
+      - IN: trigger-2
+      - IN: trigger-3
+      - IN: trigger-5
