@@ -1,20 +1,28 @@
 resources:
   - name: rel-ver
     type: version
+    flags:
+      - timeTrigger
     seed:
       versionName: v1.0.0
 
   - name: trigger-2
     type: time
+    flags:
+      - timeTrigger
     seed:
       interval: "*/2 * * * *"
 
   - name: trigger-3
     type: time
+    flags:
+      - timeTrigger
     seed:
       interval: "*/3 * * * *"
 
   - name: trigger-5
     type: time
+    flags:
+      - timeTrigger
     seed:
       interval: "*/5 * * * *"

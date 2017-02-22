@@ -1,6 +1,8 @@
 jobs:
   - name: my-frequent-release
     type: release
+    flags:
+      - timeTrigger
     steps:
       - IN: rel-ver
       - IN: trigger-2
