@@ -72,9 +72,9 @@ jobs:
         - script: cat IN/test-docker-op/version.json | jq '.'
         - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
         - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
-        - script: ssh-add $MY_SSH_KEYPATH
         - script: ls -a $MY_SSH_PATH
         - script: ls -a $MY_PEM_PATH
+        - script: ssh-add $MY_SSH_KEYPATH
 
     on_failure:
       - script: echo "something failed"
