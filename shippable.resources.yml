@@ -54,3 +54,11 @@ resources:
       branches:
         only:
           - master
+
+  - name: my_ssh
+    type: integration
+    integration: "test-ssh"
+
+  - name: my_pem
+    type: integration
+    integration: "test-pem"

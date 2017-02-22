@@ -50,6 +50,8 @@ jobs:
       - IN: simple-release-runShSample
       #- IN: myRepo-runShSample
       - IN: myParams-runShSample
+      - IN: my_ssh
+      - IN: my_pem
       - IN: test-docker-op
       - OUT: testOutImage-runShSample
       #- OUT: out-mani-runShSample
@@ -67,6 +69,10 @@ jobs:
         - script: ls -latr IN/myParams-runShSample
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
         - script: cat IN/test-docker-op/version.json | jq '.'
+        - script: echo "ssh keyfile location is: $MY_SSH_KEYFILE"
+        - script: echo "pem keyfile location is: $MY_PEM_KEYFILE"
+        - script: ls -a $MY_SSH_PATH
+        - script: ls -a $MY_PEM_PATH
 
     on_failure:
       - script: echo "something failed"
