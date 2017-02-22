@@ -60,6 +60,7 @@ jobs:
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
         - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
+        - script: sudo docker ps
         - script: sudo apt-get install -y jq
         - script: ls -latr /build/state
         - script: cat /build/state/testOutImage-runShSample.env
@@ -74,7 +75,7 @@ jobs:
         - script: ssh-add $MY_SSH_KEYPATH
         - script: ls -a $MY_SSH_PATH
         - script: ls -a $MY_PEM_PATH
-        
+
     on_failure:
       - script: echo "something failed"
     on_success:
