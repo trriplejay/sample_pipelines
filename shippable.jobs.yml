@@ -69,12 +69,12 @@ jobs:
         - script: ls -latr IN/myParams-runShSample
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
         - script: cat IN/test-docker-op/version.json | jq '.'
-        - script: 'echo "ssh keyfile location is: $MY_SSH_KEYFILE"'
-        - script: 'echo "pem keyfile location is: $MY_PEM_KEYFILE"'
+        - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
+        - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
         - script: ls -a $MY_SSH_PATH
         - script: ls -a $MY_PEM_PATH
-        - script: cat $MY_SSH_PATH/integration.json | jq '.'
-        - script: cat $MY_PEM_PATH/integration.json | jq '.'
+        - script: cat $MY_SSH_KEYPATH
+        - script: cat $MY_PEM_KEYPATH
 
     on_failure:
       - script: echo "something failed"
