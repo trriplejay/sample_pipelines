@@ -73,6 +73,8 @@ jobs:
         - script: echo "pem keyfile location is: $MY_PEM_KEYFILE"
         - script: ls -a $MY_SSH_PATH
         - script: ls -a $MY_PEM_PATH
+        - script: cat $MY_SSH_PATH/integration.json | jq '.'
+        - script: cat $MY_PEM_PATH/integration.json | jq '.'
 
     on_failure:
       - script: echo "something failed"
