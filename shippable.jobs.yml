@@ -65,6 +65,7 @@ jobs:
         - script: sudo apt-get install -y jq
         - script: ls -latr /build/state
         - script: cat /build/state/testOutImage-runShSample.env
+        - script: which envsubst
         - script: cat /build/state/runShCheck-runShSample.env
         - script: ls -latr /build/IN/simple-release-runShSample/release
         #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
