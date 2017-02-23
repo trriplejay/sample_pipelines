@@ -14,7 +14,7 @@ resources:
     flags:
       - runCLISample
     seed:
-      versionName: 1.0.0
+      versionName: 2.0.0
 
   - name: myConfig-runCLIsample
     type: cliConfig
