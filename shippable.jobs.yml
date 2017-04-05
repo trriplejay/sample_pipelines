@@ -32,6 +32,37 @@ jobs:
       - TASK: managed
         bump: patch
 
+  - name: runCLIaws-runCLISample
+    type: runCLI
+    flags:
+      - runCLISample
+    steps:
+      - IN: myConfig-runCLIsample
+      - TASK:
+        - script: aws ec2 describe-vpcs
+    on_success:
+      - script: aws ec2 describe-vpcs
+    on_failure:
+      - script: aws ec2 describe-vpcs
+    always:
+      - script: aws ec2 describe-vpcs
+
+  - name: runShaws-runCLISample
+    type: runSh
+    flags:
+      - runCLISample
+    steps:
+      - IN: runCLIaws-runCLISample
+      - IN: myConfig-runCLIsample
+      - TASK:
+        - script: aws ec2 describe-vpcs
+    on_success:
+      - script: aws ec2 describe-vpcs
+    on_failure:
+      - script: aws ec2 describe-vpcs
+    always:
+      - script: aws ec2 describe-vpcs
+
   - name: runShCheck-runCLISample
     type: runCLI
     flags:
