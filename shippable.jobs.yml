@@ -26,7 +26,7 @@ jobs:
     steps:
       - IN: simple-mani-deploy
       # - IN: nginx-mani-deploy
-      - IN: myGkeCluster
+      - IN: myGkeCluster-deploy
 
   - name: staging-deploy-B1-deploy
     type: deploy
@@ -35,7 +35,7 @@ jobs:
     steps:
       - IN: simple-mani-deploy
       - IN: nginx-mani-deploy
-      - IN: myGkeCluster
+      - IN: myGkeCluster-deploy
       - TASK: managed
         deployMethod: blueGreen
 
@@ -45,7 +45,7 @@ jobs:
       - deploy
     steps:
       - IN: nginx-mani-deploy
-      - IN: myGkeCluster
+      - IN: myGkeCluster-deploy
 
   - name: prod-deploy-A-deploy
     type: deploy
@@ -54,7 +54,7 @@ jobs:
     steps:
       - IN: staging-deploy-A-deploy
         switch: off
-      - IN: myGkeCluster
+      - IN: myGkeCluster-deploy
 
   - name: prod-deploy-B-deploy
     type: deploy
@@ -65,4 +65,4 @@ jobs:
         switch: off
       - IN: staging-deploy-B2-deploy
         switch: off
-      - IN: myGkeCluster
+      - IN: myGkeCluster-deploy

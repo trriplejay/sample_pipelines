@@ -81,13 +81,13 @@ resources:
     version:
       count: 2
 
-  - name: myDdcCluster
+  - name: myDdcCluster-deploy
     type: cluster
     integration: "shippable test ddc"
     pointer:
       sourceName: "blah"
 
-  - name: myGkeCluster
+  - name: myGkeCluster-deploy
     type: cluster
     integration: "trriplejay gke"
     pointer:
