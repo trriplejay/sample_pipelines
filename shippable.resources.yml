@@ -24,6 +24,12 @@ resources:
     pointer:
       region: us-west-2
 
+  - name: dockerconfig-runCLIsample
+    type: cliConfig
+    flags:
+      - runCLISample
+    integration: "trriplejay docker hub"
+
   - name: myParams-runCLISample
     type: params
     flags:
@@ -33,6 +39,7 @@ resources:
         hello: world
         test: 123
 #        secure: A3OCCNyoIqC05NyP9Gy4Edq7bi8TC2KIav7/wlkNEJov0WHs90miT72rXwaiq5ExCQ28hgQ6uHxCOqihCVznwZylq5khHgN2zEPZuTvzF2KrzVzTu69XaDSlKgGuvMdNnAcnH4BOivqzwBWO2yJnmf4Wi5UpS1OLKziYH5akvHqswqEO/+A8cdUYnKaYvTLMALYGI4WeKZrng8Ry9LXjRN2WEDkkRmHZgpxFBrmVbAxGScrpnsOs7lpPoBibQ9fHOq5DgOtiqVFqXc55rZRI0q0ZKJwzSmxdTkp7pJuT+WJ7BfJQpcHObjnL0C0QuKyKKg2eLZ/QDwce3pctZUHBSA==
+
 
   - name: simple-image-runCLISample
     type: image
