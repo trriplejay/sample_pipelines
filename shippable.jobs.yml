@@ -41,17 +41,17 @@ jobs:
       - IN: dockerconfig-runCLIsample
       - TASK:
         - script: aws ec2 describe-vpcs
-#        - script: docker pull trriplejay/simpleserver:master.142
-#        - script: docker push trriplejay/simpleserver:master.142
+        - script: docker pull trriplejay/privateimg:latest
+        - script: docker push trriplejay/privateimg:latest
     on_success:
       - script: aws ec2 describe-vpcs
-      #- script: docker push trriplejay/simpleserver:master.142
+      - script: docker push trriplejay/privateimg:latest
     on_failure:
       - script: aws ec2 describe-vpcs
-      #- script: docker push trriplejay/simpleserver:master.142
+      - script: docker push trriplejay/privateimg:latest
     always:
       - script: aws ec2 describe-vpcs
-      #- script: docker push trriplejay/simpleserver:master.142
+      - script: docker push trriplejay/privateimg:latest
 
   - name: runShaws-runCLISample
     type: runSh
@@ -59,15 +59,19 @@ jobs:
       - runCLISample
     steps:
       - IN: runCLIaws-runCLISample
-      - IN: dockerconfig-runCLIsample
       - TASK:
         - script: aws ec2 describe-vpcs
+        - script: docker pull trriplejay/privateimg:latest
+        - script: docker push trriplejay/privateimg:latest
     on_success:
       - script: aws ec2 describe-vpcs
+      - script: docker push trriplejay/privateimg:latest
     on_failure:
       - script: aws ec2 describe-vpcs
+      - script: docker push trriplejay/privateimg:latest
     always:
       - script: aws ec2 describe-vpcs
+      - script: docker push trriplejay/privateimg:latest
 
   - name: runShCheck-runCLISample
     type: runCLI
