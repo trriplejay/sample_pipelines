@@ -53,12 +53,34 @@ jobs:
       - script: aws ec2 describe-vpcs
       - script: docker push trriplejay/privateimg:latest
 
+  - name: runCLIecr-runCLISample
+    type: runCLI
+    flags:
+      - runCLISample
+    steps:
+      - IN: dockerconfig-runCLIsample
+      - IN: ecrconfig-runCLIsample
+      - TASK:
+        - script: aws ec2 describe-vpcs
+        - script: docker pull 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+        - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+    on_success:
+      - script: aws ec2 describe-vpcs
+      - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+    on_failure:
+      - script: aws ec2 describe-vpcs
+      - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+    always:
+      - script: aws ec2 describe-vpcs
+      - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+
   - name: runShaws-runCLISample
     type: runSh
     flags:
       - runCLISample
     steps:
       - IN: runCLIaws-runCLISample
+      - IN: runCLIecr-runCLISample
       - TASK:
         - script: aws ec2 describe-vpcs
     on_success:
@@ -74,6 +96,7 @@ jobs:
       - runCLISample
     steps:
       - IN: runCLIaws-runCLISample
+      - IN: runCLIecr-runCLISample
       - TASK:
         - script: docker pull trriplejay/privateimg:latest
         - script: docker push trriplejay/privateimg:latest

@@ -30,6 +30,15 @@ resources:
       - runCLISample
     integration: "trriplejay docker hub"
 
+  - name: ecrconfig-runCLIsample
+    type: cliConfig
+    flags:
+      - runCLISample
+    integration: "trriplejay ecr"
+    pointer:
+      region:
+        us-west-2
+
   - name: myParams-runCLISample
     type: params
     flags:
