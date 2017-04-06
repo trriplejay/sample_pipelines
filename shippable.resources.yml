@@ -39,6 +39,12 @@ resources:
       region:
         us-west-2
 
+  - name: kubeconfig-runCLIsample
+    type: cliConfig
+    flags:
+      - runCLISample
+    integration: "trriplejay kube"
+
   - name: myParams-runCLISample
     type: params
     flags:

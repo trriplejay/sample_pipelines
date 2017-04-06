@@ -32,26 +32,42 @@ jobs:
       - TASK: managed
         bump: patch
 
-  - name: runCLIaws-runCLISample
+  - name: runCLIkube-runCLISample
     type: runCLI
     flags:
       - runCLISample
     steps:
-      - IN: myConfig-runCLIsample
-      - IN: dockerconfig-runCLIsample
+      - IN: kubeconfig-runCLIsample
       - TASK:
-        - script: aws ec2 describe-vpcs
-        - script: docker pull trriplejay/privateimg:latest
-        - script: docker push trriplejay/privateimg:latest
+        - script: kubectl get namespaces
     on_success:
-      - script: aws ec2 describe-vpcs
-      - script: docker push trriplejay/privateimg:latest
+      - script: kubectl get namespaces
     on_failure:
-      - script: aws ec2 describe-vpcs
-      - script: docker push trriplejay/privateimg:latest
+      - script: kubectl get namespaces
     always:
-      - script: aws ec2 describe-vpcs
-      - script: docker push trriplejay/privateimg:latest
+      - script: kubectl get namespaces
+
+    - name: runCLIaws-runCLISample
+      type: runCLI
+      flags:
+        - runCLISample
+      steps:
+        - IN: myConfig-runCLIsample
+        - IN: dockerconfig-runCLIsample
+        - TASK:
+          - script: aws ec2 describe-vpcs
+          - script: docker pull trriplejay/privateimg:latest
+          - script: docker push trriplejay/privateimg:latest
+      on_success:
+        - script: aws ec2 describe-vpcs
+        - script: docker push trriplejay/privateimg:latest
+      on_failure:
+        - script: aws ec2 describe-vpcs
+        - script: docker push trriplejay/privateimg:latest
+      always:
+        - script: aws ec2 describe-vpcs
+        - script: docker push trriplejay/privateimg:latest
+
 
   - name: runCLIecr-runCLISample
     type: runCLI
@@ -89,6 +105,23 @@ jobs:
       - script: aws ec2 describe-vpcs
     always:
       - script: aws ec2 describe-vpcs
+
+  - name: runShkube-runCLISample
+    type: runSh
+    flags:
+      - runCLISample
+    steps:
+      - IN: runCLIaws-runCLISample
+      - IN: runCLIecr-runCLISample
+      - IN: runCLIkube-runCLISample
+      - TASK:
+        - script: gcloud config list
+    on_success:
+      - script: gcloud config list
+    on_failure:
+      - script: gcloud config list
+    always:
+      - script: gcloud config list
 
   - name: runShdocker-runCLISample
     type: runSh
