@@ -61,16 +61,27 @@ jobs:
       - IN: runCLIaws-runCLISample
       - TASK:
         - script: aws ec2 describe-vpcs
+    on_success:
+      - script: aws ec2 describe-vpcs
+    on_failure:
+      - script: aws ec2 describe-vpcs
+    always:
+      - script: aws ec2 describe-vpcs
+
+  - name: runShdocker-runCLISample
+    type: runSh
+    flags:
+      - runCLISample
+    steps:
+      - IN: runCLIaws-runCLISample
+      - TASK:
         - script: docker pull trriplejay/privateimg:latest
         - script: docker push trriplejay/privateimg:latest
     on_success:
-      - script: aws ec2 describe-vpcs
       - script: docker push trriplejay/privateimg:latest
     on_failure:
-      - script: aws ec2 describe-vpcs
       - script: docker push trriplejay/privateimg:latest
     always:
-      - script: aws ec2 describe-vpcs
       - script: docker push trriplejay/privateimg:latest
 
   - name: runShCheck-runCLISample
