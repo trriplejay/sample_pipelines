@@ -113,6 +113,8 @@ jobs:
     steps:
       - IN: runCLIecr-runCLISample
       - TASK:
+        - script: ls ~/.aws
+        - script: cat ~/.docker/.dockercfg || true
         - script: docker pull 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
         - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
     on_success:
