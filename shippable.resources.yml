@@ -75,6 +75,11 @@ resources:
         - "80:8888"
       labels:
         check: oneTwo
+        deployment:
+          template:
+            metadata:
+              labels:
+                checkcheck: oneTwoThreeFour
 
   - name: simpleReplicas-deploy
     type: replicas
