@@ -40,6 +40,7 @@ jobs:
       - IN: kubeconfig-runCLIsample
       - TASK:
         - script: kubectl get namespaces
+        - script: gcloud info
     on_success:
       - script: kubectl config view --minify
     on_failure:
@@ -47,6 +48,7 @@ jobs:
     always:
       - script: kubectl config view --minify
       - script: kubectl get namespaces
+      - script: gcloud info
 
   - name: runCLIaws-runCLISample
     type: runCLI
@@ -114,7 +116,8 @@ jobs:
     steps:
       - IN: runCLIkube-runCLISample
       - TASK:
-        - script: gcloud container cluster get-credentials cluster-1
+        - script: gcloud container clusters get-credentials cluster-1
+        - script: kubectl config view --minify
     on_success:
       - script: gcloud config list
     on_failure:
