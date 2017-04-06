@@ -96,7 +96,6 @@ jobs:
       - runCLISample
     steps:
       - IN: runCLIaws-runCLISample
-      - IN: runCLIecr-runCLISample
       - TASK:
         - script: docker pull trriplejay/privateimg:latest
         - script: docker push trriplejay/privateimg:latest
@@ -106,6 +105,22 @@ jobs:
       - script: docker push trriplejay/privateimg:latest
     always:
       - script: docker push trriplejay/privateimg:latest
+
+  - name: runShecr-runCLISample
+    type: runSh
+    flags:
+      - runCLISample
+    steps:
+      - IN: runCLIecr-runCLISample
+      - TASK:
+        - script: docker pull 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+        - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+    on_success:
+      - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+    on_failure:
+      - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
+    always:
+      - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
 
   - name: runShCheck-runCLISample
     type: runCLI
