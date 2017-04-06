@@ -111,8 +111,6 @@ jobs:
     flags:
       - runCLISample
     steps:
-      - IN: runCLIaws-runCLISample
-      - IN: runCLIecr-runCLISample
       - IN: runCLIkube-runCLISample
       - TASK:
         - script: gcloud config list
