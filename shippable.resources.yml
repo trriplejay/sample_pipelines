@@ -73,6 +73,8 @@ resources:
       memory: 64
       portMappings:
         - "80:8888"
+      labels:
+        check: oneTwo
 
   - name: simpleReplicas-deploy
     type: replicas
