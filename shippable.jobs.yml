@@ -124,6 +124,19 @@ jobs:
     always:
       - script: aws ec2 describe-vpcs
 
+  - name: runCLISuper-runCLISample
+    type: runCLI
+    flags:
+      - runCLISample
+    steps:
+      - IN: jfrogconfig-runCLIsample
+      - IN: dockerconfig-runCLIsample
+      - IN: ecrconfig-runCLIsample
+      - IN: myConfig-runCLIsample
+      - IN: kubeconfig-runCLIsample
+      - TASK:
+        - script: echo "hello world"
+
   - name: runShkube-runCLISample
     type: runSh
     flags:
