@@ -136,6 +136,11 @@ jobs:
       - IN: kubeconfig-runCLIsample
       - TASK:
         - script: echo "hello world"
+        - script: gcloud info
+        - script: jfrog rt config show
+        - script: kubectl get namespaces
+        - script: aws ec2 describe-vpcs
+        - script: docker pull trriplejay/privateimg
 
   - name: runShkube-runCLISample
     type: runSh
