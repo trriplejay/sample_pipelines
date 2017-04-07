@@ -123,6 +123,7 @@ jobs:
     on_failure:
       - script: gcloud config list
       - script: kubectl config view --minify
+      - script: kubectl get namespaces
     always:
       - script: gcloud info
 
