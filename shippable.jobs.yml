@@ -92,7 +92,7 @@ jobs:
     flags:
       - runCLISample
     steps:
-      - IN: dockerconfig-runCLIsample
+      #- IN: dockerconfig-runCLIsample
       - IN: ecrconfig-runCLIsample
       - TASK:
         - script: aws ec2 describe-vpcs
