@@ -57,13 +57,13 @@ jobs:
     steps:
       - IN: jfrogconfig-runCLIsample
       - TASK:
-        - script: jfrog rt show
+        - script: jfrog rt config show
     on_success:
-      - script: jfrog rt show
+      - script: jfrog rt config show
     on_failure:
-      - script: jfrog rt show
+      - script: jfrog rt config show
     always:
-      - script: jfrog rt show
+      - script: jfrog rt config show
 
   - name: runCLIaws-runCLISample
     type: runCLI
@@ -149,13 +149,13 @@ jobs:
     steps:
       - IN: runCLIjfrog-runCLISample
       - TASK:
-        - script: jfrog rt show
+        - script: jfrog rt config show
     on_success:
-      - script: jfrog rt show
+      - script: jfrog rt config show
     on_failure:
-      - script: jfrog rt show
+      - script: jfrog rt config show
     always:
-      - script: jfrog rt show
+      - script: jfrog rt config show
 
   - name: runShdocker-runCLISample
     type: runSh
