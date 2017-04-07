@@ -50,6 +50,21 @@ jobs:
       - script: kubectl get namespaces
       - script: gcloud info
 
+  - name: runCLIjfrog-runCLISample
+    type: runCLI
+    flags:
+      - runCLISample
+    steps:
+      - IN: jfrogconfig-runCLIsample
+      - TASK:
+        - script: jfrog rt show
+    on_success:
+      - script: jfrog rt show
+    on_failure:
+      - script: jfrog rt show
+    always:
+      - script: jfrog rt show
+
   - name: runCLIaws-runCLISample
     type: runCLI
     flags:
@@ -126,6 +141,21 @@ jobs:
       - script: kubectl get namespaces
     always:
       - script: gcloud info
+
+  - name: runShjfrog-runCLISample
+    type: runSh
+    flags:
+      - runCLISample
+    steps:
+      - IN: runCLIjfrog-runCLISample
+      - TASK:
+        - script: jfrog rt show
+    on_success:
+      - script: jfrog rt show
+    on_failure:
+      - script: jfrog rt show
+    always:
+      - script: jfrog rt show
 
   - name: runShdocker-runCLISample
     type: runSh

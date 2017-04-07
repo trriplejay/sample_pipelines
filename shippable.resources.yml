@@ -45,6 +45,12 @@ resources:
       - runCLISample
     integration: "trriplejay kube"
 
+  - name: jfrogconfig-runCLIsample
+    type: cliConfig
+    flags:
+      - runCLISample
+    integration: "trriplejay jfrog"
+
   - name: myParams-runCLISample
     type: params
     flags:
