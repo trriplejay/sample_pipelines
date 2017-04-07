@@ -92,11 +92,10 @@ jobs:
     flags:
       - runCLISample
     steps:
-      #- IN: dockerconfig-runCLIsample
+      - IN: dockerconfig-runCLIsample
       - IN: ecrconfig-runCLIsample
       - TASK:
         - script: aws ec2 describe-vpcs
-        - script: cat ~/.docker/config.json || true
         - script: docker pull 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
         - script: docker push 558099446733.dkr.ecr.us-west-2.amazonaws.com/trriplejay/privateimg:latest
     on_success:
