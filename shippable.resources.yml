@@ -3,7 +3,7 @@ resources:
     type: image
     integration: "trriplejay docker hub"
     pointer:
-      sourceName: "nginx"
+      sourceName: "library/nginx"
     seed:
       versionName: stable
 
