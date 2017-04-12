@@ -1,7 +1,8 @@
 jobs:
   - name: sample_jacoco_runCI
     type: runCI
-    flags: - runShSample
+    flags: 
+      - runShSample
     steps:
       - OUT: simple-image-runShSample
       
