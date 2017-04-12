@@ -1,4 +1,10 @@
 jobs:
+  - name: sample_jacoco_runCI
+    type: runCI
+    flags: - runShSample
+    steps:
+      - OUT: simple-image-runShSample
+      
   - name: simple-mani-runShSample
     type: manifest
     flags:
