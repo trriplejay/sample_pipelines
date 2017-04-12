@@ -2,6 +2,6 @@ resources:
   - name: dummyNestedResource
     type: image
     pointer:
-      sourceName: trriplejay/test123
+      sourceName: trriplejay/privateimg
     seed:
       versionName: "master.10"
