@@ -20,3 +20,27 @@ resources:
       sourceName: trriplejay/simpleserver
     seed:
       versionName: master.58
+
+
+  #################################
+  # Advanced resource configuration
+  #################################
+
+  - name: MyBasicOptions
+    type: dockerOptions
+    version:
+      memory: 100
+      portMappings:
+        - "80:8888"
+
+  - name: MyBasicParams
+    type: params
+    version:
+      params:
+        DB_URL: "http://example.com:5432"
+        MODE: "beta"
+
+  - name: MyBasicReplicas
+    type: replicas
+    version:
+      count: 2

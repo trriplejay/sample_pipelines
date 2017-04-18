@@ -9,6 +9,9 @@ jobs:
       - docs
     steps:
       - IN: MyAppImage
+      - IN: MyBasicOptions
+      - IN: MyBasicParams
+      - IN: MyBasicReplicas
 
   - name: DeployTo_cluster-test-1
     type: deploy
