@@ -17,6 +17,6 @@ resources:
     flags:
       - docs
     pointer:
-      sourceName: shippablesamples/samplepipelinesdemo
+      sourceName: trriplejay/simpleserver
     seed:
-      versionName: latest
+      versionName: master
