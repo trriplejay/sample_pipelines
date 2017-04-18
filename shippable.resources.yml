@@ -19,4 +19,4 @@ resources:
     pointer:
       sourceName: trriplejay/simpleserver
     seed:
-      versionName: master
+      versionName: master.58
