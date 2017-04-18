@@ -8,8 +8,8 @@ resources:
     flags:
       - docs
     integration: MyECSCredentials
-    source:
-      pointer: cluster-test-1
+    pointer:
+      sourceName: cluster-test-1
       region: us-west-2
 
   - name: MyAppImage
