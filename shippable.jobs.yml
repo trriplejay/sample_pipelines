@@ -5,11 +5,15 @@ jobs:
 
   - name: MyFirstManifest
     type: manifest
+    flags:
+      - docs
     steps:
       - IN: MyAppImage
 
   - name: DeployTo_cluster-test-1
     type: deploy
+    flags:
+      - docs
     steps:
       - IN: MyECSCluster
       - IN: MyFirstManifest
