@@ -5,6 +5,8 @@ resources:
 
   - name: MyECSCluster
     type: cluster
+    flags:
+      - docs
     integration: MyECSCredentials
     source:
       pointer: cluster-test-1
