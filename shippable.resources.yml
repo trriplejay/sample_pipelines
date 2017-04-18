@@ -1,84 +1,18 @@
 resources:
-  - name: testOutImage-runCLISample
-    type: image
-    flags:
-      - runCLISample
-    integration: "trriplejay docker hub"
-    pointer:
-      sourceName: "trriplejay/msgbase"
-    seed:
-      versionName: "latest"
+  #############################
+  # Basic resource configuration
+  #############################
 
-  - name: simple-version-runCLISample
-    type: version
-    flags:
-      - runCLISample
-    seed:
-      versionName: 2.0.0
-
-  - name: myConfig-runCLIsample
-    type: cliConfig
-    flags:
-      - runCLISample
-    integration: "trriplejay personal aws"
-    pointer:
+  - name: MyECSCluster
+    type: cluster
+    integration: MyECSCredentials
+    source:
+      pointer: cluster-test-1
       region: us-west-2
 
-  - name: dockerconfig-runCLIsample
-    type: cliConfig
-    flags:
-      - runCLISample
-    integration: "trriplejay docker hub"
-
-  - name: ecrconfig-runCLIsample
-    type: cliConfig
-    flags:
-      - runCLISample
-    integration: "trriplejay ecr"
-    pointer:
-      region:
-        us-west-2
-
-  - name: kubeconfig-runCLIsample
-    type: cliConfig
-    flags:
-      - runCLISample
-    integration: "trriplejay kube"
-
-  - name: jfrogconfig-runCLIsample
-    type: cliConfig
-    flags:
-      - runCLISample
-    integration: "trriplejay jfrog"
-
-  - name: myParams-runCLISample
-    type: params
-    flags:
-      - runCLISample
-    version:
-      params:
-        hello: world
-        test: 123
-#        secure: A3OCCNyoIqC05NyP9Gy4Edq7bi8TC2KIav7/wlkNEJov0WHs90miT72rXwaiq5ExCQ28hgQ6uHxCOqihCVznwZylq5khHgN2zEPZuTvzF2KrzVzTu69XaDSlKgGuvMdNnAcnH4BOivqzwBWO2yJnmf4Wi5UpS1OLKziYH5akvHqswqEO/+A8cdUYnKaYvTLMALYGI4WeKZrng8Ry9LXjRN2WEDkkRmHZgpxFBrmVbAxGScrpnsOs7lpPoBibQ9fHOq5DgOtiqVFqXc55rZRI0q0ZKJwzSmxdTkp7pJuT+WJ7BfJQpcHObjnL0C0QuKyKKg2eLZ/QDwce3pctZUHBSA==
-
-
-  - name: simple-image-runCLISample
+  - name: MyAppImage
     type: image
-    flags:
-      - runCLISample
-    integration: "trriplejay docker hub"
     pointer:
-      sourceName: "trriplejay/simpleserver"
+      sourceName: shippablesamples/samplepipelinesdemo
     seed:
-      versionName: "master.58"
-
-  - name: myRepo-runCLISample
-    type: gitRepo
-    flags:
-      - runCLISample
-    integration: "trriplejay github"
-    pointer:
-      sourceName: trriplejay/simpleserver
-      branches:
-        only:
-          - master
+      versionName: latest

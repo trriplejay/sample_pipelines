@@ -1,7 +1,0 @@
-triggers:
-  - name: stagingTrigger-runCLISample
-    type: trigger
-    flags:
-      - runCLISample
-    version:
-      message: 'trigger runShSteps: 1'
