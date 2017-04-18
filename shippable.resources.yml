@@ -30,9 +30,7 @@ resources:
     type: dockerOptions
     version:
       memory: 100
-      portMappings:
-        - "80:8888"
-
+      
   - name: MyBasicParams
     type: params
     version:
