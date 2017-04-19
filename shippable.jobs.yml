@@ -9,6 +9,6 @@ jobs:
       - IN: MyStaticTaskDefRepo
       - TASK:
         - script: aws ecs describe-clusters
-        - scrpit: cat ${MYSTATICTASKDEFREPO_PATH}/taskdefinitions/sample.json
+        - scrpit: cat ${MYSTATICTASKDEFREPO_PATH}/taskdefinitions/sample.json | jq '.'
         - script: aws ecs register-task-definition --cli-input-json ${MYSTATICTASKDEFREPO_PATH}/taskdefinitions/sample.json
         #- script: aws ecs create-service --cluster cluster-test-1 --service-name ${JOB_NAME}
