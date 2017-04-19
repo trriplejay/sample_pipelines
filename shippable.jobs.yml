@@ -1,22 +1,11 @@
 jobs:
-  ##########################
-  # Basic jobs configuration
-  ##########################
 
-  - name: MyFirstManifest
-    type: manifest
-    flags:
-      - docs
+  - name: myCustomDeployment
+    type: runCLI
     steps:
-      - IN: MyAppImage
-      - IN: MyBasicOptions
-      - IN: MyBasicParams
-      - IN: MyBasicReplicas
-
-  - name: DeployTo_cluster-test-1
-    type: deploy
-    flags:
-      - docs
-    steps:
-      - IN: MyECSCluster
-      - IN: MyFirstManifest
+      - IN: MyAwsConfig
+      - IN: MyStaticTaskDefRepo
+      - TASK:
+        - script: aws ecs describe-clusters
+        #- script: aws ecs register-task-definition --cli-input-json file://
+        #- script: aws ecs create-service --cluster cluster-test-1 --service-name ${JOB_NAME}

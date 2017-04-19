@@ -1,44 +1,14 @@
 resources:
-  #############################
-  # Basic resource configuration
-  #############################
 
-  - name: MyECSCluster
-    type: cluster
-    flags:
-      - docs
+  - name: MyStaticTaskDefRepo
+    type: gitRepo
+    integration: MyGithubIntegration
+    pointer:
+      sourceName: trriplejay/sample_pipelines
+      branchName: docs
+
+  - name: MyAwsConfig
+    type: cliConfig
     integration: MyECSCredentials
     pointer:
-      sourceName: cluster-test-1
       region: us-west-2
-
-  - name: MyAppImage
-    type: image
-    flags:
-      - docs
-    pointer:
-      sourceName: trriplejay/simpleserver
-    seed:
-      versionName: master.58
-
-
-  #################################
-  # Advanced resource configuration
-  #################################
-
-  - name: MyBasicOptions
-    type: dockerOptions
-    version:
-      memory: 100
-      
-  - name: MyBasicParams
-    type: params
-    version:
-      params:
-        DB_URL: "http://example.com:5432"
-        MODE: "beta"
-
-  - name: MyBasicReplicas
-    type: replicas
-    version:
-      count: 2
