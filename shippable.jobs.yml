@@ -11,7 +11,7 @@ jobs:
       - TASK:
         - script: aws ecs describe-clusters
         - script: echo 'wtf man'
-        - script: aws ecs register-task-definition --cli-input-json file://${MYSTATICTASKDEFREPO_STATE}/taskdefinitions/sample.json | jq '.taskDefinition.revision' > output.json
+        - script: aws ecs register-task-definition --cli-input-json file://${MYSTATICTASKDEFREPO_STATE}/taskdefinitions/sample.json > output.json
         - script: REVISION=$(cat output.json | jq '.taskDefinition.revision')
         - script: echo "revision is $REVISION"
         - script: aws ecs create-service --cluster cluster-test-1 --service-name ${JOB_NAME} --task-definition shippable:${REVISION}
