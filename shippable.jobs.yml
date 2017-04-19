@@ -7,7 +7,6 @@ jobs:
     steps:
       - IN: MyAwsConfig
       - IN: MyStaticTaskDefRepo
-      - IN: sample_pipelines_docs_rSync
         switch: off
       - TASK:
         - script: aws ecs describe-clusters
