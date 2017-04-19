@@ -10,6 +10,6 @@ jobs:
         switch: off
       - TASK:
         - script: aws ecs describe-clusters
-        #- script: cat ${MYSTATICTASKDEFREPO_STATE}/taskdefinitions/sample.json | jq '.'
-        - script: aws ecs register-task-definition --cli-input-json file://${MYSTATICTASKDEFREPO_STATE}/taskdefinitions/sample.json
-        #- script: aws ecs create-service --cluster cluster-test-1 --service-name ${JOB_NAME}
+        - script: REVISION=$(aws ecs register-task-definition --cli-input-json file://${MYSTATICTASKDEFREPO_STATE}/taskdefinitions/sample.json | jq '.taskDefinition.revision')
+        - script: echo "revision is: $REVISION"
+        - script: aws ecs create-service --cluster cluster-test-1 --service-name ${JOB_NAME} --task-definition shippable:${REVISION}
