@@ -7,6 +7,7 @@ jobs:
     steps:
       - IN: MyAwsConfig
       - IN: MyStaticTaskDefRepo
+        switch: off
       - TASK:
         - script: aws ecs describe-clusters
         - scrpit: cat ${MYSTATICTASKDEFREPO_PATH}/taskdefinitions/sample.json | jq '.'
