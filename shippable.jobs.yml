@@ -1,16 +1,23 @@
 jobs:
-
-  - name: myCustomDeployment
-    type: runCLI
-    flags:
-      - docs
+  - name: MyNginxManifest
+    type: manifest
     steps:
-      - IN: MyAwsConfig
-      - IN: MyStaticTaskDefRepo
-        switch: off
-      - TASK:
-        - script: aws ecs describe-clusters
-        - script: aws ecs register-task-definition --cli-input-json file://${MYSTATICTASKDEFREPO_STATE}/taskdefinitions/sample.json > output.json
-        - script: REVISION=$(cat output.json | jq '.taskDefinition.revision')
-        - script: echo "revision is $REVISION"
-        - script: aws ecs update-service --cluster cluster-test-1 --service ${JOB_NAME} --task-definition shippable:${REVISION} --desired-count 2
+      - IN: MyNginxImage
+
+  - name: MyRedisManifest
+    type: manifest
+    steps:
+      - IN: MyRedisImage
+
+
+  - name: DeployNginx
+    type: deploy
+    steps:
+      - IN: MyECSCluster
+      - IN: MyNginxManifest
+
+  - name: DeployRedis
+    type: deploy
+    steps:
+      - IN: MyECSCluster
+      - IN: MyRedisManifest

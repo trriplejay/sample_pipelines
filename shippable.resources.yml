@@ -1,18 +1,22 @@
 resources:
 
-  - name: MyStaticTaskDefRepo
-    type: gitRepo
-    flags:
-      - docs
-    integration: MyGithubIntegration
-    pointer:
-      sourceName: trriplejay/sample_pipelines
-      branchName: docs
-
-  - name: MyAwsConfig
-    type: cliConfig
-    flags:
-      - docs
+  - name: MyECSCluster
+    type: cluster
     integration: MyECSCredentials
     pointer:
+      sourceName: cluster-test-1
       region: us-west-2
+
+  - name: MyNginxImage
+    type: image
+    pointer:
+      sourceName: library/nginx
+    seed:
+      versionName: latest
+
+  - name: MyRedis
+    type: image
+    pointer:
+      sourceName: library/redis
+    seed:
+      versionName: latest
