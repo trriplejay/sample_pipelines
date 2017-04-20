@@ -1,13 +1,18 @@
 jobs:
-  - name: MyAppManifest
+
+  - name: MyNginxManifest
     type: manifest
     steps:
       - IN: MyNginxImage
+
+  - name: MyRedisManifest
+    type: manifest
+    steps:
       - IN: MyRedisImage
 
-
-  - name: DeployApp
+  - name: DeployTo_cluster-test-1
     type: deploy
     steps:
       - IN: MyECSCluster
-      - IN: MyAppManifest
+      - IN: MyNginxManifest
+      - IN: MyRedisManifest
