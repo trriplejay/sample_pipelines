@@ -18,7 +18,7 @@ resources:
     seed:
       versionName: latest
 
-  - name: MyRedis
+  - name: MyRedisImage
     type: image
     flags:
       - docs
