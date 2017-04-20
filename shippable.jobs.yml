@@ -22,3 +22,5 @@ jobs:
       - IN: MyECSCluster
       - IN: MyNginxManifest
       - IN: MyRedisManifest
+      - TASK: managed
+        deployMethod: upgrade
