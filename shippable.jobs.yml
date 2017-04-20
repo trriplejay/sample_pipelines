@@ -1,23 +1,31 @@
 jobs:
   - name: MyNginxManifest
     type: manifest
+    flags:
+      - docs
     steps:
       - IN: MyNginxImage
 
   - name: MyRedisManifest
     type: manifest
+    flags:
+      - docs
     steps:
       - IN: MyRedisImage
 
 
   - name: DeployNginx
     type: deploy
+    flags:
+      - docs
     steps:
       - IN: MyECSCluster
       - IN: MyNginxManifest
 
   - name: DeployRedis
     type: deploy
+    flags:
+      - docs
     steps:
       - IN: MyECSCluster
       - IN: MyRedisManifest

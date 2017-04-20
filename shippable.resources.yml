@@ -2,6 +2,8 @@ resources:
 
   - name: MyECSCluster
     type: cluster
+    flags:
+      - docs
     integration: MyECSCredentials
     pointer:
       sourceName: cluster-test-1
@@ -9,6 +11,8 @@ resources:
 
   - name: MyNginxImage
     type: image
+    flags:
+      - docs
     pointer:
       sourceName: library/nginx
     seed:
@@ -16,6 +20,8 @@ resources:
 
   - name: MyRedis
     type: image
+    flags:
+      - docs
     pointer:
       sourceName: library/redis
     seed:
