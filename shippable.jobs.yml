@@ -23,6 +23,6 @@ jobs:
       - IN: MyNginxManifest
       - IN: MyRedisManifest
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen
         deployOptions:
           - parallel
