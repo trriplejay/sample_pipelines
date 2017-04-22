@@ -33,5 +33,6 @@ jobs:
       - IN: MyAwsConfig
       - IN: MyAppImage
       - IN: MyStaticTaskDefRepo
+      - IN: MyECSCluster
       - TASK:
         - script: printenv
