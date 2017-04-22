@@ -28,7 +28,7 @@ resources:
 
   - name: MyStaticTaskDefRepo
     type: gitRepo
+    integration: MyGithubIntegration
     pointer:
       sourceName: trriplejay/sample_pipelines
       branch: docs
-    
