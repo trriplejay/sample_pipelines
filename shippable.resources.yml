@@ -32,3 +32,9 @@ resources:
     pointer:
       sourceName: trriplejay/sample_pipelines
       branch: docs
+
+  - name: MyParams
+    type: params
+    version:
+      params:
+        desiredCount: 1
