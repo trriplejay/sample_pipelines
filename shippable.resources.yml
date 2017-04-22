@@ -9,20 +9,26 @@ resources:
       sourceName: cluster-test-1
       region: us-west-2
 
-  - name: MyNginxImage
-    type: image
+  - name: MyAwsConfig
+    type: cliConfig
     flags:
       - docs
+    integration: MyECSCredentials
     pointer:
-      sourceName: library/nginx
-    seed:
-      versionName: latest
+      region: us-west-2
 
-  - name: MyRedisImage
+  - name: MyAppImage
     type: image
     flags:
       - docs
     pointer:
-      sourceName: library/redis
+      sourceName: devopsrecipes/basic-node-deploy-ecs
     seed:
-      versionName: latest
+      versionName: master.7
+
+  - name: MyStaticTaskDefRepo
+    type: gitRepo
+    pointer:
+      sourceName: trriplejay/sample_pipelines
+      branch: docs
+    

@@ -1,28 +1,37 @@
 jobs:
 
-  - name: MyNginxManifest
-    type: manifest
-    flags:
-      - docs
-    steps:
-      - IN: MyNginxImage
+  # - name: MyNginxManifest
+  #   type: manifest
+  #   flags:
+  #     - docs
+  #   steps:
+  #     - IN: MyNginxImage
+  #
+  # - name: MyRedisManifest
+  #   type: manifest
+  #   flags:
+  #     - docs
+  #   steps:
+  #     - IN: MyRedisImage
+  #
+  # - name: DeployTo_cluster-test-1
+  #   type: deploy
+  #   flags:
+  #     - docs
+  #   steps:
+  #     - IN: MyECSCluster
+  #     - IN: MyNginxManifest
+  #     - IN: MyRedisManifest
+  #     - TASK: managed
+  #       deployMethod: blueGreen
+  #       deployOptions:
+  #         - parallel
 
-  - name: MyRedisManifest
-    type: manifest
-    flags:
-      - docs
+  - name: myCustomDeployment
+    type: runCLI
     steps:
-      - IN: MyRedisImage
-
-  - name: DeployTo_cluster-test-1
-    type: deploy
-    flags:
-      - docs
-    steps:
-      - IN: MyECSCluster
-      - IN: MyNginxManifest
-      - IN: MyRedisManifest
-      - TASK: managed
-        deployMethod: blueGreen
-#        deployOptions:
-#          - parallel
+      - IN: MyAwsConfig
+      - IN: MyAppImage
+      - IN: MyStaticTaskDefRepo
+      - TASK:
+        - script: printenv
