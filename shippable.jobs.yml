@@ -35,7 +35,7 @@ jobs:
     steps:
       - IN: simple-mani-deploy
       - IN: nginx-mani-deploy
-      - IN: myGkeCluster-deploy
+      - IN: ecsStaging-deploy
       - TASK: managed
         deployMethod: blueGreen
 
