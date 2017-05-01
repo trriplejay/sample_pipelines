@@ -23,6 +23,8 @@ resources:
     flags:
       - deploy
     version:
+      portMappings:
+        - ":8888/udp"
       memory: 64
 
   - name: ecsStaging-deploy
