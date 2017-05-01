@@ -72,7 +72,7 @@ resources:
     version:
       memory: 64
       portMappings:
-        - "80:8888"
+        - "80:8888/udp"
       labels:
         check: oneTwo
 
