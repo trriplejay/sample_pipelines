@@ -24,11 +24,11 @@ resources:
       - deploy
     version:
       portMappings:
-        - ":8888/udp"
-        - "80:80/tcp"
         - "88:88"
         - "888:/udp"
         - "8889:"
+        - ":8888/udp"
+        - "80:80/tcp"
       memory: 64
 
   - name: ecsStaging-deploy
