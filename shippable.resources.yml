@@ -37,6 +37,8 @@ resources:
       - deploy
     integration: "MyGKECredentials"
     pointer:
+      sourceName: cluster-1
+      region: us-central1-f
       namespace: "staging"
 
   - name: ecsProduction-deploy
@@ -45,6 +47,8 @@ resources:
       - deploy
     integration: "MyGKECredentials"
     pointer:
+      sourceName: cluster-1
+      region: us-central1-f
       namespace: "prod"
 
 
