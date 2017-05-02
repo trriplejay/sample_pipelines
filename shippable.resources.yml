@@ -87,7 +87,7 @@ resources:
     flags:
       - deploy
     version:
-      count: 1
+      count: 2
 
   # - name: myDdcCluster-deploy
   #   type: cluster
