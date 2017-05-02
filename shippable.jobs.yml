@@ -47,7 +47,7 @@ jobs:
       - IN: nginx-mani-deploy
       - IN: ecsStaging-deploy
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: replace
 
   - name: prod-deploy-A-deploy
     type: deploy
