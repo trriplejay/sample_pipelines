@@ -46,6 +46,7 @@ jobs:
     steps:
       - IN: nginx-mani-deploy
       - IN: ecsStaging-deploy
+      - IN: simpleReplicas-deploy
       - TASK: managed
         deployMethod: replace
 
