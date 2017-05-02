@@ -25,6 +25,7 @@ resources:
     version:
       portMappings:
         - "88:88"
+        - ":1234"
         - "888:/udp"
         - "8889:"
         - ":8888/udp"
