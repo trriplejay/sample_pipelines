@@ -29,6 +29,7 @@ resources:
         - "8889:"
         - ":8888/udp"
         - "80:80/tcp"
+        - ":9999"
       memory: 64
 
   - name: ecsStaging-deploy
