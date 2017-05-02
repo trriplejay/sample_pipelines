@@ -35,19 +35,17 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "shippable demo ecs"
+    integration: "MyGKECredentials"
     pointer:
-      sourceName : "staging" #name of the cluster we are deploying
-      region: "us-west-2"
+      namespace: "staging"
 
   - name: ecsProduction-deploy
     type: cluster
     flags:
       - deploy
-    integration: "shippable demo ecs"
+    integration: ""MyGKECredentials""
     pointer:
-      sourceName: "production"
-      region: "us-west-2"
+      namespace: "prod"
 
 
   - name: simple-image-deploy
