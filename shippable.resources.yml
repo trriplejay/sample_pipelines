@@ -36,21 +36,17 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "MyDclCredentials"
     pointer:
       sourceName: cluster-1
-      region: us-central1-f
-      namespace: "staging"
 
   - name: ecsProduction-deploy
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "MyDclCredentials"
     pointer:
       sourceName: cluster-1
-      region: us-central1-f
-      namespace: "prod"
 
 
   - name: simple-image-deploy
