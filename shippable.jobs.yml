@@ -48,7 +48,7 @@ jobs:
       - IN: ecsStaging-deploy
       - IN: simpleReplicas-deploy
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen
 
   - name: prod-deploy-A-deploy
     type: deploy
