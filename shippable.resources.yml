@@ -37,7 +37,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyDcosCredentials"
+    integration: "MyDCOSCredentials"
     pointer:
       sourceName: cluster-1
 
@@ -45,7 +45,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyDcosCredentials"
+    integration: "MyDCOSCredentials"
     pointer:
       sourceName: cluster-1
 
