@@ -7,6 +7,14 @@ resources:
       sourceName: "library/nginx"
     seed:
       versionName: stable
+  - name: busybox-image-deploy
+    type: image
+    flags:
+      - deploy
+    pointer:
+      sourceName: "busybox"
+    seed:
+      versionName: "latest"
 
   - name: nginx-params-deploy
     type: params
@@ -68,7 +76,7 @@ resources:
     version:
       memory: 64
       labels:
-        check: oneTwo  
+        check: oneTwo
       livenessProbe:
         httpGet:
           path: /

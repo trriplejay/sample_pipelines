@@ -76,7 +76,8 @@ jobs:
     flags:
       - deploy
     steps:
-      - IN: nginx-image-deploy
+      - IN: busybox-image-deploy
+      #- IN: nginx-image-deploy
       - IN: simple-image-deploy
 
   - name: combined-deploy
