@@ -236,3 +236,11 @@ jobs:
       - script: echo "something failed"
     on_success:
       - script: echo "yay it worked"
+
+  - name: test-generic-runCLISample
+    type: runCLI
+    steps:
+      - IN: myGenKeyVal
+      - TASK:
+        - script: echo $aws_key
+        - script: echo $aws_secret

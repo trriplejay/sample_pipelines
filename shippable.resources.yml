@@ -50,6 +50,10 @@ resources:
     flags:
       - runCLISample
     integration: "trriplejay jfrog"
+    
+  - name: myGenKeyVal
+    type: integration
+    integration: my-aws-keys
 
   - name: myParams-runCLISample
     type: params
