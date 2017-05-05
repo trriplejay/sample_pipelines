@@ -25,6 +25,7 @@ jobs:
       - deploy
     steps:
       - IN: simple-mani-deploy
+      - IN: simpleReplicas-deploy
       # - IN: nginx-mani-deploy
       - IN: ecsStaging-deploy
 

@@ -22,14 +22,6 @@ resources:
     flags:
       - deploy
     version:
-      portMappings:
-        - "88:88"
-        - ":1234"
-        - "888:/udp"
-        - "8889:"
-        - ":8888/udp"
-        - "80:80/tcp"
-        - ":9999"
       memory: 64
 
   - name: ecsStaging-deploy
@@ -75,8 +67,6 @@ resources:
       - deploy
     version:
       memory: 64
-      portMappings:
-        - ":8888/udp"
       labels:
         check: oneTwo
 
@@ -85,18 +75,4 @@ resources:
     flags:
       - deploy
     version:
-      count: 1
-
-  # - name: myDdcCluster-deploy
-  #   type: cluster
-  #   integration: "shippable test ddc"
-  #   pointer:
-  #     sourceName: "blah"
-
-  # - name: myGkeCluster-deploy
-  #   type: cluster
-  #   integration: "trriplejay gke"
-  #   pointer:
-  #     namespace: beta
-  #     # sourceName: "cluster-1"
-  #     # region: "us-central1-f"
+      count: 6
