@@ -93,4 +93,4 @@ jobs:
           - nginx-image-deploy
       - IN: ecsProduction-deploy
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen
