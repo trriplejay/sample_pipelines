@@ -3,7 +3,6 @@ resources:
     type: image
     flags:
       - deploy
-    integration: "trriplejay docker hub"
     pointer:
       sourceName: "library/nginx"
     seed:
@@ -37,7 +36,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyDCOSCredentials"
+    integration: "trriplejay kube"
     pointer:
       sourceName: cluster-1
 
@@ -45,7 +44,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyDCOSCredentials"
+    integration: "trriplejay kube"
     pointer:
       sourceName: cluster-1
 
@@ -54,7 +53,6 @@ resources:
     type: image
     flags:
       - deploy
-    integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
