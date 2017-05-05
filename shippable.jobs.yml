@@ -25,7 +25,6 @@ jobs:
       - deploy
     steps:
       - IN: simple-mani-deploy
-      - IN: simpleReplicas-deploy
       # - IN: nginx-mani-deploy
       - IN: ecsStaging-deploy
 
@@ -79,6 +78,7 @@ jobs:
       - IN: busybox-image-deploy
       #- IN: nginx-image-deploy
       - IN: simple-image-deploy
+      - IN: simpleReplicas-deploy
 
   - name: combined-deploy
     type: deploy
