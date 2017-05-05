@@ -70,3 +70,26 @@ jobs:
       - IN: staging-deploy-B2-deploy
         switch: off
       - IN: ecsProduction-deploy
+
+  - name: combined-manifest-deploy
+    type: manifest
+    flags:
+      - deploy
+    steps:
+      - IN: nginx-image-deploy
+      - IN: simple-image-deploy
+
+  - name: combined-deploy
+    type: deploy
+    flags:
+      - deploy
+    steps:
+      - IN: combined-manifest-deploy
+      - IN: simple-opts-deploy
+        applyTo:
+          - simple-image-deploy
+      - IN: nginx-opts-deploy
+        applyTo:
+          - nginx-image-deploy
+      - TASK: managed
+        deployMethod: upgrade
