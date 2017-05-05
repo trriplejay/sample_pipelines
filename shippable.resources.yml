@@ -74,7 +74,6 @@ resources:
           httpGet:
             path: /
             port: 8888
-          name: livetest
 
 
   - name: simpleReplicas-deploy
