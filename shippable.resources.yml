@@ -40,6 +40,7 @@ resources:
     integration: "MyKubeCredentials"
     pointer:
       sourceName: cluster-1
+      namespace: staging
 
   - name: ecsProduction-deploy
     type: cluster
@@ -48,6 +49,7 @@ resources:
     integration: "MyKubeCredentials"
     pointer:
       sourceName: cluster-1
+      namespace: prod
 
 
   - name: simple-image-deploy
