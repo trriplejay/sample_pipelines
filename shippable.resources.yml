@@ -78,6 +78,7 @@ resources:
       memory: 64
       labels:
         check: oneTwo
+      imagePullPolicy: IfNotPresent
       livenessProbe:
         httpGet:
           path: /
