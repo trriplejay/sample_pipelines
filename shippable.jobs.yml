@@ -76,9 +76,9 @@ jobs:
       - deploy
     steps:
       - IN: busybox-image-deploy
-      #- IN: nginx-image-deploy
       - IN: simple-image-deploy
       - IN: simpleReplicas-deploy
+      - IN: base-options-deploy
 
   - name: combined-deploy
     type: deploy
@@ -89,9 +89,6 @@ jobs:
       - IN: simple-opts-deploy
         applyTo:
           - simple-image-deploy
-      - IN: nginx-opts-deploy
-        applyTo:
-          - nginx-image-deploy
       - IN: ecsProduction-deploy
       - TASK: managed
         deployMethod: upgrade

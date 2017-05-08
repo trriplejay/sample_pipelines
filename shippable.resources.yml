@@ -75,7 +75,7 @@ resources:
     flags:
       - deploy
     version:
-      memory: 64
+      memory: 128
       labels:
         check: oneTwo
       imagePullPolicy: IfNotPresent
@@ -97,3 +97,10 @@ resources:
       - deploy
     version:
       count: 2
+
+  - name: base-options-deploy
+    type: dockerOptions
+    version:
+      memory: 64
+      labels:
+        test: 1234
