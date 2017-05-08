@@ -75,7 +75,7 @@ jobs:
     flags:
       - deploy
     steps:
-      - IN: busybox-image-deploy
+      - IN: nginx-image-deploy
       - IN: simple-image-deploy
       - IN: simpleReplicas-deploy
       - IN: base-options-deploy
