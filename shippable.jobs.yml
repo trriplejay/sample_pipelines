@@ -91,4 +91,4 @@ jobs:
           - simple-image-deploy
       - IN: ecsProduction-deploy
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: update
