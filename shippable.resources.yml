@@ -95,7 +95,7 @@ resources:
     flags:
       - deploy
     version:
-      count: 1
+      count: 2
 
   - name: base-options-deploy
     type: dockerOptions
