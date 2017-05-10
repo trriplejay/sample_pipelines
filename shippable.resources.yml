@@ -107,6 +107,7 @@ resources:
     version:
       memory: 64
       labels:
-        test: abcd
+        test: 1234
+        another-label: 88888888
       portMappings:
         - "30002:8888"
