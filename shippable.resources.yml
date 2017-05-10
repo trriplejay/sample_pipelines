@@ -81,7 +81,7 @@ resources:
       #   check: oneTwo
       imagePullPolicy: IfNotPresent
       portMappings:
-        - "80:8888"
+        - ":8888"
       livenessProbe:
         httpGet:
           path: /
