@@ -37,13 +37,20 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "MyGKECredentials"
+    pointer:
+      sourceName: "cluster-1"
+      region: "us-central1-f"
 
   - name: ecsProduction-deploy
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "MyGKECredentials"
+    pointer:
+      sourceName: "cluster-1"
+      region: "us-central1-f"
+
 
   - name: simple-image-deploy
     type: image
@@ -75,7 +82,7 @@ resources:
       #   check: oneTwo
       imagePullPolicy: IfNotPresent
       portMappings:
-        - ":8888"
+        - "30001:8888"
       livenessProbe:
         httpGet:
           path: /
@@ -101,3 +108,5 @@ resources:
       memory: 64
       labels:
         test: abcd
+      portMappings:
+        - "30002:8888"
