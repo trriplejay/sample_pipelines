@@ -78,8 +78,8 @@ resources:
       - deploy
     version:
       memory: 128
-      labels:
-        check: oneTwo
+      # labels:
+      #   check: oneTwo
       imagePullPolicy: IfNotPresent
       portMappings:
         - "30001:80"
@@ -106,7 +106,7 @@ resources:
     type: dockerOptions
     version:
       memory: 64
-      labels:
-        test: abcd
+      # labels:
+      #   test: abcd
       portMappings:
         - "30002:8888"
