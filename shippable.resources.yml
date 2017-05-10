@@ -82,7 +82,7 @@ resources:
       #   check: oneTwo
       imagePullPolicy: IfNotPresent
       portMappings:
-        - ":80"
+        - "30001:80"
       livenessProbe:
         httpGet:
           path: /
@@ -109,4 +109,4 @@ resources:
       labels:
         test: abcd
       portMappings:
-        - ":8888"
+        - "30002:8888"
