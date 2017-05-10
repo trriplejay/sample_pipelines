@@ -106,4 +106,4 @@ resources:
       labels:
         test: 1234
       portMappings:
-        - ":8888"
+        - "80:8888"
