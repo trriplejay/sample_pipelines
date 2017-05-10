@@ -78,8 +78,8 @@ resources:
       - deploy
     version:
       memory: 128
-      # labels:
-      #   check: oneTwo
+      labels:
+        check: oneTwo
       imagePullPolicy: IfNotPresent
       portMappings:
         - "30001:80"
