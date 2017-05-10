@@ -37,7 +37,7 @@ jobs:
       - IN: nginx-mani-deploy
       - IN: ecsStaging-deploy
       - TASK: managed
-        deployMethod: blueGreen
+        deployMethod: replace
 
   - name: staging-deploy-B2-deploy
     type: deploy
