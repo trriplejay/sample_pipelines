@@ -100,4 +100,4 @@ resources:
     version:
       memory: 64
       labels:
-        test: abcd
+        test2: 2222
