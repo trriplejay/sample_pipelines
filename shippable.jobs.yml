@@ -81,7 +81,7 @@ jobs:
       - IN: simpleReplicas-deploy
       - IN: base-options-deploy
 
-  - name: "combined deploy"
+  - name: combineD-Deploy
     type: deploy
     flags:
       - deploy
