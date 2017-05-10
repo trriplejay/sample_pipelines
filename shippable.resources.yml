@@ -37,19 +37,13 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyGKECredentials"
-    pointer:
-      sourceName: cluster-1
-      region: us-central1-f
+    integration: "MyKubeCredentials"
 
   - name: ecsProduction-deploy
     type: cluster
     flags:
       - deploy
-    integration: "MyGKECredentials"
-    pointer:
-      sourceName: cluster-1
-      region: us-central1-f
+    integration: "MyKubeCredentials"
 
   - name: simple-image-deploy
     type: image
