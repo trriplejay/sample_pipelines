@@ -244,3 +244,13 @@ jobs:
       - TASK:
         - script: echo $aws_key
         - script: echo $aws_secret
+
+  - name: test-params-env-runCLISample
+    type: runSh
+    steps:
+      - IN: myParams-runCLISample
+      - TASK:
+        - script: cat $MYPARAMSRUNSCLISAMPLE_STATE
+        - script: printenv
+        - script: source $MYPARAMSRUNSCLISAMPLE_STATE
+        - script: printenv
