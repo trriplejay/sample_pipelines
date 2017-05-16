@@ -109,4 +109,4 @@ resources:
       labels:
         test: a1234
       portMappings:
-        - "30002:8888"
+        - "30001:8888"
