@@ -40,7 +40,7 @@ resources:
     integration: "MyGKECredentials"
     pointer:
       region: "us-central1-f"
-      #   sourceName: "cluster-1"
+      sourceName: "cluster-2"
 
   - name: ecsProduction-deploy
     type: cluster
@@ -49,7 +49,7 @@ resources:
     integration: "MyGKECredentials"
     pointer:
       region: "us-central1-f"
-    #   sourceName: "cluster-1"
+      sourceName: "cluster-2"
 
 
   - name: simple-image-deploy
