@@ -6,14 +6,14 @@ jobs:
   #  steps:
   #    - OUT: fake-image
       
-  #- name: simple-mani-runShSample
-  #  type: manifest
-  #  flags:
-  #    - runShSample
-  #  steps:
+  - name: simple-mani-runShSample
+    type: manifest
+    flags:
+      - runShSample
+    steps:
       # - IN: simple-image-runShSample
       # - IN: myParams-runShSample
-  #    - IN: sample_python_runCI
+      - IN: sample_python_runCI
 
   #- name: sample_python_runCI
   #  type: runCI
