@@ -2,7 +2,7 @@ triggers:
   - name: stagingTrigger-serialCheck
     type: trigger
     version:
-      message: 'trigger 2 manifests at once. Triggered: 4'
+      message: 'trigger 2 manifests at once. Triggered: 5'
 
   - name: runSh2Trigger-serialCheck
     type: trigger
