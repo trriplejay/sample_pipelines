@@ -10,4 +10,4 @@ triggers:
       - serialCheck
     version:
       message: 'update to trigger runSh2.'
-      count: 1
+      count: 2
