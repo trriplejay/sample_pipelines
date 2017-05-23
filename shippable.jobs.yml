@@ -33,6 +33,7 @@ jobs:
     flags:
       - serialCheck
     steps:
+      - IN: runSh2Trigger-serialCheck
       - TASK:
         - script: pwd
         - script: sleep 120

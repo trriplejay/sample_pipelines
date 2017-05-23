@@ -3,3 +3,11 @@ triggers:
     type: trigger
     version:
       message: 'trigger 2 manifests at once. Triggered: 3'
+
+  - name: runSh2Trigger-serialCheck
+    type: trigger
+    flags:
+      - serialCheck
+    version:
+      message: 'update to trigger runSh2.'
+      count: 1
