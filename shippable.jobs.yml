@@ -1,6 +1,8 @@
 jobs:
   - name: simple-mani-serialCheck
     type: manifest
+    flags:
+      - serialCheck
     steps:
       - IN: stagingTrigger-serialCheck
       - IN: simple-params-serialCheck
@@ -11,6 +13,8 @@ jobs:
 
   - name: nginx-mani-serialCheck
     type: manifest
+    flags:
+      - serialCheck
     steps:
       - IN: stagingTrigger-serialCheck
       - IN: nginx-image-serialCheck
@@ -21,6 +25,8 @@ jobs:
 
   - name: staging-dep-serialCheck
     type: deploy
+    flags:
+      - serialCheck
     steps:
       - IN: simple-mani-serialCheck
       - IN: nginx-mani-serialCheck
@@ -34,6 +40,8 @@ jobs:
 
   - name: parallel-dep-serialCheck
     type: deploy
+    flags:
+      - serialCheck
     steps:
       - IN: simple-mani-serialCheck
       - IN: ecsStaging-serialCheck
@@ -45,10 +53,14 @@ jobs:
 
   - name: runSh1-serialCheck
     type: runSh
+    flags:
+      - serialCheck
     steps:
       - IN: pwd
 
   - name: runSh2-serialCheck
     type: runSh
+    flags:
+      - serialCheck
     steps:
       - IN: pwd
