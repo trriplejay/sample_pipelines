@@ -41,3 +41,14 @@ jobs:
         deployMethod: upgrade
     on_failure:
       - NOTIFY: stagingSlack-serialCheck
+
+
+  - name: runSh1-serialCheck
+    type: runSh
+    steps:
+      - IN: pwd
+
+  - name: runSh2-serialCheck
+    type: runSh
+    steps:
+      - IN: pwd
