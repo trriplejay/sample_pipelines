@@ -8,8 +8,6 @@ jobs:
       - IN: simple-params-serialCheck
       - IN: simple-image-serialCheck
       - IN: simple-opts-serialCheck
-    on_failure:
-      - NOTIFY: stagingSlack-serialCheck
 
   - name: nginx-mani-serialCheck
     type: manifest
@@ -20,47 +18,19 @@ jobs:
       - IN: nginx-image-serialCheck
       - IN: nginx-params-serialCheck
       - IN: nginx-opts-serialCheck
-    on_failure:
-      - NOTIFY: stagingSlack-serialCheck
-
-  - name: staging-dep-serialCheck
-    type: deploy
-    flags:
-      - serialCheck
-    steps:
-      - IN: simple-mani-serialCheck
-      - IN: nginx-mani-serialCheck
-      - IN: simpleReplicas-serialCheck
-      - IN: ecsStaging-serialCheck
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-serialCheck
-
-
-  - name: parallel-dep-serialCheck
-    type: deploy
-    flags:
-      - serialCheck
-    steps:
-      - IN: simple-mani-serialCheck
-      - IN: ecsStaging-serialCheck
-      - TASK: managed
-        deployMethod: upgrade
-    on_failure:
-      - NOTIFY: stagingSlack-serialCheck
-
 
   - name: runSh1-serialCheck
     type: runSh
     flags:
       - serialCheck
     steps:
-      - IN: pwd
+      - TASK:
+        - script: pwd
 
   - name: runSh2-serialCheck
     type: runSh
     flags:
       - serialCheck
     steps:
-      - IN: pwd
+      - TASK:
+        - script: pwd
