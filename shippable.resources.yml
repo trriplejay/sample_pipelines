@@ -111,4 +111,4 @@ resources:
       portMappings:
         - "30002:8888"
       deployment:
-        progressDeadlineSeconds: 10
+        progressDeadlineSeconds: 300
