@@ -54,15 +54,3 @@ resources:
       branches:
         only:
           - master
-
-  - name: my_ssh
-    type: integration
-    flags:
-      - runShSample
-    integration: "test-ssh"
-
-  - name: my_pem
-    type: integration
-    flags:
-      - runShSample
-    integration: "test-pem"
