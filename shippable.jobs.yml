@@ -57,8 +57,6 @@ jobs:
       - IN: simple-release-runShSample
       #- IN: myRepo-runShSample
       - IN: myParams-runShSample
-      - IN: my_ssh
-      - IN: my_pem
       - IN: test-docker-op
       - OUT: testOutImage-runShSample
       #- OUT: out-mani-runShSample
