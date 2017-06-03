@@ -54,8 +54,3 @@ resources:
       branches:
         only:
           - master
-          
-  - name: myghint
-    type: integration
-    integration: "trriplejay github"
-    
