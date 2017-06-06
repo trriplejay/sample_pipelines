@@ -54,7 +54,4 @@ resources:
       branches:
         only:
           - master
-          
-  - name: testint
-    type: integration
-    integration: "trriplejay github"
+  
