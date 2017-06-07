@@ -33,25 +33,6 @@ resources:
     version:
       memory: 64
 
-  - name: ecsStaging-mani2mani
-    type: cluster
-    flags:
-      - mani2mani
-    integration: "MyKubeCredentials"
-    pointer:
-      region: "us-central1-f"
-      sourceName: "cluster-2"
-
-  - name: ecsProduction-mani2mani
-    type: cluster
-    flags:
-      - mani2mani
-    integration: "MyKubeCredentials"
-    pointer:
-      region: "us-central1-f"
-      sourceName: "cluster-2"
-
-
   - name: simple-image-mani2mani
     type: image
     flags:
