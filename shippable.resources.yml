@@ -1,70 +1,70 @@
 resources:
-  - name: nginx-image-deploy
+  - name: nginx-image-mani2mani
     type: image
     flags:
-      - deploy
+      - mani2mani
     pointer:
       sourceName: "library/nginx"
     seed:
       versionName: stable
 
-  - name: busybox-image-deploy
+  - name: busybox-image-mani2mani
     type: image
     flags:
-      - deploy
+      - mani2mani
     pointer:
       sourceName: "busybox"
     seed:
       versionName: "latest"
 
-  - name: nginx-params-deploy
+  - name: nginx-params-mani2mani
     type: params
     flags:
-      - deploy
+      - mani2mani
     version:
       params:
         mode: dev
         api_url: localhost:50000
 
-  - name: nginx-opts-deploy
+  - name: nginx-opts-mani2mani
     type: dockerOptions
     flags:
-      - deploy
+      - mani2mani
     version:
       memory: 64
 
-  - name: ecsStaging-deploy
+  - name: ecsStaging-mani2mani
     type: cluster
     flags:
-      - deploy
+      - mani2mani
     integration: "MyKubeCredentials"
     pointer:
       region: "us-central1-f"
       sourceName: "cluster-2"
 
-  - name: ecsProduction-deploy
+  - name: ecsProduction-mani2mani
     type: cluster
     flags:
-      - deploy
+      - mani2mani
     integration: "MyKubeCredentials"
     pointer:
       region: "us-central1-f"
       sourceName: "cluster-2"
 
 
-  - name: simple-image-deploy
+  - name: simple-image-mani2mani
     type: image
     flags:
-      - deploy
+      - mani2mani
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
       versionName: master.58
 
-  - name: simple-params-deploy
+  - name: simple-params-mani2mani
     type: params
     flags:
-      - deploy
+      - mani2mani
     version:
       params:
         FOO: "test foo"
@@ -72,10 +72,10 @@ resources:
         MODE: "dev"
         SELF_URL: "http://localhost:8888"
 
-  - name: simple-opts-deploy
+  - name: simple-opts-mani2mani
     type: dockerOptions
     flags:
-      - deploy
+      - mani2mani
     version:
       memory: 128
       labels:
@@ -95,14 +95,14 @@ resources:
         periodSeconds: 5
 
 
-  - name: simpleReplicas-deploy
+  - name: simpleReplicas-mani2mani
     type: replicas
     flags:
-      - deploy
+      - mani2mani
     version:
       count: 2
 
-  - name: base-options-deploy
+  - name: base-options-mani2mani
     type: dockerOptions
     version:
       memory: 64

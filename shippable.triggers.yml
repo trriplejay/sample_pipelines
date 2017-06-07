@@ -1,5 +1,5 @@
 triggers:
-  - name: stagingTrigger-deploy
+  - name: stagingTrigger-mani2mani
     type: trigger
     version:
       message: 'trigger release workflow. Triggered: 19'

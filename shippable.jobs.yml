@@ -1,95 +1,43 @@
 jobs:
-  - name: simple-mani-deploy
+  - name: simple-mani-mani2mani
     type: manifest
     flags:
-      - deploy
+      - mani2mani
     steps:
-      - IN: stagingTrigger-deploy
-      - IN: simple-params-deploy
-      - IN: simple-image-deploy
-      - IN: simple-opts-deploy
+      - IN: stagingTrigger-mani2mani
+      - IN: simple-params-mani2mani
+      - IN: simple-image-mani2mani
+      - IN: simple-opts-mani2mani
 
-  - name: nginx-mani-deploy
+
+
+  - name: combined-manifest-mani2mani
     type: manifest
     flags:
-      - deploy
+      - mani2mani
     steps:
-      - IN: stagingTrigger-deploy
-      - IN: nginx-image-deploy
-      - IN: nginx-params-deploy
-      - IN: nginx-opts-deploy
+      # - IN: nginx-image-mani2mani
+      - IN: busybox-image-mani2mani
+      - IN: simple-mani-mani2mani
+      - IN: simpleReplicas-mani2mani
+      - IN: base-options-mani2mani
 
-  - name: staging-deploy-A-deploy
-    type: deploy
-    flags:
-      - deploy
+  - name: combined-mani-print
+    type: runSh
     steps:
-      - IN: simple-mani-deploy
-      # - IN: nginx-mani-deploy
-      - IN: ecsStaging-deploy
+      - IN: combined-manifest-mani2mani
+      - TASK:
+        - script: cat $COMBINEDMANIFESTMANI2MANI_STATE/manifests.json | jq '.'
 
-  - name: staging-deploy-B1-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: simple-mani-deploy
-      - IN: nginx-mani-deploy
-      - IN: ecsStaging-deploy
-      - TASK: managed
-        deployMethod: blueGreen
-
-  - name: staging-deploy-B2-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: nginx-mani-deploy
-      - IN: ecsStaging-deploy
-      - IN: simpleReplicas-deploy
-      - TASK: managed
-        deployMethod: replace
-
-  - name: prod-deploy-A-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: staging-deploy-A-deploy
-        switch: off
-      - IN: ecsProduction-deploy
-
-  - name: prod-deploy-B-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: staging-deploy-B1-deploy
-        switch: off
-      - IN: staging-deploy-B2-deploy
-        switch: off
-      - IN: ecsProduction-deploy
-
-  - name: combined-manifest-deploy
-    type: manifest
-    flags:
-      - deploy
-    steps:
-      # - IN: nginx-image-deploy
-      - IN: busybox-image-deploy
-      - IN: simple-image-deploy
-      - IN: simpleReplicas-deploy
-      - IN: base-options-deploy
-
-  - name: combined-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: combined-manifest-deploy
-      - IN: simple-opts-deploy
-        applyTo:
-          - simple-image-deploy
-      - IN: ecsProduction-deploy
-      - TASK: managed
-        deployMethod: replace
+  # - name: combined-mani2mani
+  #   type: deploy
+  #   flags:
+  #     - mani2mani
+  #   steps:
+  #     - IN: combined-manifest-mani2mani
+  #     - IN: simple-opts-mani2mani
+  #       applyTo:
+  #         - simple-image-mani2mani
+  #     - IN: ecsProduction-mani2mani
+  #     - TASK: managed
+  #       deployMethod: replace

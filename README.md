@@ -1,4 +1,4 @@
-# -deploy
+# -mani2mani
 
-- simple deployment set up with 2 manifests.
-- originally based on the 'release' branch of this repo.
+- used to test using a manifest job as input to another manifest job
+- uses runSh to print out the manfest object so we can see how it looks
