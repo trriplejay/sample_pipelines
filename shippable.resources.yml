@@ -72,27 +72,27 @@ resources:
         MODE: "dev"
         SELF_URL: "http://localhost:8888"
 
-  - name: simple-opts-deploy
-    type: dockerOptions
-    flags:
-      - deploy
-    version:
-      memory: 128
-      labels:
-        check: oneTwo
-      imagePullPolicy: IfNotPresent
-      portMappings:
-        - "30001:80"
-      livenessProbe:
-        httpGet:
-          path: /
-          port: 8888
-      readinessProbe:
-        httpGet:
-          path: /
-          port: 8888
-        initialDelaySeconds: 5
-        periodSeconds: 5
+  # - name: simple-opts-deploy
+  #   type: dockerOptions
+  #   flags:
+  #     - deploy
+  #   version:
+  #     memory: 128
+  #     labels:
+  #       check: oneTwo
+  #     imagePullPolicy: IfNotPresent
+  #     portMappings:
+  #       - "30001:80"
+  #     livenessProbe:
+  #       httpGet:
+  #         path: /
+  #         port: 8888
+  #     readinessProbe:
+  #       httpGet:
+  #         path: /
+  #         port: 8888
+  #       initialDelaySeconds: 5
+  #       periodSeconds: 5
 
 
   - name: simpleReplicas-deploy
@@ -108,10 +108,10 @@ resources:
       memory: 64
       labels:
         test: a1234
-      portMappings:
-        - "30002:8888"
-      deployment:
-        progressDeadlineSeconds: 300
+      # portMappings:
+      #   - "30002:8888"
+      # deployment:
+      #   progressDeadlineSeconds: 300
 
 
 
