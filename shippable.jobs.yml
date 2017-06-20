@@ -7,7 +7,7 @@ jobs:
       - IN: stagingTrigger-deploy
       - IN: simple-params-deploy
       - IN: simple-image-deploy
-      - IN: simple-opts-deploy
+      # - IN: simple-opts-deploy
 
   - name: nginx-mani-deploy
     type: manifest
