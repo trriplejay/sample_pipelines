@@ -88,9 +88,9 @@ jobs:
     steps:
       - IN: timed-deployment-deploy
       - IN: combined-manifest-deploy
-      - IN: simple-opts-deploy
-        applyTo:
-          - simple-image-deploy
+      # - IN: simple-opts-deploy
+      #   applyTo:
+      #     - simple-image-deploy
       - IN: ecsProduction-deploy
       - TASK: managed
         deployMethod: upgrade
