@@ -81,16 +81,16 @@ jobs:
       - IN: simpleReplicas-deploy
       - IN: base-options-deploy
 
-  - name: combined-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: timed-deployment-deploy
-      - IN: combined-manifest-deploy
-      # - IN: simple-opts-deploy
-      #   applyTo:
-      #     - simple-image-deploy
-      - IN: ecsProduction-deploy
-      - TASK: managed
-        deployMethod: blueGreen
+  # - name: combined-deploy
+  #   type: deploy
+  #   flags:
+  #     - deploy
+  #   steps:
+  #     - IN: timed-deployment-deploy
+  #     - IN: combined-manifest-deploy
+  #     # - IN: simple-opts-deploy
+  #     #   applyTo:
+  #     #     - simple-image-deploy
+  #     - IN: ecsProduction-deploy
+  #     - TASK: managed
+  #       deployMethod: blueGreen
