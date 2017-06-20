@@ -86,6 +86,7 @@ jobs:
     flags:
       - deploy
     steps:
+      - IN: timed-deployment-deploy
       - IN: combined-manifest-deploy
       - IN: simple-opts-deploy
         applyTo:

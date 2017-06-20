@@ -37,19 +37,19 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "MyECSCredentials"
     pointer:
-      region: "us-central1-f"
-      sourceName: "cluster-2"
+      region: "us-east-1"
+      sourceName: "john-test"
 
   - name: ecsProduction-deploy
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "MyECSCredentials"
     pointer:
-      region: "us-central1-f"
-      sourceName: "cluster-2"
+      region: "us-east-1"
+      sourceName: "john-test"
 
 
   - name: simple-image-deploy
@@ -112,3 +112,12 @@ resources:
         - "30002:8888"
       deployment:
         progressDeadlineSeconds: 300
+
+
+
+  - name: timed-deployment-deploy
+    type: time
+    flags: 
+      - deploy
+    seed: 
+      interval: "*/5 * * * *"
