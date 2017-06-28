@@ -120,4 +120,4 @@ resources:
     flags: 
       - deploy
     seed: 
-      interval: "*/4 * * * *"
+      interval: "*/2 * * * *"
