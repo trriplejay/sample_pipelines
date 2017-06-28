@@ -94,4 +94,4 @@ jobs:
       #     - simple-image-deploy
       - IN: ecsProduction-deploy
       - TASK: managed
-        deployMethod: replace
+        deployMethod: upgrade
