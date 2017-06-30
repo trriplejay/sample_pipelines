@@ -49,3 +49,10 @@ resources:
     type: replicas
     version:
       count: 2
+
+  - name: "timed spaces deployment deploy"
+    type: time
+    flags: 
+      - deploy
+    seed: 
+      interval: "*/2 * * * *"
