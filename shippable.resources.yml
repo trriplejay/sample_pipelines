@@ -121,11 +121,3 @@ resources:
       - deploy
     seed: 
       interval: "*/2 * * * *"
-
-
-  - name: "timed spaces deployment deploy"
-    type: time
-    flags: 
-      - deploy
-    seed: 
-      interval: "*/2 * * * *"
