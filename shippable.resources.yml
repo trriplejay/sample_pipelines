@@ -49,7 +49,6 @@ resources:
     version:
       params:
         FOO: "test foo"
-        BAR: "test bar"
         MODE: "dev"
         SELF_URL: "http://localhost:8888"
 
