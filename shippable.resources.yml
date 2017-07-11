@@ -3,7 +3,7 @@ resources:
     type: image
     flags:
       - runShSample
-    integration: "trriplejay docker blub"
+    integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/msgbase"
     seed:
