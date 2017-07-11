@@ -6,14 +6,14 @@ jobs:
   #  steps:
   #    - OUT: fake-image
       
-  #- name: simple-mani-runShSample
+  # - name: simple-mani-runShSample
   #  type: manifest
   #  flags:
   #    - runShSample
   #  steps:
-      # - IN: simple-image-runShSample
-      # - IN: myParams-runShSample
-  #    - IN: sample_python_runCI
+  #    - IN: simple-image-runShSample
+  #    - IN: myParams-runShSample
+  #    #- IN: sample_python_runCI
 
   #- name: sample_python_runCI
   #  type: runCI
@@ -54,7 +54,7 @@ jobs:
       - runShSample
     steps:
       - IN: stagingTrigger-runShSample
-      - IN: simple-release-runShSample
+      #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
       - IN: myParams-runShSample
       - IN: test-docker-op
@@ -72,7 +72,7 @@ jobs:
         - script: cat /build/state/testOutImage-runShSample.env
         - script: which envsubst
         - script: cat /build/state/runShCheck-runShSample.env
-        - script: ls -latr /build/IN/simple-release-runShSample/release
+        #- script: ls -latr /build/IN/simple-release-runShSample/release
         #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
         - script: ls -latr IN/myParams-runShSample
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
