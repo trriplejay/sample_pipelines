@@ -75,7 +75,7 @@ jobs:
         #- script: ls -latr /build/IN/simple-release-runShSample/release
         #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
         - script: ls -latr IN/myParams-runShSample
-        - script: echo "my subshell result is- $MYPARAMSRUNSHSAMPLE_ACTION"
+        - script: echo "my subshell result is- $SHIPPABLE_API_URL"
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
         - script: cat IN/test-docker-op/version.json | jq '.'
         - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
