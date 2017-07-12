@@ -31,7 +31,7 @@ resources:
     flags:
       - mani2mani
     version:
-      memory: 64
+      memory: 128
 
   - name: simple-image-mani2mani
     type: image
