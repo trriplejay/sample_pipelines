@@ -4,4 +4,4 @@ resources:
     pointer:
       sourceName: trriplejay/privateimg
     seed:
-      versionName: "master.10"
+      versionName: "master.11"
