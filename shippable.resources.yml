@@ -8,6 +8,15 @@ resources:
     seed:
       versionName: stable
 
+  - name: abc-123-simpleserver-image-prod-tested-immutable-fyi-mani2mani
+    type: image
+    flags:
+      - mani2mani
+    pointer:
+      sourceName: "library/nginx"
+    seed:
+      versionName: stable
+
   - name: busybox-image-mani2mani
     type: image
     flags:

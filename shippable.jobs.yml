@@ -5,6 +5,7 @@ jobs:
       - mani2mani
     steps:
       - IN: stagingTrigger-mani2mani
+      - IN: abc-123-simpleserver-image-prod-tested-immutable-fyi-mani2mani
       - IN: simple-params-mani2mani
       - IN: simple-image-mani2mani
       - IN: simple-opts-mani2mani
@@ -28,6 +29,12 @@ jobs:
       - IN: combined-manifest-mani2mani
       - TASK:
         - script: cat $COMBINEDMANIFESTMANI2MANI_STATE/manifests.json | jq '.'
+
+  - name: simple-release
+    type: release
+    steps:
+      - IN: simpleserver-image-mani2mani
+
 
   # - name: combined-mani2mani
   #   type: deploy
