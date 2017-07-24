@@ -49,7 +49,7 @@ resources:
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
-      versionName: master.59
+      versionName: master.58
 
   - name: simple-params-mani2mani
     type: params
