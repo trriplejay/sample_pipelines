@@ -115,9 +115,9 @@ resources:
 
 
 
-  - name: timed-deployment-deploy
-    type: time
-    flags: 
-      - deploy
-    seed: 
-      interval: "*/2 * * * *"
+  # - name: timed-deployment-deploy
+  #   type: time
+  #   flags:
+  #     - deploy
+  #   seed:
+  #     interval: "*/2 * * * *"
