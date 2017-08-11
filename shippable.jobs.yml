@@ -84,7 +84,8 @@ jobs:
 
   - name: combined-deploy
     type: deploy
-    method: blueGreen
+    method: replace
+    workflow: parallel
     flags:
       - deploy
     steps:
