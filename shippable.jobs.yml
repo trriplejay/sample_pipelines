@@ -72,7 +72,6 @@ jobs:
 
   - name: combined-manifest-deploy
     type: manifest
-    stabilityDuration: 55
     flags:
       - deploy
     steps:
@@ -86,6 +85,7 @@ jobs:
   - name: combined-deploy
     type: deploy
     method: blueGreen
+    stabilityDuration: 55
     flags:
       - deploy
     steps:
