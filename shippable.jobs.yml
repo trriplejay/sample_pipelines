@@ -84,8 +84,8 @@ jobs:
 
   - name: combined-deploy
     type: deploy
-    method: replace
-    workflow: parallel
+    method: upgrade
+    stabilityDuration: 225
     flags:
       - deploy
     steps:
