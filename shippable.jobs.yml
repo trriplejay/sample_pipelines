@@ -85,7 +85,7 @@ jobs:
   - name: combined-deploy
     type: deploy
     method: blueGreen
-    stabilityDuration: 30
+    stabilityDuration: 0
     workflow: parallel
     flags:
       - deploy
