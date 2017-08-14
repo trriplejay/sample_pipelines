@@ -77,7 +77,7 @@ jobs:
     steps:
       # - IN: nginx-image-deploy
 #      - IN: timed-deployment-deploy
-      - IN: busybox-image-deploy
+      # - IN: busybox-image-deploy
       - IN: simple-image-deploy
       - IN: simpleReplicas-deploy
       - IN: base-options-deploy
@@ -85,7 +85,7 @@ jobs:
   - name: combined-deploy
     type: deploy
     method: blueGreen
-    stabilityDuration: 225
+    stabilityDuration: 10
     workflow: parallel
     flags:
       - deploy
