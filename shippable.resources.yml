@@ -106,8 +106,8 @@ resources:
     type: dockerOptions
     version:
       memory: 64
-      labels:
-        test: a1234
+      # labels:
+      #   test: a1234
       # portMappings:
       #   - "30002:8888"
       # deployment:
