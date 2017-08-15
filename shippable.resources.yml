@@ -46,10 +46,10 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyECSCredentials"
+    integration: "MyGKECredentials"
     pointer:
-      region: "us-east-1"
-      sourceName: "john-test"
+      region: "us-central1-f"
+      sourceName: "cluster-1"
 
 
   - name: simple-image-deploy
