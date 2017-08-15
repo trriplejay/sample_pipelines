@@ -85,6 +85,7 @@ jobs:
   - name: combined-deploy
     type: deploy
     method: blueGreen
+    stabilityDuration: 0
     flags:
       - deploy
     steps:
