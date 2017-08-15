@@ -77,7 +77,7 @@ jobs:
     steps:
       # - IN: nginx-image-deploy
 #      - IN: timed-deployment-deploy
-      - IN: busybox-image-deploy
+      # - IN: busybox-image-deploy
       - IN: simple-image-deploy
       - IN: simpleReplicas-deploy
       - IN: base-options-deploy
