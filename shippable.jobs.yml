@@ -85,7 +85,6 @@ jobs:
   - name: combined-deploy
     type: deploy
     stabilityDuration: 20
-    workflow: parallel
     flags:
       - deploy
     steps:
@@ -98,4 +97,4 @@ jobs:
       - TASK: managed 
         deployMethod: replace
         deployOptions:
-          - serial
+          - parallel
