@@ -2,4 +2,3 @@ resources:
   - name: myAwsCreds
     type: integration
     integration: my-aws-keys
-
