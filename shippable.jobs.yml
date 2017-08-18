@@ -5,10 +5,10 @@ jobs:
       - IN: simpleserver_runCI
       - IN: myAwsCreds
       - TASK:
-        - script: echo 'hello world'
+        - script: echo "hello world"
         - script: ciBuildNumber=$(shipctl get_resource_version_name simpleserver_runCI)
-        - script: echo 'ci build number was $ciBuildNumber'
+        - script: echo "ci build number was $ciBuildNumber"
         - script: ciCommitSha=$SIMPLESERVER_RUNCI_VERSION_COMMIT
-        - script: echo 'ci build commit sha was $ciCommitSha'
+        - script: echo "ci build commit sha was $ciCommitSha"
         - script: ciBranch=$SIMPLESERVER_RUNCI_VERSION_BRANCH
         - script: echo "ci branch was $ciBranch"
