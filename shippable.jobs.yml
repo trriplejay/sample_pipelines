@@ -5,9 +5,9 @@ jobs:
       - IN: simpleserver_runCI
       - TASK:
         - script: echo "hello world"
+        - script: cat $SIMPLESERVER_RUNCI_STATE/simpleserver_runCI.env
+        - script: source $SIMPLESERVER_RUNCI_STATE/simpleserver_runCI.env
         - script: ciBuildNumber=$(shipctl get_resource_version_name simpleserver_runCI)
         - script: echo "ci build number was $ciBuildNumber"
-        - script: ciCommitSha=$SIMPLESERVER_RUNCI_VERSION_COMMIT
-        - script: echo "ci build commit sha was $ciCommitSha"
-        - script: ciBranch=$SIMPLESERVER_RUNCI_VERSION_BRANCH
+        - script: echo "ci build commit sha was $ciCommit"
         - script: echo "ci branch was $ciBranch"
