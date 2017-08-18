@@ -5,7 +5,9 @@ jobs:
       - IN: simpleserver_runCI
       - TASK:
         - script: echo "hello world"
+        - script: echo "-------- state variables from CI --------------"
         - script: cat $SIMPLESERVER_RUNCI_STATE/simpleserver_runCI.env
+        - script: echo "---------------------------------------------"
         - script: source $SIMPLESERVER_RUNCI_STATE/simpleserver_runCI.env
         - script: ciBuildNumber=$(shipctl get_resource_version_name simpleserver_runCI)
         - script: echo "ci build number was $ciBuildNumber"
