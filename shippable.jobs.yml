@@ -3,7 +3,6 @@ jobs:
     type: runSh
     steps:
       - IN: simpleserver_runCI
-      - IN: myAwsCreds
       - TASK:
         - script: echo "hello world"
         - script: ciBuildNumber=$(shipctl get_resource_version_name simpleserver_runCI)
