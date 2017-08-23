@@ -8,5 +8,6 @@ resources:
     integration: "trriplejay github"
     pointer:
       sourceName: trriplejay/sample_pipelines
+      branch: master
       buildOnCommit: false
       
