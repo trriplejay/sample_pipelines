@@ -5,7 +5,7 @@ resources:
 
   - name: myRepo
     type: gitRepo
-    integration: github
+    integration: "trriplejay github"
     pointer:
       sourceName: trriplejay/sample_pipelines
       buildOnCommit: false
