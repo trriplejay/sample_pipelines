@@ -4,6 +4,7 @@ jobs:
     steps:
       - IN: simpleserver_runCI
       - IN: myRepo
+        switch: off
       - TASK:
         - script: echo "hello world"
         - script: echo "-------- state variables from CI --------------"
