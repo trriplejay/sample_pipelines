@@ -11,5 +11,9 @@ jobs:
         - script: source $SIMPLESERVER_RUNCI_STATE/simpleserver_runCI.env
         - script: ciBuildNumber=$(shipctl get_resource_version_name simpleserver_runCI)
         - script: echo "ci build number was $ciBuildNumber"
-        - script: echo "ci build commit sha was $ciCommit"
-        - script: echo "ci branch was $ciBranch"
+
+  - name: simpleserver_runCI
+    type: runCI
+    steps:
+      - OUT: myRepo
+        replicate: simpleserver_ciRepo

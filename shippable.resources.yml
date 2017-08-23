@@ -2,3 +2,11 @@ resources:
   - name: myAwsCreds
     type: integration
     integration: my-aws-keys
+
+  - name: myRepo
+    type: gitRepo
+    integration: github
+    pointer:
+      sourceName: trriplejay/sample_pipelines
+      buildOnCommit: false
+      
