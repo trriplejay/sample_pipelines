@@ -85,7 +85,7 @@ jobs:
   - name: combined-deploy
     type: deploy
     stabilityDuration: 45
-    method: upgrade
+    method: blueGreen
     flags:
       - deploy
     steps:
@@ -96,6 +96,6 @@ jobs:
       #     - simple-image-deploy
       - IN: ecsProduction-deploy
       - TASK: managed
-        deployMethod: upgrade
+        deployMethod: blueGreen
         deployOptions:
           - parallel
