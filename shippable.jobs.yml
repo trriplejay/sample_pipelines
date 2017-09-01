@@ -1,11 +1,11 @@
 jobs:
   #- name: sample_jacoco_runCI
   #  type: runCI
-  #  flags: 
+  #  flags:
   #    - runShSample
   #  steps:
   #    - OUT: fake-image
-      
+
   # - name: simple-mani-runShSample
   #  type: manifest
   #  flags:
@@ -88,3 +88,19 @@ jobs:
       - script: echo "something failed"
     on_success:
       - script: echo "yay it worked"
+
+
+  - name: runShCustom-runShSample
+    type: runSh
+    flags:
+      - runShSample
+    steps:
+      - PRE_TASK:
+          - script: echo "hello world"
+      - TASK_IMAGE:
+          - name: trriplejay/simpleserver:master.58
+      - TASK:
+          - script: echo 'inside custom image'
+          - script: ls /build
+          - script: docker ps -a
+          - script: printenv
