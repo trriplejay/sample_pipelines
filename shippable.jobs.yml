@@ -97,8 +97,7 @@ jobs:
     steps:
       - PRE_TASK:
           - script: echo "hello world"
-      - TASK_IMAGE:
-          - name: trriplejay/simpleserver:master.58
+      - TASK_IMAGE: trriplejay/simpleserver:master.58
       - TASK:
           - script: echo 'inside custom image'
           - script: ls /build
