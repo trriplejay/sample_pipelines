@@ -86,7 +86,7 @@ jobs:
     type: deploy
     # stabilityDuration: 45
     method: upgrade
-    # workflow: parallel
+    workflow: parallel
     flags:
       - deploy
     steps:
