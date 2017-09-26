@@ -46,10 +46,11 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyGKECredentials"
+    integration: "MyDCLCredentials"
     pointer:
-      region: "us-central1-f"
-      sourceName: "cluster-1"
+      sourceName: "myClusta"
+      # region: "us-central1-f"
+      # sourceName: "cluster-1"
 
 
   - name: simple-image-deploy
