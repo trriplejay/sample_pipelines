@@ -46,7 +46,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "MyGKECredentials"
     pointer:
       region: "us-central1-f"
       sourceName: "cluster-1"
