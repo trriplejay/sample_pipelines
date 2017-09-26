@@ -46,11 +46,11 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyECSCredentials"
+    integration: "MyDCLCredentials"
     pointer:
-      # sourceName: "myClusta"
-      region: "us-east-1"
-      sourceName: "deploy-ecs-basic"
+      sourceName: "myClusta"
+      # region: "us-east-1"
+      # sourceName: "deploy-ecs-basic"
       # region: "us-central1-f"
       # sourceName: "cluster-1"
 
