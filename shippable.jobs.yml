@@ -96,3 +96,7 @@ jobs:
       #   applyTo:
       #     - simple-image-deploy
       - IN: ecsProduction-deploy
+      - TASK: managed
+        deployMethod: blueGreen
+        deployOptions:
+          - serial
