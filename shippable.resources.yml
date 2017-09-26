@@ -48,7 +48,7 @@ resources:
       - deploy
     integration: "MyECSCredentials"
     pointer:
-      sourceName: "myClusta"
+      # sourceName: "myClusta"
       region: "us-east-1"
       sourceName: "deploy-ecs-basic"
       # region: "us-central1-f"
