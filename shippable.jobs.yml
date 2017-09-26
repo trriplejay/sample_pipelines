@@ -85,8 +85,8 @@ jobs:
   - name: combined-deploy
     type: deploy
     # stabilityDuration: 45
-    # method: upgrade
-    # workflow: parallel
+    method: upgrade
+    workflow: parallel
     flags:
       - deploy
     steps:
@@ -96,4 +96,3 @@ jobs:
       #   applyTo:
       #     - simple-image-deploy
       - IN: ecsProduction-deploy
-      
