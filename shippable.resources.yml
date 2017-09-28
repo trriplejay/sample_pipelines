@@ -3,7 +3,6 @@ resources:
     type: image
     flags:
       - release
-    integration: "trriplejay docker hub"
     pointer:
       sourceName: "library/nginx"
     seed:
@@ -109,7 +108,6 @@ resources:
     type: params
     flags:
       - release
-    integration: "trriplejay docker hub"
     version:
       params:
         yay: blah
