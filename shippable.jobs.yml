@@ -49,6 +49,7 @@ jobs:
       - IN: nginx-mani-release
     on_success:
       - script: echo 'hello world, success!'
+      - script: cat $JOB_STATE/release.json | jq '.'
 
   - name: prod-release-A-release
     type: release
