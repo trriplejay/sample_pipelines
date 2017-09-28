@@ -47,6 +47,8 @@ jobs:
     steps:
       - IN: stagingVersion-release
       - IN: nginx-mani-release
+    on_success:
+      - script: echo 'hello world, success!'
 
   - name: prod-release-A-release
     type: release
