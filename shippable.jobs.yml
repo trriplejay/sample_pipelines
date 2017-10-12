@@ -97,10 +97,10 @@ jobs:
     flags:
       - deploy
     steps:
-      - IN: file-manifest-deploy
-        force: true
-      # - IN: combined-manifest-deploy
+      # - IN: file-manifest-deploy
       #   force: true
+      - IN: combined-manifest-deploy
+        force: true
       # - IN: simple-opts-deploy
       #   applyTo:
       #     - simple-image-deploy

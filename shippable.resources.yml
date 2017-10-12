@@ -54,7 +54,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "theNodeCluster"
+    integration: "MyECSCredentials"
     pointer:
       sourceName: "default"
       region: "us-east-1"
