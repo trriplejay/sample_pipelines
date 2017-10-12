@@ -1,4 +1,12 @@
 resources:
+  - name: random-file-deploy
+    type: file
+    flags:
+      - deploy
+    pointer:
+      sourceName: https://github.com/trriplejay/sample_pipelines/blob/master/shippable.yml
+    version:
+      versionName: test
   - name: nginx-image-deploy
     type: image
     flags:
@@ -46,7 +54,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "trriplejay aws"
+    integration: "theNodeCluster"
     pointer:
       sourceName: "default"
       region: "us-east-1"
