@@ -5,7 +5,7 @@ resources:
       - deploy
     pointer:
       sourceName: https://github.com/trriplejay/sample_pipelines/blob/master/shippable.yml
-    version:
+    seed:
       versionName: test
   - name: nginx-image-deploy
     type: image
