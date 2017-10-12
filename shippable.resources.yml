@@ -46,10 +46,10 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyDCLCredentials"
+    integration: "trriplejay aws"
     pointer:
-      sourceName: "myClusta"
-      # region: "us-east-1"
+      sourceName: "default"
+      region: "us-east-1"
       # sourceName: "deploy-ecs-basic"
       # region: "us-central1-f"
       # sourceName: "cluster-1"
