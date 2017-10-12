@@ -54,7 +54,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyECSCredentials"
+    integration: "trriplejay aws keys"
     pointer:
       sourceName: "default"
       region: "us-east-1"
