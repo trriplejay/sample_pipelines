@@ -54,7 +54,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "trriplejay aws"
+    integration: "MyKubeCredentials"
     pointer:
       # sourceName: "default"
       # region: "us-east-1"
