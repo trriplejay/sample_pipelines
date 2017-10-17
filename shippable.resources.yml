@@ -45,7 +45,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyECSCredentials"
+    integration: "MyKubeCredentials"
     pointer:
       region: "us-east-1"
       sourceName: "john-test"
@@ -56,11 +56,11 @@ resources:
       - deploy
     integration: "trriplejay aws"
     pointer:
-      sourceName: "default"
-      region: "us-east-1"
+      # sourceName: "default"
+      # region: "us-east-1"
       # sourceName: "deploy-ecs-basic"
-      # region: "us-central1-f"
-      # sourceName: "cluster-1"
+      region: "us-central1-f"
+      sourceName: "cluster-1"
 
 
   - name: simple-image-deploy
