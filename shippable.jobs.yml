@@ -64,9 +64,9 @@ jobs:
       - TASK:
         # - script: kubectl version
         - script: mkdir -p /root/.kube/
-        - script: echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
+        - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
         - script: echo -e "\npsacer\n"
-        - script: echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
+        - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
         #- script: cat /root/.kube/config
