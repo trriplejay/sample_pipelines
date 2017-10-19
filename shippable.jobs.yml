@@ -61,6 +61,7 @@ jobs:
       - OUT: testOutImage-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
+        - script: kubectl --version
         - script: echo "resource ID is $RESOURCE_ID"
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
