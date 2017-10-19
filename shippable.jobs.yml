@@ -63,10 +63,9 @@ jobs:
       #- OUT: out-mani-runShSample
       - TASK:
         # - script: kubectl version
-        - script: printenv | grep TESTINTRUNSHSAMPLE_INTEGRATION
         - script: mkdir -p /root/.kube/
-        - script: cat $TESTINTRUNSHSAMPLE_META/integration.json
         - script: cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent'
+        - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
         #- script: cat /root/.kube/config
