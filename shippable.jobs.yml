@@ -64,7 +64,7 @@ jobs:
       - TASK:
         # - script: kubectl version
         - script: printenv | grep TESTINTRUNSHSAMPLE_INTEGRATION
-        - script: touch /root/.kube/config
+        - script: mkdir -p /root/.kube/
         - script: echo $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
         - script: echo $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
         - script: cat /root/.kube/config
