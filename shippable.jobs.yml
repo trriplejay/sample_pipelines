@@ -66,7 +66,7 @@ jobs:
         - script: printenv | grep TESTINTRUNSHSAMPLE_INTEGRATION
         - script: mkdir -p /root/.kube/
         - script: cat $TESTINTRUNSHSAMPLE_META/integration.json
-        - script: cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.accountIntegration.masterKubeConfigContent'
+        - script: cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent'
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
         #- script: cat /root/.kube/config
