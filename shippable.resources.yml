@@ -55,4 +55,7 @@ resources:
       branches:
         only:
           - master
-  
+
+  - name: test-int-runShSample
+    type: integration
+    integration: MyKubeCredentials

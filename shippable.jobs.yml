@@ -56,12 +56,14 @@ jobs:
       - IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
-      - IN: myParams-runShSample
-      - IN: test-docker-op
+      #- IN: myParams-runShSample
+      #- IN: test-docker-op
       - OUT: testOutImage-runShSample
+      - IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
         - script: kubectl version
+        - script: printenv | grep INTEGRATION
         - script: echo "resource ID is $RESOURCE_ID"
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
