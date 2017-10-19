@@ -65,9 +65,11 @@ jobs:
         # - script: kubectl version
         - script: printenv | grep TESTINTRUNSHSAMPLE_INTEGRATION
         - script: mkdir -p /root/.kube/
-        - script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
-        - script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
-        - script: cat /root/.kube/config
+        - script: cat $TESTINTRUNSHSAMPLE_META/integration.json
+        - script: cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.accountIntegration.masterKubeConfigContent'
+        #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
+        #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
+        #- script: cat /root/.kube/config
         - script: kubectl version
         - script: echo "resource ID is $RESOURCE_ID"
         - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
