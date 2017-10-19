@@ -65,8 +65,8 @@ jobs:
         # - script: kubectl version
         - script: printenv | grep TESTINTRUNSHSAMPLE_INTEGRATION
         - script: mkdir -p /root/.kube/
-        - script: echo $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
-        - script: echo $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
+        - script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
+        - script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
         - script: cat /root/.kube/config
         - script: kubectl version
         - script: echo "resource ID is $RESOURCE_ID"
