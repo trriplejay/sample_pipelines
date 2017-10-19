@@ -67,6 +67,8 @@ jobs:
         - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
         - script: echo -e "\npsacer\n"
         - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
+        - script: echo "=============THE CONFIG FILE:"
+        - script: cat /root/.kube/config
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
         #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
         #- script: cat /root/.kube/config
