@@ -14,6 +14,7 @@ jobs:
         - script: ciBuildNumber=$(shipctl get_resource_version_name simpleserver_runCI)
         - script: echo "ci build number was $ciBuildNumber"
         - script: echo "myRepo versionName is- $MYREPO_VERSIONNAME"
+        - script: jq . /build/message.json
 
   - name: simpleserver_runCI
     type: runCI
