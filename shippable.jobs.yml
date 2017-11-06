@@ -23,17 +23,31 @@ jobs:
     type: runSh
     flags:
       - serialCheck
+      - jtFlow
     steps:
       - TASK:
         - script: pwd
-        - script: sleep 120
+        - script: sleep 30
 
   - name: runSh2-serialCheck
     type: runSh
     flags:
       - serialCheck
+      - jtFlow
     steps:
-      - IN: runSh2Trigger-serialCheck
       - TASK:
         - script: pwd
-        - script: sleep 120
+        - script: sleep 30
+
+
+  - name: runSh3-serialCheck
+    type: runSh
+    flags:
+      - serialCheck
+      - jtFlow
+    steps:
+      - IN: runSh1-serialCheck
+      - IN: runSh2-serialCheck
+      - TASK:
+        - script: pwd
+        - script: sleep 30
