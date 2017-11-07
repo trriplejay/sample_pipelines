@@ -27,7 +27,7 @@ jobs:
     steps:
       - TASK:
         - script: pwd
-        - script: sleep 30
+        - script: sleep 60
 
   - name: runSh2-serialCheck
     type: runSh
@@ -37,7 +37,7 @@ jobs:
     steps:
       - TASK:
         - script: pwd
-        - script: sleep 30
+        - script: sleep 60
 
 
   - name: runSh3-serialCheck
@@ -50,4 +50,4 @@ jobs:
       - IN: runSh2-serialCheck
       - TASK:
         - script: pwd
-        - script: sleep 30
+        - script: sleep 60
