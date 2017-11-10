@@ -89,6 +89,7 @@ resources:
       - deploy
     version:
       memoryReservation: 256
+      memory: 0
       # labels:
       #   check: oneTwo
       # imagePullPolicy: IfNotPresent
