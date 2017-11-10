@@ -59,8 +59,8 @@ resources:
       # sourceName: "default"
       # region: "us-east-1"
       # sourceName: "deploy-ecs-basic"
-      region: "us-central1-f"
-      sourceName: "cluster-1"
+      region: "us-east-1"
+      sourceName: "default"
 
 
   - name: simple-image-deploy
@@ -83,27 +83,27 @@ resources:
         MODE: "dev"
         SELF_URL: "http://localhost:8888"
 
-  # - name: simple-opts-deploy
-  #   type: dockerOptions
-  #   flags:
-  #     - deploy
-  #   version:
-  #     memory: 128
-  #     labels:
-  #       check: oneTwo
-  #     imagePullPolicy: IfNotPresent
-  #     portMappings:
-  #       - "30001:80"
-  #     livenessProbe:
-  #       httpGet:
-  #         path: /
-  #         port: 8888
-  #     readinessProbe:
-  #       httpGet:
-  #         path: /
-  #         port: 8888
-  #       initialDelaySeconds: 5
-  #       periodSeconds: 5
+  - name: simple-opts-deploy
+    type: dockerOptions
+    flags:
+      - deploy
+    version:
+      memoryReservation: 256
+      # labels:
+      #   check: oneTwo
+      # imagePullPolicy: IfNotPresent
+      # portMappings:
+      #   - "30001:80"
+      # livenessProbe:
+      #   httpGet:
+      #     path: /
+      #     port: 8888
+      # readinessProbe:
+      #   httpGet:
+      #     path: /
+      #     port: 8888
+      #   initialDelaySeconds: 5
+      #   periodSeconds: 5
 
 
   - name: simpleReplicas-deploy

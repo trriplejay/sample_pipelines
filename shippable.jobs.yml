@@ -101,7 +101,7 @@ jobs:
       #   force: true
       - IN: combined-manifest-deploy
         force: true
-      # - IN: simple-opts-deploy
+      - IN: simple-opts-deploy
       #   applyTo:
       #     - simple-image-deploy
       - IN: ecsProduction-deploy
