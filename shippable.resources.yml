@@ -45,10 +45,10 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyKubeCredentials"
+    integration: "trriplejay personal aws"
     pointer:
       region: "us-east-1"
-      sourceName: "john-test"
+      sourceName: "default"
 
   - name: ecsProduction-deploy
     type: cluster
