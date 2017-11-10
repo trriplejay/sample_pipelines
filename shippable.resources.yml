@@ -88,8 +88,7 @@ resources:
     flags:
       - deploy
     version:
-      memoryReservation: 256
-      memory: 0
+      memoryReservation: 500
       # labels:
       #   check: oneTwo
       # imagePullPolicy: IfNotPresent
@@ -117,7 +116,7 @@ resources:
   - name: base-options-deploy
     type: dockerOptions
     version:
-      memoryReservation: 500
+      memory: 64
       # labels:
       #   test: a1234
       # portMappings:
