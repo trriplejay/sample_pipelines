@@ -117,7 +117,7 @@ resources:
   - name: base-options-deploy
     type: dockerOptions
     version:
-      memory: 64
+      memoryReservation: 500
       # labels:
       #   test: a1234
       # portMappings:
