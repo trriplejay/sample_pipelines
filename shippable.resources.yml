@@ -88,8 +88,8 @@ resources:
     flags:
       - deploy
     version:
-      memory: 200
-      memoryReservation: 256
+      memory: 256
+      memoryReservation: 200
       # labels:
       #   check: oneTwo
       # imagePullPolicy: IfNotPresent
