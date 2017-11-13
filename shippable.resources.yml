@@ -136,9 +136,11 @@ resources:
 
 
 
-  - name: gkeLB
+  - name: gkeLB-deploy
     type: loadBalancer
-    integration: myGKE
+    integration: MyGkeCredentials
+    flags:
+      - deploy
     pointer:
       sourceName: gke-service-shippable
       method: LoadBalancer
