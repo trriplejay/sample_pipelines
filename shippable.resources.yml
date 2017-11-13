@@ -89,9 +89,9 @@ resources:
       - deploy
     version:
       #memory: 256
-      memoryReservation: 200
-      # labels:
-      #   check: oneTwo
+      #memoryReservation: 200
+      labels:
+        check: oneTwo
       # imagePullPolicy: IfNotPresent
       # portMappings:
       #   - "30001:80"
@@ -117,9 +117,9 @@ resources:
   - name: base-options-deploy
     type: dockerOptions
     version:
-      #memoryReservation: 256
-      labels:
-        test: a1234
+      memoryReservation: 256
+      #labels:
+      #  test: a1234
       # portMappings:
       #   - "30002:8888"
       # deployment:
