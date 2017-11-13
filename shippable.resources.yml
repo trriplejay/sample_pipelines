@@ -133,3 +133,21 @@ resources:
   #     - deploy
   #   seed:
   #     interval: "*/2 * * * *"
+
+
+
+  - name: gkeLB
+    type: loadBalancer
+    integration: myGKE
+    pointer:
+      sourceName: gke-service-shippable
+      method: LoadBalancer
+      namespace: shippable
+      region: us-central1-f
+    version:
+      ports:
+        - name: public
+          protocol: TCP
+          port: 8888
+      selector:
+        env: app
