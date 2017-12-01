@@ -53,13 +53,16 @@ jobs:
     flags:
       - runShSample
     steps:
-      - IN: stagingTrigger-runShSample
+      - IN: azureConfig
+        scopes:
+          - aks
+      #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
       #- IN: myParams-runShSample
       #- IN: test-docker-op
-      - OUT: testOutImage-runShSample
-      - IN: test-int-runShSample
+      #- OUT: testOutImage-runShSample
+      #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
         # - script: kubectl version

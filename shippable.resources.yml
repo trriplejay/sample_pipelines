@@ -16,6 +16,13 @@ resources:
     seed:
       versionName: 1.0.0
 
+  - name: azureConfig
+    type: cliCOnfig
+    integration: myAzureCreds
+    pointer:
+      groupName: testKube
+      clusterName: blah
+
   - name: test-docker-op
     type: dockerOptions
     flags:
@@ -56,6 +63,6 @@ resources:
         only:
           - master
 
-  - name: test-int-runShSample
-    type: integration
-    integration: MyKubeCredentials
+  # - name: test-int-runShSample
+  #   type: integration
+  #   integration: MyKubeCredentials
