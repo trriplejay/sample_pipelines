@@ -66,9 +66,10 @@ jobs:
       #- OUT: out-mani-runShSample
       - TASK:
         # - script: kubectl version
+        - script: az group list
         - script: mkdir -p /root/.kube/
         - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
-        - script: echo -e "\npsacer\n"
+        - script: echo -e "\nspacer\n"
         - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
         - script: echo "=============THE CONFIG FILE:"
         - script: cat /root/.kube/config
