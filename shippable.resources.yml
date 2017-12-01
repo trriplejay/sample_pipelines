@@ -17,7 +17,7 @@ resources:
       versionName: 1.0.0
 
   - name: azureConfig
-    type: cliCOnfig
+    type: cliConfig
     integration: myAzureCreds
     pointer:
       groupName: testKube
