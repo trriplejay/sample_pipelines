@@ -54,8 +54,8 @@ jobs:
       - runShSample
     steps:
       - IN: azureConfig
-        scopes:
-          - aks
+        # scopes:
+        #   - aks
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
@@ -67,7 +67,7 @@ jobs:
       - TASK:
         # - script: kubectl version
         - script: az --version
-        - script: kubectl get namespaces
+        #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
         # - script: echo -e "\nspacer\n"
