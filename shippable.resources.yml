@@ -21,7 +21,7 @@ resources:
     integration: myAzureCreds
     pointer:
       groupName: testKube
-      clusterName: blah
+      clusterName: blah-cluster
 
   - name: test-docker-op
     type: dockerOptions
