@@ -66,39 +66,40 @@ jobs:
       #- OUT: out-mani-runShSample
       - TASK:
         # - script: kubectl version
+        - script: az --version
         - script: az group list
-        - script: mkdir -p /root/.kube/
-        - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
-        - script: echo -e "\nspacer\n"
-        - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
-        - script: echo "=============THE CONFIG FILE:"
-        - script: cat /root/.kube/config
-        #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
-        #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
-        #- script: cat /root/.kube/config
-        - script: kubectl version
-        - script: echo "resource ID is $RESOURCE_ID"
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
-        - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
-        - script: sudo docker images
-        - script: sudo docker ps
-        - script: sudo apt-get install -y jq
-        - script: ls -latr /build/state
-        - script: cat /build/state/testOutImage-runShSample.env
-        - script: which envsubst
-        - script: cat /build/state/runShCheck-runShSample.env
-        #- script: ls -latr /build/IN/simple-release-runShSample/release
-        #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
-        - script: ls -latr IN/myParams-runShSample
-        - script: echo "my subshell result is- $SHIPPABLE_API_URL"
-        - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
-        - script: cat IN/test-docker-op/version.json | jq '.'
-        - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
-        - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
-        - script: ls -a $MY_SSH_PATH
-        - script: ls -a $MY_PEM_PATH
-        - script: ssh-add $MY_SSH_KEYPATH
+        # - script: mkdir -p /root/.kube/
+        # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
+        # - script: echo -e "\nspacer\n"
+        # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
+        # - script: echo "=============THE CONFIG FILE:"
+        # - script: cat /root/.kube/config
+        # #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
+        # #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
+        # #- script: cat /root/.kube/config
+        # - script: kubectl version
+        # - script: echo "resource ID is $RESOURCE_ID"
+        # - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
+        # - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
+        # - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
+        # - script: sudo docker images
+        # - script: sudo docker ps
+        # - script: sudo apt-get install -y jq
+        # - script: ls -latr /build/state
+        # - script: cat /build/state/testOutImage-runShSample.env
+        # - script: which envsubst
+        # - script: cat /build/state/runShCheck-runShSample.env
+        # #- script: ls -latr /build/IN/simple-release-runShSample/release
+        # #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
+        # - script: ls -latr IN/myParams-runShSample
+        # - script: echo "my subshell result is- $SHIPPABLE_API_URL"
+        # - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
+        # - script: cat IN/test-docker-op/version.json | jq '.'
+        # - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
+        # - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
+        # - script: ls -a $MY_SSH_PATH
+        # - script: ls -a $MY_PEM_PATH
+        # - script: ssh-add $MY_SSH_KEYPATH
 
     on_failure:
       - script: echo "something failed"
