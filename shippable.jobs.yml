@@ -67,7 +67,7 @@ jobs:
       - TASK:
         # - script: kubectl version
         - script: az --version
-        - script: az group list
+        - script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
         # - script: echo -e "\nspacer\n"
