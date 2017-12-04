@@ -54,8 +54,8 @@ jobs:
       - runShSample
     steps:
       - IN: azureConfig
-        # scopes:
-        #   - aks
+        scopes:
+          - aks
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
