@@ -19,9 +19,9 @@ resources:
   - name: azureConfig
     type: cliConfig
     integration: myAzureCreds
-    # pointer:
-    #   groupName: testKube
-    #   clusterName: blah-cluster
+    pointer:
+      groupName: testKube
+      clusterName: blah-cluster
 
   - name: test-docker-op
     type: dockerOptions
