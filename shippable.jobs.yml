@@ -95,7 +95,7 @@ jobs:
         - script: echo "my subshell result is- $SHIPPABLE_API_URL"
         #- script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/version.json | jq '.'
-        - script: echo "newParam=blahblahblah" >> state/$MYPARAMSRUNSHSAMPLE.env
+        - script: echo "newParam=blahblahblah" >> state/$MYPARAMSRUNSHSAMPLE_NAME.env
         # - script: cat IN/test-docker-op/version.json | jq '.'
         # - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
         # - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
