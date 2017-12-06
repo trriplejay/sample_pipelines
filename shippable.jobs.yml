@@ -59,7 +59,7 @@ jobs:
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
-      - OUT: myParams-runShSample
+      #- OUT: myParams-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
