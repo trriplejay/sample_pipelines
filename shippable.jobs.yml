@@ -53,20 +53,20 @@ jobs:
     flags:
       - runShSample
     steps:
-      - IN: azureConfig
-        scopes:
-          - aks
+      # - IN: azureConfig
+      #   scopes:
+      #     - aks
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
-      #- IN: myParams-runShSample
+      - IN: myParams-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
         # - script: kubectl version
-        - script: az --version
+        #- script: az --version
         #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
@@ -91,9 +91,10 @@ jobs:
         # - script: cat /build/state/runShCheck-runShSample.env
         # #- script: ls -latr /build/IN/simple-release-runShSample/release
         # #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
-        # - script: ls -latr IN/myParams-runShSample
-        # - script: echo "my subshell result is- $SHIPPABLE_API_URL"
-        # - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
+        - script: ls -latr IN/myParams-runShSample
+        - script: echo "my subshell result is- $SHIPPABLE_API_URL"
+        - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
+        - script: cat $MYPARAMSRUNSHSAMPLE_PATH/version.json | jq '.'
         # - script: cat IN/test-docker-op/version.json | jq '.'
         # - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
         # - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
