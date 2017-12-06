@@ -5,6 +5,7 @@ resources:
       - runShSample
     pointer:
       sourceName: "trriplejay/msgbase"
+      region: us-east-1
     seed:
       versionName: "latest"
 
