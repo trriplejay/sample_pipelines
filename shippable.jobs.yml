@@ -59,7 +59,7 @@ jobs:
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
-      - IN: myParams-runShSample
+      - OUT: myParams-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
@@ -91,10 +91,11 @@ jobs:
         # - script: cat /build/state/runShCheck-runShSample.env
         # #- script: ls -latr /build/IN/simple-release-runShSample/release
         # #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
-        - script: ls -latr IN/myParams-runShSample
+        - script: ls -latr OUT/myParams-runShSample
         - script: echo "my subshell result is- $SHIPPABLE_API_URL"
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
         - script: cat $MYPARAMSRUNSHSAMPLE_PATH/version.json | jq '.'
+        - script: echo "newParam=blahblahblah" >> state/$MYPARAMSRUNSHSAMPLE.env
         # - script: cat IN/test-docker-op/version.json | jq '.'
         # - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
         # - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
