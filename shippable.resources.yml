@@ -59,9 +59,7 @@ resources:
     integration: "github"
     pointer:
       sourceName: trriplejay/simpleserver
-      branches:
-        only:
-          - master
+      branch: master
 
   # - name: test-int-runShSample
   #   type: integration
