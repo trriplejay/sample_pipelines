@@ -56,7 +56,7 @@ resources:
     type: gitRepo
     flags:
       - runShSample
-    integration: "trriplejay github"
+    integration: "github"
     pointer:
       sourceName: trriplejay/simpleserver
       branches:
