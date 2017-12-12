@@ -62,7 +62,7 @@ jobs:
       - IN: test-mani-runShSample
       - OUT: myParams-runShSample
       #- IN: test-docker-op
-      - OUT: testOutImage-runShSample
+      #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
