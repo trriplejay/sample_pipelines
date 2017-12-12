@@ -46,7 +46,6 @@ resources:
     type: image
     flags:
       - runShSample
-    integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
