@@ -59,33 +59,15 @@ jobs:
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: myRepo-runShSample
+      - IN: test-mani-runShSample
       - OUT: myParams-runShSample
       #- IN: test-docker-op
       - OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
-        - script: echo "set up machine by removing unnecessar images"
-        - script: df -h
-        - script: docker images
-        - script: docker rmi drydock/u14ruball:master drydock/u14ruball:v5.10.4 || true
-        - script: docker rmi drydock/u16ruball:master drydock/u16ruball:v5.10.4 || true
-        - script: docker rmi drydock/u14scaall:master drydock/u14scaall:v5.10.4 || true
-        - script: docker rmi drydock/u16scaall:master drydock/u16scaall:v5.10.4 || true
-        - script: docker rmi drydock/u14javall:master drydock/u14javall:v5.10.4 || true
-        - script: docker rmi drydock/u16javall:master drydock/u16javall:v5.10.4 || true
-        - script: docker rmi drydock/u14cppall:master drydock/u14cppall:v5.10.4 drydock/u14cppall:prod || true
-        - script: docker rmi drydock/u16cppall:master drydock/u16cppall:v5.10.4 || true
-        - script: docker rmi drydock/u14cloall:master drydock/u14cloall:v5.10.4 || true
-        - script: docker rmi drydock/u16cloall:master drydock/u16cloall:v5.10.4 || true
-        - script: docker rmi drydock/u14phpall:master drydock/u14phpall:v5.10.4 || true
-        - script: docker rmi drydock/u16phpall:master drydock/u16phpall:v5.10.4 || true
-        - script: docker rmi drydock/u14golall:master drydock/u14golall:v5.10.4 || true
-        - script: docker rmi drydock/u16golall:master drydock/u16golall:v5.10.4 || true
-        - script: docker rmi zephyrprojectrtos/ci:v0.1 zephyrprojectrtos/ci:v0.2 || true
-        - script: docker images
-        - script: df -h
-
+        - script: shipctl copy_resource_file_from_state test-mani-runShSample manifests.json $PWD
+        - script: ls -a $PWD
         # - script: kubectl version
         #- script: az --version
         #- script: kubectl get namespaces
