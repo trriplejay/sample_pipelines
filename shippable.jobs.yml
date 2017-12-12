@@ -66,7 +66,7 @@ jobs:
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
-        - script: pushd /build/node/shipctl/x86_64/Ubuntu_14.04 && ./install.sh && popd
+        - script: which shipctl
         - script: ls -al /build/IN/test-mani-runShSample/manifest
         - script: shipctl copy_resource_file_from_state test-mani-runShSample manifests.json $PWD
         - script: ls -a $PWD
