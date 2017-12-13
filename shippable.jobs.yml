@@ -58,7 +58,7 @@ jobs:
       #     - aks
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
-      #- IN: myRepo-runShSample
+      - IN: myRepo-runShSample
       - IN: test-mani-runShSample
       - OUT: myParams-runShSample
       #- IN: test-docker-op
@@ -72,6 +72,9 @@ jobs:
         - script: echo "$(shipctl get_resource_env job name)"
         - script: echo "$(shipctl get_resource_env job triggered_by_nAmE)"
         - script: echo "$(shipctl get_resource_env test-mani-runShSample name)"
+        - script: echo "$(shipctl get_resource_env myRepo-runShSample commit)"
+        - script: echo "$(shipctl get_resource_env myRepo-runShSample commit_MESSAGE)"
+        - script: echo "$(shipctl get_resource_env myRepo-runShSample ssh_url)"
         - script: ls -a $PWD
         # - script: kubectl version
         #- script: az --version
