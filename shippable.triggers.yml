@@ -1,7 +1,0 @@
-triggers:
-  - name: stagingTrigger-runShSample
-    type: trigger
-    flags:
-      - runShSample
-    version:
-      message: 'trigger runShSteps: 1'
