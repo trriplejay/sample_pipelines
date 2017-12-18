@@ -88,7 +88,7 @@ jobs:
         - script: echo "$(shipctl get_resource_env myRepo-runShSample commit)"
         - script: echo "$(shipctl get_resource_env myRepo-runShSample commit_MESSAGE)"
         - script: echo "$(shipctl get_resource_env myRepo-runShSample ssh_url)"
-        - script: echo "manifest sha: $(shipctl get_resource_version_key test-mani-runShSample sha)"
+        - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
         - script: ls -a $PWD
         # - script: kubectl version
         #- script: az --version
