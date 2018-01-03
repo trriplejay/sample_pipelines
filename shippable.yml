@@ -80,9 +80,11 @@ jobs:
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
+        - script: sudo apt-get install -y tree
         - script: which shipctl
-        - script: result=$(eval $action)
-        - script: echo "$result"
+        # - script: result=$(eval $action)
+        # - script: echo "$result"
+        - script: tree /build
         - script: ls -al /build/IN/test-mani-runShSample/manifest
         - script: shipctl copy_resource_file_from_state test-mani-runShSample manifests.json $PWD
         - script: echo "$(shipctl get_resource_env job name)"
@@ -186,6 +188,7 @@ resources:
         hello: world
         test: 123
         action: "$(echo $SHIPPABLE_API_URL)"
+        testParam: $(eval touch testParams.txt)
 #        secure: A3OCCNyoIqC05NyP9Gy4Edq7bi8TC2KIav7/wlkNEJov0WHs90miT72rXwaiq5ExCQ28hgQ6uHxCOqihCVznwZylq5khHgN2zEPZuTvzF2KrzVzTu69XaDSlKgGuvMdNnAcnH4BOivqzwBWO2yJnmf4Wi5UpS1OLKziYH5akvHqswqEO/+A8cdUYnKaYvTLMALYGI4WeKZrng8Ry9LXjRN2WEDkkRmHZgpxFBrmVbAxGScrpnsOs7lpPoBibQ9fHOq5DgOtiqVFqXc55rZRI0q0ZKJwzSmxdTkp7pJuT+WJ7BfJQpcHObjnL0C0QuKyKKg2eLZ/QDwce3pctZUHBSA==
 
   - name: simple-image-runShSample
@@ -205,6 +208,7 @@ resources:
     pointer:
       sourceName: trriplejay/simpleserver
       branch: master
+      testKey: $(eval touch testRepo.txt)
 
   # - name: test-int-runShSample
   #   type: integration
