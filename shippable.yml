@@ -71,7 +71,7 @@ jobs:
       #     - aks
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
-      - IN: gkeConfig-runShSample
+      #- IN: gkeConfig-runShSample
       - IN: myRepo-runShSample
       - IN: test-mani-runShSample
       - OUT: myParams-runShSample
