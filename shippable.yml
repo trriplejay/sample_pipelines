@@ -85,6 +85,7 @@ jobs:
         # - script: result=$(eval $action)
         # - script: echo "$result"
         - script: tree /build
+        - script: printenv
         - script: ls -al /build/IN/test-mani-runShSample/manifest
         - script: shipctl copy_resource_file_from_state test-mani-runShSample manifests.json $PWD
         - script: echo "$(shipctl get_resource_env job name)"
