@@ -223,6 +223,3 @@ resources:
       - runShSample
     version:
       message: 'trigger runShSteps: 1'
-
-
-  -
