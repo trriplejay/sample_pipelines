@@ -84,6 +84,7 @@ jobs:
         - script: which shipctl
         # - script: result=$(eval $action)
         # - script: echo "$result"
+        - script: echo $NVM_DIR
         - script: tree /build
         - script: printenv
         - script: ls -al /build/IN/test-mani-runShSample/manifest
@@ -222,3 +223,6 @@ resources:
       - runShSample
     version:
       message: 'trigger runShSteps: 1'
+
+
+  -
