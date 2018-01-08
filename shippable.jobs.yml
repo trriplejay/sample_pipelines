@@ -35,6 +35,7 @@ jobs:
     steps:
       - IN: simple-mani-deploy
       - IN: nginx-mani-deploy
+      - IN: 123-bad-opts-deploy
       - IN: ecsStaging-deploy
       - TASK: managed
         deployMethod: blueGreen

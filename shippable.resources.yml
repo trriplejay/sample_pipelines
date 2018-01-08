@@ -41,6 +41,14 @@ resources:
     version:
       memory: 64
 
+  - name: 123-bad-opts-deploy
+    type: dockerOptions
+    flags:
+      - deploy
+    version:
+      memory: 666
+
+
   - name: ecsStaging-deploy
     type: cluster
     flags:
