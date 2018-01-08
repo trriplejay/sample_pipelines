@@ -75,6 +75,7 @@ jobs:
       - IN: myRepo-runShSample
       - IN: test-mani-runShSample
       - IN: myParams-runShSample
+      - IN: 123-testDockerOpts-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
@@ -142,6 +143,13 @@ jobs:
 
 
 resources:
+  - name: 123-testDockerOpts-runShSample
+    type: dockerOptions
+    flags: 
+      - runShSample
+    versionTemplate:
+      foo: "bar"
+
   - name: testOutImage-runShSample
     type: image
     flags:
