@@ -73,9 +73,10 @@ jobs:
       #- IN: simple-release-runShSample
       #- IN: gkeConfig-runShSample
       - IN: myRepo-runShSample
-      - IN: 123-testDockerOpts-runShSample
+      - IN: nonum-DockerOpts-runShSample
       - IN: test-mani-runShSample
       - IN: myParams-runShSample
+      - IN: 123-testDockerOpts-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
