@@ -149,6 +149,12 @@ resources:
       - runShSample
     versionTemplate:
       foo: "bar"
+  - name: nonum-DockerOpts-runShSample
+    type: dockerOptions
+    flags: 
+      - runShSample
+    versionTemplate:
+      fizz: "buzz"
 
   - name: testOutImage-runShSample
     type: image
