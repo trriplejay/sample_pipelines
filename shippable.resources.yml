@@ -53,10 +53,9 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "trriplejay personal aws"
+    integration: "MyGCloudIntegration"
     pointer:
-      region: "us-east-1"
-      sourceName: "default"
+      region: "us-central1-f"
 
   - name: ecsProduction-deploy
     type: cluster
@@ -98,6 +97,13 @@ resources:
     version:
       #memory: 256
       #memoryReservation: 200
+      resources:
+        requests:
+          memory: "123Mi"
+          cpu: "250m"
+        limits:
+          memory: "256Mi"
+          cpu: "500m"
       labels:
         check: oneTwo
       # imagePullPolicy: IfNotPresent
@@ -146,7 +152,7 @@ resources:
 
   - name: gkeLB-deploy
     type: loadBalancer
-    integration: MyGkeCredentials
+    integration: MyGCloudCredentials
     flags:
       - deploy
     pointer:
