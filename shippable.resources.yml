@@ -55,6 +55,7 @@ resources:
       - deploy
     integration: "MyGCloudIntegration"
     pointer:
+      sourceName: cluster-1
       region: "us-central1-f"
 
   - name: ecsProduction-deploy
@@ -152,7 +153,7 @@ resources:
 
   - name: gkeLB-deploy
     type: loadBalancer
-    integration: MyGCloudCredentials
+    integration: MyGCloudIntegration
     flags:
       - deploy
     pointer:
