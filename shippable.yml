@@ -101,9 +101,9 @@ jobs:
         - script: ls -a $PWD
         - script: sleep 15
         # - script: kubectl version
-        - script: aws --version
-        # - script: az --version
-        # - script: az help || true
+        # - script: aws --version
+        - script: az --debug --version
+        - script: az help || true
         #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
