@@ -100,11 +100,9 @@ jobs:
         - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
         - script: ls -a $PWD
         - script: sleep 15
-        - script: exit 0
         # - script: kubectl version
         # - script: aws --version
-        - script: az --debug --version
-        - script: az help || true
+        - script: az --debug component update
         #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
