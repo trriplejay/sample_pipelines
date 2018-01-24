@@ -100,8 +100,8 @@ jobs:
         - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
         - script: ls -a $PWD
         # - script: kubectl version
-        # - script: az --version
-        # - script: az help || true
+        - script: az --version
+        - script: az help || true
         - script: sleep 10
         #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
