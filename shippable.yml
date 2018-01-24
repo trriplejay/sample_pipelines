@@ -100,7 +100,9 @@ jobs:
         - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
         - script: ls -a $PWD
         # - script: kubectl version
-        #- script: az --version
+        - script: az --version
+        - script: az help || true
+        - script: sleep 10
         #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
@@ -146,13 +148,13 @@ jobs:
 resources:
   - name: 123-testDockerOpts-runShSample
     type: dockerOptions
-    flags: 
+    flags:
       - runShSample
     versionTemplate:
       foo: "bar"
   - name: nonum-DockerOpts-runShSample
     type: dockerOptions
-    flags: 
+    flags:
       - runShSample
     versionTemplate:
       fizz: "buzz"
