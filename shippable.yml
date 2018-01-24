@@ -100,7 +100,9 @@ jobs:
         - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
         - script: ls -a $PWD
         - script: sleep 15
-        - script: . /tmp/test.sh
+        - script: echo "exit 0" > test.sh
+        - script: chmod +x test.sh
+        - script: ./test.sh
         # - script: kubectl version
         # - script: aws --version
         - script: az --debug --version
