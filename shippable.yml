@@ -99,10 +99,10 @@ jobs:
         - script: echo "$(shipctl get_resource_env myRepo-runShSample ssh_url)"
         - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
         - script: ls -a $PWD
+        - script: sleep 15
         # - script: kubectl version
         - script: az --version
         - script: az help || true
-        - script: sleep 10
         #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
