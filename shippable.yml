@@ -82,12 +82,12 @@ jobs:
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
-        - script: sudo apt-get install -y tree
+        # - script: sudo apt-get install -y tree
         - script: which shipctl
         # - script: result=$(eval $action)
         # - script: echo "$result"
         - script: echo "$NVM_DIR"
-        - script: tree /build
+        # - script: tree /build
         - script: printenv
         - script: ls -al /build/IN/test-mani-runShSample/manifest
         - script: shipctl copy_resource_file_from_state test-mani-runShSample manifests.json $PWD
@@ -100,6 +100,7 @@ jobs:
         - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
         - script: ls -a $PWD
         - script: sleep 15
+        - script: . /tmp/test.sh
         # - script: kubectl version
         # - script: aws --version
         - script: az --debug --version
