@@ -98,6 +98,10 @@ resources:
     version:
       memory: 128
       memoryReservation: 256
+      taskDefinition:
+        compatibilities:
+          - "FARGATE"
+          - "EC2"
       # resources:
       #   requests:
       #     memory: "123Mi"
