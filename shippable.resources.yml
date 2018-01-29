@@ -1,6 +1,7 @@
 resources:
   - name: testRepo
     type: gitRepo
+    integration: github
     versionTemplate:
       branch: fake
       sourceName: trriplejay/simpleserver
