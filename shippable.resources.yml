@@ -39,7 +39,7 @@ resources:
     flags:
       - deploy
     version:
-      memory: 64
+      memory: 128
 
   - name: 123-bad-opts-deploy
     type: dockerOptions
@@ -96,15 +96,15 @@ resources:
     flags:
       - deploy
     version:
-      #memory: 256
-      #memoryReservation: 200
-      resources:
-        requests:
-          memory: "123Mi"
-          cpu: "250m"
-        limits:
-          memory: "256Mi"
-          cpu: "500m"
+      memory: 128
+      memoryReservation: 256
+      # resources:
+      #   requests:
+      #     memory: "123Mi"
+      #     cpu: "250m"
+      #   limits:
+      #     memory: "256Mi"
+      #     cpu: "500m"
       labels:
         check: oneTwo
       # imagePullPolicy: IfNotPresent
