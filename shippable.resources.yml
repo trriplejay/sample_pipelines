@@ -53,10 +53,10 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyGCloudIntegration"
+    integration: "MyAwsSoftSrvKeys"
     pointer:
-      sourceName: cluster-1
-      region: "us-central1-f"
+      sourceName: default
+      region: us-east-1
 
   - name: ecsProduction-deploy
     type: cluster
