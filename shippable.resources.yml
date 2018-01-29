@@ -1,4 +1,9 @@
 resources:
+  - name: testRepo
+    type: gitRepo
+    versionTemplate:
+      branch: fake
+      sourceName: trriplejay/simpleserver
   - name: random-file-deploy
     type: file
     flags:
@@ -99,8 +104,12 @@ resources:
       memory: 128
       memoryReservation: 256
       taskDefinition:
+        networkMode: awsvpc
         requiresCompatibilities:
-          - "FARGATE"
+          - FARGATE
+      service:
+        launchType: FARGATE
+
       # resources:
       #   requests:
       #     memory: "123Mi"
