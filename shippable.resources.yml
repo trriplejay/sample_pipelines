@@ -102,8 +102,8 @@ resources:
     flags:
       - deploy
     version:
-      memory: 128
-      memoryReservation: 256
+      memory: 256
+      memoryReservation: 128
       # taskDefinition:
       #   networkMode: awsvpc
       #   requiresCompatibilities:
