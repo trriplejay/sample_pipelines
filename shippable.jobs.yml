@@ -104,6 +104,6 @@ jobs:
       - IN: simple-opts-deploy
       #   applyTo:
       #     - simple-image-deploy
-      - IN: ecsProduction-deploy
+      - IN: ecsStaging-deploy
       # - TASK: managed
       #   deployMethod: blueGreen
