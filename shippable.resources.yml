@@ -104,12 +104,12 @@ resources:
     version:
       memory: 128
       memoryReservation: 256
-      taskDefinition:
-        networkMode: awsvpc
-        requiresCompatibilities:
-          - FARGATE
-      service:
-        launchType: FARGATE
+      # taskDefinition:
+      #   networkMode: awsvpc
+      #   requiresCompatibilities:
+      #     - FARGATE
+      # service:
+      #   launchType: FARGATE
 
       # resources:
       #   requests:
