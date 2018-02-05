@@ -121,7 +121,7 @@ jobs:
         - script: sleep 15
         # - script: kubectl version
         # - script: aws --version
-        - script: az --debug component update
+        #- script: az --debug component update
         #- script: kubectl get namespaces
         # - script: mkdir -p /root/.kube/
         # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
