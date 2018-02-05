@@ -61,6 +61,25 @@ jobs:
       - TASK: managed
         bump: patch
 
+  - name: runShMainCheck-runShSample
+    type: runSh
+    triggerMode: strict
+    flags:
+      - runShSample
+    steps:
+      - IN: runSh2Check-runShSample
+      - IN: runShCheck-runShSample
+      - TASK:
+        - script: "all done"
+
+  - name: runSh2Check-runShSample
+    type: runSh
+    flags:
+      - runShSample
+    steps:
+      - TASK:
+        - script: echo "wow"
+
   - name: runShCheck-runShSample
     type: runSh
     flags:
