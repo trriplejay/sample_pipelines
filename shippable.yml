@@ -69,6 +69,8 @@ jobs:
     steps:
       - IN: runSh2Check-runShSample
       - IN: runShCheck-runShSample
+      - IN: myRepo-runShSample
+        switch: off
       - TASK:
         - script: echo "all done"
 
@@ -77,8 +79,11 @@ jobs:
     flags:
       - runShSample
     steps:
+      - IN: myRepo-runShSample
+        switch: off
       - TASK:
         - script: echo "wow"
+        - script: sleep 60
 
   - name: runShCheck-runShSample
     type: runSh
@@ -92,6 +97,7 @@ jobs:
       #- IN: simple-release-runShSample
       #- IN: gkeConfig-runShSample
       - IN: myRepo-runShSample
+        switch: off
       - IN: nonum-DockerOpts-runShSample
       - IN: test-mani-runShSample
       - IN: myParams-runShSample
