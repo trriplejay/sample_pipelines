@@ -63,7 +63,7 @@ jobs:
 
   - name: runShMainCheck-runShSample
     type: runSh
-    triggerMode: strict
+    dependencyMode: strict
     flags:
       - runShSample
     steps:
