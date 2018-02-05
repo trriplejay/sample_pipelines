@@ -70,7 +70,7 @@ jobs:
       - IN: runSh2Check-runShSample
       - IN: runShCheck-runShSample
       - TASK:
-        - script: "all done"
+        - script: echo "all done"
 
   - name: runSh2Check-runShSample
     type: runSh
