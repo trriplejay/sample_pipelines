@@ -107,62 +107,70 @@ jobs:
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
-        # - script: sudo apt-get install -y tree
-        - script: which shipctl
-        # - script: result=$(eval $action)
-        # - script: echo "$result"
-        - script: echo "$NVM_DIR"
-        # - script: tree /build
-        - script: printenv
-        - script: ls -al /build/IN/test-mani-runShSample/manifest
-        - script: shipctl copy_resource_file_from_state test-mani-runShSample manifests.json $PWD
-        - script: echo "$(shipctl get_resource_env job name)"
-        - script: echo "$(shipctl get_resource_env job triggered_by_nAmE)"
-        - script: echo "$(shipctl get_resource_env test-mani-runShSample name)"
-        - script: echo "$(shipctl get_resource_env myRepo-runShSample commit)"
-        - script: echo "$(shipctl get_resource_env myRepo-runShSample commit_MESSAGE)"
-        - script: echo "$(shipctl get_resource_env myRepo-runShSample ssh_url)"
-        - script: echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
-        - script: ls -a $PWD
-        - script: sleep 15
-        # - script: kubectl version
-        # - script: aws --version
-        #- script: az --debug component update
-        #- script: kubectl get namespaces
-        # - script: mkdir -p /root/.kube/
-        # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
-        # - script: echo -e "\nspacer\n"
-        # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
-        # - script: echo "=============THE CONFIG FILE:"
-        # - script: cat /root/.kube/config
-        # #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
-        # #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
-        # #- script: cat /root/.kube/config
-        # - script: kubectl version
-        # - script: echo "resource ID is $RESOURCE_ID"
-        - script: echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
-        # - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
-        - script: echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
-        # - script: sudo docker images
-        # - script: sudo docker ps
-        # - script: sudo apt-get install -y jq
-        # - script: ls -latr /build/state
-        # - script: cat /build/state/testOutImage-runShSample.env
-        # - script: which envsubst
-        # - script: cat /build/state/runShCheck-runShSample.env
-        # #- script: ls -latr /build/IN/simple-release-runShSample/release
-        # #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
-        # - script: ls -latr OUT/myParams-runShSample
-        - script: echo "my subshell result is- $SHIPPABLE_API_URL"
-        # - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
-        # - script: cat $MYPARAMSRUNSHSAMPLE_PATH/version.json | jq '.'
-        # - script: echo "newParam=blahblahblah" >> state/$MYPARAMSRUNSHSAMPLE_NAME.env
-        # - script: cat IN/test-docker-op/version.json | jq '.'
-        # - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
-        # - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
-        # - script: ls -a $MY_SSH_PATH
-        # - script: ls -a $MY_PEM_PATH
-        # - script: ssh-add $MY_SSH_KEYPATH
+        name: myFirstTask
+        runtime:
+          container: true
+          options:
+            image_name: trriplejay/simpleserver
+            image_tag: master.49
+            pull: true
+        script:
+          # - script: sudo apt-get install -y tree
+          - which shipctl
+          # - script: result=$(eval $action)
+          # - script: echo "$result"
+          - echo "$NVM_DIR"
+          # - script: tree /build
+          - printenv
+          - ls -al /build/IN/test-mani-runShSample/manifest
+          - shipctl copy_resource_file_from_state test-mani-runShSample manifests.json $PWD
+          - echo "$(shipctl get_resource_env job name)"
+          - echo "$(shipctl get_resource_env job triggered_by_nAmE)"
+          - echo "$(shipctl get_resource_env test-mani-runShSample name)"
+          - echo "$(shipctl get_resource_env myRepo-runShSample commit)"
+          - echo "$(shipctl get_resource_env myRepo-runShSample commit_MESSAGE)"
+          - echo "$(shipctl get_resource_env myRepo-runShSample ssh_url)"
+          - echo "manifest sha... $(shipctl get_resource_version_key test-mani-runShSample sha)"
+          - ls -a $PWD
+          - sleep 15
+          # - script: kubectl version
+          # - script: aws --version
+          #- script: az --debug component update
+          #- script: kubectl get namespaces
+          # - script: mkdir -p /root/.kube/
+          # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent')
+          # - script: echo -e "\nspacer\n"
+          # - script: eval echo -e $(cat $TESTINTRUNSHSAMPLE_META/integration.json | jq '.masterKubeConfigContent') > /root/.kube/config
+          # - script: echo "=============THE CONFIG FILE:"
+          # - script: cat /root/.kube/config
+          # #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT
+          # #- script: echo -e $TESTINTRUNSHSAMPLE_INTEGRATION_MASTERKUBECONFIGCONTENT > /root/.kube/config
+          # #- script: cat /root/.kube/config
+          # - script: kubectl version
+          # - script: echo "resource ID is $RESOURCE_ID"
+          - echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
+          # - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
+          - echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
+          # - script: sudo docker images
+          # - script: sudo docker ps
+          # - script: sudo apt-get install -y jq
+          # - script: ls -latr /build/state
+          # - script: cat /build/state/testOutImage-runShSample.env
+          # - script: which envsubst
+          # - script: cat /build/state/runShCheck-runShSample.env
+          # #- script: ls -latr /build/IN/simple-release-runShSample/release
+          # #- script: cat $RUNSHCHECKRUNSHSAMPLE_PATH/message.json | jq '.'
+          # - script: ls -latr OUT/myParams-runShSample
+          - echo "my subshell result is- $SHIPPABLE_API_URL"
+          # - script: cat $MYPARAMSRUNSHSAMPLE_PATH/params
+          # - script: cat $MYPARAMSRUNSHSAMPLE_PATH/version.json | jq '.'
+          # - script: echo "newParam=blahblahblah" >> state/$MYPARAMSRUNSHSAMPLE_NAME.env
+          # - script: cat IN/test-docker-op/version.json | jq '.'
+          # - script: 'echo "ssh keyfile location is: $MY_SSH_KEYPATH"'
+          # - script: 'echo "pem keyfile location is: $MY_PEM_KEYPATH"'
+          # - script: ls -a $MY_SSH_PATH
+          # - script: ls -a $MY_PEM_PATH
+          # - script: ssh-add $MY_SSH_KEYPATH
 
     on_failure:
       - script: echo "something failed"
