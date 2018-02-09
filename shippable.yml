@@ -109,10 +109,11 @@ jobs:
       - TASK:
           name: myFirstTask
           runtime:
-            options:
-              image_name: trriplejay/simpleserver
-              image_tag: master.49
-              pull: true
+
+            image_name: trriplejay/simpleserver
+            image_tag: master.49
+            pull: true
+            options: privileged=true
           script:
             # - script: sudo apt-get install -y tree
             - which shipctl
