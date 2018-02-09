@@ -109,7 +109,6 @@ jobs:
       - TASK:
           name: myFirstTask
           runtime:
-            container: true
             options:
               image_name: trriplejay/simpleserver
               image_tag: master.49
