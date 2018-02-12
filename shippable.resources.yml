@@ -59,7 +59,7 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "MyGcloudIntegration"
+    integration: "MyGCloudIntegration"
     pointer:
       sourceName: cluster-1
       region: us-central1-f
