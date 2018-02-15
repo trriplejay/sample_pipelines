@@ -83,7 +83,7 @@ jobs:
         switch: off
       - TASK:
         - script: echo "wow"
-        - script: sleep 60
+        - script: sleep 500
 
   - name: runShCheck-runShSample
     type: runSh
@@ -108,12 +108,12 @@ jobs:
       #- OUT: out-mani-runShSample
       - TASK:
           name: myFirstTask
-          runtime:
-            options:
-              imageName: trriplejay/simpleserver
-              imageTag: master.49
-              pull: true
-              options: --privileged=true
+          # runtime:
+          #   options:
+          #     imageName: trriplejay/simpleserver
+          #     imageTag: master.49
+          #     pull: true
+          #     options: --privileged=true
           script:
             # - script: sudo apt-get install -y tree
             #- which shipctl
