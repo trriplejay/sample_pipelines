@@ -51,3 +51,26 @@ jobs:
       - TASK:
         - script: pwd
         - script: sleep 60
+
+
+  - name: runSh4-serialCheck
+    type: runSh
+    flags:
+      - serialCheck
+      - jtFlow
+    steps:
+      - IN: runSh3-serialCheck
+      - TASK:
+        - script: pwd
+        - script: sleep 60
+
+  - name: runSh5-serialCheck
+    type: runSh
+    flags:
+      - serialCheck
+      - jtFlow
+    steps:
+      - IN: runSh3-serialCheck
+      - TASK:
+        - script: pwd
+        - script: sleep 60
