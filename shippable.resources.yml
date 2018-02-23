@@ -1,7 +1,6 @@
 resources:
   - name: nginx-image-serialCheck
     type: image
-    integration: "trriplejay docker hub"
     pointer:
       sourceName: "library/nginx"
     seed:
@@ -22,7 +21,6 @@ resources:
 
   - name: simple-image-serialCheck
     type: image
-    integration: "trriplejay docker hub"
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
