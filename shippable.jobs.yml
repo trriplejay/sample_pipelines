@@ -21,6 +21,7 @@ jobs:
 
   - name: runSh1-serialCheck
     type: runSh
+    allowPublicAccess: true
     flags:
       - serialCheck
       - jtFlow
@@ -31,6 +32,7 @@ jobs:
 
   - name: runSh2-serialCheck
     type: runSh
+    allowPublicAccess: true
     flags:
       - serialCheck
       - jtFlow
@@ -42,6 +44,7 @@ jobs:
 
   - name: runSh3-serialCheck
     type: runSh
+    allowPublicAccess: true
     flags:
       - serialCheck
       - jtFlow
@@ -55,6 +58,7 @@ jobs:
 
   - name: runSh4-serialCheck
     type: runSh
+    allowPublicAccess: true
     flags:
       - serialCheck
       - jtFlow
