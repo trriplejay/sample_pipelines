@@ -116,7 +116,7 @@ jobs:
           #     options: --privileged=true
           script:
             # - script: sudo apt-get install -y tree
-            #- which shipctl
+            - which shipctl
             # - script: result=$(eval $action)
             # - script: echo "$result"
             - echo "$NVM_DIR"
