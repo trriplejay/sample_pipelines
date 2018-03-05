@@ -148,6 +148,7 @@ jobs:
             # #- script: cat /root/.kube/config
             # - script: kubectl version
             # - script: echo "resource ID is $RESOURCE_ID"
+            - cd $(shipctl get state testOutImage-runShSample)
             - shipctl put_resource_state testOutImage-runShSample versionName $BUILD_NUMBER
             - shipctl put_resource_state testOutImage-runShSample extraProperty $JOB_NAME
             # - echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
