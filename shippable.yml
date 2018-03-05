@@ -101,6 +101,7 @@ jobs:
       - IN: nonum-DockerOpts-runShSample
       - IN: test-mani-runShSample
       - IN: myParams-runShSample
+      - IN: myParams-runShSample-2
       - IN: 123-testDockerOpts-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
@@ -117,6 +118,10 @@ jobs:
           script:
             # - script: sudo apt-get install -y tree
             - which shipctl
+            - echo "$(shipctl get_resource_name myParams-runShSample)"
+            - echo "$(shipctl get_resource_name myParams-runShSample-2)"
+            - echo "$MYPARAMSRUNSHSAMPLE2_NAME"
+            - echo "$MYPARAMSRUNSHSAMPLE_NAME"
             # - script: result=$(eval $action)
             # - script: echo "$result"
             - echo "$NVM_DIR"
@@ -233,6 +238,12 @@ resources:
     version:
       cpuShares: 5
       memory: 300
+  - name: myParams-runShSample-2
+    type: params
+    flags:
+      - runShSample
+    versionTemplate:
+      one: two
 
   - name: myParams-runShSample
     type: params
