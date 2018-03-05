@@ -148,9 +148,11 @@ jobs:
             # #- script: cat /root/.kube/config
             # - script: kubectl version
             # - script: echo "resource ID is $RESOURCE_ID"
-            - echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
+            - shipctl put_resource_state testOutImage-runShSample versionName $BUILD_NUMBER
+            - shipctl put_resource_state testOutImage-runShSample extraProperty $JOB_NAME
+            # - echo "versionName=$BUILD_NUMBER" > /build/state/testOutImage-runShSample.env
             # - script: echo "versionName=$BUILD_NUMBER" > /build/state/runShCheck-runShSample.env
-            - echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
+            # - echo "extraProperty=$JOB_NAME" >> /build/state/testOutImage-runShSample.env
             # - script: sudo docker images
             # - script: sudo docker ps
             # - script: sudo apt-get install -y jq
