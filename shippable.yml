@@ -108,6 +108,12 @@ jobs:
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
       - TASK:
+          name: myZerothTask
+          runtime:
+            container: false
+          script:
+            - which docker
+            - docker info
           name: myFirstTask
           # runtime:
           #   options:
@@ -118,6 +124,8 @@ jobs:
           script:
             # - script: sudo apt-get install -y tree
             - which shipctl
+            - which docker
+            - docker info
             - echo "$(shipctl get_resource_name myParams-runShSample)"
             - echo "$(shipctl get_resource_name myParams-runShSample-2)"
             - echo "$MYPARAMSRUNSHSAMPLE2_NAME"
