@@ -114,6 +114,7 @@ jobs:
           script:
             - which docker
             - docker info
+      - TASK:
           name: myFirstTask
           # runtime:
           #   options:
