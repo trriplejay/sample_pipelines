@@ -116,7 +116,8 @@ jobs:
             - docker info
       - TASK:
           name: myFirstTask
-          # runtime:
+          runtime:
+            nodePool: blah
           #   options:
           #     imageName: trriplejay/simpleserver
           #     imageTag: master.49
