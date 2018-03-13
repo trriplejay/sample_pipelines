@@ -89,6 +89,8 @@ jobs:
     type: runSh
     flags:
       - runShSample
+    runtime:
+      nodePool: blah
     steps:
       # - IN: azureConfig
       #   scopes:
@@ -116,8 +118,7 @@ jobs:
             - docker info
       - TASK:
           name: myFirstTask
-          runtime:
-            nodePool: blah
+          # runtime:
           #   options:
           #     imageName: trriplejay/simpleserver
           #     imageTag: master.49
