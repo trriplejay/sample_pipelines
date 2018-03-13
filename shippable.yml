@@ -90,7 +90,7 @@ jobs:
     flags:
       - runShSample
     runtime:
-      nodePool: blah
+      nodePool: testARM
     steps:
       # - IN: azureConfig
       #   scopes:
