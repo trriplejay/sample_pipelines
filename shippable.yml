@@ -22,8 +22,8 @@ jobs:
       - IN: test-kube-runShSample
       - IN: test-ssh-runShSample
       - TASK:
-        script:
-          - echo "hi"
+          script:
+            - echo "hi"
           
   #- name: sample_jacoco_runCI
   #  type: runCI
@@ -251,12 +251,12 @@ resources:
   #     groupName: testKube
   #     clusterName: blah-cluster
 
-  - name: gkeConfig-runShSample
-    type: cliConfig
-    integration: MyGkeCredentials
-    versionTemplate:
-      clusterName: cluster-1
-      region: us-central1-f
+  #- name: gkeConfig-runShSample
+  #  type: cliConfig
+  #  integration: MyGkeCredentials
+  #  versionTemplate:
+  #    clusterName: cluster-1
+  #    region: us-central1-f
 
   - name: test-docker-op
     type: dockerOptions
