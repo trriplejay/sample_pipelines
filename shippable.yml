@@ -12,6 +12,19 @@ build:
 
 
 jobs:
+  - name: test_some_integrations
+    type: runSh
+    flags: runShSample
+    steps:
+      - IN: test-aws-runShSample
+      - IN: test-gcloud-runShSample
+      - IN: test-jfrog-runShSample
+      - IN: test-kube-runShSample
+      - IN: test-ssh-runShSample
+      - TASK:
+        script:
+          - echo "hi"
+          
   #- name: sample_jacoco_runCI
   #  type: runCI
   #  flags:
@@ -302,3 +315,27 @@ resources:
       - runShSample
     version:
       message: 'trigger runShSteps: 1'
+
+
+  - name: test-aws-runShSample
+    type: cliConfig
+    integration: test-aws
+    versionTemplate:
+      region: us-east-1
+      
+  - name: test-gcloud-runShSample
+    type: cliConfig
+    integration: test-gcloud
+    versionTemplate:
+
+  - name: test-jfrog-runShSample
+    type: cliConfig
+    integration: test-jfrog
+
+  - name: test-kube-runShSample
+    type: cliConfig
+    integration: test-kube
+
+  - name: test-ssh-runShSample
+    type: cliConfig
+    integration: test-ssh
