@@ -104,8 +104,8 @@ jobs:
     type: runSh
     flags:
       - runShSample
-    runtime:
-      nodePool: testARM
+    #runtime:
+    #  nodePool: testARM
     steps:
       # - IN: azureConfig
       #   scopes:
