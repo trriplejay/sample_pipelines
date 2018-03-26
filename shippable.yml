@@ -145,6 +145,7 @@ jobs:
             - which shipctl
             - which docker
             - docker info
+            - docker images
             - echo "$(shipctl get_resource_name myParams-runShSample)"
             - echo "$(shipctl get_resource_name myParams-runShSample-2)"
             - echo "$MYPARAMSRUNSHSAMPLE2_NAME"
