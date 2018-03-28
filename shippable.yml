@@ -86,6 +86,7 @@ jobs:
         switch: off
       - TASK:
           script: 
+           - $env:DOCKER_HOST = (Get-NetIPConfiguration)[0].IPv4DefaultGateway.NextHop
            - docker ps -a
            - echo "all done"
 
