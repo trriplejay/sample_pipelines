@@ -130,8 +130,8 @@ jobs:
           - ecr
       - TASK:
           name: myZerothTask
-          runtime:
-            container: false
+          # runtime:
+          #   container: false
           script:
             - which docker
             - docker info
