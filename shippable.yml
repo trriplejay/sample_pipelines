@@ -21,6 +21,8 @@ jobs:
       - IN: myRepo-repro
       - OUT: sample_pipelines_ciRepo
         replicate: myRepo-repro
+      - TASK:
+          script: echo "hello"
 
 resources:
   - name: myRepo-repro
