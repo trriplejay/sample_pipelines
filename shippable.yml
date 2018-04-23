@@ -69,7 +69,7 @@ jobs:
     flags:
       - runShSample
     steps:
-      - IN: simple-mani-runShSample
+      # - IN: simple-mani-runShSample
       - IN: simple-version-runShSample
       - TASK: managed
         bump: patch
@@ -125,7 +125,7 @@ jobs:
       #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
       #- OUT: out-mani-runShSample
-      - IN: test-aws-runShSample
+      # - IN: test-aws-runShSample
         scopes:
           - ecr
       - TASK:
