@@ -321,6 +321,7 @@ resources:
   - name: myEmail
     type: notification
     versionTemplate:
+      method: email
       recipients:
         - john@shippable.com
   - name: stagingTrigger-runShSample
