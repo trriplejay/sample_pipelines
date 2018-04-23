@@ -150,8 +150,8 @@ jobs:
             - which docker
             - docker info
             - docker images
-            - docker tag drydock/u16all:v6.3.4 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
-            - docker push 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
+            # - docker tag drydock/u16all:v6.3.4 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
+            # - docker push 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
             - echo "$(shipctl get_resource_name myParams-runShSample)"
             - echo "$(shipctl get_resource_name myParams-runShSample-2)"
             - echo "$MYPARAMSRUNSHSAMPLE2_NAME"
