@@ -221,6 +221,7 @@ jobs:
     on_success:
       script: 
         - echo "yay it worked"
+      NOTIFY: myEmail
 
 
 resources:
@@ -318,7 +319,11 @@ resources:
   #   type: integration
   #   integration: MyKubeCredentials
 
-
+  - name: myEmail
+    type: notification
+    versionTemplate:
+      recipients:
+        - john@shippable.com
   - name: stagingTrigger-runShSample
     type: trigger
     flags:
