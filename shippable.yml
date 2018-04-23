@@ -219,9 +219,8 @@ jobs:
       script:
         - echo "something failed"
     on_success:
-      script: 
-        - echo "yay it worked"
-      NOTIFY: myEmail
+      - script: echo "yay it worked"
+      - NOTIFY: myEmail
 
 
 resources:
