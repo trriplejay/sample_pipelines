@@ -16,8 +16,8 @@ jobs:
         - script: echo "myRepo versionName is- $MYREPO_VERSIONNAME"
         - script: jq . /build/message.json
 
-  - name: simpleserver_runCI
-    type: runCI
-    steps:
-      - OUT: myRepo
-        replicate: simpleserver_ciRepo
+#  - name: simpleserver_runCI
+#    type: runCI
+#    steps:
+#      - OUT: myRepo
+#        replicate: simpleserver_ciRepo
