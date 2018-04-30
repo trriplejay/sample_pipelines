@@ -94,8 +94,8 @@ jobs:
     flags:
       - runShSample
     steps:
-      - IN: myRepo-runShSample
-        switch: off
+#      - IN: myRepo-runShSample
+#        switch: off
       - TASK:
         - script: echo "wow"
         - script: sleep 500
