@@ -113,8 +113,8 @@ jobs:
       #- IN: stagingTrigger-runShSample
       #- IN: simple-release-runShSample
       #- IN: gkeConfig-runShSample
-      - IN: myRepo-runShSample
-        switch: off
+#      - IN: myRepo-runShSample
+#        switch: off
       - IN: nonum-DockerOpts-runShSample
       - IN: test-mani-runShSample
       - IN: myParams-runShSample
