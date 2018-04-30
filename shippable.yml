@@ -41,13 +41,13 @@ jobs:
   #    - IN: myParams-runShSample
   #    #- IN: sample_python_runCI
 
-  - name: simpleserver_runCI
-    type: runCI
-    flags:
-      - runShSample
-    steps:
-      - OUT: myRepo-runShSample
-        replicate: simpleserver_ciRepo
+#  - name: simpleserver_runCI
+#    type: runCI
+#    flags:
+#      - runShSample
+#    steps:
+#      - OUT: myRepo-runShSample
+#        replicate: simpleserver_ciRepo
 
   - name: out-mani-runShSample
     type: manifest
