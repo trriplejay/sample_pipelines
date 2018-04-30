@@ -2,7 +2,7 @@ jobs:
   - name: deployChanges
     type: runSh
     steps:
-      - IN: simpleserver_runCI
+#      - IN: simpleserver_runCI
       - IN: myRepo
         switch: off
       - TASK:
