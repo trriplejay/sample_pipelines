@@ -41,13 +41,13 @@ jobs:
   #    - IN: myParams-runShSample
   #    #- IN: sample_python_runCI
 
-  #- name: sample_python_runCI
-  #  type: runCI
-  #  flags:
-  #    - runShSample
-  #  steps:
-  #    - OUT: simple-image-runShSample
-  #    - OUT: myParams-runShSample
+  - name: simpleserver_runCI
+    type: runCI
+    flags:
+      - runShSample
+    steps:
+      - OUT: myRepo-runShSample
+        replicate: simpleserver_ciRepo
 
   - name: out-mani-runShSample
     type: manifest
@@ -83,7 +83,6 @@ jobs:
       - IN: runSh2Check-runShSample
       - IN: runShCheck-runShSample
       - IN: myRepo-runShSample
-        switch: off
       - TASK:
           script: 
            - docker images
@@ -309,10 +308,10 @@ resources:
     flags:
       - runShSample
     integration: "github"
-    pointer:
+    versionTemplate:
       sourceName: trriplejay/simpleserver
-      branch: master
-      testKey: $(eval touch testRepo.txt)
+      buildOnCommit: false
+      
 
   # - name: test-int-runShSample
   #   type: integration
