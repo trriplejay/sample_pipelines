@@ -155,6 +155,8 @@ jobs:
             - shipctl get_json_value integration.json 'privateKey' > test1.key
             - cat "integration.json" | jq -r '.privateKey' > test2.key
             - diff test1.key test2.key
+            - cat test1.key
+            - cat test2.key
             # - docker tag drydock/u16all:v6.3.4 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
             # - docker push 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
             - echo "$(shipctl get_resource_name myParams-runShSample)"
