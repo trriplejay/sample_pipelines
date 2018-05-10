@@ -225,7 +225,7 @@ jobs:
         - echo "something failed"
     on_success:
       - script: echo "yay it worked"
-      # - NOTIFY: myEmail
+      # - NOTIFY: myEmail-runShSample
 
 
 resources:
@@ -324,7 +324,7 @@ resources:
   #   type: integration
   #   integration: MyKubeCredentials
 
-  - name: myEmail
+  - name: myEmail-runShSample
     type: notification
     versionTemplate:
       method: email
