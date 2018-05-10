@@ -229,15 +229,7 @@ jobs:
 
 
 resources:
-  - name: myGitlabRepo-runShSample
-    type: gitRepo
-    flags:
-      - runShSample
-    integration: testest
-    versionTemplate:
-      sourceName: trriplejay/testgitrepo
-      branch: master
-
+  
   - name: 123-testDockerOpts-runShSample
     type: dockerOptions
     flags:
