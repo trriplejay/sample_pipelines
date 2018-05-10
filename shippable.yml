@@ -121,6 +121,7 @@ jobs:
       - IN: myParams-runShSample-2
       - IN: 123-testDockerOpts-runShSample
       - IN: myKey-runShSample
+      - OUT: stagingTrigger-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
       #- IN: test-int-runShSample
@@ -150,13 +151,15 @@ jobs:
             - which docker
             - docker info
             - docker images
-            - pushd $MYKEYRUNSHSAMPLE_META
-            - ls
-            - shipctl get_json_value integration.json 'privateKey' > test1.key
-            - cat "integration.json" | jq -r '.privateKey' > test2.key
-            - diff test1.key test2.key
-            - cat test1.key
-            - cat test2.key
+            # - pushd $MYKEYRUNSHSAMPLE_META
+            # - ls
+            # - shipctl get_json_value integration.json 'privateKey' > test1.key
+            # - cat "integration.json" | jq -r '.privateKey' > test2.key
+            # - diff test1.key test2.key
+            # - popd
+            - count=$(shipctl get_resource_version_key stagingTrigger-runShSample count)
+            - ((count+=1))
+            - shipctl put_resource_state stagingTrigger-runShSample count $count
             # - docker tag drydock/u16all:v6.3.4 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
             # - docker push 111799685573.dkr.ecr.us-east-1.amazonaws.com/test:latest
             - echo "$(shipctl get_resource_name myParams-runShSample)"
@@ -337,6 +340,7 @@ resources:
     flags:
       - runShSample
     version:
+      count: 5
       message: 'trigger runShSteps: 1'
 
 
