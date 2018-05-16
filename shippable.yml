@@ -38,3 +38,7 @@ resources:
     type: webhook
     version:
       test: bad
+  - name: hookB
+    type: webhook
+    version:
+      webhookKey: "test \n test"
