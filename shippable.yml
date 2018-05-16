@@ -30,3 +30,11 @@ resources:
     type: webhook
     versionTemplate:
       webhookKey: abcd##%*&efgh
+  - name: hook9
+    type: webhook
+    version:
+      webhookKey: "noversiontemplate"
+  - name: hookA
+    type: webhook
+    version:
+      test: bad
