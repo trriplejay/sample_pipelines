@@ -13,7 +13,7 @@ resources:
   - name: hook4
     type: webhook
     versionTemplate:
-      webhookKey: !XY
+      webhookKey: "!XY"
   - name: hook5
     type: webhook
     versionTemplate:
