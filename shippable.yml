@@ -42,3 +42,12 @@ resources:
     type: webhook
     version:
       webhookKey: "test \n test"
+
+jobs:
+  - name: testHook
+    type: runSh
+    steps:
+      - IN: hook5
+      - TASK:
+          script:
+            - cat $HOOK5_META/version.json
