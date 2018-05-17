@@ -1,7 +1,7 @@
 resources:
   - name: hook1
     type: webhook
-    
+
   - name: hook2
     type: webhook
     versionTemplate:
@@ -51,3 +51,4 @@ jobs:
       - TASK:
           script:
             - cat $HOOK5_META/version.json
+            - shipctl get_resource_version_key payload | jq '.'
