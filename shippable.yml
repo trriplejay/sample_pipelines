@@ -51,4 +51,4 @@ jobs:
       - TASK:
           script:
             - cat $HOOK5_META/version.json
-            - shipctl get_resource_version_key payload | jq '.'
+            - shipctl get_resource_version_key hook5 payload | jq '.'
