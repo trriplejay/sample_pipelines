@@ -88,6 +88,11 @@ jobs:
            - docker images
            - docker ps -a
            - echo "all done"
+  - name: successSh
+    type: runSh
+    steps:
+      - TASK:
+        - script: echo "hi"
 
   - name: runSh2Check-runShSample
     type: runSh
@@ -95,6 +100,7 @@ jobs:
       - runShSample
     steps:
       - IN: sample_pipelines_runShSample_rSync
+      - IN: successSh
 #      - IN: myRepo-runShSample
 #        switch: off
       - TASK:
