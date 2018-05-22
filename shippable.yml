@@ -94,6 +94,7 @@ jobs:
     flags:
       - runShSample
     steps:
+      - IN: sample_pipelines_runShSample_rSync
 #      - IN: myRepo-runShSample
 #        switch: off
       - TASK:
