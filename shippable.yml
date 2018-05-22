@@ -96,6 +96,7 @@ jobs:
 
   - name: runSh2Check-runShSample
     type: runSh
+    dependencyMode: immediate
     flags:
       - runShSample
     steps:
