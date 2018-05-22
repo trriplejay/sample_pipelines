@@ -105,7 +105,7 @@ jobs:
 #        switch: off
       - TASK:
         - script: echo "wow"
-        - script: sleep 500
+        #- script: sleep 500
 
   - name: runShCheck-runShSample
     type: runSh
