@@ -24,7 +24,7 @@ jobs:
   #     - TASK:
   #         script:
   #           - echo "hi"
-          
+
   #- name: sample_jacoco_runCI
   #  type: runCI
   #  flags:
@@ -84,7 +84,7 @@ jobs:
       - IN: runShCheck-runShSample
       - IN: myRepo-runShSample
       - TASK:
-          script: 
+          script:
            - docker images
            - docker ps -a
            - echo "all done"
@@ -99,16 +99,38 @@ jobs:
     dependencyMode: immediate
     flags:
       - runShSample
+    runtime:
+      nodePool: w16-dyna
     steps:
       - IN: sample_pipelines_runShSample_rSync
       - IN: successSh
 #      - IN: myRepo-runShSample
 #        switch: off
       - TASK:
+        - script: echo "wow"
+        - script: sleep 500
+  - name: test_win_write
+    type: runSh
+    flags:
+      - runShSample
+    runtime:
+      nodePool: w16-dyna
+    steps:
+      - TASK:
           script:
-            - echo "wow \n hello \n world"
-        
-        #- script: sleep 500
+            - echo "hello world" > output.txt
+            - shipctl copy_file_to_state output.txt
+
+  - name: test_win_read
+    type: runSh
+    flags:
+      - runShSample
+    steps:
+      - IN: test_win_write
+      - TASK:
+          script:
+            - shipctl copy_file_from_resource_state test_win_write output.txt .
+            - cat output.txt
 
   - name: runShCheck-runShSample
     type: runSh
@@ -245,7 +267,7 @@ jobs:
 
 
 resources:
-  
+
   - name: 123-testDockerOpts-runShSample
     type: dockerOptions
     flags:
@@ -334,7 +356,7 @@ resources:
     versionTemplate:
       sourceName: trriplejay/simpleserver
       buildOnCommit: false
-      
+
 
   # - name: test-int-runShSample
   #   type: integration
@@ -367,7 +389,7 @@ resources:
   #   versionTemplate:
   #     region: us-east-1
 
-      
+
   # - name: test-gcloud-runShSample
   #   type: cliConfig
   #   integration: test-gcloud
