@@ -105,7 +105,9 @@ jobs:
 #      - IN: myRepo-runShSample
 #        switch: off
       - TASK:
-        - script: echo "wow"
+          script:
+            - echo "wow \n hello \n world"
+        
         #- script: sleep 500
 
   - name: runShCheck-runShSample
