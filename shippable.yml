@@ -145,6 +145,7 @@ jobs:
             - which docker
             - docker info
             - docker ps -a
+            - echo "hello \n world"
       - TASK:
           name: myFirstTask
           # runtime:
