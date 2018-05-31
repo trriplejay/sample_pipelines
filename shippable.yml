@@ -266,6 +266,18 @@ jobs:
       # - NOTIFY: myEmail-runShSample
 
 
+  - name: testAlpine
+    type: runSh
+    steps:
+      - TASK:
+          name: "boot-alpine"
+          runtime:
+            options:
+              imageName: alpine
+              imageTag: 3.7
+          script:
+            - echo "hello world"
+
 resources:
 
   - name: 123-testDockerOpts-runShSample
