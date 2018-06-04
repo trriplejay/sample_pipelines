@@ -79,7 +79,7 @@ resources:
       - deploy
     integration: "softsrv_aws"
     versionTemplate:
-      sourceName: default
+      sourceName: testLB
       region: us-east-1
 
   - name: ecsProduction-deploy
