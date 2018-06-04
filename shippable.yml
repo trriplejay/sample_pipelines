@@ -205,6 +205,16 @@ resources:
   #     selector:
   #       env: app
 
+  - name: awsNLB
+    type: loadBalancer
+    integration: "softsrv_aws"
+    flags:
+      - deploy
+    versionTemplate:
+      method: application
+      sourceName: testLB
+      targetGroupArn: arn:aws:elasticloadbalancing:us-east-1:111799685573:targetgroup/testTGTGRP/dd3333a7beaa726e
+
 
 jobs:
   - name: simple-mani-deploy
@@ -310,6 +320,11 @@ jobs:
       - IN: combined-manifest-deploy
         force: true
       - IN: simple-opts-deploy
+      - IN: awsNLB
+        applyTo:
+          manifest: combined-manifest-deploy
+          image: simple-image-deploy
+          port: 8888
       #   applyTo:
       #     - simple-image-deploy
       - IN: ecsStaging-deploy
