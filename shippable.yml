@@ -18,12 +18,12 @@ resources:
     versionTemplate:
       message: 'trigger release workflow. Triggered: 19'
 
-  - name: testRepo
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      branch: fake
-      sourceName: trriplejay/simpleserver
+  # - name: testRepo
+  #   type: gitRepo
+  #   integration: github
+  #   versionTemplate:
+  #     branch: fake
+  #     sourceName: trriplejay/simpleserver
 
   - name: random-file-deploy
     type: file
@@ -79,13 +79,14 @@ resources:
       - deploy
     integration: "softsrv_aws"
     versionTemplate:
+      sourceName: default
       region: us-east-1
 
   - name: ecsProduction-deploy
     type: cluster
     flags:
       - deploy
-    integration: "trriplejay personal aws"
+    integration: "softsrv_aws"
     versionTemplate:
       # sourceName: "default"
       # region: "us-east-1"
@@ -187,22 +188,22 @@ resources:
 
 
 
-  - name: gkeLB-deploy
-    type: loadBalancer
-    integration: MyGCloudIntegration
-    flags:
-      - deploy
-    versionTemplate:
-      sourceName: gke-service-shippable
-      method: LoadBalancer
-      namespace: shippable
-      region: us-central1-f
-      ports:
-        - name: public
-          protocol: TCP
-          port: 8888
-      selector:
-        env: app
+  # - name: gkeLB-deploy
+  #   type: loadBalancer
+  #   integration: MyGCloudIntegration
+  #   flags:
+  #     - deploy
+  #   versionTemplate:
+  #     sourceName: gke-service-shippable
+  #     method: LoadBalancer
+  #     namespace: shippable
+  #     region: us-central1-f
+  #     ports:
+  #       - name: public
+  #         protocol: TCP
+  #         port: 8888
+  #     selector:
+  #       env: app
 
 
 jobs:
