@@ -119,6 +119,8 @@ resources:
     flags:
       - deploy
     versionTemplate:
+      portMappings:
+        - ":8888"
       deployment:
         strategy:
           type: RollingUpdate
