@@ -214,8 +214,7 @@ resources:
       - deploy
     versionTemplate:
       method: application
-      sourceName: testLB
-      targetGroupArn: arn:aws:elasticloadbalancing:us-east-1:111799685573:targetgroup/testTGTGRP/dd3333a7beaa726e
+      sourceName: arn:aws:elasticloadbalancing:us-east-1:111799685573:targetgroup/testTGTGRP/dd3333a7beaa726e
 
 
 jobs:
