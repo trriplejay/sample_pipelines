@@ -15,7 +15,7 @@ jobs:
           script:
             - echo "hello world"
     on_success:
-      - script:
+      script:
         - >-
           COMMENT="This is a multi-line
           comment, isn't that great?"
