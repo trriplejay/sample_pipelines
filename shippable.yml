@@ -11,8 +11,9 @@ jobs:
   - name: badRun
     type: runSh
     steps:
-      script:
-        - echo "hello world"
+      - TASK:
+          script:
+            - echo "hello world"
     on_success:
       - script:
         - >-
