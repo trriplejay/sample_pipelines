@@ -20,4 +20,4 @@ jobs:
           COMMENT="This is a multi-line
           comment, isn't that great?"
         - 'this line has a : in it. i hope it works!'
-        - echo $COMMENT
+        - echo "$COMMENT"
