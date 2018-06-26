@@ -6,14 +6,23 @@ resources:
     versionTemplate:
       sourceName: trriplejay/badrepo
 
+  - name: goodImg
+    type: image
+    versionTemplate:
+      sourceName: trriplejay/simpleserver
+      versionName: master.50
+      
+
 jobs:
 
   - name: badRun
     type: runSh
     steps:
+      - IN: goodImg
       - TASK:
           script:
             - echo "hello world"
+            - shipctl put_resource_state goodImg sourceName "trriplejay/micro-api"
     on_success:
       script:
         - >-
