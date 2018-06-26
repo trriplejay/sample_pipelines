@@ -18,7 +18,7 @@ jobs:
   - name: badRun
     type: runSh
     steps:
-   #   - OUT: goodImg
+      - OUT: goodImg
       - TASK:
           script:
             - echo "hello world"
