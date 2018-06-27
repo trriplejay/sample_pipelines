@@ -93,6 +93,7 @@ jobs:
     steps:
       - TASK:
         - script: echo "hi"
+        - script: echo "this is weird" >> $JOB_STATE/stuff.txt
 
   - name: runSh2Check-runShSample
     type: runSh
@@ -103,7 +104,6 @@ jobs:
       nodePool: w16-dyna
     steps:
       - IN: sample_pipelines_runShSample_rSync
-      - IN: successSh
 #      - IN: myRepo-runShSample
 #        switch: off
       - TASK:
@@ -152,6 +152,7 @@ jobs:
       - IN: myParams-runShSample
       - IN: myParams-runShSample-2
       - IN: 123-testDockerOpts-runShSample
+      - IN: successSh
       - OUT: stagingTrigger-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
