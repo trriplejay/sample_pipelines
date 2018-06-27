@@ -152,7 +152,6 @@ jobs:
       - IN: myParams-runShSample
       - IN: myParams-runShSample-2
       - IN: 123-testDockerOpts-runShSample
-      - IN: myKey-runShSample
       - OUT: stagingTrigger-runShSample
       #- IN: test-docker-op
       #- OUT: testOutImage-runShSample
@@ -184,12 +183,6 @@ jobs:
             - which docker
             - docker info
             - docker images
-            # - pushd $MYKEYRUNSHSAMPLE_META
-            # - ls
-            # - shipctl get_json_value integration.json 'privateKey' > test1.key
-            # - cat "integration.json" | jq -r '.privateKey' > test2.key
-            # - diff test1.key test2.key
-            # - popd
             - count=$(shipctl get_resource_version_key stagingTrigger-runShSample count)
             - ((count+=1))
             - shipctl put_resource_state stagingTrigger-runShSample count $count
@@ -388,12 +381,6 @@ resources:
       count: 5
       message: 'trigger runShSteps: 1'
 
-
-  - name: myKey-runShSample
-    flags:
-      - runShSample
-    type: integration
-    integration: mySshKey
 
   # - name: test-aws-runShSample
   #   type: cliConfig
