@@ -341,4 +341,6 @@ jobs:
       - TASK:
           script:
             - manifest_state=$(shipctl get_resource_state staging-deploy-B1-deploy)
-            - cat $manifest_state/manifests.json
+            - manifest_meta=$(shipctl get_resource_meta staging-deploy-B1-deploy)
+            - cat $manifest_state/manifests.json | jq '.'
+            - cat $manifest_meta/version.json | jq '.'
