@@ -331,3 +331,14 @@ jobs:
       - IN: ecsStaging-deploy
       # - TASK: managed
       #   deployMethod: blueGreen
+
+  - name: parseManifests-deploy
+    type: runSh
+    flags:
+      - deploy
+    steps:
+      - IN: staging-deploy-B1-deploy
+      - TASK:
+          script:
+            - manifest_state=$(shipctl get_resource_state staging-deploy-B1-deploy)
+            - cat $manifest_state/manifests.json
