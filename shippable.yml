@@ -344,3 +344,4 @@ jobs:
             - manifest_meta=$(shipctl get_resource_meta staging-deploy-B1-deploy)
             - cat $manifest_state/manifests.json | jq '.'
             - cat $manifest_meta/version.json | jq '.'
+            - jq '.version.propertyBag.trace' $manifest_meta/version.json
