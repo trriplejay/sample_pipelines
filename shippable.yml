@@ -44,7 +44,7 @@ resources:
               ScalingAdjustment: -2
       metricAlarms:
         - AlarmName: UpAlarm
-        - AlarmDescription: "test scaleup"
+          AlarmDescription: "test scaleup"
           ComparisonOperator: GreaterThanOrEqualToThreshold
           EvaluationPeriods: 1
           MetricName: MemoryUtilization
