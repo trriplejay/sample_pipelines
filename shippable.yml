@@ -71,11 +71,11 @@ jobs:
     type: manifest
     steps:
       - IN: myImage
-      - IN: myScaling
 
   - name: myDeploy
     type: deploy
     method: upgrade
     steps:
       - IN: myManifest
+      - IN: myScaling
       - IN: myCluster
