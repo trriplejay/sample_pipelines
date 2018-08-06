@@ -57,6 +57,11 @@ resources:
           Statistic: Average
           Period: 60
           Threshold: 70
+          Dimensions:
+            - Name: ClusterName
+              Value: default
+            - Name: ServiceName
+              Value: myDeploy-myManifest
           AlarmActions:
             - UpPolicy
         - AlarmName: DownAlarm
@@ -68,6 +73,11 @@ resources:
           Statistic: Average
           Period: 60
           Threshold: 30
+          Dimensions:
+            - Name: ClusterName
+              Value: default
+            - Name: ServiceName
+              Value: myDeploy-myManifest
           AlarmActions:
             - DownPolicy
 jobs:
