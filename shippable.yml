@@ -1,347 +1,81 @@
-# Language setting
-language: python
-
-# Version number
-python:
-  - 2.7
-
-build:
-  ci:
-    - python --version
-    - echo "hello"
-
-
 resources:
-
-  - name: stagingTrigger-deploy
-    type: trigger
-    versionTemplate:
-      message: 'trigger release workflow. Triggered: 19'
-
-  # - name: testRepo
-  #   type: gitRepo
-  #   integration: github
-  #   versionTemplate:
-  #     branch: fake
-  #     sourceName: trriplejay/simpleserver
-
-  - name: random-file-deploy
-    type: file
-    flags:
-      - deploy
-    versionTemplate:
-      sourceName: https://github.com/trriplejay/sample_pipelines/blob/master/shippable.yml
-      versionName: test
-
-  - name: nginx-image-deploy
-    type: image
-    flags:
-      - deploy
-    pointer:
-      sourceName: "library/nginx"
-    seed:
-      versionName: stable
-
-  - name: busybox-image-deploy
-    type: image
-    flags:
-      - deploy
-    versionTemplate:
-      sourceName: "busybox"
-      versionName: "latest"
-
-  - name: nginx-params-deploy
-    type: params
-    flags:
-      - deploy
-    versionTemplate:
-      params:
-        mode: dev
-        api_url: localhost:50000
-
-  - name: nginx-opts-deploy
-    type: dockerOptions
-    flags:
-      - deploy
-    versionTemplate:
-      memory: 128
-
-  - name: 123-bad-opts-deploy
-    type: dockerOptions
-    flags:
-      - deploy
-    version:
-      memory: 666
-
-  - name: ecsStaging-deploy
+  - name: myCluster
     type: cluster
-    flags:
-      - deploy
-    integration: "softsrv_aws"
-    versionTemplate:
-      sourceName: testLB
+    integration: MyAwsSoftSrvKeys
+    versionTemplate
+      sourceName: default
       region: us-east-1
-
-  - name: ecsProduction-deploy
-    type: cluster
-    flags:
-      - deploy
-    integration: "softsrv_aws"
-    versionTemplate:
-      # sourceName: "default"
-      # region: "us-east-1"
-      # sourceName: "deploy-ecs-basic"
-      region: "us-east-1"
-      sourceName: "default"
-
-
-  - name: simple-image-deploy
+  - name: myImage
     type: image
-    flags:
-      - deploy
     versionTemplate:
-      sourceName: "trriplejay/simpleserver"
-      versionName: master.58
-
-  - name: simple-params-deploy
-    type: params
-    flags:
-      - deploy
-    versionTemplate:
-      params:
-        FOO: "test foo"
-        BAR: "test bar"
-        MODE: "dev"
-        SELF_URL: "http://localhost:8888"
-
-  - name: simple-opts-deploy
-    type: dockerOptions
-    flags:
-      - deploy
-    versionTemplate:
-      portMappings:
-        - ":8888"
-      deployment:
-        strategy:
-          type: RollingUpdate
-          rollingUpdate:
-            maxSurge: 100%
-            maxUnavailable: 0
-
-      # memory: 256
-      # memoryReservation: 128
-      # taskDefinition:
-      #   networkMode: awsvpc
-      #   requiresCompatibilities:
-      #     - FARGATE
-      # service:
-      #   launchType: FARGATE
-
-      # resources:
-      #   requests:
-      #     memory: "123Mi"
-      #     cpu: "250m"
-      #   limits:
-      #     memory: "256Mi"
-      #     cpu: "500m"
-      labels:
-        check: oneTwo
-      # imagePullPolicy: IfNotPresent
-      # portMappings:
-      #   - "30001:80"
-      # livenessProbe:
-      #   httpGet:
-      #     path: /
-      #     port: 8888
-      # readinessProbe:
-      #   httpGet:
-      #     path: /
-      #     port: 8888
-      #   initialDelaySeconds: 5
-      #   periodSeconds: 5
-
-
-  - name: simpleReplicas-deploy
+      sourceName: trriplejay/simpleserver
+      versionName: master
+  - name: myScaling
     type: replicas
-    flags:
-      - deploy
     versionTemplate:
-      count: 1
-
-  - name: base-options-deploy
-    type: dockerOptions
-    versionTemplate:
-      memoryReservation: 256
-      #labels:
-      #  test: a1234
-      # portMappings:
-      #   - "30002:8888"
-      # deployment:
-      #   progressDeadlineSeconds: 300
-
-
-
-  # - name: timed-deployment-deploy
-  #   type: time
-  #   flags:
-  #     - deploy
-  #   seed:
-  #     interval: "*/2 * * * *"
-
-
-
-  # - name: gkeLB-deploy
-  #   type: loadBalancer
-  #   integration: MyGCloudIntegration
-  #   flags:
-  #     - deploy
-  #   versionTemplate:
-  #     sourceName: gke-service-shippable
-  #     method: LoadBalancer
-  #     namespace: shippable
-  #     region: us-central1-f
-  #     ports:
-  #       - name: public
-  #         protocol: TCP
-  #         port: 8888
-  #     selector:
-  #       env: app
-
-  - name: awsNLB
-    type: loadBalancer
-    integration: "softsrv_aws"
-    flags:
-      - deploy
-    versionTemplate:
-      method: application
-      sourceName: arn:aws:elasticloadbalancing:us-east-1:111799685573:targetgroup/testTGTGRP/dd3333a7beaa726e
-
-
+      count: 2
+      minReplicas: 1
+      maxReplicas: 5
+      autoScalingRole: ecsAutoscaleRole
+      autoScalingPolicies:
+        - PolicyName: UpPolicy
+          PolicyType: StepScaling
+          StepScalingPolicyConfiguration:
+            AdjustmentType: ChangeInCapacity
+            Cooldown: 300
+            MetricAggregationType: Average
+            StepAdjustments:
+            - MetricIntervalLowerBound: 0
+              MetricIntervalUpperBound: 20
+              ScalingAdjustment: 1
+            - MetricIntervalLowerBound: 20
+              ScalingAdjustment: 2
+        - PolicyName: DownPolicy
+          PolicyType: StepScaling
+          StepScalingPolicyConfiguration:
+            AdjustmentType: ChangeInCapacity
+            Cooldown: 300
+            MetricAggregationType: Average
+            StepAdjustments:
+            - MetricIntervalUpperBound: 0
+              MetricIntervalLowerBound: -10
+              ScalingAdjustment: -1
+            - MetricIntervalUpperBound: -10
+              ScalingAdjustment: -2
+      metricAlarms:
+        - AlarmName: UpAlarm
+        - AlarmDescription: "test scaleup"
+          ComparisonOperator: GreaterThanOrEqualToThreshold
+          EvaluationPeriods: 1
+          MetricName: MemoryUtilization
+          Namespace: AWS/ECS
+          Statistic: Average
+          Period: 60
+          Threshold: 70
+          AlarmActions:
+          - UpPolicy
+        - AlarmName: DownAlarm
+          AlarmDescription: "test scaledown"
+          ComparisonOperator: LessThanOrEqualToThreshold
+          EvaluationPeriods: 1
+          MetricName: MemoryUtilization
+          Namespace: AWS/ECS
+          Statistic: Average
+          Period: 60
+          Threshold: 30
+          AlarmActions:
+          - DownPolicy
 jobs:
-  - name: simple-mani-deploy
+
+  - name: myManifest
     type: manifest
-    flags:
-      - deploy
     steps:
-      - IN: stagingTrigger-deploy
-      - IN: simple-params-deploy
-      - IN: simple-image-deploy
-      - IN: simple-opts-deploy
+      - IN: myImage
+      - IN: myScaling
 
-  - name: nginx-mani-deploy
-    type: manifest
-    flags:
-      - deploy
-    steps:
-      - IN: stagingTrigger-deploy
-      - IN: nginx-image-deploy
-      - IN: nginx-params-deploy
-      - IN: nginx-opts-deploy
-
-  - name: staging-deploy-A-deploy
+  - name: myDeploy
     type: deploy
-    flags:
-      - deploy
+    deployMethod: upgrade
     steps:
-      - IN: simple-mani-deploy
-      # - IN: nginx-mani-deploy
-      - IN: ecsStaging-deploy
-
-  - name: staging-deploy-B1-deploy
-    type: deploy
-    method: upgrade
-    flags:
-      - deploy
-    steps:
-      - IN: simple-mani-deploy
-      - IN: nginx-mani-deploy
-      # - IN: 123-bad-opts-deploy
-      - IN: ecsStaging-deploy
-
-  - name: staging-deploy-B2-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: nginx-mani-deploy
-      - IN: ecsStaging-deploy
-      - IN: simpleReplicas-deploy
-      - TASK: managed
-        deployMethod: replace
-
-  - name: prod-deploy-A-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: staging-deploy-A-deploy
-        switch: off
-      - IN: ecsProduction-deploy
-
-  - name: prod-deploy-B-deploy
-    type: deploy
-    flags:
-      - deploy
-    steps:
-      - IN: staging-deploy-B1-deploy
-        switch: off
-      - IN: staging-deploy-B2-deploy
-        switch: off
-      - IN: ecsProduction-deploy
-
-  - name: combined-manifest-deploy
-    type: manifest
-    flags:
-      - deploy
-    steps:
-      # - IN: nginx-image-deploy
-#      - IN: timed-deployment-deploy
-      # - IN: busybox-image-deploy
-      - IN: simple-image-deploy
-      - IN: simpleReplicas-deploy
-      - IN: base-options-deploy
-
-  - name: file-manifest-deploy
-    type: manifest
-    flags:
-      - deploy
-    steps:
-      - IN: random-file-deploy
-
-  - name: combined-deploy
-    type: deploy
-    stabilityDuration: 45
-    # method: upgrade
-    # workflow: parallel
-    flags:
-      - deploy
-    steps:
-      # - IN: file-manifest-deploy
-      #   force: true
-      - IN: combined-manifest-deploy
-        force: true
-      - IN: simple-opts-deploy
-      - IN: awsNLB
-        applyTo:
-          - manifest: combined-manifest-deploy
-            image: simple-image-deploy
-            port: 8888
-      #   applyTo:
-      #     - simple-image-deploy
-      - IN: ecsStaging-deploy
-      # - TASK: managed
-      #   deployMethod: blueGreen
-
-  - name: parseManifests-deploy
-    type: runSh
-    flags:
-      - deploy
-    steps:
-      - IN: staging-deploy-B1-deploy
-      - TASK:
-          script:
-            - manifest_state=$(shipctl get_resource_state staging-deploy-B1-deploy)
-            - manifest_meta=$(shipctl get_resource_meta staging-deploy-B1-deploy)
-            - cat $manifest_state/manifests.json | jq '.'
-            - cat $manifest_meta/version.json | jq '.'
-            - jq '.version.propertyBag.trace' $manifest_meta/version.json
+      - IN: myManifest
+      - IN: myCluster
