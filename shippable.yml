@@ -75,7 +75,7 @@ jobs:
 
   - name: myDeploy
     type: deploy
-    deployMethod: upgrade
+    method: upgrade
     steps:
       - IN: myManifest
       - IN: myCluster
