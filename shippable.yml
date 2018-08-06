@@ -5,6 +5,11 @@ resources:
     versionTemplate:
       sourceName: default
       region: us-east-1
+  - name: myOptions
+    type: dockerOptions
+    versionTemplate:
+      portMappings:
+        - :8888
   - name: myImage
     type: image
     versionTemplate:
@@ -53,7 +58,7 @@ resources:
           Period: 60
           Threshold: 70
           AlarmActions:
-          - UpPolicy
+            - UpPolicy
         - AlarmName: DownAlarm
           AlarmDescription: "test scaledown"
           ComparisonOperator: LessThanOrEqualToThreshold
@@ -64,7 +69,7 @@ resources:
           Period: 60
           Threshold: 30
           AlarmActions:
-          - DownPolicy
+            - DownPolicy
 jobs:
 
   - name: myManifest
@@ -79,3 +84,4 @@ jobs:
       - IN: myManifest
       - IN: myScaling
       - IN: myCluster
+      - IN: myOptions
