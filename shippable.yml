@@ -9,7 +9,7 @@ resources:
     type: image
     versionTemplate:
       sourceName: trriplejay/simpleserver
-      versionName: master
+      versionName: master.58
   - name: myScaling
     type: replicas
     versionTemplate:
