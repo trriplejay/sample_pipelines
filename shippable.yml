@@ -2,7 +2,7 @@ resources:
   - name: myCluster
     type: cluster
     integration: MyAwsSoftSrvKeys
-    versionTemplate
+    versionTemplate:
       sourceName: default
       region: us-east-1
   - name: myImage
