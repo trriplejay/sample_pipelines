@@ -16,7 +16,7 @@ resources:
       count: 2
       minReplicas: 1
       maxReplicas: 5
-      autoScalingRole: ecsAutoscaleRole
+      autoScalingRole: arn:aws:iam::111799685573:role/ecsAutoscaleRole
       autoScalingPolicies:
         - PolicyName: UpPolicy
           PolicyType: StepScaling
