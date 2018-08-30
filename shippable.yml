@@ -9,3 +9,67 @@ build:
   ci:
     - python --version
     - echo "hello"
+
+
+jobs:
+  - name: sample_pipelines_runCI
+    type: runCI
+    steps:
+      - IN: trigger-2
+
+  - name: sample_pipelines_runSh
+    type: runSh
+    steps:
+      - IN: trigger-2
+      - TASK:
+          script:
+            - echo "2 minute trigger"
+
+  - name: my-frequent-release
+    type: release
+    flags:
+      - timeTrigger
+    steps:
+      - IN: rel-ver
+      - IN: trigger-impossible
+      - IN: trigger-2
+      - IN: trigger-3
+      - IN: trigger-5
+
+
+resources:
+  - name: rel-ver
+    type: version
+    flags:
+      - timeTrigger
+    versionTemplate:
+      versionName: v1.0.0
+
+  - name: trigger-2
+    type: time
+    flags:
+      - timeTrigger
+    versionTemplate:
+      interval: "*/3 * * * *"
+      interval: "30 14 31 2 MON-FRI"
+
+  - name: trigger-3
+    type: time
+    flags:
+      - timeTrigger
+    versionTemplate:
+      interval: "*/3 * * * *"
+
+  - name: trigger-5
+    type: time
+    flags:
+      - timeTrigger
+    versionTemplate:
+      interval: "*/5 * * * *"
+
+- name: trigger-impossible
+    type: time
+    flags:
+      - timeTrigger
+    versionTemplate:
+      interval: "30 14 31 2 MON-FRI"
