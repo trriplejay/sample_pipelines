@@ -50,8 +50,7 @@ resources:
     flags:
       - timeTrigger
     versionTemplate:
-      interval: "*/3 * * * *"
-      interval: "30 14 31 2 MON-FRI"
+      interval: "*/2 * * * *"
 
   - name: trigger-3
     type: time
