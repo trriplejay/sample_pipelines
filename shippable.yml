@@ -17,13 +17,13 @@ jobs:
     steps:
       - IN: trigger-2
 
-  - name: sample_pipelines_runSh
-    type: runSh
-    steps:
-      - IN: trigger-2
-      - TASK:
-          script:
-            - echo "2 minute trigger"
+  # - name: sample_pipelines_runSh
+  #   type: runSh
+  #   steps:
+  #     - IN: trigger-2
+  #     - TASK:
+  #         script:
+  #           - echo "2 minute trigger"
 
   - name: my-frequent-release
     type: release
@@ -31,10 +31,10 @@ jobs:
       - timeTrigger
     steps:
       - IN: rel-ver
-      - IN: trigger-impossible
-      - IN: trigger-2
-      - IN: trigger-3
-      - IN: trigger-5
+      # - IN: trigger-impossible
+      # - IN: trigger-2
+      # - IN: trigger-3
+      # - IN: trigger-5
 
 
 resources:
@@ -52,23 +52,23 @@ resources:
     versionTemplate:
       interval: "*/2 * * * *"
 
-  - name: trigger-3
-    type: time
-    flags:
-      - timeTrigger
-    versionTemplate:
-      interval: "*/3 * * * *"
+  # - name: trigger-3
+  #   type: time
+  #   flags:
+  #     - timeTrigger
+  #   versionTemplate:
+  #     interval: "*/3 * * * *"
 
-  - name: trigger-5
-    type: time
-    flags:
-      - timeTrigger
-    versionTemplate:
-      interval: "*/5 * * * *"
+  # - name: trigger-5
+  #   type: time
+  #   flags:
+  #     - timeTrigger
+  #   versionTemplate:
+  #     interval: "*/5 * * * *"
 
-  - name: trigger-impossible
-    type: time
-    flags:
-      - timeTrigger
-    versionTemplate:
-      interval: "30 14 31 2 MON-FRI"
+  # - name: trigger-impossible
+  #   type: time
+  #   flags:
+  #     - timeTrigger
+  #   versionTemplate:
+  #     interval: "30 14 31 2 MON-FRI"
