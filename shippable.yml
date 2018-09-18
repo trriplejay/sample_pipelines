@@ -1,74 +1,42 @@
-# Language setting
-language: python
 
-# Version number
-python:
-  - 2.7
+test-state-A: &testA
+  - echo "testing stateA"
+  - ls -latr $(shipctl get_resource_state stateA)
+  - cat $(shipctl get_resource_state stateA) stateA.env || echo "no env file found"
 
-build:
-  ci:
-    - python --version
-    - echo "hello"
-
-
-jobs:
-  - name: sample_pipelines_runCI
-    type: runCI
-    steps:
-      - IN: trigger-2
-
-  # - name: sample_pipelines_runSh
-  #   type: runSh
-  #   steps:
-  #     - IN: trigger-2
-  #     - TASK:
-  #         script:
-  #           - echo "2 minute trigger"
-
-  - name: my-frequent-release
-    type: release
-    flags:
-      - timeTrigger
-    steps:
-      - IN: rel-ver
-      # - IN: trigger-impossible
-      # - IN: trigger-2
-      # - IN: trigger-3
-      # - IN: trigger-5
+test-state-B: &testB
+  - echo "testing stateB"
+  - ls -latr $(shipctl get_resource_state stateB)
+  - cat $(shipctl get_resource_state stateB) stateB.env || echo "no env file found"
 
 
 resources:
-  - name: rel-ver
-    type: version
-    flags:
-      - timeTrigger
-    versionTemplate:
-      versionName: v1.0.0
+  - name: stateA
+    type: state
+  - name: stateB
+    type: state
 
-  - name: trigger-2
-    type: time
-    flags:
-      - timeTrigger
-    versionTemplate:
-      interval: "*/2 * * * *"
 
-  # - name: trigger-3
-  #   type: time
-  #   flags:
-  #     - timeTrigger
-  #   versionTemplate:
-  #     interval: "*/3 * * * *"
+jobs:
+  - name: testState1
+    type: runSh
+    steps:
+      - IN: stateA
+        switch: off
+      - OUT: stateA
+      - OUT: stateB
+      - TASK:
+          script:
+            - *testA
+            - *testB
 
-  # - name: trigger-5
-  #   type: time
-  #   flags:
-  #     - timeTrigger
-  #   versionTemplate:
-  #     interval: "*/5 * * * *"
-
-  # - name: trigger-impossible
-  #   type: time
-  #   flags:
-  #     - timeTrigger
-  #   versionTemplate:
-  #     interval: "30 14 31 2 MON-FRI"
+  - name: testState2
+    dependencyMode: strict
+    type: runSh
+    steps:
+      - IN: stateB
+      - IN: stateA
+      - TASK:
+          script:
+            - *testA
+            - *testB
