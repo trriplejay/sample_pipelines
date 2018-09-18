@@ -2,7 +2,13 @@
 test-state-A: &testA
   - echo "testing stateA"
   - ls -latr $(shipctl get_resource_state stateA)
-  - cat $(shipctl get_resource_state stateA) stateA.env || echo "no env file found"
+  - cat $JOB_STATE/stateA.env || echo "no env file found"
+  - ls -latr $(shipctl get_resource_meta stateA)
+  - cat $(shipctl get_resource_meta stateA)/version.json || echo "no verisonjson file found"
+  - shipctl put_resource_state stateA versionName "thisIsStateA"
+  - ls -latr $(shipctl get_resource_state stateA)
+  - ls -latr $(shipctl get_resource_meta stateA)
+  - cat $(shipctl get_resource_meta stateA)/version.json || echo "no verisonjson file found"
 
 test-state-B: &testB
   - echo "testing stateB"
