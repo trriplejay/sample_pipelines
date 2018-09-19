@@ -7,9 +7,11 @@ test-state-A: &testA
   - cat $(shipctl get_resource_meta stateA)/version.json | jq '.' || echo "no versionjson file found"
   - echo "hello world" > test.txt
   - shipctl copy_file_to_resource_state test.txt stateA
+  - shipctl coyp_file_to_state text.txt
   - ls -latr $(shipctl get_resource_state stateA)
   - ls -latr $(shipctl get_resource_meta stateA)
   - cat $(shipctl get_resource_meta stateA)/version.json | jq '.' || echo "no versionjson file found"
+  - ls -latr $JOB_PREVIOUS_STATE
 
 test-state-B: &testB
   - echo "testing stateB"
