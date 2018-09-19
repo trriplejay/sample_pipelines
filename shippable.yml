@@ -1,3 +1,9 @@
+test-state-repo: &testRepo
+  - echo "testing state repo"
+  - ls -latr $(shipctl get_resource_meta stateRepo)
+  - cat $(shipctl get_resource_meta stateRepo)/version.json | jq '.'
+  - ls -latr $(shipctl get_resource_state stateRepo)
+  - cat $JOB_STATE/stateRepo.env
 
 test-state-A: &testA
   - echo "testing stateA"
@@ -25,20 +31,31 @@ test-state-B: &testB
 resources:
   - name: stateA
     type: state
+
   - name: stateB
     type: state
+
+  - name: stateRepo
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      branch: state
+      sourceName: trriplejay/sample_pipelines
 
 
 jobs:
   - name: testState1
     type: runSh
     steps:
+      - IN: stateRepo
+        switch: off
       - IN: stateA
         switch: off
       - OUT: stateA
       - OUT: stateB
       - TASK:
           script:
+            - *testRepo
             - *testA
             - *testB
 
