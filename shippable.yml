@@ -4,18 +4,20 @@ test-state-A: &testA
   - ls -latr $(shipctl get_resource_state stateA)
   - cat $JOB_STATE/stateA.env || echo "no env file found"
   - ls -latr $(shipctl get_resource_meta stateA)
-  - cat $(shipctl get_resource_meta stateA)/version.json || echo "no verisonjson file found"
-  - shipctl put_resource_state stateA versionName "thisIsStateA"
+  - cat $(shipctl get_resource_meta stateA)/version.json || echo "no versionjson file found"
+  - shipctl put_resource_state stateA versionName "$BUILD_NUMBER"
+  - cat $JOB_STATE/stateA.env || echo "no env file found"
   - ls -latr $(shipctl get_resource_state stateA)
   - ls -latr $(shipctl get_resource_meta stateA)
-  - cat $(shipctl get_resource_meta stateA)/version.json || echo "no verisonjson file found"
+  - cat $(shipctl get_resource_meta stateA)/version.json || echo "no versionjson file found"
 
 test-state-B: &testB
   - echo "testing stateB"
   - ls -latr $(shipctl get_resource_state stateB)
   - cat $(shipctl get_resource_state stateB) stateB.env || echo "no env file found"
-  - cat $JOB_STATE/stateA.env || echo "no env file found"
-  - shipctl put_resource_state stateB versionName "thisIsStateB"
+  - cat $JOB_STATE/stateB.env || echo "no env file found"
+  - shipctl put_resource_state stateB versionName "$BUILD_NUMBER"
+  - cat $JOB_STATE/stateB.env || echo "no env file found"
 
 
 resources:
