@@ -62,9 +62,12 @@ jobs:
       - TASK:
           script:
             - *masterShipctl
-            - *testRepo
-            - *testA
-            - *testB
+            - shipctl copy_state stateA stateB
+            - shipctl copy_state testState1 stateB
+            - shipctl copy_state stateA testState1
+            # - *testRepo
+            # - *testA
+            # - *testB
 
   - name: testState2
     dependencyMode: strict
