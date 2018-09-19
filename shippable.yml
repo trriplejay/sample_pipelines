@@ -66,8 +66,8 @@ jobs:
             - sudo apt-get install -y tree
             - *masterShipctl
             - shipctl copy_state stateA stateB
-            - shipctl copy_state testState1 stateB
-            - shipctl copy_state stateA testState1
+            # - shipctl copy_state testState1 stateB
+            # - shipctl copy_state stateA testState1
             # - *testRepo
             # - *testA
             - *testB
