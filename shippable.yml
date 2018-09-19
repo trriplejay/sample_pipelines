@@ -28,10 +28,11 @@ test-state-A: &testA
 test-state-B: &testB
   - echo "testing stateB"
   - ls -latr $(shipctl get_resource_state stateB)
-  - cat $(shipctl get_resource_state stateB) stateB.env || echo "no env file found"
-  - cat $JOB_STATE/stateB.env || echo "no env file found"
-  - shipctl put_resource_state stateB versionName "$BUILD_NUMBER"
-  - cat $JOB_STATE/stateB.env || echo "no env file found"
+  - tree $(shipctl get_resource_state stateB)
+  #- cat $(shipctl get_resource_state stateB) stateB.env || echo "no env file found"
+  #- cat $JOB_STATE/stateB.env || echo "no env file found"
+  #- shipctl put_resource_state stateB versionName "$BUILD_NUMBER"
+  #- cat $JOB_STATE/stateB.env || echo "no env file found"
 
 
 resources:
@@ -61,13 +62,15 @@ jobs:
       - OUT: stateB
       - TASK:
           script:
+            - sudo apt-get update
+            - sudo apt-get install -y tree
             - *masterShipctl
             - shipctl copy_state stateA stateB
             - shipctl copy_state testState1 stateB
             - shipctl copy_state stateA testState1
             # - *testRepo
             # - *testA
-            # - *testB
+            - *testB
 
   - name: testState2
     dependencyMode: strict
