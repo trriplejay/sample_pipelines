@@ -1,3 +1,9 @@
+use-shipctl-master: &masterShipctl
+  - pushd /tmp
+  - git clone https://github.com/Shippable/node.git
+  - ./node/shipctl/$NODE_ARCHITECTURE/NODE_OPERATING_SYSTEM/install.sh
+  - popd
+
 test-state-repo: &testRepo
   - echo "testing state repo"
   - ls -latr $(shipctl get_resource_meta stateRepo)
@@ -55,6 +61,7 @@ jobs:
       - OUT: stateB
       - TASK:
           script:
+            - *masterShipctl
             - *testRepo
             - *testA
             - *testB
