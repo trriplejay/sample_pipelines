@@ -1,8 +1,7 @@
 use-shipctl-master: &masterShipctl
-  - printenv
   - pushd /tmp
   - git clone https://github.com/trriplejay/node.git
-  - ./node/shipctl/$NODE_ARCHITECTURE/$NODE_OPERATING_SYSTEM/install.sh
+  - ./node/shipctl/$SHIPPABLE_NODE_ARCHITECTURE/$SHIPPABLE_NODE_OPERATING_SYSTEM/install.sh
   - popd
 
 test-state-repo: &testRepo
