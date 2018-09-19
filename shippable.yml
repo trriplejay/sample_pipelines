@@ -5,7 +5,8 @@ test-state-A: &testA
   - cat $JOB_STATE/stateA.env || echo "no env file found"
   - ls -latr $(shipctl get_resource_meta stateA)
   - cat $(shipctl get_resource_meta stateA)/version.json || echo "no versionjson file found"
-  - shipctl put_resource_state stateA versionName "$BUILD_NUMBER"
+  - echo "hello world" > test.txt
+  - shipctl copy_file_to_resource_state test.txt stateA
   - cat $JOB_STATE/stateA.env || echo "no env file found"
   - ls -latr $(shipctl get_resource_state stateA)
   - ls -latr $(shipctl get_resource_meta stateA)
