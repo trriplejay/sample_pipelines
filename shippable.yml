@@ -71,8 +71,8 @@ jobs:
             - tree $STATEA_STATE
             # - tree $STATEB_STATE
             - shipctl replicate stateA stateA
-            - echo "hello world" > test.txt
-            - shipctl copy_file_to_resource_state test.txt stateA
+            # - echo "hello world" > test.txt
+            # - shipctl copy_file_to_resource_state test.txt stateA
             - tree $STATEA_STATE
             # - shipctl copy_state testState1 stateB
             # - shipctl copy_state stateA testState1
