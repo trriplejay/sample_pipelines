@@ -78,7 +78,7 @@ jobs:
             # - shipctl copy_state stateA testState1
             # - *testRepo
             # - *testA
-            - *testB
+            # - *testB
 
   - name: testState2
     dependencyMode: strict
