@@ -65,6 +65,8 @@ jobs:
             - sudo apt-get update
             - sudo apt-get install -y tree
             - *masterShipctl
+            - echo "hello world" > test.txt
+            - shipctl copy_file_to_resource_state test.txt stateA
             - tree $STATEA_STATE
             - tree $STATEB_STATE
             - shipctl replicate stateA stateB
