@@ -1,11 +1,9 @@
-# Language setting
-language: python
+jobs:
 
-# Version number
-python:
-  - 2.7
-
-build:
-  ci:
-    - python --version
-    - echo "hello"
+  - name: sample_pipelines_rSync_rSync
+    type: rSync
+    steps:
+      - IN: myParamsTest
+    on_success:
+      - NOTIFY: mySlackNotifier
+    
