@@ -23,6 +23,8 @@ resources:
 jobs:
   - name: setupJob
     type: runSh
+    runtime:
+      nodePool: u16-dyna
     steps:
       - TASK:
           name: set-up-A
