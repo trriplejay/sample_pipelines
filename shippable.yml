@@ -47,7 +47,7 @@ jobs:
             - sudo apt-get install -y tree
             - *masterShipctl
             ## stateA stuff
-            - tree $STATEA_STATE
+            - tree /build/IN/stateA/state #because it is IN and OUT
             - shipctl replicate stateA stateA
             - tree $STATEA_STATE
             ## stateB stuff
