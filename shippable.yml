@@ -55,7 +55,7 @@ jobs:
             ## stateB stuff
             - cat /build/OUT/stateB/version.json
             - tree $STATEB_STATE
-            - shipctl replicate stateA stateB
+            - shipctl replicate stateA stateB --files-only
             - tree $STATEB_STATE
 
   - name: testState2
