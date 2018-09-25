@@ -48,6 +48,7 @@ jobs:
             - sudo apt-get install -y tree
             - *masterShipctl
             ## stateA stuff
+            - cat /build/IN/stateA/version.json
             - tree /build/IN/stateA/state #because it is IN and OUT
             - shipctl replicate stateA stateA --metadata-only
             - tree $STATEA_STATE
