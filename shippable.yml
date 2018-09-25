@@ -25,12 +25,19 @@ jobs:
     type: runSh
     steps:
       - TASK:
+          name: set-up-A
           script:
             - shipctl put_resource_state stateA foo bar
             - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateA custom "$CUSTOM"; fi
             - echo "testing 1..2..3" > test.txt
             - shipctl copy_file_to_resource_state test.txt stateA
+      - TASK:
+          name: set-up-B
+          script:
+            - shipctl put_resource_state stateB test value
+            - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateB custom "$CUSTOM"; fi
       - OUT: stateA
+      - OUT: stateB
 
   - name: testState1
     type: runSh
