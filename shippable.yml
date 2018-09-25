@@ -4,36 +4,6 @@ use-shipctl-master: &masterShipctl
   - ./node/shipctl/$SHIPPABLE_NODE_ARCHITECTURE/$SHIPPABLE_NODE_OPERATING_SYSTEM/install.sh
   - popd
 
-test-state-repo: &testRepo
-  - echo "testing state repo"
-  - ls -latr $(shipctl get_resource_meta stateRepo)
-  - cat $(shipctl get_resource_meta stateRepo)/version.json | jq '.'
-  - ls -latr $(shipctl get_resource_state stateRepo)
-  - cat $JOB_STATE/stateRepo.env
-
-test-state-A: &testA
-  - echo "testing stateA"
-  - ls -latr $(shipctl get_resource_state stateA)
-  - cat $JOB_STATE/stateA.env || echo "no env file found"
-  - ls -latr $(shipctl get_resource_meta stateA)
-  - cat $(shipctl get_resource_meta stateA)/version.json | jq '.' || echo "no versionjson file found"
-  - echo "hello world" > test.txt
-  - shipctl copy_file_to_resource_state test.txt stateA
-  - shipctl copy_file_to_state test.txt
-  - ls -latr $(shipctl get_resource_state stateA)
-  - ls -latr $(shipctl get_resource_meta stateA)
-  - cat $(shipctl get_resource_meta stateA)/version.json | jq '.' || echo "no versionjson file found"
-  - ls -latr $JOB_PREVIOUS_STATE
-
-test-state-B: &testB
-  - echo "testing stateB"
-  - ls -latr $(shipctl get_resource_state stateB)
-  - tree $(shipctl get_resource_state stateB)
-  #- cat $(shipctl get_resource_state stateB) stateB.env || echo "no env file found"
-  #- cat $JOB_STATE/stateB.env || echo "no env file found"
-  #- shipctl put_resource_state stateB versionName "$BUILD_NUMBER"
-  #- cat $JOB_STATE/stateB.env || echo "no env file found"
-
 
 resources:
   - name: stateA
@@ -51,6 +21,17 @@ resources:
 
 
 jobs:
+  - name: setupJob
+    type: runSh
+    steps:
+      - TASK:
+          script:
+            - shipctl put_resource_state stateA foo bar
+            - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateA custom "$CUSTOM"; fi
+            - echo "testing 1..2..3" > test.txt
+            - shipctl copy_file_to_resource_state test.txt stateA
+      - OUT: stateA
+
   - name: testState1
     type: runSh
     steps:
@@ -65,20 +46,14 @@ jobs:
             - sudo apt-get update
             - sudo apt-get install -y tree
             - *masterShipctl
+            ## stateA stuff
             - tree $STATEA_STATE
+            - shipctl replicate stateA stateA
+            - tree $STATEA_STATE
+            ## stateB stuff
             # - tree $STATEB_STATE
             # - shipctl replicate stateA stateB
-            - tree $STATEA_STATE
             # - tree $STATEB_STATE
-            - shipctl replicate stateA stateA
-            # - echo "hello world" > test.txt
-            # - shipctl copy_file_to_resource_state test.txt stateA
-            - tree $STATEA_STATE
-            # - shipctl copy_state testState1 stateB
-            # - shipctl copy_state stateA testState1
-            # - *testRepo
-            # - *testA
-            # - *testB
 
   - name: testState2
     dependencyMode: strict
@@ -87,6 +62,16 @@ jobs:
       - IN: stateB
       - IN: stateA
       - TASK:
+          name: stateA-details
           script:
-            - *testA
-            - *testB
+            - echo "------------------ file list"
+            - ls -latr $(shipctl get_resource_state stateA)
+            - echo "------------------ version contents"
+            - cat $(shipctl get_resource_meta stateA)/version.json | jq '.version'
+      - TASK:
+          name: stateB-details
+          script:
+            - echo "------------------ file list"
+            - ls -latr $(shipctl get_resource_state stateB)
+            - echo "------------------ version contents"
+            - cat $(shipctl get_resource_meta stateB)/version.json | jq '.version'
