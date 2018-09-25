@@ -53,7 +53,7 @@ jobs:
             - shipctl replicate stateA stateA --metadata-only
             - tree $STATEA_STATE
             ## stateB stuff
-            - cat /build/IN/stateB/version.json
+            - cat /build/OUT/stateB/version.json
             - tree $STATEB_STATE
             - shipctl replicate stateA stateB
             - tree $STATEB_STATE
