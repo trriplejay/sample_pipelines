@@ -44,7 +44,7 @@ jobs:
   - name: testState1
     type: runSh
     runtime:
-      nodePool: u14-dyna
+      nodePool: c7-dyna
     steps:
       - IN: setupJob
       - IN: stateRepo
