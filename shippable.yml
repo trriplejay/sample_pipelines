@@ -49,7 +49,7 @@ jobs:
             - *masterShipctl
             ## stateA stuff
             - tree /build/IN/stateA/state #because it is IN and OUT
-            - shipctl replicate stateA stateA --no-files
+            - shipctl replicate stateA stateA --metadata-only
             - tree $STATEA_STATE
             ## stateB stuff
             - tree $STATEB_STATE
