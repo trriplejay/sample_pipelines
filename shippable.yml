@@ -59,6 +59,7 @@ jobs:
             # - sudo apt-get install -y tree # ubuntu
             # - yum install -y tree # centos
             - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
+            - printenv
             # - *masterShipctl
             ## stateA stuff
             - cat /build/IN/stateA/version.json
