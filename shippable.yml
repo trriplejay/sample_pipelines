@@ -55,9 +55,9 @@ jobs:
       - OUT: stateB
       - TASK:
           script:
-            # - sudo apt-get update
-            # - sudo apt-get install -y tree
-            - yum install -y tree
+            - sudo apt-get update
+            - sudo apt-get install -y tree
+            # - yum install -y tree
             # - *masterShipctl
             ## stateA stuff
             - cat /build/IN/stateA/version.json
