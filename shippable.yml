@@ -59,15 +59,14 @@ jobs:
             # - sudo apt-get install -y tree # ubuntu
             # - yum install -y tree # centos
             - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
-            - printenv
-            # - *masterShipctl
+            - *masterShipctl
             ## stateA stuff
-            - cat /build/IN/stateA/version.json
-            - tree /build/IN/stateA/state #because it is IN and OUT
+            - cat $JOB_PATH/IN/stateA/version.json
+            - tree $JOB_PATH/IN/stateA/state #because it is IN and OUT
             - shipctl replicate stateA stateA --metadata-only
             - tree $STATEA_STATE
             ## stateB stuff
-            - cat /build/OUT/stateB/version.json
+            - cat $JOB_PATH/OUT/stateB/version.json
             - tree $STATEB_STATE
             - shipctl replicate stateA stateB --files-only
             - tree $STATEB_STATE
