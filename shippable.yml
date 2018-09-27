@@ -24,7 +24,7 @@ jobs:
   - name: setupJob
     type: runSh
     runtime:
-      nodePool: u14-dyna
+      nodePool: u16-dyna
     steps:
       - TASK:
           name: set-up-A
@@ -46,7 +46,7 @@ jobs:
   - name: testState1
     type: runSh
     runtime:
-      nodePool: u14-dyna
+      nodePool: u16-dyna
     steps:
       - IN: setupJob
       - IN: stateRepo
