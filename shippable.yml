@@ -98,7 +98,9 @@ jobs:
       - IN: stateB
       - IN: stateA
       - IN: paramsA
+        switch: off
       - IN: paramsB
+        switch: off
       - IN: testState1
       # - TASK:
       #     name: stateA-details
