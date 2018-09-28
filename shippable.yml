@@ -78,8 +78,6 @@ jobs:
       - OUT: stateB
       - IN: paramsA
       - OUT: paramsB
-      - IN: stateRepo
-        switch: off
       - OUT: outRepo
       - TASK:
           script:
