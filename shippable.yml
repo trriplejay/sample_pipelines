@@ -38,6 +38,7 @@ jobs:
     runtime:
       nodePool: u16-dyna
     steps:
+      - IN: sample_pipelines_state_rSync
       - TASK:
           name: set-up-A
           script:
