@@ -19,6 +19,14 @@ resources:
       branch: state
       sourceName: trriplejay/sample_pipelines
 
+  - name: outRepo
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      branch: master
+      sourceName: trriplejay/sample_pipelines
+      buildOnCommit: false
+
   - name: paramsA
     type: params
     versionTemplate:
@@ -70,6 +78,9 @@ jobs:
       - OUT: stateB
       - IN: paramsA
       - OUT: paramsB
+      - IN: stateRepo
+        switch: off
+      - OUT: outRepo
       - TASK:
           script:
             # - sudo apt-get update # ubuntu
@@ -101,7 +112,10 @@ jobs:
         switch: off
       - IN: paramsB
         switch: off
+      - IN: outRepo
+        switch: off
       - IN: testState1
+
       # - TASK:
       #     name: stateA-details
       #     script:
@@ -119,5 +133,9 @@ jobs:
       - TASK:
           name: paramsB-details
           script:
-            - cat $(shipctl get_resource_meta paramsB)/version.json | jq '.version'
+            - cat $(shipctl get_resource_meta paramsB)/version.json | jq '.version.propertyBag'
             - printenv
+      - TASK:
+          name: gitRepo-details
+          script:
+            - cat $(shipctl get_resource_meta outRepo)/version.json | jq '.version.propertyBag'
