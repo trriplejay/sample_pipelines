@@ -19,6 +19,18 @@ resources:
       branch: state
       sourceName: trriplejay/sample_pipelines
 
+  - name: paramsA
+    type: params
+    versionTemplate:
+      params:
+        paramsA_foo: bar
+        paramsA_hello: world
+
+  - name: paramsB
+    type: params
+    versionTemplate:
+      params:
+        btest: true
 
 jobs:
   - name: setupJob
@@ -55,13 +67,16 @@ jobs:
         switch: off
       - OUT: stateA
       - OUT: stateB
+      - IN: paramsA
+      - OUT: paramsB
       - TASK:
           script:
             # - sudo apt-get update # ubuntu
             # - sudo apt-get install -y tree # ubuntu
             # - yum install -y tree # centos
             # - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
-            # - *masterShipctl
+            - *masterShipctl
+            ######### state
             ## stateA stuff
             - cat $JOB_PATH/IN/stateA/version.json
             # - tree $JOB_PATH/IN/stateA/state #because it is IN and OUT
@@ -72,6 +87,8 @@ jobs:
             # - tree $STATEB_STATE
             - shipctl replicate stateA stateB --files-only
             # - tree $STATEB_STATE
+            ######### params
+            - shipctl replicate paramsA paramsB
 
   - name: testState2
     dependencyMode: strict
@@ -79,18 +96,25 @@ jobs:
     steps:
       - IN: stateB
       - IN: stateA
+      - IN: paramsA
+      - IN: paramsB
       - IN: testState1
+      # - TASK:
+      #     name: stateA-details
+      #     script:
+      #       - echo "------------------ file list"
+      #       - ls -latr $(shipctl get_resource_state stateA)
+      #       - echo "------------------ version contents"
+      #       - cat $(shipctl get_resource_meta stateA)/version.json | jq '.version'
+      # - TASK:
+      #     name: stateB-details
+      #     script:
+      #       - echo "------------------ file list"
+      #       - ls -latr $(shipctl get_resource_state stateB)
+      #       - echo "------------------ version contents"
+      #       - cat $(shipctl get_resource_meta stateB)/version.json | jq '.version'
       - TASK:
-          name: stateA-details
+          name: paramsB-details
           script:
-            - echo "------------------ file list"
-            - ls -latr $(shipctl get_resource_state stateA)
-            - echo "------------------ version contents"
-            - cat $(shipctl get_resource_meta stateA)/version.json | jq '.version'
-      - TASK:
-          name: stateB-details
-          script:
-            - echo "------------------ file list"
-            - ls -latr $(shipctl get_resource_state stateB)
-            - echo "------------------ version contents"
-            - cat $(shipctl get_resource_meta stateB)/version.json | jq '.version'
+            - cat $(shipctl get_resource_meta paramsB)/version.json | jq '.version'
+            - printenv
