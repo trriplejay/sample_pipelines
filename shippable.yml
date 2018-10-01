@@ -86,6 +86,12 @@ jobs:
             # - yum install -y tree # centos
             # - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
             - *masterShipctl
+            ######### Error checking
+            - shipctl replicate paramsA stateRepo  # same type if non-repo
+            - shipctl replicate paramsA paramsA    # second res must be OUT
+            - shipctl replicate paramsB paramsA    # IN/OUT reversed
+            - shipctl replicate paramsB paramsB    # both are OUT
+
             ######### state
             ## stateA stuff
             - cat $JOB_PATH/IN/stateA/version.json
