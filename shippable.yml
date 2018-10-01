@@ -19,12 +19,19 @@ resources:
       branch: state
       sourceName: trriplejay/sample_pipelines
 
+  - name: stateRepo2
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      branch: master
+      sourceName: trriplejay/simpleserver
+
   - name: outRepo
     type: gitRepo
     integration: github
     versionTemplate:
       branch: master
-      sourceName: trriplejay/sample_pipelines
+      sourceName: trriplejay/
       buildOnCommit: false
 
   - name: paramsA
