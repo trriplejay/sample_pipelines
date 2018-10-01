@@ -40,6 +40,11 @@ resources:
       params:
         btest: true
 
+  - name: replicasB
+    type: replicas
+    versionTemplate:
+      count: 1
+
 jobs:
   - name: jobA
     type: runSh
@@ -83,6 +88,7 @@ jobs:
       nodePool: u16-dyna
     steps:
       - IN: setupJob
+      - IN: simpleserver_windowsNotifications
       - IN: stateRepo
         switch: off
       - IN: stateA
@@ -94,6 +100,7 @@ jobs:
       - IN: paramsA
       - OUT: paramsB
       - OUT: jobB
+      - OUT: replicasB
       - OUT: outRepo
       - OUT: shippable_java_test_ciRepo #must be added to pipeline separately
       - TASK:
@@ -104,7 +111,10 @@ jobs:
             # - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
             - *masterShipctl
             ######### Error checking
-            - shipctl replicate paramsA stateRepo || true  # same type if non-repo
+            - shipctl replicate paramsA outRepo || true  # same type if non-repo
+            - shipctl replicate stateRepo paramsB || true
+            - shipctl replicate stateRepo shippable_java_test_ciRepo || true
+            - shipctl replicate paramsA replicasB || true
 
             ######### state
             ## stateA stuff
@@ -121,7 +131,7 @@ jobs:
             - shipctl replicate paramsA paramsB
             ######### repo
             - shipctl replicate stateRepo outRepo
-            - shipctl replicate stateRepo shippable_java_test_ciRepo || true
+            - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
             - shipctl replicate jobA jobB
 
