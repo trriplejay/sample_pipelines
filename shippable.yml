@@ -31,7 +31,7 @@ resources:
     integration: github
     versionTemplate:
       branch: master
-      sourceName: trriplejay/
+      sourceName: trriplejay/sample_pipelines
       buildOnCommit: false
 
   - name: paramsA
