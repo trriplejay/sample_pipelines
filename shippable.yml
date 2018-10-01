@@ -79,6 +79,7 @@ jobs:
       - IN: paramsA
       - OUT: paramsB
       - OUT: outRepo
+      - OUT: shippable_java_test_ciRepo #must be added to pipeline separately
       - TASK:
           script:
             # - sudo apt-get update # ubuntu
@@ -88,9 +89,6 @@ jobs:
             - *masterShipctl
             ######### Error checking
             - shipctl replicate paramsA stateRepo || true  # same type if non-repo
-            - shipctl replicate paramsA paramsA   || true  # second res must be OUT
-            - shipctl replicate paramsB paramsA   || true  # IN/OUT reversed
-            - shipctl replicate paramsB paramsB   || true  # both are OUT
 
             ######### state
             ## stateA stuff
@@ -107,6 +105,7 @@ jobs:
             - shipctl replicate paramsA paramsB
             ######### repo
             - shipctl replicate stateRepo outRepo
+            - shipctl replicate stateRepo shippable_java_test_ciRepo
 
   - name: testState2
     dependencyMode: strict
