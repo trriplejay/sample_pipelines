@@ -109,6 +109,7 @@ jobs:
       - OUT: jobB
       - OUT: replicasB
       - OUT: outRepo
+      - OUT: stateRepo2
       - OUT: shippable_java_test_ciRepo #must be added to pipeline separately
       - TASK:
           script:
@@ -137,7 +138,7 @@ jobs:
             ######### params
             # - shipctl replicate paramsA paramsB
             ######### repo
-            - shipctl replicate stateRepo outRepo --webhook-data-only
+            - shipctl replicate stateRepo stateRepo2 --webhook-data-only
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
             # - shipctl replicate jobA jobB
