@@ -41,6 +41,19 @@ resources:
         btest: true
 
 jobs:
+  - name: jobA
+    type: runSh
+    steps:
+      - TASK:
+          script:
+            - echo " hi"
+  - name: jobB
+    type: runSh
+    steps:
+      - TASK:
+          script:
+            - echo " bye"
+
   - name: setupJob
     type: runSh
     runtime:
@@ -74,10 +87,13 @@ jobs:
         switch: off
       - IN: stateA
         switch: off
+      - IN: jobA
+        switch: off
       - OUT: stateA
       - OUT: stateB
       - IN: paramsA
       - OUT: paramsB
+      - OUT: jobB
       - OUT: outRepo
       - OUT: shippable_java_test_ciRepo #must be added to pipeline separately
       - TASK:
@@ -106,6 +122,8 @@ jobs:
             ######### repo
             - shipctl replicate stateRepo outRepo
             - shipctl replicate stateRepo shippable_java_test_ciRepo || true
+            ######### jobs
+            - shipctl replicate jobA jobB
 
   - name: testState2
     dependencyMode: strict
