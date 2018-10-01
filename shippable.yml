@@ -111,29 +111,29 @@ jobs:
             # - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
             - *masterShipctl
             ######### Error checking
-            - shipctl replicate paramsA outRepo || true  # same type if non-repo
-            - shipctl replicate stateRepo paramsB || true
-            - shipctl replicate stateRepo shippable_java_test_ciRepo || true
-            - shipctl replicate paramsA replicasB || true
+            # - shipctl replicate paramsA outRepo || true  # same type if non-repo
+            # - shipctl replicate stateRepo paramsB || true
+            # - shipctl replicate stateRepo shippable_java_test_ciRepo || true
+            # - shipctl replicate paramsA replicasB || true
 
             ######### state
             ## stateA stuff
-            - cat $JOB_PATH/IN/stateA/version.json
+            # - cat $JOB_PATH/IN/stateA/version.json
             # - tree $JOB_PATH/IN/stateA/state #because it is IN and OUT
-            - shipctl replicate stateA stateA --metadata-only
+            # - shipctl replicate stateA stateA --metadata-only
             # - tree $STATEA_STATE
             ## stateB stuff
-            - cat $JOB_PATH/OUT/stateB/version.json
+            # - cat $JOB_PATH/OUT/stateB/version.json
             # - tree $STATEB_STATE
-            - shipctl replicate stateA stateB --files-only
+            # - shipctl replicate stateA stateB --files-only
             # - tree $STATEB_STATE
             ######### params
-            - shipctl replicate paramsA paramsB
+            # - shipctl replicate paramsA paramsB
             ######### repo
-            - shipctl replicate stateRepo outRepo
-            - shipctl replicate simpleserver_windowsNotifications outRepo
+            - shipctl replicate stateRepo outRepo --webhook-data-only
+            # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
-            - shipctl replicate jobA jobB
+            # - shipctl replicate jobA jobB
 
   - name: testState2
     dependencyMode: strict
