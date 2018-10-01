@@ -105,7 +105,7 @@ jobs:
             - shipctl replicate paramsA paramsB
             ######### repo
             - shipctl replicate stateRepo outRepo
-            - shipctl replicate stateRepo shippable_java_test_ciRepo
+            - shipctl replicate stateRepo shippable_java_test_ciRepo || true
 
   - name: testState2
     dependencyMode: strict
