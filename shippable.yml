@@ -139,7 +139,7 @@ jobs:
             # - shipctl replicate paramsA paramsB
             ######### repo
 
-            - shipctl replicate stateRepo stateRepo2 --webhook-data-only
+            - shipctl replicate stateRepo stateRepo2
 
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
