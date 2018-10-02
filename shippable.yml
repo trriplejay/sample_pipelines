@@ -84,16 +84,10 @@ jobs:
           script:
             - shipctl put_resource_state stateB test value
             - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateB custom "$CUSTOM"; fi
-            - foo=bar
-            - export fizz=buzz
       - OUT: stateA
         overwrite: true
       - OUT: stateB
         overwrite: true
-    always:
-      script:
-        - echo "foo is $foo"
-        - echo "fizz is $fizz"
 
   - name: testState1
     type: runSh
