@@ -140,6 +140,8 @@ jobs:
             ######### repo
 
             - shipctl replicate stateRepo $JOB_NAME
+            - cat $JOB_STATE/outputVersion.json
+            - ls -latr $JOB_STATE
 
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
