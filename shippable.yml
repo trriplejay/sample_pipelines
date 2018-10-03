@@ -139,7 +139,7 @@ jobs:
             # - shipctl replicate paramsA paramsB
             ######### repo
 
-            - shipctl replicate stateRepo $JOB_NAME
+            - shipctl replicate stateA $JOB_NAME
             - cat $JOB_STATE/outputVersion.json
             - ls -latr $JOB_STATE
 
