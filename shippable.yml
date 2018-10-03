@@ -138,9 +138,9 @@ jobs:
             ######### params
             # - shipctl replicate paramsA paramsB
             ######### repo
-            - shipctl replicate $JOB_NAME $JOB_NAME || true
-            - shipctl replicate $JOB_NAME outRepo || true
-            - shipctl replicate setupJob $JOB_NAME
+            # - shipctl replicate $JOB_NAME $JOB_NAME || true
+            # - shipctl replicate $JOB_NAME outRepo || true
+            - shipctl replicate stateRepo $JOB_NAME --webhook-data-only
             - cat $JOB_STATE/outputVersion.json
             - ls -latr $JOB_STATE
 
