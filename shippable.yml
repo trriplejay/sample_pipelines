@@ -117,7 +117,7 @@ jobs:
       - TASK:
           script:
             # - sudo apt-get update # ubuntu
-            # - sudo apt-get install -y tree # ubuntu
+            - sudo apt-get install -y tree # ubuntu
             # - yum install -y tree # centos
             # - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
             - *masterShipctl
