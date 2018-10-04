@@ -88,20 +88,27 @@ jobs:
     steps:
       - IN: sample_pipelines_state_rSync
       - TASK:
-          name: set-up-A
+          name: set-up-stateA
           script:
             - shipctl put_resource_state stateA foo bar
             - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateA custom "$CUSTOM"; fi
             - echo "testing 1..2..3" > test.txt
             - shipctl copy_file_to_resource_state test.txt stateA
       - TASK:
-          name: set-up-B
+          name: set-up-stateB
           script:
             - shipctl put_resource_state stateB test value
             - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateB custom "$CUSTOM"; fi
+      - TASK:
+          name: set-up-paramsB
+          script:
+            - shipctl put_resource_state paramsB btest true
+
       - OUT: stateA
         overwrite: true
       - OUT: stateB
+        overwrite: true
+      - OUT: paramsB
         overwrite: true
 
   - name: testStateJobs
