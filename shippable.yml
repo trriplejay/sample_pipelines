@@ -248,7 +248,8 @@ jobs:
             - stateBFoo=$(cat $(shipctl get_resource_meta stateB)/version.json | jq '.version.propertyBag.foo')
             - ls -latr $(shipctl get_resource_state stateB)
             - if [ -z "$stateBFoo" ]; then echo "state resource metadata copy failed" && exit 1; fi
-            - if [ -n "$(ls -A $STATEB_STATE)" ]; then echo "state resource file copy failed" && exit 1; fi
+            - mystate=$(shipctl get_resource_state stateB)
+            - if [ -n "$(ls -A $mystate)" ]; then echo "state resource file copy failed" && exit 1; fi
 
       - TASK:
           name: gitRepo-details
