@@ -134,16 +134,16 @@ jobs:
             # - shipctl replicate stateA stateA --metadata-only
             # - tree $STATEA_STATE
             ## stateB stuff
-            # - cat $JOB_PATH/OUT/stateB/version.json
-            # - tree $STATEB_STATE
-            # - shipctl replicate stateA stateB --files-only
-            # - tree $STATEB_STATE
+            - cat $JOB_PATH/OUT/stateB/version.json
+            - tree $STATEB_STATE
+            - shipctl replicate stateA stateB
+            - tree $STATEB_STATE
             ######### params
             # - shipctl replicate paramsA paramsB
             ######### repo
             # - shipctl replicate $JOB_NAME $JOB_NAME || true
             # - shipctl replicate $JOB_NAME outRepo || true
-            - shipctl replicate stateA stateB --bad --anotherbad
+            # - shipctl replicate stateA stateB --bad --anotherbad
 
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
