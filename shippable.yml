@@ -12,12 +12,12 @@ resources:
   - name: stateB
     type: state
 
-  # - name: stateRepo
-  #   type: gitRepo
-  #   integration: github
-  #   versionTemplate:
-  #     branch: state
-  #     sourceName: trriplejay/sample_pipelines
+  - name: stateRepo
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      branch: state
+      sourceName: trriplejay/sample_pipelines
 
   - name: stateRepo2
     type: gitRepo
@@ -96,7 +96,7 @@ jobs:
     steps:
       - IN: setupJob
       - IN: simpleserver_windowsNotifications
-      # - IN: stateRepo
+      - IN: stateRepo
         switch: off
       - OUT: stateRepo2
       - IN: stateA
@@ -140,9 +140,9 @@ jobs:
             ######### repo
             # - shipctl replicate $JOB_NAME $JOB_NAME || true
             # - shipctl replicate $JOB_NAME outRepo || true
-            # - shipctl replicate stateRepo $JOB_NAME --webhook-data-only
-            # - cat $JOB_STATE/outputVersion.json
-            # - ls -latr $JOB_STATE
+            - shipctl replicate stateRepo $JOB_NAME --webhook-data-only
+            - cat $JOB_STATE/outputVersion.json
+            - ls -latr $JOB_STATE
 
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
