@@ -207,8 +207,8 @@ jobs:
     type: runSh
     steps:
       - IN: stateB
+        switch: off
       - IN: stateA
-      - IN: paramsA
         switch: off
       - IN: paramsB
         switch: off
@@ -241,7 +241,22 @@ jobs:
           script:
             - cat $(shipctl get_resource_meta paramsB)/version.json | jq '.version.propertyBag'
             - printenv
+            - if [ -z "$paramsA_foo" ] || [ -z "$paramsA_hello" ]; then echo "params failed" && exit 1; fi
+      - TASK:
+          name: stateB-details
+          script:
+            - cat $(shipctl get_resource_meta stateB)/version.json | jq '.version.propertyBag'
+            - stateBFoo=$(cat $(shipctl get_resource_meta stateB)/version.json | jq '.version.propertyBag.foo')
+            - ls -latr $(shipctl get_resource_state stateB)
+            - if [ -z "$stateBFoo" ]; then echo "state resource metadata copy failed" && exit 1; fi
+            - if [ -n "$(ls -A $STATEB_STATE)" ]; then echo "state resource file copy failed" && exit 1; fi
+
       - TASK:
           name: gitRepo-details
           script:
-            - cat $(shipctl get_resource_meta outRepo)/version.json | jq '.version.propertyBag'
+            - cat $(shipctl get_resource_meta stateRepo2)/version.json | jq '.version.propertyBag'
+            - sourceName=$(cat $(shipctl get_resource_meta stateRepo2)/version.json | jq '.version.propertyBag.sourceName')
+            - if [ "$sourceName" != "trriplejay/sample_pipelines" ]; then echo "repo failed" && exit 1; fi
+
+      - TASK:
+          name:
