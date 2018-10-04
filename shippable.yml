@@ -214,7 +214,7 @@ jobs:
         switch: off
       - IN: outRepo
         switch: off
-      - OUT: stateRepo2 # to avoid clone with bad sha
+      # - OUT: stateRepo2 # to avoid clone with bad sha
       - IN: testStateRepo
       - IN: testStateState
       - IN: testStateParams
