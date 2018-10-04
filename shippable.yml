@@ -58,7 +58,10 @@ jobs:
     steps:
       - TASK:
           script:
-            - echo " hi"
+            - echo " hi" > jobA.txt
+            - shipctl put_resource_state $JOB_NAME versionName $BUILD_NUMBER
+            - shipctl put_resource_state $JOB_NAME jobAFoo jobABar
+            - shipctl copy_file_to_state jobA.txt
   - name: jobB
     type: runSh
     steps:
@@ -140,7 +143,7 @@ jobs:
             ######### repo
             # - shipctl replicate $JOB_NAME $JOB_NAME || true
             # - shipctl replicate $JOB_NAME outRepo || true
-            - shipctl replicate stateA $JOB_NAME --files-only
+            - shipctl replicate jobA $JOB_NAME
 
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
