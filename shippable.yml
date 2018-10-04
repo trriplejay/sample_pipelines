@@ -140,9 +140,7 @@ jobs:
             ######### repo
             # - shipctl replicate $JOB_NAME $JOB_NAME || true
             # - shipctl replicate $JOB_NAME outRepo || true
-            - shipctl replicate stateRepo $JOB_NAME --webhook-data-only
-            - cat $JOB_STATE/outputVersion.json
-            - ls -latr $JOB_STATE
+            - shipctl replicate stateA $JOB_NAME --files-only
 
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
