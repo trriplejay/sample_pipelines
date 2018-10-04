@@ -52,12 +52,12 @@ resources:
     versionTemplate:
       count: 1
 
-- name: badA
+  - name: badA
     type: file
     versionTemplate:
       versionName: "testA"
 
-- name: badB
+  - name: badB
     type: file
     versionTemplate:
       versionName: "testB"
@@ -145,7 +145,6 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
-
       - IN: stateA
         switch: off
       - IN: jobA
