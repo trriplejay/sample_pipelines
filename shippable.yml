@@ -55,12 +55,14 @@ resources:
   - name: badA
     type: file
     versionTemplate:
-      versionName: "testA"
+      sourceName: "testASourceName"
+      versionName: "testAVersionName"
 
   - name: badB
     type: file
     versionTemplate:
-      versionName: "testB"
+      sourceName: "testBSourceName"
+      versionName: "testBVersionName"
 
 jobs:
   - name: jobA
@@ -210,7 +212,11 @@ jobs:
         switch: off
       - IN: stateRepo2
         switch: off
-      - IN: testState1
+      - IN: testStateRepo
+      - IN: testStateState
+      - IN: testStateParams
+      - IN: testStateErrors
+      - IN: testStateJobs
 
       # - TASK:
       #     name: stateA-details
