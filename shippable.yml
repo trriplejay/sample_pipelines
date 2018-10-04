@@ -180,11 +180,14 @@ jobs:
     steps:
       - IN: setupJob
       - IN: paramsA
+        switch: off
       - OUT: paramsB
       - TASK:
           script:
             - *masterShipctl
+            - cat $PARAMSB_META/version.json | jq '.version.propertyBag'
             - shipctl replicate paramsA paramsB
+            - cat $PARAMSB_META/version.json | jq '.version.propertyBag'
 
   - name: testStateRepo
     type: runSh
