@@ -143,7 +143,7 @@ jobs:
             ######### repo
             # - shipctl replicate $JOB_NAME $JOB_NAME || true
             # - shipctl replicate $JOB_NAME outRepo || true
-            - shipctl replicate jobA $JOB_NAME --metdata-only
+            - shipctl replicate jobA $JOB_NAME --bad --metadata-only --anotherbad
 
             # - shipctl replicate simpleserver_windowsNotifications outRepo
             ######### jobs
