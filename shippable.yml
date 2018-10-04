@@ -164,22 +164,16 @@ jobs:
       - TASK:
           script:
             - *masterShipctl
-            # - sudo apt-get update # ubuntu
-            - sudo apt-get install -y tree # ubuntu
-            # - yum install -y tree # centos
-            # - alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'" # macos
-
-
             ## stateA stuff
             # - cat $JOB_PATH/IN/stateA/version.json
-            # - tree $JOB_PATH/IN/stateA/state #because it is IN and OUT
+            # - ls -latr $JOB_PATH/IN/stateA/state #because it is IN and OUT
             # - shipctl replicate stateA stateA --metadata-only
-            # - tree $STATEA_STATE
+            # - ls -latr $STATEA_STATE
             ## stateB stuff
             - cat $JOB_PATH/OUT/stateB/version.json | jq '.version.propertyBag'
-            - tree $STATEB_STATE
+            - ls -latr $STATEB_STATE
             - shipctl replicate stateA stateB
-            - tree $STATEB_STATE
+            - ls -latr $STATEB_STATE
             - cat $JOB_PATH/OUT/stateB/version.json | jq '.version.propertyBag'
 
   - name: testStateParams
