@@ -6,252 +6,37 @@ use-shipctl-master: &masterShipctl
 
 
 resources:
-  - name: stateA
-    type: state
-
-  - name: stateB
-    type: state
-
-  - name: stateRepo
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      branch: state
-      sourceName: trriplejay/sample_pipelines
-
-  - name: stateRepo2
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      branch: master
-      sourceName: trriplejay/simpleserver
-
-  - name: outRepo
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      branch: master
-      sourceName: trriplejay/sample_pipelines
-      buildOnCommit: false
-
-  - name: paramsA
+  - name: winParamsA
     type: params
     versionTemplate:
       params:
         paramsA_foo: bar
         paramsA_hello: world
 
-  - name: paramsB
+  - name: winParamsB
     type: params
     versionTemplate:
       params:
         btest: true
-
-  - name: replicasB
-    type: replicas
-    versionTemplate:
-      count: 1
-
-  - name: badA
-    type: file
-    versionTemplate:
-      sourceName: "testASourceName"
-      versionName: "testAVersionName"
-
-  - name: badB
-    type: file
-    versionTemplate:
-      sourceName: "testBSourceName"
-      versionName: "testBVersionName"
+  - name: winStateA
+    type: state
+  - name: winStateB
+    type: state
 
 jobs:
-  - name: jobA
+  - name: windowsSetup
     type: runSh
     steps:
+      - OUT: winStateA
       - TASK:
           script:
-            - echo " hi" > jobA.txt
-            - shipctl put_resource_state $JOB_NAME versionName $BUILD_NUMBER
-            - shipctl put_resource_state $JOB_NAME jobAFoo jobABar
-            - shipctl copy_file_to_state jobA.txt
-  - name: jobB
+            - New-Item -Path . -Name "winStateATestFile.txt" -ItemType "file" -Value "This is a text string."
+            - shipctl copy_file_to_resource_state winStateATestFile.txt winStateA
+  - name: windowsReplicate
     type: runSh
     steps:
+      - IN: winStateA
+      - OUT: winStateB
       - TASK:
           script:
-            - echo " bye"
-
-  - name: setupJob
-    type: runSh
-    runtime:
-      nodePool: u16-dyna
-    steps:
-      - IN: sample_pipelines_state_rSync
-      - TASK:
-          name: set-up-stateA
-          script:
-            - shipctl put_resource_state stateA foo bar
-            - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateA custom "$CUSTOM"; fi
-            - echo "testing 1..2..3" > test.txt
-            - shipctl copy_file_to_resource_state test.txt stateA
-      - TASK:
-          name: set-up-stateB
-          script:
-            - shipctl put_resource_state stateB test value
-            - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateB custom "$CUSTOM"; fi
-      - TASK:
-          name: set-up-paramsB
-          script:
-            - shipctl put_resource_state paramsB btest true
-
-      - OUT: stateA
-        overwrite: true
-      - OUT: stateB
-        overwrite: true
-      - OUT: paramsB
-        overwrite: true
-
-  - name: testStateJobs
-    type: runSh
-    steps:
-      - IN: setupJob
-      - IN: jobA
-        switch: off
-      - TASK:
-          script:
-            - *masterShipctl
-            - shipctl replicate jobA $JOB_NAME
-
-  - name: testStateErrors
-    type: runSh
-    steps:
-      - IN: setupJob
-      - IN: badA
-        switch: off
-      - OUT: outRepo
-      - OUT: badB
-      - IN: stateRepo
-        switch: off
-      - OUT: replicasB
-      - IN: simpleserver_windowsNotifications
-        switch: off
-      - OUT: shippable_java_test_ciRepo #must be added to pipeline separately
-      - TASK:
-          script:
-            - *masterShipctl
-            ######### Error checking
-            - shipctl replicate paramsA outRepo || true  # same type if non-repo
-            - shipctl replicate stateRepo paramsB || true
-            - shipctl replicate stateRepo shippable_java_test_ciRepo || true
-            - shipctl replicate paramsA replicasB || true
-            - shipctl replicate $JOB_NAME $JOB_NAME || true
-            - shipctl replicate $JOB_NAME outRepo || true
-            - shipctl replicate simpleserver_windowsNotifications outRepo || true
-            ######### Warnings
-            - shipctl replicate badA badB --bad --notvalid #warning only
-
-  - name: testStateState
-    type: runSh
-    steps:
-      - IN: setupJob
-      - IN: stateA
-        switch: off
-      - IN: jobA
-        switch: off
-      - OUT: stateA
-      - OUT: stateB
-
-      - TASK:
-          script:
-            - *masterShipctl
-            ## stateA stuff
-            # - cat $JOB_PATH/IN/stateA/version.json
-            # - ls -latr $JOB_PATH/IN/stateA/state #because it is IN and OUT
-            # - shipctl replicate stateA stateA --metadata-only
-            # - ls -latr $STATEA_STATE
-            ## stateB stuff
-            - cat $JOB_PATH/OUT/stateB/version.json | jq '.version.propertyBag'
-            - ls -latr $STATEB_STATE
-            - shipctl replicate stateA stateB
-            - ls -latr $STATEB_STATE
-            - cat $JOB_PATH/OUT/stateB/version.json | jq '.version.propertyBag'
-
-  - name: testStateParams
-    type: runSh
-    steps:
-      - IN: setupJob
-      - IN: paramsA
-        switch: off
-      - OUT: paramsB
-      - TASK:
-          script:
-            - *masterShipctl
-            - cat $PARAMSB_META/version.json | jq '.version.propertyBag'
-            - shipctl replicate paramsA paramsB
-            - cat $PARAMSB_META/version.json | jq '.version.propertyBag'
-
-  - name: testStateRepo
-    type: runSh
-    steps:
-      - IN: setupJob
-      - IN: stateRepo
-        switch: off
-      - OUT: stateRepo2
-      - TASK:
-          script:
-            - *masterShipctl
-            - shipctl replicate stateRepo stateRepo2
-
-  - name: testStateFinal
-    dependencyMode: strict
-    type: runSh
-    steps:
-      - IN: stateB
-        switch: off
-      - IN: stateA
-        switch: off
-      - IN: paramsB
-        switch: off
-      - OUT: stateRepo2 # to avoid clone with bad sha
-      - IN: testStateRepo
-      - IN: testStateState
-      - IN: testStateParams
-      - IN: testStateErrors
-      - IN: testStateJobs
-
-      # - TASK:
-      #     name: stateA-details
-      #     script:
-      #       - echo "------------------ file list"
-      #       - ls -latr $(shipctl get_resource_state stateA)
-      #       - echo "------------------ version contents"
-      #       - cat $(shipctl get_resource_meta stateA)/version.json | jq '.version'
-      # - TASK:
-      #     name: stateB-details
-      #     script:
-      #       - echo "------------------ file list"
-      #       - ls -latr $(shipctl get_resource_state stateB)
-      #       - echo "------------------ version contents"
-      #       - cat $(shipctl get_resource_meta stateB)/version.json | jq '.version'
-      - TASK:
-          name: paramsB-details
-          script:
-            - cat $(shipctl get_resource_meta paramsB)/version.json | jq '.version.propertyBag'
-            - printenv
-            - if [ -z "$paramsA_foo" ] || [ -z "$paramsA_hello" ]; then echo "params failed" && exit 1; fi
-      - TASK:
-          name: stateB-details
-          script:
-            - cat $(shipctl get_resource_meta stateB)/version.json | jq '.version.propertyBag'
-            - stateBFoo=$(cat $(shipctl get_resource_meta stateB)/version.json | jq '.version.propertyBag.foo')
-            - ls -latr $(shipctl get_resource_state stateB)
-            - if [ -z "$stateBFoo" ]; then echo "state resource metadata copy failed" && exit 1; fi
-            - mystate=$(shipctl get_resource_state stateB)
-            - if [ -z "$(ls -A $mystate)" ]; then echo "state resource file copy failed" && exit 1; fi
-
-      - TASK:
-          name: gitRepo-details
-          script:
-            - cat $(shipctl get_resource_meta stateRepo2)/version.json | jq '.version.propertyBag'
-            - sourceName=$(cat $(shipctl get_resource_meta stateRepo2)/version.json | jq -r '.version.propertyBag.sourceName')
-            - if [ "$sourceName" != "trriplejay/sample_pipelines" ]; then echo "repo failed with sourceName \"$sourceName\"" && exit 1; fi
+            - shipctl replicate winStateA winStateB
