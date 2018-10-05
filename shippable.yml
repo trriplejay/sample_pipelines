@@ -29,6 +29,7 @@ jobs:
     runtime:
       nodePool: w16-byon
     steps:
+      - IN: sample_pipelines_windowsReplicate_rSync
       - OUT: winStateA
       - TASK:
           script:
