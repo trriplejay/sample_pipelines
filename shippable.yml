@@ -39,7 +39,9 @@ jobs:
     runtime:
       nodePool: w16-byon
     steps:
+      - IN: windowsSetup
       - IN: winStateA
+        switch: off
       - OUT: winStateB
       - TASK:
           script:
