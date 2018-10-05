@@ -253,5 +253,5 @@ jobs:
           name: gitRepo-details
           script:
             - cat $(shipctl get_resource_meta stateRepo2)/version.json | jq '.version.propertyBag'
-            - sourceName=$(cat $(shipctl get_resource_meta stateRepo2)/version.json | jq '.version.propertyBag.sourceName')
+            - sourceName=$(cat $(shipctl get_resource_meta stateRepo2)/version.json | jq -r '.version.propertyBag.sourceName')
             - if [ "$sourceName" != "trriplejay/sample_pipelines" ]; then echo "repo failed with sourceName \"$sourceName\"" && exit 1; fi
