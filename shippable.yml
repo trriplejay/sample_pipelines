@@ -26,6 +26,8 @@ resources:
 jobs:
   - name: windowsSetup
     type: runSh
+    runtime:
+      nodePool: w16-byon
     steps:
       - OUT: winStateA
       - TASK:
@@ -34,6 +36,8 @@ jobs:
             - shipctl copy_file_to_resource_state winStateATestFile.txt winStateA
   - name: windowsReplicate
     type: runSh
+    runtime:
+      nodePool: w16-byon
     steps:
       - IN: winStateA
       - OUT: winStateB
