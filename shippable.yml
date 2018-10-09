@@ -35,6 +35,7 @@ jobs:
           script:
             - New-Item -Path . -Name "winStateATestFile.txt" -ItemType "file" -Value "This is a text string."
             - shipctl copy_file_to_resource_state winStateATestFile.txt winStateA
+            - shipctl put_resource_state winStateA "testStateResourceA" "fubar"
   - name: windowsReplicate
     type: runSh
     runtime:
