@@ -81,6 +81,7 @@ jobs:
       - OUT: winRepoB
       - TASK:
           script:
+            - echo "new update"
             - shipctl replicate winStateA winStateB -files_only
             - shipctl replicate winParamsA winParamsB
             - shipctl replicate winRepoA winRepoB -webhook_data_only
