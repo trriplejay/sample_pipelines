@@ -50,11 +50,17 @@ jobs:
         overwrite: true
       - OUT: winParamsA
         overwrite: true
+      - OUT: winStateB
+        overwrite: true
       - TASK:
           script:
             - New-Item -Path . -Name "winStateATestFile.txt" -ItemType "file" -Value "This is a text string."
             - shipctl copy_file_to_resource_state winStateATestFile.txt winStateA
             - shipctl put_resource_state winStateA "testStateResourceA" "fubar"
+            - New-Item -Path . -Name "winStateBTestFile.txt" -ItemType "file" -Value "This is state B's original file."
+            - shipctl copy_file_to_resource_state winStateBTestFile.txt winStateB
+            - shipctl put_resource_state winStateB "testb" "original"
+
             - shipctl put_resource_state winParamsA "paramsA_foo" "bar"
             - shipctl put_resource_state winParamsA "paramsA_hello" "world"
 
