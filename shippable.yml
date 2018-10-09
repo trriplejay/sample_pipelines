@@ -47,4 +47,4 @@ jobs:
       - OUT: winStateB
       - TASK:
           script:
-            - shipctl replicate winStateA winStateB --webhook-data-only
+            - shipctl replicate winStateA winStateB --webhook_data_only
