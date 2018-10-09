@@ -31,20 +31,29 @@ jobs:
     steps:
       - IN: sample_pipelines_windowsReplicate_rSync
       - OUT: winStateA
+        overwrite: true
+      - OUT: winParamsA
+        overwrite: true
       - TASK:
           script:
             - New-Item -Path . -Name "winStateATestFile.txt" -ItemType "file" -Value "This is a text string."
             - shipctl copy_file_to_resource_state winStateATestFile.txt winStateA
             - shipctl put_resource_state winStateA "testStateResourceA" "fubar"
+            - shipctl put_resource_state winParamsA "testParamsResourceA" "fubar-params"
+
   - name: windowsReplicate
     type: runSh
     runtime:
       nodePool: w16-byon
     steps:
       - IN: windowsSetup
+      - IN: winParamsA
+        switch: off
       - IN: winStateA
         switch: off
       - OUT: winStateB
+      - OUT: winParamsB
       - TASK:
           script:
-            - shipctl replicate winStateA winStateB -webhook_data_only
+            - shipctl replicate winStateA winStateB -metadata_only
+            - shipctl replicate winParamsA winParamsB
