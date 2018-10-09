@@ -18,10 +18,26 @@ resources:
     versionTemplate:
       params:
         btest: true
+
   - name: winStateA
     type: state
+
   - name: winStateB
     type: state
+
+  - name: winRepoA
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      sourceName: trriplejay/sample_pipelines
+      branch: windowsReplicate
+
+  - name: winRepoB
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      sourceName: trriplejay/sample_pipelines
+      branch: master
 
 jobs:
   - name: windowsSetup
@@ -39,7 +55,8 @@ jobs:
             - New-Item -Path . -Name "winStateATestFile.txt" -ItemType "file" -Value "This is a text string."
             - shipctl copy_file_to_resource_state winStateATestFile.txt winStateA
             - shipctl put_resource_state winStateA "testStateResourceA" "fubar"
-            - shipctl put_resource_state winParamsA "testParamsResourceA" "fubar-params"
+            - shipctl put_resource_state winParamsA "paramsA_foo" "bar"
+            - shipctl put_resource_state winParamsA "paramsA_hello" "world"
 
   - name: windowsReplicate
     type: runSh
@@ -47,13 +64,17 @@ jobs:
       nodePool: w16-byon
     steps:
       - IN: windowsSetup
+      - IN: winRepoA
+        switch: off
       - IN: winParamsA
         switch: off
       - IN: winStateA
         switch: off
       - OUT: winStateB
       - OUT: winParamsB
+      - OUT: winRepoB
       - TASK:
           script:
-            - shipctl replicate winStateA winStateB -metadata_only
+            - shipctl replicate winStateA winStateB -files_only
             - shipctl replicate winParamsA winParamsB
+            - shipctl replicate winRepoA winRepoB -webhook_data_only
