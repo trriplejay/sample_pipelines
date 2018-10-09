@@ -83,5 +83,5 @@ jobs:
           script:
             - echo "new update"
             - shipctl replicate winStateA winStateB -files_only
-            - shipctl replicate winParamsA winParamsB
+            - shipctl replicate winParamsA winParamsB -metadata_only
             - shipctl replicate winRepoA winRepoB -webhook_data_only
