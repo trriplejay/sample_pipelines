@@ -81,6 +81,7 @@ jobs:
       - OUT: winRepoB
       - TASK:
           script:
+            - echo "try again"
             - try { shipctl replicate winStateA winParamsB} catch {}
             - try { shipctl replicate $env:JOB_NAME winParamsB} catch {}
             - shipctl replicate winStateA winStateB -files_only
