@@ -78,7 +78,7 @@ jobs:
         switch: off
       - IN: sample_pipelines_ciRepo
         switch: off
-      - IN: sample_pipelines_windowsReplicate_syncRepo
+      - IN: sample_pipelines_windowsReplicate
         switch: off
       - OUT: winStateB
       - OUT: winParamsB
