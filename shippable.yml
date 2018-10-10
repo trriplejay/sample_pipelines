@@ -91,7 +91,7 @@ jobs:
             - try { shipctl replicate $env:JOB_NAME winParamsB} catch {$_}
             - try { shipctl replicate winRepoA sample_pipelines_ciRepo } catch {$_}
             - try { shipctl replicate $env:JOB_NAME $env:JOB_NAME} catch {$_}
-            - shipctl replicate sample_pipelines_windowsReplicate_syncRepo winRepoB
+            - shipctl replicate sample_pipelines_windowsReplicate winRepoB
             - shipctl replicate sample_pipelines_ciRepo winRepoB
             - shipctl replicate winStateA winStateB -files_only
             - shipctl replicate winParamsA winParamsB -metadata_only
