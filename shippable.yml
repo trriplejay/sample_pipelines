@@ -83,4 +83,4 @@ jobs:
           script:
             - shipctl replicate winStateA winStateB -files_only
             - shipctl replicate winParamsA winParamsB -metadata_only
-            - shipctl replicate winRepoA $env:JOB_NAME -webhook_data_only
+            - shipctl replicate winRepoA $env:JOB_NAME -webhook_data_only -metadata_only
