@@ -81,6 +81,8 @@ jobs:
       - OUT: winRepoB
       - TASK:
           script:
+            - try { shipctl replicate winStateA winParamsB} catch {}
+            - try { shipctl replicate $env:JOB_NAME winParamsB} catch {}
             - shipctl replicate winStateA winStateB -files_only
             - shipctl replicate winParamsA winParamsB -metadata_only
-            - shipctl replicate winRepoA $env:JOB_NAME -webhook_data_only -metadata_only
+            - shipctl replicate winRepoA $env:JOB_NAME -metadata_only
