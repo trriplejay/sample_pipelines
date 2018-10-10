@@ -76,14 +76,24 @@ jobs:
         switch: off
       - IN: winStateA
         switch: off
+      - IN: sample_pipelines_ciRepo
+        switch: off
+      - IN: sample_pipelines_windowsReplicate_syncRepo
+        switch: off
       - OUT: winStateB
       - OUT: winParamsB
       - OUT: winRepoB
       - TASK:
           script:
-            - echo "try again"
+            - try { shipctl replicate winStateA winRepoB } catch {$_}
+            - try { shipctl replicate winRepoA winStateB } catch {$_}
             - try { shipctl replicate winStateA winParamsB} catch {$_}
             - try { shipctl replicate $env:JOB_NAME winParamsB} catch {$_}
+            - try { shipctl replicate winRepoA sample_pipelines_ciRepo } catch {$_}
+            - try { shipctl replicate $env:JOB_NAME $env:JOB_NAME} catch {$_}
+            - shipctl replicate sample_pipelines_windowsReplicate_syncRepo winRepoB
+            - shipctl replicate sample_pipelines_ciRepo winRepoB
             - shipctl replicate winStateA winStateB -files_only
             - shipctl replicate winParamsA winParamsB -metadata_only
+            - shipctl replicate winRepoA winRepoB #-webhook_data_only -metadata_only
             - shipctl replicate winRepoA $env:JOB_NAME -metadata_only
