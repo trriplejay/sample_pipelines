@@ -6,7 +6,7 @@ use-shipctl-master: &masterShipctl
 
 
 resources:
-  - name: stateA
+  - name: stateA_test
     type: state
 
   - name: stateB
@@ -90,10 +90,10 @@ jobs:
       - TASK:
           name: set-up-stateA
           script:
-            - shipctl put_resource_state stateA foo bar
-            - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateA custom "$CUSTOM"; fi
+            - shipctl put_resource_state stateA_test foo bar
+            - if [ -n "$CUSTOM" ]; then shipctl put_resource_state stateA_test custom "$CUSTOM"; fi
             - echo "testing 1..2..3" > test.txt
-            - shipctl copy_file_to_resource_state test.txt stateA
+            - shipctl copy_file_to_resource_state test.txt stateA_test
       - TASK:
           name: set-up-stateB
           script:
@@ -104,7 +104,7 @@ jobs:
           script:
             - shipctl put_resource_state paramsB btest true
 
-      - OUT: stateA
+      - OUT: stateA_test
         overwrite: true
       - OUT: stateB
         overwrite: true
@@ -154,11 +154,11 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
-      - IN: stateA
+      - IN: stateA_test
         switch: off
       - IN: jobA
         switch: off
-      - OUT: stateA
+      - OUT: stateA_test
       - OUT: stateB
 
       - TASK:
@@ -172,7 +172,7 @@ jobs:
             ## stateB stuff
             - cat $JOB_PATH/OUT/stateB/version.json | jq '.version.propertyBag'
             - ls -latr $STATEB_STATE
-            - shipctl replicate stateA stateB
+            - shipctl replicate stateA_test stateB
             - ls -latr $STATEB_STATE
             - cat $JOB_PATH/OUT/stateB/version.json | jq '.version.propertyBag'
 
