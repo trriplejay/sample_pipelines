@@ -155,7 +155,6 @@ jobs:
     steps:
       - IN: setupJob
       - IN: stateA_test
-        switch: off
       - IN: jobA
         switch: off
       - OUT: stateA_test
