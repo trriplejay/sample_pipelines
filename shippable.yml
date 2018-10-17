@@ -1,7 +1,7 @@
 use-shipctl-master: &masterShipctl
   - pushd /tmp
-  # - git clone https://github.com/trriplejay/node.git
-  # - ./node/shipctl/$SHIPPABLE_NODE_ARCHITECTURE/$SHIPPABLE_NODE_OPERATING_SYSTEM/install.sh
+  - git clone https://github.com/trriplejay/node.git
+  - ./node/shipctl/$SHIPPABLE_NODE_ARCHITECTURE/$SHIPPABLE_NODE_OPERATING_SYSTEM/install.sh
   - popd
 
 
