@@ -26,20 +26,20 @@ resources:
       branch: master
       sourceName: trriplejay/simpleserver
 
-  - name: stateRepo
+  - name: repoMatchSource
     type: gitRepo
     integration: github
     versionTemplate:
       branch: state
       sourceName: trriplejay/sample_pipelines
 
-  - name: repoMatchSource
+  - name: repoMatchTarget
     type: gitRepo
     integration: github
     versionTemplate:
       sourceName: trriplejay/simpleserver
 
-  - name: repoMatchTarget
+  - name: outRepo
     type: gitRepo
     integration: github
     versionTemplate:
