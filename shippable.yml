@@ -30,7 +30,6 @@ resources:
     type: gitRepo
     integration: github
     versionTemplate:
-      branch: master
       sourceName: trriplejay/simpleserver
 
   - name: repoMatchTarget
@@ -38,6 +37,7 @@ resources:
     integration: github
     versionTemplate:
       sourceName: trriplejay/simpleserver
+      buildOnPullRequest: true
 
   - name: outRepo
     type: gitRepo
