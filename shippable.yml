@@ -26,18 +26,18 @@ resources:
       branch: master
       sourceName: trriplejay/simpleserver
 
-  - name: repoMatchSource
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      branch: state
-      sourceName: trriplejay/sample_pipelines
+  # - name: repoMatchSource
+  #   type: gitRepo
+  #   integration: github
+  #   versionTemplate:
+  #     branch: state
+  #     sourceName: trriplejay/simpleserver
 
-  - name: repoMatchTarget
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      sourceName: trriplejay/simpleserver
+  # - name: repoMatchTarget
+  #   type: gitRepo
+  #   integration: github
+  #   versionTemplate:
+  #     sourceName: trriplejay/simpleserver
 
   - name: outRepo
     type: gitRepo
@@ -136,9 +136,9 @@ jobs:
   - name: testStateMatching
     type: runSh
     steps:
-      - IN: setupJob
-      - IN: repoMatchSource
-      - OUT: repoMatchTarget
+      # - IN: setupJob
+      # - IN: repoMatchSource
+      # - OUT: repoMatchTarget
       - TASK:
           script:
             - *masterShipctl
