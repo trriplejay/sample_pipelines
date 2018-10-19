@@ -38,6 +38,7 @@ resources:
     versionTemplate:
       sourceName: trriplejay/simpleserver
       buildOnPullRequest: true
+      buildOnCommit: true
 
   - name: outRepo
     type: gitRepo
