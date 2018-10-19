@@ -26,13 +26,24 @@ resources:
       branch: master
       sourceName: trriplejay/simpleserver
 
-  - name: outRepo
+  - name: stateRepo
     type: gitRepo
     integration: github
     versionTemplate:
-      branch: master
+      branch: state
       sourceName: trriplejay/sample_pipelines
-      buildOnCommit: false
+
+  - name: repoMatchSource
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      sourceName: trriplejay/simpleserver
+
+  - name: repoMatchTarget
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      sourceName: trriplejay/sample_pipelines
 
   - name: paramsA
     type: params
@@ -115,17 +126,29 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
+        switch: off
       - IN: jobA
         switch: off
       - TASK:
           script:
             - *masterShipctl
             - shipctl replicate jobA $JOB_NAME
+  - name: testStateMatching
+    type: runSh
+    steps:
+      - IN: setupJob
+      - IN: repoMatchSource
+      - OUT: repoMatchTarget
+      - TASK:
+          script:
+            - *masterShipctl
+            - shipctl replicate repoMatchSource repoMatchTarget --match-settings
 
   - name: testStateErrors
     type: runSh
     steps:
       - IN: setupJob
+        switch: off
       - IN: badA
         switch: off
       - OUT: outRepo
@@ -154,6 +177,7 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
+        switch: off
       - IN: stateA_test2
       - IN: jobA
         switch: off
@@ -179,6 +203,7 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
+        switch: off
       - IN: paramsA
         switch: off
       - OUT: paramsB
@@ -193,6 +218,7 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
+        switch: off
       - IN: stateRepo
         switch: off
       - OUT: stateRepo2
@@ -217,6 +243,7 @@ jobs:
       - IN: testStateParams
       - IN: testStateErrors
       - IN: testStateJobs
+      # - IN: testStateMatching
 
       # - TASK:
       #     name: stateA-details
