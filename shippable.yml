@@ -30,7 +30,7 @@ resources:
     type: gitRepo
     integration: github
     versionTemplate:
-      branch: state
+      branch: master
       sourceName: trriplejay/simpleserver
 
   - name: repoMatchTarget
