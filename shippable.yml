@@ -37,6 +37,7 @@ resources:
     integration: github
     versionTemplate:
       sourceName: trriplejay/simpleserver
+      buildOnCommit: false
       buildOnPullRequest: true
 
   - name: outRepo
