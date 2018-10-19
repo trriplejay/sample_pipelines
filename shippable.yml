@@ -33,7 +33,7 @@ resources:
       sourceName: trriplejay/simpleserver
       buildOnPullRequest: true
       buildOnPullRequestClose: true
-      buildOnComment: true
+      buildOnComment: test.*
       buildOnTagPush: true
       buildOnRelease: true
 
