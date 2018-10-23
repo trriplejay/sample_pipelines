@@ -42,6 +42,12 @@ resources:
     integration: github
     versionTemplate:
       sourceName: trriplejay/simpleserver
+      tags:
+        only:
+          - master
+          - dev
+        except:
+          - master
       buildOnCommit: false
       buildOnPullRequest: true
 
