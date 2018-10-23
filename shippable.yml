@@ -44,10 +44,13 @@ resources:
       sourceName: trriplejay/simpleserver
       tags:
         only:
-          - master
-          - dev
+          - v0.*
+          - v1.*
+          - v2.*
         except:
-          - master
+          - v0.*-test
+          - v1.*-test
+          - v2.*-test
       buildOnCommit: false
       buildOnPullRequest: true
 
