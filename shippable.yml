@@ -51,7 +51,12 @@ resources:
       #     - v0.*-test
       #     - v1.*-test
       #     - v2.*-test
-      branch: master
+      branches:
+        only:
+          - master
+          - dev*
+        except:
+          - dev-test
       buildOnCommit: false
       buildOnPullRequest: true
 
