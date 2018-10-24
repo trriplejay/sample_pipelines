@@ -163,6 +163,8 @@ jobs:
       - TASK:
           script:
             - *masterShipctl
+            - changed_dirs=$(shipctl get_git_changes --resource="repoMatchSource" --directories-only --depth=1)
+            - echo ${changed_dirs[@]}
             - shipctl replicate repoMatchSource repoMatchTarget --match-settings
 
   - name: testStateErrors
