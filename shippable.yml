@@ -162,7 +162,7 @@ jobs:
       - OUT: repoMatchTarget
       - TASK:
           script:
-            # - *masterShipctl
+            - *masterShipctl
             - shipctl replicate repoMatchSource repoMatchTarget --match-settings
 
   - name: testStateErrors
