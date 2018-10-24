@@ -162,10 +162,7 @@ jobs:
       - OUT: repoMatchTarget
       - TASK:
           script:
-            - *masterShipctl
-            - changed_dirs=$(shipctl get_git_changes --resource="repoMatchSource" --directories-only --depth=1)
-            - echo ${changed_dirs[@]}
-            - if [[ " ${changed_dirs[@]} " =~ " testdir " ]]; then echo "it's there"; fi
+            # - *masterShipctl
             - shipctl replicate repoMatchSource repoMatchTarget --match-settings
 
   - name: testStateErrors
