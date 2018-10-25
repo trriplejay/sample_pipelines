@@ -47,6 +47,8 @@ jobs:
 
   - name: testStateMatching
     type: runSh
+    runtime:
+      nodePool: w16-byon
     steps:
       # - IN: setupJob
       - IN: repoMatchSource
