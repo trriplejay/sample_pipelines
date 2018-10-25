@@ -29,10 +29,10 @@ resources:
           - v0.*
           - v1.*
           - v2.*
-      #   except:
-      #     - v0.*-test
-      #     - v1.*-test
-      #     - v2.*-test
+        except:
+          - v0.*-test
+          - v1.*-test
+          - v2.*-test
       branches:
         only:
           - master
