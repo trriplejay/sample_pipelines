@@ -8,7 +8,7 @@ use-shipctl-master: &masterShipctl
 resources:
 
 
-  - name: repoMatchSource
+  - name: win-repoMatchSource
     type: gitRepo
     integration: github
     versionTemplate:
@@ -19,7 +19,7 @@ resources:
       buildOnTagPush: true
       buildOnRelease: true
 
-  - name: repoMatchTarget
+  - name: win-repoMatchTarget
     type: gitRepo
     integration: github
     versionTemplate:
@@ -45,15 +45,15 @@ resources:
 jobs:
 
 
-  - name: testStateMatching
+  - name: win-testStateMatching
     type: runSh
     runtime:
       nodePool: w16-byon
     steps:
       # - IN: setupJob
-      - IN: repoMatchSource
-      - OUT: repoMatchTarget
+      - IN: win-repoMatchSource
+      - OUT: win-repoMatchTarget
       - TASK:
           script:
             # - *masterShipctl
-            - shipctl replicate repoMatchSource repoMatchTarget --match-settings
+            - shipctl replicate win-repoMatchSource win-repoMatchTarget --match-settings
