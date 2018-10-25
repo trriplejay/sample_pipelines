@@ -33,12 +33,13 @@ resources:
           - v0.*-test
           - v1.*-test
           - v2.*-test
-      branches:
-        only:
-          - master
-          - dev*
-        except:
-          - dev-test
+      # branches:
+      #   only:
+      #     - master
+      #     - dev*
+      #   except:
+      #     - dev-test
+      branch: master
       buildOnCommit: false
       buildOnPullRequest: true
 
