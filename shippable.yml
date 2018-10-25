@@ -42,11 +42,11 @@ resources:
     integration: github
     versionTemplate:
       sourceName: trriplejay/simpleserver
-      # tags:
-      #   only:
-      #     - v0.*
-      #     - v1.*
-      #     - v2.*
+      tags:
+        only:
+          - v0.*
+          - v1.*
+          - v2.*
       #   except:
       #     - v0.*-test
       #     - v1.*-test
