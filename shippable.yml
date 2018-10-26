@@ -60,7 +60,7 @@ jobs:
   - name: win-testStateMatching
     type: runSh
     runtime:
-      nodePool: w16-byon
+      nodePool: win-dyna
     steps:
       # - IN: setupJob
       - IN: win-repoMatchSource
@@ -70,5 +70,5 @@ jobs:
       - TASK:
           script:
             # - *masterShipctl
-            # - shipctl replicate win-repoMatchSource win-repoMatchTarget -match_settings
-            - shipctl replicate inparams win-repoMatchTarget -match_settings
+            - shipctl replicate win-repoMatchSource win-repoMatchTarget -match_settings
+            # - shipctl replicate inparams win-repoMatchTarget -match_settings
