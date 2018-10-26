@@ -166,7 +166,7 @@ resources:
     flags:
       - deploy
     versionTemplate:
-      count: 5
+      count: 3
 
   - name: base-options-deploy
     type: dockerOptions
@@ -321,8 +321,8 @@ jobs:
         force: true
       - IN: simple-opts-deploy
       - IN: simpleReplicas-deploy
-        applyTo:
-          - combined-manifest-deploy
+        # applyTo:
+        #   - combined-manifest-deploy
       # - IN: awsNLB
         # applyTo:
         #   - manifest: combined-manifest-deploy
