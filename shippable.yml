@@ -147,29 +147,27 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
-        switch: off
       - IN: jobA
         switch: off
       - TASK:
           script:
-            - *masterShipctl
+            # - *masterShipctl
             - shipctl replicate jobA $JOB_NAME
   - name: testStateMatching
     type: runSh
     steps:
-      # - IN: setupJob
+      - IN: setupJob
       - IN: repoMatchSource
       - OUT: repoMatchTarget
       - TASK:
           script:
-            - *masterShipctl
+            # - *masterShipctl
             - shipctl replicate repoMatchSource repoMatchTarget --match-settings
 
   - name: testStateErrors
     type: runSh
     steps:
       - IN: setupJob
-        switch: off
       - IN: badA
         switch: off
       - OUT: outRepo
@@ -182,7 +180,7 @@ jobs:
       - OUT: shippable_java_test_ciRepo #must be added to pipeline separately
       - TASK:
           script:
-            - *masterShipctl
+            # - *masterShipctl
             ######### Error checking
             - shipctl replicate paramsA outRepo || true  # same type if non-repo
             - shipctl replicate stateRepo paramsB || true
@@ -198,7 +196,6 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
-        switch: off
       - IN: stateA_test2
       - IN: jobA
         switch: off
@@ -207,7 +204,7 @@ jobs:
 
       - TASK:
           script:
-            - *masterShipctl
+            # - *masterShipctl
             ## stateA stuff
             # - cat $JOB_PATH/IN/stateA/version.json
             # - ls -latr $JOB_PATH/IN/stateA/state #because it is IN and OUT
@@ -224,13 +221,12 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
-        switch: off
       - IN: paramsA
         switch: off
       - OUT: paramsB
       - TASK:
           script:
-            - *masterShipctl
+            # - *masterShipctl
             - cat $PARAMSB_META/version.json | jq '.version.propertyBag'
             - shipctl replicate paramsA paramsB
             - cat $PARAMSB_META/version.json | jq '.version.propertyBag'
@@ -239,13 +235,12 @@ jobs:
     type: runSh
     steps:
       - IN: setupJob
-        switch: off
       - IN: stateRepo
         switch: off
       - OUT: stateRepo2
       - TASK:
           script:
-            - *masterShipctl
+            # - *masterShipctl
             - shipctl replicate stateRepo stateRepo2
 
   - name: testStateFinal
