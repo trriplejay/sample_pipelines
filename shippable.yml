@@ -42,6 +42,17 @@ resources:
       branch: master
       buildOnCommit: false
       buildOnPullRequest: true
+  - name: inparams
+    type: params
+    versionTemplate:
+      params:
+        hello: world
+
+  - name: outparams
+    type: params
+    versionTemplate:
+      params:
+        foo: bar
 
 jobs:
 
@@ -53,8 +64,11 @@ jobs:
     steps:
       # - IN: setupJob
       - IN: win-repoMatchSource
+      - IN: inparams
       - OUT: win-repoMatchTarget
+      - OUT: outparams
       - TASK:
           script:
             # - *masterShipctl
             - shipctl replicate win-repoMatchSource win-repoMatchTarget -match_settings
+            - shipctl replicate inparams outparams -match_settings
