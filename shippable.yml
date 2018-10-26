@@ -324,10 +324,10 @@ jobs:
         applyTo:
           - combined-manifest-deploy
       # - IN: awsNLB
-        applyTo:
-          - manifest: combined-manifest-deploy
-            image: simple-image-deploy
-            port: 8888
+        # applyTo:
+        #   - manifest: combined-manifest-deploy
+        #     image: simple-image-deploy
+        #     port: 8888
       #   applyTo:
       #     - simple-image-deploy
       - IN: ecsStaging-deploy
