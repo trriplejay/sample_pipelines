@@ -259,7 +259,7 @@ jobs:
       - IN: testStateParams
       - IN: testStateErrors
       - IN: testStateJobs
-      # - IN: testStateMatching
+      - IN: testStateMatching
 
       # - TASK:
       #     name: stateA-details
