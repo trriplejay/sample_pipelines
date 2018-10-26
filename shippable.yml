@@ -77,16 +77,16 @@ resources:
     type: cluster
     flags:
       - deploy
-    integration: "softsrv_aws"
+    integration: "MyGKECredentials"
     versionTemplate:
-      sourceName: testLB
-      region: us-east-1
+      sourceName: cluster-1
+      region: us-central1-a
 
   - name: ecsProduction-deploy
     type: cluster
     flags:
       - deploy
-    integration: "softsrv_aws"
+    integration: "MyGKECredentials"
     versionTemplate:
       # sourceName: "default"
       # region: "us-east-1"
@@ -166,7 +166,7 @@ resources:
     flags:
       - deploy
     versionTemplate:
-      count: 1
+      count: 5
 
   - name: base-options-deploy
     type: dockerOptions
@@ -209,7 +209,7 @@ resources:
 
   - name: awsNLB
     type: loadBalancer
-    integration: "softsrv_aws"
+    integration: "MyGKECredentials"
     flags:
       - deploy
     versionTemplate:
@@ -298,7 +298,6 @@ jobs:
 #      - IN: timed-deployment-deploy
       # - IN: busybox-image-deploy
       - IN: simple-image-deploy
-      - IN: simpleReplicas-deploy
       - IN: base-options-deploy
 
   - name: file-manifest-deploy
@@ -321,7 +320,8 @@ jobs:
       - IN: combined-manifest-deploy
         force: true
       - IN: simple-opts-deploy
-      - IN: awsNLB
+      - IN: simpleReplicas-deploy
+      # - IN: awsNLB
         applyTo:
           - manifest: combined-manifest-deploy
             image: simple-image-deploy
