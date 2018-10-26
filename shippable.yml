@@ -70,5 +70,5 @@ jobs:
       - TASK:
           script:
             # - *masterShipctl
-            - shipctl replicate win-repoMatchSource win-repoMatchTarget -match_settings
-            - shipctl replicate inparams outparams -match_settings
+            # - shipctl replicate win-repoMatchSource win-repoMatchTarget -match_settings
+            - shipctl replicate inparams win-repoMatchTarget -match_settings
