@@ -249,7 +249,7 @@ jobs:
     steps:
       - IN: stateB
         switch: off
-      - IN: stateA
+      - IN: stateA_test2
         switch: off
       - IN: paramsB
         switch: off
