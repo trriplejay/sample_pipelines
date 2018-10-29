@@ -309,7 +309,7 @@ jobs:
 
   - name: combined-deploy
     type: deploy
-    stabilityDuration: 45
+    # stabilityDuration: 45
     # method: upgrade
     # workflow: parallel
     flags:
