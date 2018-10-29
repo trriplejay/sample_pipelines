@@ -319,7 +319,7 @@ jobs:
       #   force: true
       - IN: combined-manifest-deploy
         force: true
-        deployName: testDeploy
+        deployName: test-deploy
       - IN: simple-opts-deploy
       - IN: simpleReplicas-deploy
         # applyTo:
