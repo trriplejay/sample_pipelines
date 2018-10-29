@@ -324,8 +324,8 @@ jobs:
         deployName: test-deploy
       - IN: simple-opts-deploy
       - IN: simpleReplicas-deploy
-        # applyTo:
-        #   - combined-manifest-deploy
+        applyTo:
+          - combined-manifest-deploy
       # - IN: awsNLB
         # applyTo:
         #   - manifest: combined-manifest-deploy
