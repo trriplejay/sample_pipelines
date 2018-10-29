@@ -319,9 +319,10 @@ jobs:
       #   force: true
       - IN: nginx-mani-deploy
         force: true
+        deployName: nginx-deploy
       - IN: combined-manifest-deploy
         force: true
-        deployName: test-deploy
+        deployName: simple-deploy
       - IN: simple-opts-deploy
       - IN: simpleReplicas-deploy
         applyTo:
