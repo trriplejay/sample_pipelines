@@ -317,6 +317,8 @@ jobs:
     steps:
       # - IN: file-manifest-deploy
       #   force: true
+      - IN: nginx-mani-deploy
+        force: true
       - IN: combined-manifest-deploy
         force: true
         deployName: test-deploy
