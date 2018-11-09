@@ -329,6 +329,8 @@ resources:
   - name: awsConfig-runShSample
     type: cliConfig
     integration: MyAwsSoftSrvKeys
+    versionTemplate:
+      region: us-east-1
 
   - name: test-docker-op
     type: dockerOptions
