@@ -88,7 +88,7 @@ jobs:
            - set -x
            - docker images
            - docker ps -a
-           - shipctl put_resource_state myRepo-runShSample test test
+           - shipctl put_resource_state myRepo-runShSample test $JOB_NAME
            - echo "all done"
     on_success:
       - echo "hi there"
