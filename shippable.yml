@@ -83,6 +83,7 @@ jobs:
       - IN: runSh2Check-runShSample
       - IN: runShCheck-runShSample
       - IN: myRepo-runShSample
+      - IN: awsConfig-runShSample
       - TASK:
           script:
            - set -x
@@ -90,6 +91,7 @@ jobs:
            - docker ps -a
            - shipctl put_resource_state myRepo-runShSample test $JOB_NAME
            - echo "all done"
+           - exit 0
     on_success:
       - echo "hi there"
     on_failure:
@@ -317,12 +319,16 @@ resources:
   #     groupName: testKube
   #     clusterName: blah-cluster
 
-  #- name: gkeConfig-runShSample
-  #  type: cliConfig
-  #  integration: MyGkeCredentials
-  #  versionTemplate:
-  #    clusterName: cluster-1
-  #    region: us-central1-f
+  # - name: gkeConfig-runShSample
+  #   type: cliConfig
+  #   integration: MyGkeCredentials
+  #   versionTemplate:
+  #     clusterName: cluster-1
+  #     region: us-central1-f
+
+  - name: awsConfig-runShSample
+    type: cliConfig
+    integration: MyAwsSoftSrvKeys
 
   - name: test-docker-op
     type: dockerOptions
