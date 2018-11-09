@@ -85,8 +85,10 @@ jobs:
       - IN: myRepo-runShSample
       - TASK:
           script:
+           - set -x
            - docker images
            - docker ps -a
+           - shipctl put_resource_state myRepo-runShSample test test
            - echo "all done"
   - name: successSh
     type: runSh
