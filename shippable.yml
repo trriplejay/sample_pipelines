@@ -90,6 +90,10 @@ jobs:
            - docker ps -a
            - shipctl put_resource_state myRepo-runShSample test test
            - echo "all done"
+    on_success:
+      - echo "hi there"
+    on_failure:
+      - echo "booooooo-urns"
   - name: successSh
     type: runSh
     steps:
