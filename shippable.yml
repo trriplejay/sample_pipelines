@@ -86,6 +86,7 @@ jobs:
       - IN: awsConfig-runShSample
       - TASK:
         - script: set -x
+        - script: docker version
         - script: docker images
         - script: docker ps -a
         - script: shipctl put_resource_state myRepo-runShSample test $JOB_NAME
