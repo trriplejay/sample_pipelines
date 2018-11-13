@@ -85,12 +85,17 @@ jobs:
       - IN: myRepo-runShSample
       - IN: awsConfig-runShSample
       - TASK:
-          script:
-           - set -x
-           - docker images
-           - docker ps -a
-           - shipctl put_resource_state myRepo-runShSample test $JOB_NAME
-           - echo "all done"
+        - script: set -x
+        - script: docker images
+        - script: docker ps -a
+        - script: shipctl put_resource_state myRepo-runShSample test $JOB_NAME
+        - script: echo "all done"
+          #script:
+           #- set -x
+           #- docker images
+           #- docker ps -a
+           #- shipctl put_resource_state myRepo-runShSample test $JOB_NAME
+           #- echo "all done"
           #  - exit 0
     on_success:
       - echo "hi there"
