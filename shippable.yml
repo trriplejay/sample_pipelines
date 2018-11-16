@@ -93,6 +93,7 @@ jobs:
           - |
             echo "lets try an exit code"
             exit 5
+            echo "are we still here?
           - shipctl put_resource_state myRepo-runShSample test $JOB_NAME
           - echo "all done"
           #  - exit 0
