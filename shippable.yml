@@ -83,7 +83,7 @@ jobs:
       - IN: runSh2Check-runShSample
       - IN: runShCheck-runShSample
       - IN: myRepo-runShSample
-      - IN: awsConfig-runShSample
+      #- IN: awsConfig-runShSample
       - TASK:
       
          script:
