@@ -91,11 +91,20 @@ jobs:
           - docker images
           - docker ps -a
           - |
-            echo "lets try an exit code"
-            exit 5
+            echo "lets try a bad command"
+            badcommand
             echo "are we still here?
-          - shipctl put_resource_state myRepo-runShSample test $JOB_NAME
+          #- shipctl put_resource_state myRepo-runShSample test $JOB_NAME
           - echo "all done"
+          - |
+             echo "lets try a bad command"
+             set +e
+             badcommand
+             echo "are we still here?"
+          - echo "lets try a bad command"
+          - set +e
+          - badcommand
+          - echo "are we still here?"
           #  - exit 0
     on_success:
       - echo "hi there"
