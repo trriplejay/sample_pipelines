@@ -94,7 +94,7 @@ jobs:
             { 
             echo "lets try a bad command"
             badcommand
-            echo "are we still here?
+            echo "are we still here?"
             } || true
           #- shipctl put_resource_state myRepo-runShSample test $JOB_NAME
           #- echo "all done"
