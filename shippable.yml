@@ -80,8 +80,8 @@ jobs:
     flags:
       - runShSample
     steps:
-      - IN: runSh2Check-runShSample
-      - IN: runShCheck-runShSample
+      #- IN: runSh2Check-runShSample
+      #- IN: runShCheck-runShSample
       - IN: myRepo-runShSample
       #- IN: awsConfig-runShSample
       - TASK:
