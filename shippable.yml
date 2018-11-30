@@ -90,12 +90,12 @@ jobs:
           #- set -x
           - docker images
           - docker ps -a
-          - |
-            echo "lets try a bad command"
-            badcommand
-            echo "are we still here?
+          #- |
+          #  echo "lets try a bad command"
+          #  badcommand
+          #  echo "are we still here?
           #- shipctl put_resource_state myRepo-runShSample test $JOB_NAME
-          - echo "all done"
+          #- echo "all done"
           - |
              echo "lets try a bad command"
              set +e
