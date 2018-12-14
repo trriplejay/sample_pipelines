@@ -19,10 +19,14 @@ jobs:
       - TASK:
           script:
             - apt-get install -y ent
-            - head -c 100K /dev/random > /tmp/out
+            - cat /proc/sys/kernel/random/entropy_avail
+            - head -c 1K /dev/random > /tmp/out
+            - cat /proc/sys/kernel/random/entropy_avail
             - ent /tmp/out
             - apt-get install -y rng-tools
+            - cat /proc/sys/kernel/random/entropy_avail
             - head -c 100K /dev/random > /tmp/out
+            - cat /proc/sys/kernel/random/entropy_avail
             - ent /tmp/out
   # - name: test_some_integrations
   #   type: runSh
