@@ -12,6 +12,18 @@ build:
 
 
 jobs:
+  - name: test_entropy
+    type: runSh
+    flags: runShSample
+    steps:
+      - TASK:
+          script:
+            - apt-get install -y ent
+            - head -c 100K /dev/random > /tmp/out
+            - ent /tmp/out
+            - apt-get install -y rng-tools
+            - head -c 100K /dev/random > /tmp/out
+            - ent /tmp/out
   # - name: test_some_integrations
   #   type: runSh
   #   flags: runShSample
