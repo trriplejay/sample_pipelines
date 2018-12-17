@@ -15,11 +15,14 @@ jobs:
   - name: test_entropy
     type: runSh
     flags: runShSample
+    runtime:
+      options:
+        container: false
     steps:
       - TASK:
-          options:
-            container: false
           script:
+            - uname -a
+            - lsb_release -a
             - apt-get install -y rng-tools
             
       - TASK:
