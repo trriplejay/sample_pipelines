@@ -17,6 +17,12 @@ jobs:
     flags: runShSample
     steps:
       - TASK:
+          options:
+            container: false
+          script:
+            - apt-get instally -y rng-tools
+            
+      - TASK:
           script:
             - apt-get install -y ent
             - cat /proc/sys/kernel/random/entropy_avail
