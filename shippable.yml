@@ -16,14 +16,13 @@ jobs:
     type: runSh
     flags: runShSample
     runtime:
-      options:
-        container: false
+      container: false
     steps:
       - TASK:
           script:
             - uname -a
             - lsb_release -a
-            - apt-get install -y rng-tools
+            - apt-get install -y rng-tools=4-0ubuntu2.1
             
       - TASK:
           script:
