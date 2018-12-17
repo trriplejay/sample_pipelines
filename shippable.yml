@@ -20,7 +20,7 @@ jobs:
           options:
             container: false
           script:
-            - apt-get instally -y rng-tools
+            - apt-get install -y rng-tools
             
       - TASK:
           script:
