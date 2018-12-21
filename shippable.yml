@@ -114,10 +114,11 @@ jobs:
           #- set -x
             - docker images
             - docker ps -a
-            - id=$(docker run -d -p 8888:8888 trriplejay/simpleserver:latest)
-            - curl localhost:8888
-            - docker stop -t=0 $id
+            - export id=$(docker run -d -p 127.0.0.1:8080:8888 trriplejay/simpleserver:latest)
+            - curl 127.0.0.1:8080
        
+    always:
+      - docker stop -t=0 $id
     on_success:
       - echo "hi there"
     on_failure:
