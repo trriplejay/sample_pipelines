@@ -110,12 +110,15 @@ jobs:
       - IN: myRepo-runShSample
       #- IN: awsConfig-runShSample
       - TASK:
+          runtime:                  # optional
+            options:
+              options: --network=host 
           script:
           #- set -x
             - docker images
             - docker ps -a
-            - export id=$(docker run -d -p 127.0.0.1:8080:8888 trriplejay/simpleserver:latest)
-            - curl 127.0.0.1:8080
+            - export id=$(docker run -d -p 8080:8888 --network=host trriplejay/simpleserver:latest)
+            - curl localhost:8080
        
     always:
       - docker stop -t=0 $id
