@@ -111,7 +111,8 @@ jobs:
       #- IN: awsConfig-runShSample
       - TASK:
           runtime:                  # optional
-            options: --network=host 
+            options:
+              options: --network=host 
           script:
           #- set -x
             - docker images
