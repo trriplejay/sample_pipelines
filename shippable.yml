@@ -79,7 +79,7 @@ resources:
       - deploy
     integration: "MyGKECredentials"
     versionTemplate:
-      sourceName: standard-cluster-1
+      sourceName: cluster-1
       region: us-central1-f
 
   - name: ecsProduction-deploy
