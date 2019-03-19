@@ -81,6 +81,7 @@ resources:
     versionTemplate:
       sourceName: cluster-1
       region: us-central1-f
+      namespace: test
 
   - name: ecsProduction-deploy
     type: cluster
