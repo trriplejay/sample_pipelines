@@ -24,7 +24,7 @@ jobs:
       #      - lsb_release -a
       #      - apt-get install -y rng-tools=4-0ubuntu2.1
             - yum install -y rng-tools-6.3.1-3.el7
-            
+
       #- TASK:
       #    script:
       #      - apt-get install -y ent
@@ -107,19 +107,27 @@ jobs:
     steps:
       #- IN: runSh2Check-runShSample
       #- IN: runShCheck-runShSample
+      - IN: test-jira-res
       - IN: myRepo-runShSample
       #- IN: awsConfig-runShSample
       - TASK:
           runtime:                  # optional
             options:
-              options: --network=host 
+              options: --network=host
           script:
           #- set -x
+            - |
+              list=$(shipctl get_integration_keys test-jira-res)
+              for key in "${list[@]}"
+              do
+                val=$(shipctl get_integration_resource_field test-jira-res $key)
+                echo "value of $key is $val"
+              done
             - docker images
             - docker ps -a
             - export id=$(docker run -d -p 8080:8888 --network=host trriplejay/simpleserver:latest)
             - curl localhost:8080
-       
+
     always:
       - docker stop -t=0 $id
     on_success:
@@ -312,6 +320,10 @@ jobs:
             - echo "hello world"
 
 resources:
+
+  - name: test-jira-res
+    type: notification
+    integration: test-jira
 
   - name: 123-testDockerOpts-runShSample
     type: dockerOptions
