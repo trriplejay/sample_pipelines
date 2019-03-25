@@ -117,7 +117,9 @@ jobs:
           script:
           #- set -x
             - |
+                echo "here we go"
                 list=$(shipctl get_integration_keys test-jira-res)
+                echo "the keys are-- $list"
                 for key in "${list[@]}"
                 do
                   val=$(shipctl get_integration_resource_field test-jira-res $key)
