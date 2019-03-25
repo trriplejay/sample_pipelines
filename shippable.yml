@@ -106,9 +106,9 @@ jobs:
       - runShSample
     integrations:
       - test-jira
-      - "trriplejay docker hub"
     steps:
       - IN: test-jira-res
+      - IN: dockerConfig-runShSample
       - IN: myRepo-runShSample
       - TASK:
           runtime:                  # optional
@@ -374,6 +374,10 @@ resources:
     integration: MyAwsSoftSrvKeys
     versionTemplate:
       region: us-east-1
+
+  - name: dockerConfig-runShSample
+    type: cliConfig
+    integration: "trriplejay docker hub"
 
   - name: test-docker-op
     type: dockerOptions
