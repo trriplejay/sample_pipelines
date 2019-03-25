@@ -118,10 +118,10 @@ jobs:
           #- set -x
             - touch Dockerfile
             - echo "FROM drydock/u16all:v6.12.4" >> Dockerfile
-            - ADD "/build /build" >> Dockerfile
-            - ADD "/home /home" >> Dockerfile
-            - ADD "/tmp /tmp" >> Dockerfile
-            - ADD "/usr /usr" >> Dockerfile
+            - echo "ADD /build /build" >> Dockerfile
+            - echo "ADD /home /home" >> Dockerfile
+            - echo "ADD /tmp /tmp" >> Dockerfile
+            - echo "ADD /usr /usr" >> Dockerfile
             - docker build -t trriplejay/shipctl:test .
             # - docker images
             # - docker ps -a
