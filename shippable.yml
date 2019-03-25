@@ -119,10 +119,11 @@ jobs:
 
             - docker images
             - docker ps -a
-            - export id=$(docker run -d -p 8080:8888 --network=host trriplejay/simpleserver:latest)
-            - curl localhost:8080
+            # - export id=$(docker run -d -p 8080:8888 --network=host trriplejay/simpleserver:latest)
+            # - curl localhost:8080
             - export reqExecId=$(docker ps | grep reqExec | awk '{print $1}')
             - docker commit $reqExecId trriplejay/shipctl:test
+            - docker push trriplejay/shipctl:test
 
     always:
       script:
