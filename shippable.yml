@@ -111,25 +111,16 @@ jobs:
       - IN: dockerConfig-runShSample
       - IN: myRepo-runShSample
       - TASK:
-          runtime:                  # optional
-            options:
-              options: --network=host
           script:
           #- set -x
-            - touch Dockerfile
-            - echo "FROM drydock/u16all:v6.12.4" >> Dockerfile
-            - echo "ADD /build /build" >> Dockerfile
-            - echo "ADD /home /home" >> Dockerfile
-            - echo "ADD /tmp /tmp" >> Dockerfile
-            - echo "ADD /usr /usr" >> Dockerfile
-            - docker build -t trriplejay/shipctl:test .
-            # - docker images
-            # - docker ps -a
+            - docker images
+            - docker ps -a
+            - shipctl notify test-jira-res --project-id=MYAP --type=Bug --description="test 123" --summary="test summary"
             # - export id=$(docker run -d -p 8080:8888 --network=host trriplejay/simpleserver:latest)
             # - curl localhost:8080
             # - export reqExecId=$(docker ps | grep reqExec | awk '{print $1}')
             # - docker commit $reqExecId trriplejay/shipctl:test
-            - docker push trriplejay/shipctl:test
+
 
     always:
       script:
