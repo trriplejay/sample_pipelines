@@ -320,7 +320,7 @@ resources:
 
   - name: test-jira-res
     type: notification
-    integration: test-jira
+    integration: test-jira-account-based
 
   - name: 123-testDockerOpts-runShSample
     type: dockerOptions
