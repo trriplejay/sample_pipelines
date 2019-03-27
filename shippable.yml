@@ -112,7 +112,7 @@ jobs:
       - IN: myRepo-runShSample
       - TASK:
           script:
-          #- set -x
+            - set -x
             - docker images
             - docker ps -a
             - shipctl notify test-jira-res --project-id=MYAP --type=Bug --description="test 123" --summary="test summary"
