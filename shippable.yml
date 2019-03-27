@@ -115,7 +115,7 @@ jobs:
             - set -x
             - docker images
             - docker ps -a
-            - shipctl notify test-jira-res --project-id=MYAP --type=Bug --description="test 123" --summary="test summary"
+            - shipctl notify test-jira-res --project-id=MYAP --type=Bug --description="failure in $BUILD_NUMBER" --summary="something went wrong"
             # - export id=$(docker run -d -p 8080:8888 --network=host trriplejay/simpleserver:latest)
             # - curl localhost:8080
             # - export reqExecId=$(docker ps | grep reqExec | awk '{print $1}')
