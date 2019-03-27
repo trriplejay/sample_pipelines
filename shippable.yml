@@ -115,6 +115,7 @@ jobs:
             - set -x
             - docker images
             - docker ps -a
+            - ls -latr
             - shipctl notify test-jira-res --project-id=MYAP --type=Bug --description="failure in $BUILD_NUMBER" --summary="something went wrong"
             - shipctl notify test-jira-res --project-id=MYAP --type=Story --description="once upon a time, in a build called $BUILD_NUMBER" --summary="this is my story"
             - shipctl notify test-jira-res --project-id=MYAP --type=Bug --description="see attachment $BUILD_NUMBER" --summary="something went wrong. see attachment" --attach-file=/root/node/shipctl/x86_64/Ubuntu_16.04/utility.sh
