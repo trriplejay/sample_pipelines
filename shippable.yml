@@ -23,4 +23,4 @@ jobs:
       - TASK:
           script:
             # - *masterShipctl
-            - shipctl notify test-jira-res
+            - shipctl notify test-jira-win
