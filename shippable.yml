@@ -24,7 +24,7 @@ jobs:
           script:
             # - *masterShipctl
 
-            - shipctl notify test-jira-win  -type "Bug" -description "WIN failure in $env:BUILD_NUMBER" -summary "WINDOWS something went wrong"
+            - shipctl notify test-jira-win  -project-id MYAP -type "Bug" -description "WIN failure in $env:BUILD_NUMBER" -summary "WINDOWS something went wrong"
               # no type
             # - shipctl notify test-jira-win -project-id MYAP  --description="failure in $BUILD_NUMBER" --summary="something went wrong" || true
             #   # no summary
