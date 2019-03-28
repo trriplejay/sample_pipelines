@@ -7,47 +7,6 @@ use-shipctl-master: &masterShipctl
 
 resources:
 
-
-  - name: win-repoMatchSource
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      sourceName: trriplejay/simpleserver
-      buildOnPullRequest: true
-      buildOnPullRequestClose: true
-      buildOnComment: test.*
-      buildOnTagPush: true
-      buildOnRelease: true
-
-  - name: win-repoMatchTarget
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      sourceName: trriplejay/simpleserver
-      tags:
-        only:
-          - v0.*
-          - v1.*
-          - v2.*
-        except:
-          - v0.*-test
-          - v1.*-test
-          - v2.*-test
-      # branches:
-      #   only:
-      #     - master
-      #     - dev*
-      #   except:
-      #     - dev-test
-      branch: master
-      buildOnCommit: false
-      buildOnPullRequest: true
-  - name: inparams
-    type: params
-    versionTemplate:
-      params:
-        hello: world
-
   - name: outparams
     type: params
     versionTemplate:
@@ -57,10 +16,10 @@ resources:
 jobs:
 
 
-  - name: win-testStateMatching
+  - name: win-testJira
     type: runSh
     runtime:
-      nodePool: win-dyna
+      nodePool: w16-byon
     steps:
       # - IN: setupJob
       - IN: win-repoMatchSource
