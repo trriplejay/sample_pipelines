@@ -7,7 +7,7 @@ use-shipctl-master: &masterShipctl
 
 resources:
 
-  - name: test-jira-res
+  - name: test-jira-win
     type: notification
     integration: test-jira-account-based
 
@@ -19,9 +19,8 @@ jobs:
     runtime:
       nodePool: w16-byon
     steps:
-      - IN: test-jira-res
+      - IN: test-jira-win
       - TASK:
           script:
             # - *masterShipctl
-            - shipctl replicate win-repoMatchSource win-repoMatchTarget -match_settings
-            # - shipctl replicate inparams win-repoMatchTarget -match_settings
+            - shipctl notify test-jira-res
