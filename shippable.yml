@@ -7,11 +7,9 @@ use-shipctl-master: &masterShipctl
 
 resources:
 
-  - name: outparams
-    type: params
-    versionTemplate:
-      params:
-        foo: bar
+  - name: test-jira-res
+    type: notification
+    integration: test-jira-account-based
 
 jobs:
 
@@ -21,11 +19,7 @@ jobs:
     runtime:
       nodePool: w16-byon
     steps:
-      # - IN: setupJob
-      - IN: win-repoMatchSource
-      - IN: inparams
-      - OUT: win-repoMatchTarget
-      - OUT: outparams
+      - IN: test-jira-res
       - TASK:
           script:
             # - *masterShipctl
