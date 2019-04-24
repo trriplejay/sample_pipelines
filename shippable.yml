@@ -112,13 +112,13 @@ jobs:
       - TASK:
           name: "pull image"
           script:
-            - docker pull trriplejay/0.50
+            - docker pull trriplejay/simpleserver:0.50
       - TASK:
           runtime:
             options:
               imageName: trriplejay/simpleserver
               imageTag: 0.50
-              pull: true
+              pull: false
           script:
           
             - docker images
