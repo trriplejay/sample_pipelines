@@ -107,11 +107,20 @@ jobs:
     integrations:
       - test-jira
     steps:
-      - IN: test-jira-res
       - IN: dockerConfig-runShSample
       - IN: myRepo-runShSample
       - TASK:
+          name: "pull image"
           script:
+            - docker pull trriplejay/0.50
+      - TASK:
+          runtime:
+            options:
+              imageName: trriplejay/simpleserver
+              imageTag: 0.50
+              pull: true
+          script:
+          
             - docker images
             - docker ps -a
             - ls -latr
@@ -336,6 +345,7 @@ resources:
       - runShSample
     versionTemplate:
       foo: "bar"
+
   - name: nonum-DockerOpts-runShSample
     type: dockerOptions
     flags:
