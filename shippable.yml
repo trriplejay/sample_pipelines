@@ -117,7 +117,7 @@ jobs:
           runtime:
             options:
               imageName: trriplejay/ubuntu
-              imageTag: 0.50
+              imageTag: "0.50"
               pull: false
           script:
           
