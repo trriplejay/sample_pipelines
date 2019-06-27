@@ -120,9 +120,10 @@ jobs:
               imageTag: "0.50"
               pull: false
           script:
-          
+
             - docker images
             - docker ps -a
+            - exit 0
             - ls -latr
             # error scenarios
               # no project id
