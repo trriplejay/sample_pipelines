@@ -13,7 +13,7 @@ jobs:
     runtime:
       nodePool: w16-byon
     steps:
-      - IN: sample_pipelines_windowsReplicate_rSync
+      - IN: sample_pipelines_winSimple_rSync
       - OUT: winParamsA
         overwrite: true
       - TASK:
