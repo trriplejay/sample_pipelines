@@ -1,9 +1,3 @@
-use-shipctl-master: &masterShipctl
-  - pushd /tmp
-  # - git clone https://github.com/trriplejay/node.git
-  # - ./node/shipctl/$SHIPPABLE_NODE_ARCHITECTURE/$SHIPPABLE_NODE_OPERATING_SYSTEM/install.sh
-  - popd
-
 
 resources:
   - name: winParamsA
@@ -13,32 +7,6 @@ resources:
         paramsA_foo: bar
         paramsA_hello: world
 
-  - name: winParamsB
-    type: params
-    versionTemplate:
-      params:
-        btest: true
-
-  - name: winStateA
-    type: state
-
-  - name: winStateB
-    type: state
-
-  - name: winRepoA
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      sourceName: trriplejay/sample_pipelines
-      branch: windowsReplicate
-
-  - name: winRepoB
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      sourceName: trriplejay/sample_pipelines
-      branch: master
-
 jobs:
   - name: windowsSetup
     type: runSh
@@ -46,54 +14,11 @@ jobs:
       nodePool: w16-byon
     steps:
       - IN: sample_pipelines_windowsReplicate_rSync
-      - OUT: winStateA
-        overwrite: true
       - OUT: winParamsA
-        overwrite: true
-      - OUT: winStateB
         overwrite: true
       - TASK:
           script:
-            - New-Item -Path . -Name "winStateATestFile.txt" -ItemType "file" -Value "This is a text string."
-            - shipctl copy_file_to_resource_state winStateATestFile.txt winStateA
-            - shipctl put_resource_state winStateA "testStateResourceA" "fubar"
-            - New-Item -Path . -Name "winStateBTestFile.txt" -ItemType "file" -Value "This is state B's original file."
-            - shipctl copy_file_to_resource_state winStateBTestFile.txt winStateB
-            - shipctl put_resource_state winStateB "testb" "original"
-
             - shipctl put_resource_state winParamsA "paramsA_foo" "bar"
             - shipctl put_resource_state winParamsA "paramsA_hello" "world"
 
-  - name: windowsReplicate
-    type: runSh
-    runtime:
-      nodePool: w16-byon
-    steps:
-      - IN: windowsSetup
-      - IN: winRepoA
-        switch: off
-      - IN: winParamsA
-        switch: off
-      - IN: winStateA
-        switch: off
-      - IN: sample_pipelines_ciRepo
-        switch: off
-      - IN: sample_pipelines_windowsReplicate
-        switch: off
-      - OUT: winStateB
-      - OUT: winParamsB
-      - OUT: winRepoB
-      - TASK:
-          script:
-            - try { shipctl replicate winStateA winRepoB } catch {$_}
-            - try { shipctl replicate winRepoA winStateB } catch {$_}
-            - try { shipctl replicate winStateA winParamsB} catch {$_}
-            - try { shipctl replicate $env:JOB_NAME winParamsB} catch {$_}
-            - try { shipctl replicate winRepoA sample_pipelines_ciRepo } catch {$_}
-            - try { shipctl replicate $env:JOB_NAME $env:JOB_NAME} catch {$_}
-            - shipctl replicate sample_pipelines_windowsReplicate winRepoB
-            - shipctl replicate sample_pipelines_ciRepo winRepoB
-            - shipctl replicate winStateA winStateB -files_only
-            - shipctl replicate winParamsA winParamsB -metadata_only
-            - shipctl replicate winRepoA winRepoB #-webhook_data_only -metadata_only
-            - shipctl replicate winRepoA $env:JOB_NAME -metadata_only
+  
