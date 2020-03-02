@@ -11,7 +11,7 @@ jobs:
   - name: windowsSetup
     type: runSh
     runtime:
-      nodePool: w16-byon
+      nodePool: w16-dyna
     steps:
       - IN: sample_pipelines_winSimple_rSync
       - OUT: winParamsA
