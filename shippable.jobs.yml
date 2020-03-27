@@ -34,6 +34,7 @@ jobs:
       
   - name: kube-dep
     type: deploy
+    deployMethod: upgrade
     steps:
       - IN: myKubeCluster
       - IN: betaParams
