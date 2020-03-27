@@ -48,17 +48,17 @@ resources:
 #       sourceName : "trriplejay-test" #name of the cluster we are deploying
 #       region: "us-west-2"
       
-#   - name: myKubeCluster
-#     type: cluster
-#     integration: "MyKubeCredentials"  
-    
   - name: myKubeCluster
     type: cluster
-    integration: "MyGCloudIntegration"
-    versionTemplate:
-      region: us-central1-c
-      sourceName: cluster-1
-      namespace:  dev
+    integration: "MyKubeCredentials"  
+    
+#   - name: myKubeCluster
+#     type: cluster
+#     integration: "MyGCloudIntegration"
+#     versionTemplate:
+#       region: us-central1-c
+#       sourceName: cluster-1
+#       namespace:  dev
 
 #   - name: myDdcCluster
 #     type: cluster
