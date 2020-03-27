@@ -41,22 +41,22 @@ resources:
       memory: 120
       cpuShares: 18
 
-  - name: myEcsCluster
-    type: cluster
-    integration: "shippable demo ecs"
-    pointer:
-      sourceName : "trriplejay-test" #name of the cluster we are deploying
-      region: "us-west-2"
+#   - name: myEcsCluster
+#     type: cluster
+#     integration: "shippable demo ecs"
+#     pointer:
+#       sourceName : "trriplejay-test" #name of the cluster we are deploying
+#       region: "us-west-2"
       
   - name: myKubeCluster
     type: cluster
     integration: "MyKubeCredentials"  
 
-  - name: myDdcCluster
-    type: cluster
-    integration: "trriplejay ddc"
-    pointer:
-      sourceName : "trriplejay-test" #name of the cluster we are deploying
+#   - name: myDdcCluster
+#     type: cluster
+#     integration: "trriplejay ddc"
+#     pointer:
+#       sourceName : "trriplejay-test" #name of the cluster we are deploying
 
   - name: betaReplicas
     type: replicas
@@ -104,20 +104,20 @@ resources:
     seed:
       versionName: "1.0.0"
 
-  - name: myProdSyncRepo
-    type: syncRepo
-    integration: "trriplejay github"
-    pointer:
-      sourceName: trriplejay/sample_pipelines
-      branch: original
+#   - name: myProdSyncRepo
+#     type: syncRepo
+#     integration: "trriplejay github"
+#     pointer:
+#       sourceName: trriplejay/sample_pipelines
+#       branch: original
 
-  - name: mySlack
-    type: notification
-    integration: "shippable via trriplejay"
-    pointer:
-      recipients:
-        - "#test_interns"
-        - "@john"
+#   - name: mySlack
+#     type: notification
+#     integration: "shippable via trriplejay"
+#     pointer:
+#       recipients:
+#         - "#test_interns"
+#         - "@john"
 
   - name: myEmail
     type: notification
