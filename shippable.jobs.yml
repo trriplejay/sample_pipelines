@@ -31,6 +31,15 @@ jobs:
       - IN: betaReplicas
       - IN: nginx-mani
       - IN: myEcsCluster
+      
+  - name: kube-dep
+    type: deploy
+    steps:
+      - IN: myKubeCluster
+      - IN: betaParams
+      - IN: betaOpts
+      - IN: betaReplicas
+      - IN: simple-mani
 
 
 #  - name: ddc-test
