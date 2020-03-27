@@ -25,7 +25,7 @@ resources:
     pointer:
       sourceName: "trriplejay/simpleserver"
     seed:
-      versionName: master.59
+      versionName: latest
 
   - name: simple-params
     type: params
