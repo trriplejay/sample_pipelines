@@ -41,16 +41,16 @@ resources:
       memory: 120
       cpuShares: 18
 
-#   - name: myEcsCluster
-#     type: cluster
-#     integration: "shippable demo ecs"
-#     pointer:
-#       sourceName : "trriplejay-test" #name of the cluster we are deploying
-#       region: "us-west-2"
-      
-  - name: myKubeCluster
+  - name: myEcsCluster
     type: cluster
-    integration: "MyKubeCredentials"  
+    integration: "MyAwsSoftSrvKeys"
+    pointer:
+      sourceName : "test-sdk" #name of the cluster we are deploying
+      region: "us-west-2"
+      
+#   - name: myKubeCluster
+#     type: cluster
+#     integration: "MyKubeCredentials"  
     
 #   - name: myKubeCluster
 #     type: cluster
